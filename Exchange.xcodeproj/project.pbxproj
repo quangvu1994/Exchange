@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BD9CD8B4D2301E287A5D8E0 /* Pods_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE866939FA449451BC0350A /* Pods_Exchange.framework */; };
 		5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */; };
 		5B2CD8B41F0B2968001E0D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B31F0B2968001E0D6B /* ViewController.swift */; };
 		5B2CD8B71F0B2968001E0D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B51F0B2968001E0D6B /* Main.storyboard */; };
 		5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B81F0B2968001E0D6B /* Exchange.xcdatamodeld */; };
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
 		5B2CD8BF1F0B2968001E0D6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BD1F0B2968001E0D6B /* LaunchScreen.storyboard */; };
+		5BB03F1E1F0B2ACF00C9742B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BB03F1D1F0B2ACF00C9742B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B2CD8BE1F0B2968001E0D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B2CD8C01F0B2968001E0D6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BB03F1D1F0B2ACF00C9742B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6EE866939FA449451BC0350A /* Pods_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		973872E263ED5614D09E567B /* Pods-Exchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchange.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchange/Pods-Exchange.debug.xcconfig"; sourceTree = "<group>"; };
+		9C9A29C1A8396D729E8E06BD /* Pods-Exchange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchange.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exchange/Pods-Exchange.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BD9CD8B4D2301E287A5D8E0 /* Pods_Exchange.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02150843E86B2A456B24AB37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EE866939FA449451BC0350A /* Pods_Exchange.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5B2CD8A51F0B2968001E0D6B = {
 			isa = PBXGroup;
 			children = (
 				5B2CD8B01F0B2968001E0D6B /* Exchange */,
 				5B2CD8AF1F0B2968001E0D6B /* Products */,
+				7C07BE225F38B9F1911B3C9B /* Pods */,
+				02150843E86B2A456B24AB37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +73,7 @@
 		5B2CD8B01F0B2968001E0D6B /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				5BB03F1D1F0B2ACF00C9742B /* GoogleService-Info.plist */,
 				5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */,
 				5B2CD8B31F0B2968001E0D6B /* ViewController.swift */,
 				5B2CD8B51F0B2968001E0D6B /* Main.storyboard */,
@@ -67,6 +85,15 @@
 			path = Exchange;
 			sourceTree = "<group>";
 		};
+		7C07BE225F38B9F1911B3C9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				973872E263ED5614D09E567B /* Pods-Exchange.debug.xcconfig */,
+				9C9A29C1A8396D729E8E06BD /* Pods-Exchange.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B2CD8C31F0B2968001E0D6B /* Build configuration list for PBXNativeTarget "Exchange" */;
 			buildPhases = (
+				77244514960B234B4D332E17 /* [CP] Check Pods Manifest.lock */,
 				5B2CD8AA1F0B2968001E0D6B /* Sources */,
 				5B2CD8AB1F0B2968001E0D6B /* Frameworks */,
 				5B2CD8AC1F0B2968001E0D6B /* Resources */,
+				7DB4FD4E0CEEB36FD663C3DF /* [CP] Embed Pods Frameworks */,
+				A84CC4F5D7BD2B4C61EC6454 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,12 +158,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2CD8BF1F0B2968001E0D6B /* LaunchScreen.storyboard in Resources */,
+				5BB03F1E1F0B2ACF00C9742B /* GoogleService-Info.plist in Resources */,
 				5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */,
 				5B2CD8B71F0B2968001E0D6B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77244514960B234B4D332E17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7DB4FD4E0CEEB36FD663C3DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exchange/Pods-Exchange-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A84CC4F5D7BD2B4C61EC6454 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exchange/Pods-Exchange-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B2CD8AA1F0B2968001E0D6B /* Sources */ = {
@@ -265,10 +344,12 @@
 		};
 		5B2CD8C41F0B2968001E0D6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 973872E263ED5614D09E567B /* Pods-Exchange.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TALKAB4XDB;
 				INFOPLIST_FILE = Exchange/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quangvu.Exchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,10 +359,12 @@
 		};
 		5B2CD8C51F0B2968001E0D6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C9A29C1A8396D729E8E06BD /* Pods-Exchange.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TALKAB4XDB;
 				INFOPLIST_FILE = Exchange/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quangvu.Exchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,6 +391,7 @@
 				5B2CD8C51F0B2968001E0D6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
