@@ -14,6 +14,8 @@
 		5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */; };
 		5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */; };
 		5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */; };
+		5B24A1081F1044A60068BBD9 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */; };
+		5B24A10A1F104C290068BBD9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1091F104C290068BBD9 /* CategoryCell.swift */; };
 		5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */; };
 		5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B81F0B2968001E0D6B /* Exchange.xcdatamodeld */; };
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostCategoryCell.swift; path = View/CreatePostCategoryCell.swift; sourceTree = "<group>"; };
 		5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostCameraCell.swift; path = View/CreatePostCameraCell.swift; sourceTree = "<group>"; };
 		5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerUtilities.swift; path = "Extension /UIViewControllerUtilities.swift"; sourceTree = "<group>"; };
+		5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = "View Controllers/CategoriesViewController.swift"; sourceTree = "<group>"; };
+		5B24A1091F104C290068BBD9 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = View/CategoryCell.swift; sourceTree = "<group>"; };
 		5B2CD8AE1F0B2968001E0D6B /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2CD8B91F0B2968001E0D6B /* Exchange.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exchange.xcdatamodel; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */,
 				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
 				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
+				5B24A1091F104C290068BBD9 /* CategoryCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */,
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
 				5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */,
+				5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -338,9 +344,11 @@
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
 				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,
 				5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */,
+				5B24A10A1F104C290068BBD9 /* CategoryCell.swift in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
+				5B24A1081F1044A60068BBD9 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

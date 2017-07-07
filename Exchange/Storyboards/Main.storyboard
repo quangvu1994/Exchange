@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-23" y="143"/>
         </scene>
-        <!--List Your Item-->
+        <!--Your Item-->
         <scene sceneID="RJ8-jw-6n0">
             <objects>
                 <viewController id="5gc-i7-yMx" customClass="CreatePostViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,7 +154,7 @@
                             <constraint firstItem="XkJ-fe-RhD" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="20" id="xaA-gR-2mg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List Your Item" id="Gcd-6U-GWK"/>
+                    <navigationItem key="navigationItem" title="Your Item" id="Gcd-6U-GWK"/>
                     <connections>
                         <outlet property="postButton" destination="XkJ-fe-RhD" id="QHU-iK-YTj"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
@@ -167,7 +167,7 @@
         <!--Categories-->
         <scene sceneID="OdO-P8-mqi">
             <objects>
-                <viewController id="YgO-fe-tJW" sceneMemberID="viewController">
+                <viewController id="YgO-fe-tJW" customClass="CategoriesViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yL7-MT-i5l"/>
                         <viewControllerLayoutGuide type="bottom" id="SWA-MR-96D"/>
@@ -180,13 +180,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="qBE-xs-24S">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="qBE-xs-24S" customClass="CategoryCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qBE-xs-24S" id="ZBI-RB-Ra7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFU-0o-BVB">
+                                                    <rect key="frame" x="23" y="8" width="120" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qFU-0o-BVB" firstAttribute="leading" secondItem="ZBI-RB-Ra7" secondAttribute="leadingMargin" constant="15" id="6MU-U1-bIo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qFU-0o-BVB" secondAttribute="bottom" id="dUM-Ym-9Rp"/>
+                                                <constraint firstItem="qFU-0o-BVB" firstAttribute="top" secondItem="ZBI-RB-Ra7" secondAttribute="topMargin" id="efs-ir-6eQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryName" destination="qFU-0o-BVB" id="PDi-60-efH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -203,7 +219,12 @@
                             <constraint firstAttribute="trailing" secondItem="45g-gd-ytJ" secondAttribute="trailing" id="fV7-wF-Bnw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="vfN-Ig-DwK"/>
+                    <navigationItem key="navigationItem" title="Categories" id="vfN-Ig-DwK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="F5e-di-OMs"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="45g-gd-ytJ" id="ff8-b6-njc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pei-F6-sCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -235,7 +256,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaG-xo-yit" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
