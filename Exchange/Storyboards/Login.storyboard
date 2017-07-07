@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TdO-hm-tx8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="r82-8a-JIy">
+            <objects>
+                <viewController id="TdO-hm-tx8" customClass="LoginViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xZr-JZ-uk8"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Qx-Wi-tFF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Exn-kk-drk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="annie-spratt-130809-min" translatesAutoresizingMaskIntoConstraints="NO" id="Qb5-zj-qfD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-HH-LTE">
+                                <rect key="frame" x="72" y="80" width="232" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl1-c3-ddc">
+                                        <rect key="frame" x="17" y="0.0" width="198.5" height="64"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="45"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade yours for theirs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51b-Ht-Ul1">
+                                        <rect key="frame" x="0.0" y="64" width="232" height="33"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D76-5b-dWt">
+                                <rect key="frame" x="25" y="537" width="325" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign in with Facebook">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLoginAction:" destination="TdO-hm-tx8" eventType="touchUpInside" id="usH-2Z-oV3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="D76-5b-dWt" secondAttribute="trailing" constant="25" id="1Bl-WY-4My"/>
+                            <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="Qb5-zj-qfD" secondAttribute="bottom" id="8Fb-Ga-obE"/>
+                            <constraint firstItem="KVI-HH-LTE" firstAttribute="top" secondItem="xZr-JZ-uk8" secondAttribute="bottom" constant="60" id="L08-ic-cDA"/>
+                            <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="D76-5b-dWt" secondAttribute="bottom" constant="100" id="ScL-gW-QUm"/>
+                            <constraint firstItem="KVI-HH-LTE" firstAttribute="centerX" secondItem="Exn-kk-drk" secondAttribute="centerX" id="W1M-A9-dkG"/>
+                            <constraint firstItem="D76-5b-dWt" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" constant="25" id="aH2-Ii-NDh"/>
+                            <constraint firstItem="Qb5-zj-qfD" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" id="gEp-4X-1dj"/>
+                            <constraint firstAttribute="trailing" secondItem="Qb5-zj-qfD" secondAttribute="trailing" id="k7r-bM-apW"/>
+                            <constraint firstItem="Qb5-zj-qfD" firstAttribute="top" secondItem="Exn-kk-drk" secondAttribute="top" id="xs4-tI-cWN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="D76-5b-dWt" id="C06-CT-eP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lkE-8x-KJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="-370.16491754122939"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="annie-spratt-130809-min" width="2000" height="2903"/>
+    </resources>
+</document>
