@@ -98,7 +98,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="N1T-jZ-uBz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VcJ-W2-1Bb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VcJ-W2-1Bb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

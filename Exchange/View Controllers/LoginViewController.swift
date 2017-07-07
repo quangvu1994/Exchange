@@ -42,7 +42,8 @@ class LoginViewController: UIViewController {
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
             // Perform the sign in using Firebase Authentication
-            Auth.auth().signIn(with: credential, completion: { (user, error) in
+
+            Auth.auth().signIn(with: credential, completion: { (currentFIRAuthUser, error) in
                 if let error = error {
                     // Present an alert if the user fail to login
                     print("Login error: \(error.localizedDescription)")
@@ -53,10 +54,36 @@ class LoginViewController: UIViewController {
                     
                     return
                 }
-                // Transfer them to the main view
-                let initialViewController = UIStoryboard.initialViewController(type: .main)
-                self.view.window?.rootViewController = initialViewController
-                self.view.window?.makeKeyAndVisible()
+                // Handle any case if we don't have a firebase user yet
+                guard let currentFIRAuthUser = currentFIRAuthUser else {
+                    return
+                }
+                
+                // Check to see if our database has this user
+                UserService.retrieveUser(currentFIRAuthUser.uid, completion: { (userFromOurDatabase) in
+                    // If we doesn't have an user, write the current user to the database
+                    if let user = userFromOurDatabase {
+                        User.setCurrentUser(user)
+                    } else {
+                        // Handle case if the user doesn't have a display name
+                        guard let username = currentFIRAuthUser.displayName else {
+                            return
+                        }
+                        
+                        UserService.createNewUser(currentFIRAuthUser, username: username, completion: { (user) in
+                            // Making sure that we do have our User
+                            guard let user = user else {
+                                return
+                            }
+                            User.setCurrentUser(user)
+                        })
+                    }
+                    
+                    // Transfer them to the main view
+                    let initialViewController = UIStoryboard.initialViewController(type: .main)
+                    self.view.window?.rootViewController = initialViewController
+                    self.view.window?.makeKeyAndVisible()
+                })
             })
         }
     }

@@ -22,6 +22,17 @@ class User {
         self.username = username
     }
     
+    init?(snapshot: DataSnapshot){
+        guard let snapshotValue = snapshot.value as? [String: Any],
+            let username = snapshotValue["username"] as? String,
+                !username.isEmpty else {
+            return nil
+        }
+        
+        self.uid = snapshot.key
+        self.username = username
+    }
+        
     static func setCurrentUser(_ user: User){
         _current = user
     }
