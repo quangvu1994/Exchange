@@ -12,6 +12,8 @@
 		5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */; };
 		5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */; };
 		5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */; };
+		5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */; };
+		5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */; };
 		5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */; };
 		5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B81F0B2968001E0D6B /* Exchange.xcdatamodeld */; };
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = "View Controllers/CreatePostViewController.swift"; sourceTree = "<group>"; };
 		5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostDescriptionCell.swift; path = View/CreatePostDescriptionCell.swift; sourceTree = "<group>"; };
 		5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostCategoryCell.swift; path = View/CreatePostCategoryCell.swift; sourceTree = "<group>"; };
+		5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostCameraCell.swift; path = View/CreatePostCameraCell.swift; sourceTree = "<group>"; };
+		5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerUtilities.swift; path = "Extension /UIViewControllerUtilities.swift"; sourceTree = "<group>"; };
 		5B2CD8AE1F0B2968001E0D6B /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2CD8B91F0B2968001E0D6B /* Exchange.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exchange.xcdatamodel; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */,
+				5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */,
 				5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */,
 				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
+				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -324,11 +330,13 @@
 				5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
+				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,
 				5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
+				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,
 				5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,
