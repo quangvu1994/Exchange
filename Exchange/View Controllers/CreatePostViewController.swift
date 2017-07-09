@@ -18,7 +18,7 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
         postButton.layer.cornerRadius = 6
         tableView.tableFooterView = UIView()
-        hideKeyboard()
+        hideKeyboardOnTap()
     }
     
 }

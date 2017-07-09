@@ -220,7 +220,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="vfN-Ig-DwK">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="F5e-di-OMs"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="qYs-1D-uuv">
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="wHp-Xd-Q44">
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="45g-gd-ytJ" id="ff8-b6-njc"/>
@@ -256,7 +261,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaG-xo-yit" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

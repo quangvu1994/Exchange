@@ -17,6 +17,4 @@ class ExploreCategoryCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-
 }

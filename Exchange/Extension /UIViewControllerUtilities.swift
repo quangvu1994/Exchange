@@ -10,7 +10,10 @@ import UIKit
 
 extension UIViewController {
     
-    func hideKeyboard() {
+    /**
+     Add a tap gesture to any UIViewController. The action is to hide the keyboard when tapping on the view itself
+    */
+    func hideKeyboardOnTap() {
         // Looking for a tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         

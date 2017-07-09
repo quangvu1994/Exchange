@@ -14,7 +14,7 @@
         <!--Explore-->
         <scene sceneID="e8W-MX-voj">
             <objects>
-                <viewController id="30y-t2-bjh" customClass="MarketplaceViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="30y-t2-bjh" customClass="PopularCategoriesViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ms9-rO-HHp"/>
                         <viewControllerLayoutGuide type="bottom" id="FVA-Qa-Cnf"/>
@@ -40,8 +40,8 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-m7-mPP">
                                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="199.5"/>
-                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="28"/>
+                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.75045483732876717" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
                                                     <state key="normal" title="Category">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="1935.2" y="-182.15892053973016"/>
         </scene>
-        <!--View Controller-->
+        <!--Marketplace-->
         <scene sceneID="scE-4L-uwa">
             <objects>
-                <viewController id="m7y-c2-HAe" sceneMemberID="viewController">
+                <viewController id="m7y-c2-HAe" customClass="MarketplaceViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uf9-Lh-EOp"/>
                         <viewControllerLayoutGuide type="bottom" id="NeS-Du-dNt"/>
@@ -101,12 +101,99 @@
                     <view key="view" contentMode="scaleToFill" id="MFe-LZ-aOX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ufh-3R-m6q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gvX-v6-YOt">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostThumbImageCell" id="utZ-oY-kGk" customClass="PostThumbImageCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0b-8H-RP5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="k0b-8H-RP5" secondAttribute="trailing" id="FVo-Ui-hxJ"/>
+                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="leading" secondItem="utZ-oY-kGk" secondAttribute="leading" id="GLS-JD-yAn"/>
+                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="top" secondItem="utZ-oY-kGk" secondAttribute="top" id="cQc-Rq-N1X"/>
+                                            <constraint firstAttribute="bottom" secondItem="k0b-8H-RP5" secondAttribute="bottom" id="cbT-hH-sZy"/>
+                                        </constraints>
+                                        <size key="customSize" width="170" height="170"/>
+                                        <connections>
+                                            <outlet property="postImage" destination="k0b-8H-RP5" id="s4k-Rl-PfY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarketplaceHeaderView" id="VMf-UG-1pE" customClass="MarketplaceHeaderView" customModule="Exchange" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jdC-H3-umS">
+                                            <rect key="frame" x="20" y="10.5" width="30" height="30"/>
+                                            <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="BvJ-qi-gwV"/>
+                                                <constraint firstAttribute="width" constant="30" id="wXV-Sc-rm1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6K-Ej-071">
+                                            <rect key="frame" x="50" y="10" width="300" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="0CA-cE-efe"/>
+                                        <constraint firstItem="jdC-H3-umS" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="9M3-X1-Uld"/>
+                                        <constraint firstItem="jdC-H3-umS" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="Em9-p4-2KB"/>
+                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="leading" secondItem="jdC-H3-umS" secondAttribute="trailing" id="H5B-cH-TKm"/>
+                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="height" secondItem="jdC-H3-umS" secondAttribute="height" id="Jyf-Tj-0B5"/>
+                                        <constraint firstAttribute="trailing" secondItem="Y6K-Ej-071" secondAttribute="trailing" constant="25" id="Xyw-W2-Ja9"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="searchField" destination="Y6K-Ej-071" id="eBD-Vk-xqt"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="m7y-c2-HAe" id="ynV-K6-2a4"/>
+                                    <outlet property="delegate" destination="m7y-c2-HAe" id="bm1-hV-KUs"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ufh-3R-m6q" secondAttribute="bottom" id="9cW-84-qqz"/>
+                            <constraint firstAttribute="trailing" secondItem="Ufh-3R-m6q" secondAttribute="trailing" id="PUL-Fa-mWi"/>
+                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="leading" secondItem="MFe-LZ-aOX" secondAttribute="leading" id="RkC-Su-pH4"/>
+                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="hDz-cN-xKT"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="oHp-JI-geN">
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="-182"/>
+            <point key="canvasLocation" x="2784.8000000000002" y="-182.15892053973016"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Va9-nI-6Ha">
@@ -115,7 +202,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

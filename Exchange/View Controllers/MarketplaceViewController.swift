@@ -10,60 +10,61 @@ import UIKit
 
 class MarketplaceViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
-        configureCategoryButton()
-    }
-    
-    func configureTableView() {
-        self.tableView.tableFooterView = UIView()
-        self.tableView.separatorStyle = .none
-    }
-    
-    func configureCategoryButton() {
     }
 }
 
-extension MarketplaceViewController: UITableViewDelegate, UITableViewDataSource {
+extension MarketplaceViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoryCell", for: indexPath) as! ExploreCategoryCell
-        switch indexPath.row {
-        case 0:
-            let backgroundImage = UIImage(named: "RoomEssential.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("Room Essential", for: .normal)
-
-        case 1:
-            let backgroundImage = UIImage(named: "Clothes.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("Clothes", for: .normal)
-
-        case 2:
-            let backgroundImage = UIImage(named: "Electronic.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("Electronic", for: .normal)
-
-        case 3:
-            let backgroundImage = UIImage(named: "Book.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("Book", for: .normal)
-
-        default:
-            fatalError("Unable to locate the current row")
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
+        cell.postImage.backgroundColor = UIColor.lightGray
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionElementKindSectionHeader else {
+            fatalError("Unexpected element kind.")
+        }
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MarketplaceHeaderView", for: indexPath) as! MarketplaceHeaderView
+        
+        return headerView
+    }
+}
+
+
+extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
+    // Set the size of each cell in the collection view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let columns: CGFloat = 3
+        let spacing: CGFloat = 3
+        // 2 spaces multiply by the length of each space = total horizontal spacing
+        let totalHorizontalSpacing = (columns - 1) * spacing
+        
+        // Total width - the horizontal spacing = total width of all columns
+        // Divide by number of columns to find the width of one column
+        let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
+        // Instantiate a CGSize
+        let itemSize = CGSize(width: itemWidth, height: itemWidth)
+        
+        return itemSize
     }
     
-    // Dynamically set the height of each row
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+    // Not sure what is this??? Something related to spacing
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
     }
 }

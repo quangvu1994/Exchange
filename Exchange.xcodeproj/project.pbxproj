@@ -19,6 +19,8 @@
 		5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */; };
 		5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD8B81F0B2968001E0D6B /* Exchange.xcdatamodeld */; };
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
+		5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */; };
+		5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */; };
 		5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */; };
 		5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C55831F0C665100F4120A /* LoginViewController.swift */; };
 		5B6C55881F0C71C100F4120A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6C55871F0C71C100F4120A /* GoogleService-Info.plist */; };
@@ -28,6 +30,8 @@
 		5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */; };
 		5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */; };
 		5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */; };
+		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
+		5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */; };
 		5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */; };
 		5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
@@ -46,6 +50,8 @@
 		5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2CD8B91F0B2968001E0D6B /* Exchange.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exchange.xcdatamodel; sourceTree = "<group>"; };
 		5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularCategoriesViewController.swift; path = "View Controllers/PopularCategoriesViewController.swift"; sourceTree = "<group>"; };
+		5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostThumbImageCell.swift; path = View/PostThumbImageCell.swift; sourceTree = "<group>"; };
 		5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardUtilities.swift; path = "Extension /StoryboardUtilities.swift"; sourceTree = "<group>"; };
 		5B6C55831F0C665100F4120A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5B6C55871F0C71C100F4120A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Supporting/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 		5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "View Controllers/ProfileViewController.swift"; sourceTree = "<group>"; };
+		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
+		5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPhotoHelper.swift; path = Helper/EXPhotoHelper.swift; sourceTree = "<group>"; };
 		5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = Storyboards/Explore.storyboard; sourceTree = "<group>"; };
 		5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceViewController.swift; path = "View Controllers/MarketplaceViewController.swift"; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 				5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */,
 				5B2CD8B11F0B2968001E0D6B /* AppDelegate.swift */,
 				5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */,
+				5BA92F041F11E545006CE880 /* Helper */,
 				5B724F851F0B2D1B00BE4E4E /* View Controllers */,
 				5B724F821F0B2C4200BE4E4E /* View */,
 				5B724F811F0B2C4000BE4E4E /* Model */,
@@ -166,6 +175,8 @@
 				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
 				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
 				5B24A1091F104C290068BBD9 /* CategoryCell.swift */,
+				5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */,
+				5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
 				5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */,
 				5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */,
+				5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -189,6 +201,14 @@
 				5B724F8A1F0B2DA100BE4E4E /* Info.plist */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		5BA92F041F11E545006CE880 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		7C07BE225F38B9F1911B3C9B /* Pods */ = {
@@ -334,11 +354,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */,
+				5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,
+				5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */,
 				5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
@@ -347,7 +369,9 @@
 				5B24A10A1F104C290068BBD9 /* CategoryCell.swift in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,
+				5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */,
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
+				5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */,
 				5B24A1081F1044A60068BBD9 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
