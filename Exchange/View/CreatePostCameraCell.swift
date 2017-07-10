@@ -9,15 +9,13 @@
 import UIKit
 
 class CreatePostCameraCell: UITableViewCell {
-
-    @IBOutlet weak var imageContent: UIImageView!
+    
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var postImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    @IBAction func openCamera(_ sender: UIButton) {
-        
-    }
 }

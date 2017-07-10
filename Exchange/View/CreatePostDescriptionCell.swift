@@ -35,7 +35,7 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textField: UITextView) {
-        if descriptionText.text.isEmpty {
+        if descriptionText.text == "" {
             descriptionText.text = placeHolder!
             descriptionText.textColor = UIColor.lightGray
         }

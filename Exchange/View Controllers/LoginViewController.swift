@@ -14,6 +14,7 @@ typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var facebookLoginButton: UIButton!
     
     override func viewDidLoad() {
@@ -26,6 +27,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func facebookLoginAction(_ sender: UIButton) {
+        // Start the activity indicator
+        self.activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         // Initialize facebook login manager
         let fbManager = FBSDKLoginManager()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
@@ -83,6 +87,8 @@ class LoginViewController: UIViewController {
                     let initialViewController = UIStoryboard.initialViewController(type: .main)
                     self.view.window?.rootViewController = initialViewController
                     self.view.window?.makeKeyAndVisible()
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 })
             })
         }

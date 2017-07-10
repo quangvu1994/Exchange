@@ -55,13 +55,19 @@
                                     <action selector="facebookLoginAction:" destination="TdO-hm-tx8" eventType="touchUpInside" id="usH-2Z-oV3"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-WX-dO1">
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                                <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="D76-5b-dWt" secondAttribute="trailing" constant="25" id="1Bl-WY-4My"/>
                             <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="Qb5-zj-qfD" secondAttribute="bottom" id="8Fb-Ga-obE"/>
                             <constraint firstItem="KVI-HH-LTE" firstAttribute="top" secondItem="xZr-JZ-uk8" secondAttribute="bottom" constant="60" id="L08-ic-cDA"/>
+                            <constraint firstItem="fJ1-WX-dO1" firstAttribute="centerX" secondItem="Exn-kk-drk" secondAttribute="centerX" id="PzA-O1-I76"/>
                             <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="D76-5b-dWt" secondAttribute="bottom" constant="100" id="ScL-gW-QUm"/>
+                            <constraint firstItem="fJ1-WX-dO1" firstAttribute="centerY" secondItem="Exn-kk-drk" secondAttribute="centerY" id="Tm0-z9-uza"/>
                             <constraint firstItem="KVI-HH-LTE" firstAttribute="centerX" secondItem="Exn-kk-drk" secondAttribute="centerX" id="W1M-A9-dkG"/>
                             <constraint firstItem="D76-5b-dWt" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" constant="25" id="aH2-Ii-NDh"/>
                             <constraint firstItem="Qb5-zj-qfD" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" id="gEp-4X-1dj"/>
@@ -70,6 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fJ1-WX-dO1" id="Cje-Rz-snQ"/>
                         <outlet property="facebookLoginButton" destination="D76-5b-dWt" id="C06-CT-eP4"/>
                     </connections>
                 </viewController>

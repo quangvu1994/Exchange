@@ -149,7 +149,7 @@
                                             </constraints>
                                         </imageView>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6K-Ej-071">
-                                            <rect key="frame" x="50" y="10" width="300" height="30"/>
+                                            <rect key="frame" x="50" y="10.5" width="300" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -202,7 +202,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

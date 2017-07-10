@@ -13,12 +13,28 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postButton: UIButton!
+    let photoHelper = EXPhotoHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postButton.layer.cornerRadius = 6
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
+    }
+    
+    @IBAction func openPhotoHelper(_ sender: UIButton) {
+        photoHelper.presentActionSheet(from: self)
+    }
+    
+    @IBAction func postItem(_ sender: UIButton) {
+        guard let selectedImage = photoHelper.selectedImage else {
+            // No Image Selected -> do something
+            return
+        }
+        
+        PostService.writePostImageToFIRStorage(selectedImage)
+        // Clear all fields and transfer the user to the marketplace
+        
     }
     
 }
@@ -33,6 +49,9 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraCell", for: indexPath) as! CreatePostCameraCell
+            photoHelper.completionHandler = { (selectedImage) in
+                cell.postImage.image = selectedImage
+            }
             return cell
 
         case 1:

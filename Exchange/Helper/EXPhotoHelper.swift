@@ -10,7 +10,8 @@ import UIKit
 
 class EXPhotoHelper: NSObject {
     
-    var photoCompletionHandler: ((UIImage) -> Void)?
+    var completionHandler: ((UIImage) -> Void)?
+    var selectedImage: UIImage?
 
     /**
      Present the action sheet
@@ -60,7 +61,8 @@ extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // Grab the selected image
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            photoCompletionHandler?(selectedImage)
+            self.selectedImage = selectedImage
+            self.completionHandler?(selectedImage)
         }
         
         picker.dismiss(animated: true, completion: nil)
