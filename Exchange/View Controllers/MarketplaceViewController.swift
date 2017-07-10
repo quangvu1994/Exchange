@@ -7,26 +7,37 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MarketplaceViewController: UIViewController {
     
+    var post = [Post]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // fetch all post
+        PostService.fetchAllPost(completionHandler: { allPost in
+            self.post = allPost
+        })
+        
     }
 }
 
 extension MarketplaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return post.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
-        cell.postImage.backgroundColor = UIColor.lightGray
-        
+        let imageURL = URL(string: post[indexPath.row].imageURL)
+        cell.postImage.kf.setImage(with: imageURL)
         return cell
     }
     

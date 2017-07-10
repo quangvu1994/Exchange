@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase.FIRDataSnapshot
 
 class Post {
     var imageURL: String
@@ -30,6 +31,22 @@ class Post {
         self.imageHeight = imageHeight
         self.poster = User.currentUser
         self.creationDate = Date()
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        guard let postData = snapshot.value as? [String: Any],
+            let imageURL = postData["image_url"] as? String,
+            let imageHeight = postData["image_height"] as? CGFloat,
+            let poster = postData["poster"] as? [String: Any],
+            let creationDate = postData["created_at"] as? TimeInterval,
+            let uid = poster["uid"] as? String,
+            let username = poster["username"] as? String
+            else {return nil}
+        
+        self.imageURL = imageURL
+        self.imageHeight = imageHeight
+        self.creationDate = Date(timeIntervalSince1970: creationDate)
+        self.poster = User(uid: uid, username: username)
     }
     
 }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exchange/View Controllers/CreatePostViewController.swift"
-            timestampString = "521353131.367619"
+            filePath = "Exchange/Service/PostService.swift"
+            timestampString = "521415507.773543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "fetchAllPost(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,8 +12,4 @@ class MarketplaceHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var searchField: UITextField!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        searchField.placeholder = "Search"
-    }
 }

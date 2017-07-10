@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class PostService {
     
-    static func writePostImageToFIRStorage(_ postImage: UIImage){
+    static func writePostImageToFIRStorage(_ postImage: UIImage, completion: @escaping (Bool) -> Void){
         // Convert image to Data and lower the quality (Read class description) -> faster to upload
         guard let imageData = UIImageJPEGRepresentation(postImage, 0.1) else {
             return
@@ -31,20 +31,41 @@ class PostService {
             }
             let imageURL = downloadURL.absoluteString
             let imageHeight = postImage.aspectHeight
-            self.writePostToFIRDatabase(imageURL: imageURL, imageHeight: imageHeight)
+            self.writePostToFIRDatabase(imageURL: imageURL, imageHeight: imageHeight, completion: completion)
         })
     }
     
-    static func writePostToFIRDatabase(imageURL: String, imageHeight: CGFloat) {
+    static func writePostToFIRDatabase(imageURL: String, imageHeight: CGFloat, completion: @escaping (Bool) -> Void) {
         let currentUID = User.currentUser.uid
         let post = Post(imageURL: imageURL, imageHeight: imageHeight)
         let postRef = Database.database().reference().child("posts").child(currentUID).childByAutoId()
-        // Write
         postRef.updateChildValues(post.dictValue)
+        // Also write to all post parent node
+        let allPostRef = Database.database().reference().child("allPosts").child("allCategories").childByAutoId()
+        allPostRef.updateChildValues(post.dictValue)
+        completion(true)
+        
     }
     
-    static func fetchAllPost() {
-        
+    /**
+     Fetch all posts from every single user - Return a list of posts
+    */
+    static func fetchAllPost(completionHandler: @escaping ([Post]) -> Void) {
+        // Generate the reference path
+        let allPostRef = Database.database().reference().child("allPosts").child("allCategories")
+        allPostRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                return completionHandler([])
+            }
+            
+            let allPost: [Post] = snapshot.reversed().flatMap {
+                guard let post = Post(snapshot: $0) else {
+                    return nil
+                }
+                return post
+            }
+            completionHandler(allPost)
+        })
     }
     
 }

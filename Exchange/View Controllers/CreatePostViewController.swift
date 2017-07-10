@@ -13,7 +13,13 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postButton: UIButton!
+    
     let photoHelper = EXPhotoHelper()
+    var postOriginalStateInfo = [
+        "postTitlePlaceHolder": "Item Titlte",
+        "postDescriptionPlaceHolder": "Post Description"
+        ]
+    var resetImage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +37,16 @@ class CreatePostViewController: UIViewController {
             // No Image Selected -> do something
             return
         }
-        
-        PostService.writePostImageToFIRStorage(selectedImage)
-        // Clear all fields and transfer the user to the marketplace
-        
+        PostService.writePostImageToFIRStorage(selectedImage, completion: { (completed) in
+            if completed {
+                // Reload the table view with the original data
+                self.resetImage = true
+                self.tableView.reloadData()
+                self.performSegue(withIdentifier: "showMarketplace", sender: self)
+            }else {
+                print("Something Wrong, try post again")
+            }
+        })
     }
     
 }
@@ -52,25 +64,29 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             photoHelper.completionHandler = { (selectedImage) in
                 cell.postImage.image = selectedImage
             }
+            
+            if resetImage {
+                photoHelper.selectedImage = nil
+                cell.postImage.image = nil
+            }
             return cell
 
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             cell.descriptionText.textColor = UIColor.lightGray
-            cell.descriptionText.text = "Item Title"
-            cell.placeHolder = "Item Title"
+            cell.descriptionText.text = postOriginalStateInfo["postTitlePlaceHolder"]
+            cell.placeHolder = postOriginalStateInfo["postTitlePlaceHolder"]
             return cell
     
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             cell.descriptionText.textColor = UIColor.lightGray
-            cell.descriptionText.text = "Item Description"
-            cell.placeHolder = "Item Description"
+            cell.descriptionText.text = postOriginalStateInfo["postDescriptionPlaceHolder"]
+            cell.placeHolder = postOriginalStateInfo["postDescriptionPlaceHolder"]
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
-            cell.optionName.text = "Category"
             return cell
 
         default:

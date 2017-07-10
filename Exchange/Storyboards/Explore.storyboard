@@ -88,12 +88,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-Nz-WVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935.2" y="-182.15892053973016"/>
+            <point key="canvasLocation" x="1682" y="-184"/>
         </scene>
         <!--Marketplace-->
         <scene sceneID="scE-4L-uwa">
             <objects>
-                <viewController id="m7y-c2-HAe" customClass="MarketplaceViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Marketplace" id="m7y-c2-HAe" customClass="MarketplaceViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uf9-Lh-EOp"/>
                         <viewControllerLayoutGuide type="bottom" id="NeS-Du-dNt"/>
@@ -132,7 +132,7 @@
                                         </constraints>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
-                                            <outlet property="postImage" destination="k0b-8H-RP5" id="s4k-Rl-PfY"/>
+                                            <outlet property="postImage" destination="k0b-8H-RP5" id="lib-2a-REs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -182,18 +182,14 @@
                             <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="hDz-cN-xKT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="oHp-JI-geN">
-                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan"/>
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784.8000000000002" y="-182.15892053973016"/>
+            <point key="canvasLocation" x="2421" y="-185"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Va9-nI-6Ha">
@@ -202,7 +198,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

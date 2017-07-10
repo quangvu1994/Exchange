@@ -15,7 +15,6 @@ class PopularCategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureCategoryButton()
     }
     
     func configureTableView() {
@@ -23,8 +22,6 @@ class PopularCategoriesViewController: UIViewController {
         self.tableView.separatorStyle = .none
     }
     
-    func configureCategoryButton() {
-    }
 }
 
 extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataSource {

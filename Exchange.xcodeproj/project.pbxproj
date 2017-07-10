@@ -36,6 +36,11 @@
 		5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F091F12B27E006CE880 /* PostService.swift */; };
 		5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */; };
 		5BA92F101F12BA93006CE880 /* UIImageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */; };
+		5BB302A21F1439BE003C149B /* CreateNewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB302A11F1439BE003C149B /* CreateNewPost.storyboard */; };
+		5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB302A31F143D3D003C149B /* MyItemViewController.swift */; };
+		5BB302A81F143F0F003C149B /* MyItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB302A71F143F0F003C149B /* MyItem.storyboard */; };
+		5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB302A91F143FA1003C149B /* MyItemPostImageCell.swift */; };
+		5BB302AC1F144012003C149B /* MyItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB302AB1F144012003C149B /* MyItemHeaderView.swift */; };
 		5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */; };
 		5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
@@ -72,6 +77,11 @@
 		5BA92F091F12B27E006CE880 /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostService.swift; path = Service/PostService.swift; sourceTree = "<group>"; };
 		5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FIRStorageUtilities.swift; path = "Extension /FIRStorageUtilities.swift"; sourceTree = "<group>"; };
 		5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageUtilities.swift; path = "Extension /UIImageUtilities.swift"; sourceTree = "<group>"; };
+		5BB302A11F1439BE003C149B /* CreateNewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateNewPost.storyboard; path = Storyboards/CreateNewPost.storyboard; sourceTree = "<group>"; };
+		5BB302A31F143D3D003C149B /* MyItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyItemViewController.swift; path = "View Controllers/MyItemViewController.swift"; sourceTree = "<group>"; };
+		5BB302A71F143F0F003C149B /* MyItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyItem.storyboard; path = Storyboards/MyItem.storyboard; sourceTree = "<group>"; };
+		5BB302A91F143FA1003C149B /* MyItemPostImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyItemPostImageCell.swift; path = View/MyItemPostImageCell.swift; sourceTree = "<group>"; };
+		5BB302AB1F144012003C149B /* MyItemHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyItemHeaderView.swift; path = View/MyItemHeaderView.swift; sourceTree = "<group>"; };
 		5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = Storyboards/Explore.storyboard; sourceTree = "<group>"; };
 		5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceViewController.swift; path = "View Controllers/MarketplaceViewController.swift"; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
@@ -163,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				5B724F831F0B2D1300BE4E4E /* Main.storyboard */,
+				5BB302A71F143F0F003C149B /* MyItem.storyboard */,
+				5BB302A11F1439BE003C149B /* CreateNewPost.storyboard */,
 				5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */,
 				5BFE717B1F0B3DD5007697EB /* Profile.storyboard */,
 				5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */,
@@ -182,13 +194,9 @@
 		5B724F821F0B2C4200BE4E4E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */,
-				5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */,
-				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
-				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
-				5B24A1091F104C290068BBD9 /* CategoryCell.swift */,
-				5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */,
-				5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */,
+				5BB302B21F144117003C149B /* MyItem */,
+				5BB302B11F1440EE003C149B /* CreateNewPost */,
+				5BB302AD1F144068003C149B /* Explore */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -196,12 +204,11 @@
 		5B724F851F0B2D1B00BE4E4E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BB302B01F1440E2003C149B /* MyItem */,
+				5BB302AF1F1440AC003C149B /* CreateNewPost */,
+				5BB302AE1F14408E003C149B /* Explore */,
 				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
-				5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */,
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
-				5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */,
-				5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */,
-				5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -221,6 +228,62 @@
 				5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		5BB302AD1F144068003C149B /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */,
+				5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */,
+				5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
+		5BB302AE1F14408E003C149B /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */,
+				5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
+		5BB302AF1F1440AC003C149B /* CreateNewPost */ = {
+			isa = PBXGroup;
+			children = (
+				5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */,
+				5B24A1071F1044A60068BBD9 /* CategoriesViewController.swift */,
+			);
+			name = CreateNewPost;
+			sourceTree = "<group>";
+		};
+		5BB302B01F1440E2003C149B /* MyItem */ = {
+			isa = PBXGroup;
+			children = (
+				5BB302A31F143D3D003C149B /* MyItemViewController.swift */,
+			);
+			name = MyItem;
+			sourceTree = "<group>";
+		};
+		5BB302B11F1440EE003C149B /* CreateNewPost */ = {
+			isa = PBXGroup;
+			children = (
+				5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */,
+				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
+				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
+				5B24A1091F104C290068BBD9 /* CategoryCell.swift */,
+			);
+			name = CreateNewPost;
+			sourceTree = "<group>";
+		};
+		5BB302B21F144117003C149B /* MyItem */ = {
+			isa = PBXGroup;
+			children = (
+				5BB302A91F143FA1003C149B /* MyItemPostImageCell.swift */,
+				5BB302AB1F144012003C149B /* MyItemHeaderView.swift */,
+			);
+			name = MyItem;
 			sourceTree = "<group>";
 		};
 		7C07BE225F38B9F1911B3C9B /* Pods */ = {
@@ -302,7 +365,9 @@
 			files = (
 				5B724F841F0B2D1300BE4E4E /* Main.storyboard in Resources */,
 				5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */,
+				5BB302A81F143F0F003C149B /* MyItem.storyboard in Resources */,
 				5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */,
+				5BB302A21F1439BE003C149B /* CreateNewPost.storyboard in Resources */,
 				5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */,
 				5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */,
 				5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */,
@@ -367,9 +432,11 @@
 			files = (
 				5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */,
 				5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */,
+				5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
+				5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */,
 				5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */,
 				5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
@@ -388,6 +455,7 @@
 				5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */,
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
 				5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */,
+				5BB302AC1F144012003C149B /* MyItemHeaderView.swift in Sources */,
 				5B24A1081F1044A60068BBD9 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
