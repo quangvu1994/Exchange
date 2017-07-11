@@ -40,7 +40,7 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-m7-mPP">
                                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="199.5"/>
-                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.75045483732876717" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="0.55086151541095896" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
                                                     <state key="normal" title="Category">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,13 +107,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gvX-v6-YOt">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="80"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostThumbImageCell" id="utZ-oY-kGk" customClass="PostThumbImageCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="80" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -137,35 +137,22 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarketplaceHeaderView" id="VMf-UG-1pE" customClass="MarketplaceHeaderView" customModule="Exchange" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jdC-H3-umS">
-                                            <rect key="frame" x="20" y="10.5" width="30" height="30"/>
-                                            <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="BvJ-qi-gwV"/>
-                                                <constraint firstAttribute="width" constant="30" id="wXV-Sc-rm1"/>
-                                            </constraints>
-                                        </imageView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6K-Ej-071">
-                                            <rect key="frame" x="50" y="10.5" width="300" height="30"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="H51-w8-Sri">
+                                            <rect key="frame" x="20" y="18" width="335" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
-                                        </textField>
+                                        </searchBar>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="0CA-cE-efe"/>
-                                        <constraint firstItem="jdC-H3-umS" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="9M3-X1-Uld"/>
-                                        <constraint firstItem="jdC-H3-umS" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="Em9-p4-2KB"/>
-                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="leading" secondItem="jdC-H3-umS" secondAttribute="trailing" id="H5B-cH-TKm"/>
-                                        <constraint firstItem="Y6K-Ej-071" firstAttribute="height" secondItem="jdC-H3-umS" secondAttribute="height" id="Jyf-Tj-0B5"/>
-                                        <constraint firstAttribute="trailing" secondItem="Y6K-Ej-071" secondAttribute="trailing" constant="25" id="Xyw-W2-Ja9"/>
+                                        <constraint firstItem="H51-w8-Sri" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="XIV-ix-Zre"/>
+                                        <constraint firstItem="H51-w8-Sri" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="eI5-0k-wnE"/>
+                                        <constraint firstAttribute="trailing" secondItem="H51-w8-Sri" secondAttribute="trailing" constant="20" id="q2M-1r-yqf"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="searchField" destination="Y6K-Ej-071" id="eBD-Vk-xqt"/>
+                                        <outlet property="searchBar" destination="H51-w8-Sri" id="QiX-O8-X0z"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -182,12 +169,23 @@
                             <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="hDz-cN-xKT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan"/>
+                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="jkT-07-3hb"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
+                        <outlet property="searchDisplayController" destination="QZA-t0-fy8" id="6uH-tB-kGt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="QZA-t0-fy8">
+                    <connections>
+                        <outlet property="delegate" destination="m7y-c2-HAe" id="MzX-Ht-T7h"/>
+                        <outlet property="searchContentsController" destination="m7y-c2-HAe" id="p3k-Zd-PMr"/>
+                        <outlet property="searchResultsDataSource" destination="m7y-c2-HAe" id="CQi-4e-Xoh"/>
+                        <outlet property="searchResultsDelegate" destination="m7y-c2-HAe" id="bW6-ED-KXq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2421" y="-185"/>
         </scene>
@@ -198,7 +196,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

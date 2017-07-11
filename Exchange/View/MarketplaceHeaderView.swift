@@ -10,6 +10,10 @@ import UIKit
 
 class MarketplaceHeaderView: UICollectionReusableView {
     
-    @IBOutlet weak var searchField: UITextField!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField
+        searchBarTextField?.textColor = UIColor.white
+    }
 }

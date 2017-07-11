@@ -9,5 +9,7 @@
 import UIKit
 
 class MyItemHeaderView: UICollectionReusableView {
-    
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var shopBriefDescription: UITextView!
+
 }

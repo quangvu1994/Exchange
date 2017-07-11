@@ -48,12 +48,11 @@ class PostService {
     }
     
     /**
-     Fetch all posts from every single user - Return a list of posts
+     Fetch all posts from the provided database reference path
     */
-    static func fetchAllPost(completionHandler: @escaping ([Post]) -> Void) {
-        // Generate the reference path
-        let allPostRef = Database.database().reference().child("allPosts").child("allCategories")
-        allPostRef.observeSingleEvent(of: .value, with: { (snapshot) in
+    static func fetchPost(fromPath postRef: DatabaseReference, completionHandler: @escaping ([Post]) -> Void) {
+        
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return completionHandler([])
             }
@@ -67,5 +66,4 @@ class PostService {
             completionHandler(allPost)
         })
     }
-    
 }

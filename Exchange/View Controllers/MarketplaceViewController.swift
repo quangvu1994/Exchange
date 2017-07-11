@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import Kingfisher
 
 class MarketplaceViewController: UIViewController {
@@ -18,13 +19,13 @@ class MarketplaceViewController: UIViewController {
     }
     @IBOutlet weak var collectionView: UICollectionView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // fetch all post
-        PostService.fetchAllPost(completionHandler: { allPost in
-            self.post = allPost
+        let allPostReference = Database.database().reference().child("allPosts").child("allCategories")
+        PostService.fetchPost(fromPath: allPostReference, completionHandler: { (allPosts) in
+            self.post = allPosts
         })
-        
     }
 }
 
@@ -54,6 +55,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
 
 
 extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
+    
     // Set the size of each cell in the collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let columns: CGFloat = 3
@@ -70,7 +72,6 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
         return itemSize
     }
     
-    // Not sure what is this??? Something related to spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3
     }

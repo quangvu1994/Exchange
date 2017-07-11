@@ -204,11 +204,11 @@
 		5B724F851F0B2D1B00BE4E4E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
+				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
 				5BB302B01F1440E2003C149B /* MyItem */,
 				5BB302AF1F1440AC003C149B /* CreateNewPost */,
 				5BB302AE1F14408E003C149B /* Explore */,
-				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
-				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
