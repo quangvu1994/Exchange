@@ -144,10 +144,20 @@
                                             <rect key="frame" x="20" y="18" width="335" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrU-C0-hCf">
+                                            <rect key="frame" x="0.0" y="75" width="375" height="5"/>
+                                            <color key="backgroundColor" red="0.82280081510000003" green="0.40975651140000002" blue="0.3294649422" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="5" id="16C-22-mmC"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ZrU-C0-hCf" secondAttribute="trailing" id="1lL-Or-Oxp"/>
+                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" id="MKW-as-4ww"/>
                                         <constraint firstItem="H51-w8-Sri" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="XIV-ix-Zre"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZrU-C0-hCf" secondAttribute="bottom" id="c5a-Ap-Ru6"/>
                                         <constraint firstItem="H51-w8-Sri" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="eI5-0k-wnE"/>
                                         <constraint firstAttribute="trailing" secondItem="H51-w8-Sri" secondAttribute="trailing" constant="20" id="q2M-1r-yqf"/>
                                     </constraints>
@@ -187,7 +197,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2421" y="-185"/>
+            <point key="canvasLocation" x="2420" y="-185.75712143928038"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Va9-nI-6Ha">

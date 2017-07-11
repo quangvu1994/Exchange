@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
+protocol PostInformationRetriever {
+    func getInformation() -> String?
+}
+
 class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postButton: UIButton!
+    var postTitleDelegate: PostInformationRetriever?
+    var postDescriptionDelegate: PostInformationRetriever?
+    var postCategoryDelegate: PostInformationRetriever?
     
     let photoHelper = EXPhotoHelper()
+    
     var postOriginalStateInfo = [
         "postTitlePlaceHolder": "Item Titlte",
         "postDescriptionPlaceHolder": "Post Description"
@@ -33,19 +41,44 @@ class CreatePostViewController: UIViewController {
     }
     
     @IBAction func postItem(_ sender: UIButton) {
-        guard let selectedImage = photoHelper.selectedImage else {
-            // No Image Selected -> do something
-            return
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        guard let selectedImage = photoHelper.selectedImage,
+            let postTitle = postTitleDelegate?.getInformation(),
+            let postDescription = postDescriptionDelegate?.getInformation(),
+            let postCategory = postCategoryDelegate?.getInformation() else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                // Display an alert if user fail to fill out the required info
+                let alertController = UIAlertController(title: nil, message: "Please fill out required information", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
         }
-        PostService.writePostImageToFIRStorage(selectedImage, completion: { (completed) in
-            if completed {
-                // Reload the table view with the original data
-                self.resetImage = true
-                self.tableView.reloadData()
-                self.performSegue(withIdentifier: "showMarketplace", sender: self)
-            }else {
-                print("Something Wrong, try post again")
+        
+        PostService.writePostImageToFIRStorage(selectedImage, completion: { (downloadURL) in
+            guard let downloadURL = downloadURL else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                print("Something wrong, try post again")
+                return
             }
+            
+            let imageHeight = selectedImage.aspectHeight
+            let post = Post(imageURL: downloadURL, imageHeight: imageHeight)
+            post.postTitle = postTitle
+            post.postDescription = postDescription
+            post.postCategory = postCategory
+
+            PostService.writePostToFIRDatabase(for: post, completion: { (completed) in
+                if completed {
+                    // Reload the table view with the original data
+                    self.resetImage = true
+                    self.tableView.reloadData()
+                    self.performSegue(withIdentifier: "showMarketplace", sender: self)
+                }else {
+                    print("Something wrong, try post again")
+                }
+                UIApplication.shared.endIgnoringInteractionEvents()
+            })
         })
     }
     
@@ -76,6 +109,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.descriptionText.textColor = UIColor.lightGray
             cell.descriptionText.text = postOriginalStateInfo["postTitlePlaceHolder"]
             cell.placeHolder = postOriginalStateInfo["postTitlePlaceHolder"]
+            self.postTitleDelegate = cell
             return cell
     
         case 2:
@@ -83,10 +117,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.descriptionText.textColor = UIColor.lightGray
             cell.descriptionText.text = postOriginalStateInfo["postDescriptionPlaceHolder"]
             cell.placeHolder = postOriginalStateInfo["postDescriptionPlaceHolder"]
+            self.postDescriptionDelegate = cell
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
+            self.postCategoryDelegate = cell
             return cell
 
         default:

@@ -17,7 +17,7 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
         descriptionText.delegate = self
     }
-
+    
     // Resign keyboard when press Enter or Return
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
@@ -40,5 +40,14 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
             descriptionText.textColor = UIColor.lightGray
         }
     }
+}
 
+extension CreatePostDescriptionCell: PostInformationRetriever {
+    
+    func getInformation() -> String? {
+        if descriptionText.textColor == UIColor.lightGray {
+            return nil
+        }
+        return descriptionText.text
+    }
 }

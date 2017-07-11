@@ -8,13 +8,21 @@
 
 import UIKit
 
-class CreatePostCategoryCell: UITableViewCell {
-
-    @IBOutlet weak var optionName: UILabel!
+class CreatePostCategoryCell: UITableViewCell, PostInformationRetriever {
+    
+    @IBOutlet weak var categoryName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func getInformation() -> String? {
+        /**
+        if categoryName.text == "" {
+            return nil
+        }
+        */
+        return categoryName.text
+    }
 }

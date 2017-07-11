@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Your Item-->
+        <!--List Your Item-->
         <scene sceneID="RJ8-jw-6n0">
             <objects>
                 <viewController id="5gc-i7-yMx" customClass="CreatePostViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,15 +99,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-WP-zVJ">
+                                                    <rect key="frame" x="327" y="8" width="0.0" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FUf-EX-hkm" firstAttribute="top" secondItem="Rfy-RE-DJT" secondAttribute="top" id="3eq-5H-1d6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bpk-WP-zVJ" secondAttribute="bottom" id="72w-aT-ZPs"/>
+                                                <constraint firstItem="bpk-WP-zVJ" firstAttribute="top" secondItem="Rfy-RE-DJT" secondAttribute="topMargin" id="TDF-0c-pZ2"/>
+                                                <constraint firstItem="bpk-WP-zVJ" firstAttribute="centerY" secondItem="Rfy-RE-DJT" secondAttribute="centerY" id="iJ2-rr-5dc"/>
                                                 <constraint firstAttribute="bottom" secondItem="FUf-EX-hkm" secondAttribute="bottom" id="pcZ-t2-yVm"/>
                                                 <constraint firstItem="FUf-EX-hkm" firstAttribute="leading" secondItem="Rfy-RE-DJT" secondAttribute="leading" constant="15" id="rCw-2u-H8r"/>
+                                                <constraint firstAttribute="trailing" secondItem="bpk-WP-zVJ" secondAttribute="trailing" constant="15" id="so1-ia-iXi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="optionName" destination="FUf-EX-hkm" id="3cB-1a-t3Q"/>
+                                            <outlet property="categoryName" destination="bpk-WP-zVJ" id="sVl-VJ-vTv"/>
                                             <segue destination="YgO-fe-tJW" kind="show" id="QXI-BE-sHV"/>
                                         </connections>
                                     </tableViewCell>
@@ -140,7 +150,7 @@
                             <constraint firstItem="XkJ-fe-RhD" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="20" id="xaA-gR-2mg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Item" id="Gcd-6U-GWK"/>
+                    <navigationItem key="navigationItem" title="List Your Item" id="Gcd-6U-GWK"/>
                     <connections>
                         <outlet property="postButton" destination="XkJ-fe-RhD" id="QHU-iK-YTj"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
@@ -230,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="2871" y="143"/>
         </scene>
-        <!--Create-->
+        <!--List Item-->
         <scene sceneID="0aF-Te-wIg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaG-xo-yit" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Create" id="PCd-Yq-eSg"/>
+                    <tabBarItem key="tabBarItem" title="List Item" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">

@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class PostService {
     
-    static func writePostImageToFIRStorage(_ postImage: UIImage, completion: @escaping (Bool) -> Void){
+    static func writePostImageToFIRStorage(_ postImage: UIImage, completion: @escaping (String?) -> Void){
         // Convert image to Data and lower the quality (Read class description) -> faster to upload
         guard let imageData = UIImageJPEGRepresentation(postImage, 0.1) else {
             return
@@ -22,29 +22,27 @@ class PostService {
         ref.putData(imageData, metadata: nil, completion: { (metaData, error) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
-                return
+                return completion(nil)
             }
             
             // Retrieve the downloadURL
             guard let downloadURL = metaData?.downloadURL() else {
-                return
+                return completion(nil)
             }
             let imageURL = downloadURL.absoluteString
-            let imageHeight = postImage.aspectHeight
-            self.writePostToFIRDatabase(imageURL: imageURL, imageHeight: imageHeight, completion: completion)
+            completion(imageURL)
         })
     }
     
-    static func writePostToFIRDatabase(imageURL: String, imageHeight: CGFloat, completion: @escaping (Bool) -> Void) {
+    static func writePostToFIRDatabase(for post: Post, completion: @escaping (Bool) -> Void) {
         let currentUID = User.currentUser.uid
-        let post = Post(imageURL: imageURL, imageHeight: imageHeight)
         let postRef = Database.database().reference().child("posts").child(currentUID).childByAutoId()
         postRef.updateChildValues(post.dictValue)
         // Also write to all post parent node
         let allPostRef = Database.database().reference().child("allPosts").child("allCategories").childByAutoId()
         allPostRef.updateChildValues(post.dictValue)
         completion(true)
-        
+
     }
     
     /**
