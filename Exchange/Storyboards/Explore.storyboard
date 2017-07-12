@@ -200,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="2657" y="-182"/>
         </scene>
-        <!--Item Detail-->
+        <!--ItemDetail-->
         <scene sceneID="36d-r1-7rd">
             <objects>
-                <viewControllerPlaceholder storyboardName="MyItem" referencedIdentifier="Item Detail" id="X2a-j8-3Ge" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CreateNewPost" referencedIdentifier="ItemDetail" id="X2a-j8-3Ge" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZs-FI-gfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3365" y="-183"/>

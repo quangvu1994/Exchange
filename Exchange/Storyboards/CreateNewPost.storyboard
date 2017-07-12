@@ -131,9 +131,12 @@
                                 <rect key="frame" x="80" y="554" width="215" height="34"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
-                                <state key="normal" title="Post">
+                                <state key="normal" title="Button Name">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="performAction:" destination="5gc-i7-yMx" eventType="touchUpInside" id="P3n-bO-fnq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,7 +152,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="List Item" id="Gcd-6U-GWK"/>
                     <connections>
-                        <outlet property="postButton" destination="mQW-5L-7Do" id="AfL-Tt-A7c"/>
+                        <outlet property="actionButton" destination="mQW-5L-7Do" id="ah3-pj-GhD"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
                         <segue destination="eLL-8Q-qev" kind="show" identifier="showMarketplace" id="W8R-Hx-fhg"/>
                     </connections>
@@ -164,12 +167,12 @@
                 <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="Marketplace" id="eLL-8Q-qev" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5K6-ob-XWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="648"/>
+            <point key="canvasLocation" x="1969" y="563"/>
         </scene>
         <!--Category-->
         <scene sceneID="OdO-P8-mqi">
             <objects>
-                <viewController id="YgO-fe-tJW" customClass="CategoriesViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Category List" id="YgO-fe-tJW" customClass="CategoriesViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yL7-MT-i5l"/>
                         <viewControllerLayoutGuide type="bottom" id="SWA-MR-96D"/>

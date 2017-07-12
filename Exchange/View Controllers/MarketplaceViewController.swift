@@ -35,8 +35,9 @@ class MarketplaceViewController: UIViewController {
         
         if let identifier = segue.identifier {
             if identifier == "displayItemDetail" {
-                let viewControllerDestination = segue.destination as! ItemDetailViewController
-                viewControllerDestination.selectedPost = post[index]
+                let viewControllerDestination = segue.destination as! CreatePostViewController
+                viewControllerDestination.currentPost = post[index]
+                viewControllerDestination.scenario = .exchange
             }
         }
     }

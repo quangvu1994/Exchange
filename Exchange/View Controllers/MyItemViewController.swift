@@ -39,9 +39,10 @@ class MyItemViewController: UIViewController {
         }
         
         if let identifier = segue.identifier {
-            if identifier == "showItemDetail" {
-                let destinationViewController = segue.destination as! ItemDetailViewController
-                destinationViewController.selectedPost = post[index]
+            if identifier == "displayItemDetail" {
+                let destinationViewController = segue.destination as! CreatePostViewController
+                destinationViewController.currentPost = post[index]
+                destinationViewController.scenario = .edit
             }
         }
     }
@@ -106,7 +107,7 @@ extension MyItemViewController: UICollectionViewDelegateFlowLayout {
 extension MyItemViewController: DisplayItemDetailHandler {
     
     func display(index: Int) {
-        self.performSegue(withIdentifier: "showItemDetail", sender: index)
+        self.performSegue(withIdentifier: "displayItemDetail", sender: index)
     }
 }
 

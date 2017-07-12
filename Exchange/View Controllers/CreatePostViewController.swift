@@ -16,7 +16,10 @@ protocol PostInformationRetriever {
 class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
+    
+    var currentPost: Post?
+    var scenario: EXScenarios = .post
     
     var postTitleDelegate: PostInformationRetriever?
     var postDescriptionDelegate: PostInformationRetriever?
@@ -27,54 +30,72 @@ class CreatePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postButton.layer.cornerRadius = 6
+        actionButton.layer.cornerRadius = 6
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
+        switch scenario {
+        case .edit:
+            actionButton.setTitle("Edit", for: .normal)
+        case .exchange:
+            actionButton.setTitle("Exchange", for: .normal)
+        default:
+            actionButton.setTitle("Post", for: .normal)
+        }
+        
     }
     
     @IBAction func openPhotoHelper(_ sender: UIButton) {
         photoHelper.presentActionSheet(from: self)
     }
     
-    @IBAction func postItem(_ sender: UIButton) {
+    @IBAction func performAction(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
-        guard let selectedImage = photoHelper.selectedImage,
-            let postTitle = postTitleDelegate?.getInformation(),
-            let postDescription = postDescriptionDelegate?.getInformation(),
-            let postCategory = postCategoryDelegate?.getInformation() else {
-                UIApplication.shared.endIgnoringInteractionEvents()
-                // Display an alert if user fail to fill out the required info
-                let alertController = UIAlertController(title: nil, message: "Please fill out all information", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-                return
-        }
-        
-        PostService.writePostImageToFIRStorage(selectedImage, completion: { (downloadURL) in
-            guard let downloadURL = downloadURL else {
-                UIApplication.shared.endIgnoringInteractionEvents()
-                print("Something wrong, try post again")
-                return
+        switch scenario {
+        case .edit:
+            print("Edit post")
+            UIApplication.shared.endIgnoringInteractionEvents()
+        case .exchange:
+            print("Exchange item")
+            UIApplication.shared.endIgnoringInteractionEvents()
+        default:
+            guard let selectedImage = photoHelper.selectedImage,
+                let postTitle = postTitleDelegate?.getInformation(),
+                let postDescription = postDescriptionDelegate?.getInformation(),
+                let postCategory = postCategoryDelegate?.getInformation() else {
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    // Display an alert if user fail to fill out the required info
+                    let alertController = UIAlertController(title: nil, message: "Please fill out all information", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    return
             }
             
-            let imageHeight = selectedImage.aspectHeight
-            let post = Post(imageURL: downloadURL, imageHeight: imageHeight)
-            post.postTitle = postTitle
-            post.postDescription = postDescription
-            post.postCategory = postCategory
-
-            PostService.writePostToFIRDatabase(for: post, completion: { (completed) in
-                if completed {
-                    // Reload the table view with the original data
-                    self.tableView.reloadData()
-                    self.performSegue(withIdentifier: "showMarketplace", sender: self)
-                }else {
+            PostService.writePostImageToFIRStorage(selectedImage, completion: { (downloadURL) in
+                guard let downloadURL = downloadURL else {
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     print("Something wrong, try post again")
+                    return
                 }
-                UIApplication.shared.endIgnoringInteractionEvents()
+                
+                let imageHeight = selectedImage.aspectHeight
+                let post = Post(imageURL: downloadURL, imageHeight: imageHeight)
+                post.postTitle = postTitle
+                post.postDescription = postDescription
+                post.postCategory = postCategory
+                
+                PostService.writePostToFIRDatabase(for: post, completion: { (completed) in
+                    if completed {
+                        // Reload the table view with the original data
+                        self.tableView.reloadData()
+                        self.performSegue(withIdentifier: "showMarketplace", sender: self)
+                    }else {
+                        print("Something wrong, try post again")
+                    }
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                })
             })
-        })
+        }
     }
 
     @IBAction func unwindToCreatePost(_sender: UIStoryboardSegue) {
@@ -99,30 +120,68 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.postImage.image = selectedImage
             }
             
-            cell.postImage.image = nil
+            if let currentPost = currentPost {
+                let imageURL = URL(string: currentPost.imageURL)
+                cell.postImage.kf.setImage(with: imageURL)
+            } else {
+                cell.postImage.image = nil
+            }
             
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
             return cell
 
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
-            cell.descriptionText.textColor = UIColor.lightGray
-            cell.descriptionText.text = "Item Title"
-            cell.placeHolder = "Item Title"
+            
             self.postTitleDelegate = cell
+            if let currentPost = currentPost {
+                cell.descriptionText.text = currentPost.postTitle
+                cell.placeHolder = "Item Title"
+            }else {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Title"
+                cell.placeHolder = "Item Title"
+            }
+            
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
             return cell
     
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
-            cell.descriptionText.textColor = UIColor.lightGray
-            cell.descriptionText.text = "Item Description"
-            cell.placeHolder = "item Description"
+            
             self.postDescriptionDelegate = cell
+            if let currentPost = currentPost {
+                cell.descriptionText.text = currentPost.postDescription
+                cell.placeHolder = "Item Title"
+            }else {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Description"
+                cell.placeHolder = "Item Title"
+            }
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
             self.postCategoryDelegate = cell
-            cell.categoryName.text = ""
+            
+            if let currentPost = currentPost {
+                cell.categoryName.text = currentPost.postCategory
+                self.category = currentPost.postCategory
+            }else {
+                cell.categoryName.text = ""
+            }
+            
+            if scenario == .exchange {
+                cell.accessoryType = .none
+                cell.isUserInteractionEnabled = false
+            }
             return cell
 
         default:
