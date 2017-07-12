@@ -15,5 +15,7 @@ class MarketplaceHeaderView: UICollectionReusableView {
         super.awakeFromNib()
         let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField
         searchBarTextField?.textColor = UIColor.white
+        hideKeyboard()
     }
 }
+

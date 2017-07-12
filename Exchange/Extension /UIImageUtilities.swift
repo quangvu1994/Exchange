@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    
+        
     // Hard coded for iPhone 7 plus
     var aspectHeight: CGFloat {
         let heightRatio = size.height / 736
@@ -18,4 +18,5 @@ extension UIImage {
         
         return size.height / aspectRatio
     }
+
 }

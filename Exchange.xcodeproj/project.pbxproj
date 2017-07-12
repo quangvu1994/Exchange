@@ -21,6 +21,7 @@
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
 		5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */; };
 		5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */; };
+		5B6A615A1F157AF1009FCE55 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */; };
 		5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */; };
 		5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C55831F0C665100F4120A /* LoginViewController.swift */; };
 		5B6C55881F0C71C100F4120A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6C55871F0C71C100F4120A /* GoogleService-Info.plist */; };
@@ -30,6 +31,7 @@
 		5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */; };
 		5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */; };
 		5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */; };
+		5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */; };
 		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
 		5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */; };
 		5BA92F081F11FCBC006CE880 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F071F11FCBC006CE880 /* Post.swift */; };
@@ -61,6 +63,7 @@
 		5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularCategoriesViewController.swift; path = "View Controllers/PopularCategoriesViewController.swift"; sourceTree = "<group>"; };
 		5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostThumbImageCell.swift; path = View/PostThumbImageCell.swift; sourceTree = "<group>"; };
+		5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = "View Controllers/MainTabBarController.swift"; sourceTree = "<group>"; };
 		5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardUtilities.swift; path = "Extension /StoryboardUtilities.swift"; sourceTree = "<group>"; };
 		5B6C55831F0C665100F4120A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5B6C55871F0C71C100F4120A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Supporting/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "View Controllers/ProfileViewController.swift"; sourceTree = "<group>"; };
+		5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilities.swift; path = "Extension /UICollectionViewUtilities.swift"; sourceTree = "<group>"; };
 		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
 		5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPhotoHelper.swift; path = Helper/EXPhotoHelper.swift; sourceTree = "<group>"; };
 		5BA92F071F11FCBC006CE880 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */,
 				5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */,
 				5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */,
+				5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 		5B724F851F0B2D1B00BE4E4E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */,
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
 				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
 				5BB302B01F1440E2003C149B /* MyItem */,
@@ -430,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6A615A1F157AF1009FCE55 /* MainTabBarController.swift in Sources */,
 				5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */,
 				5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */,
 				5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */,
@@ -437,6 +444,7 @@
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */,
+				5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */,
 				5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */,
 				5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,

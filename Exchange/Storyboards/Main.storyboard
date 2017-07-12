@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="GzT-fx-9Xa">
             <objects>
-                <tabBarController id="iXk-ub-FDh" sceneMemberID="viewController">
+                <tabBarController id="iXk-ub-FDh" customClass="MainTabBarController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="OoY-1v-GqU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -41,7 +41,7 @@
         <scene sceneID="sME-qz-5ct">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="IZh-TI-2k7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="msG-NO-sSF"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="msG-NO-sSF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jn-7s-LiT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,7 +51,7 @@
         <scene sceneID="UZM-KY-qMP">
             <objects>
                 <viewControllerPlaceholder storyboardName="Explore" id="NJ0-8M-RBU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="unL-Nd-vc8"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="Search" id="unL-Nd-vc8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuJ-bl-3Hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +61,7 @@
         <scene sceneID="lfI-aM-ZrT">
             <objects>
                 <viewControllerPlaceholder storyboardName="CreateNewPost" id="5LF-Td-k2D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oiR-Wu-kTf"/>
+                    <tabBarItem key="tabBarItem" title="List Item" image="AddItem" id="oiR-Wu-kTf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Oq-43-kt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,11 +71,17 @@
         <scene sceneID="8Mw-Qn-g7m">
             <objects>
                 <viewControllerPlaceholder storyboardName="MyItem" id="ifY-cv-cUS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="T7t-ZT-hE8"/>
+                    <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="T7t-ZT-hE8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ci9-Bi-AF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560" y="142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddItem" width="25" height="25"/>
+        <image name="MyStore" width="25" height="25"/>
+        <image name="Profile" width="25" height="25"/>
+        <image name="Search" width="25" height="25"/>
+    </resources>
 </document>

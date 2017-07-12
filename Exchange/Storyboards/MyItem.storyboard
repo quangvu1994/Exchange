@@ -75,7 +75,8 @@
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-Sd-x0t">
                                             <rect key="frame" x="0.0" y="125" width="375" height="5"/>
-                                            <color key="backgroundColor" red="0.82280081510543823" green="0.40975651144981384" blue="0.32946494221687317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" red="0.82352941176470584" green="0.40784313725490196" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="B3m-3p-Vyk"/>
                                             </constraints>
@@ -115,22 +116,35 @@
                     <navigationItem key="navigationItem" title="My Store" id="e4l-TX-aXS"/>
                     <connections>
                         <outlet property="collectionView" destination="0AS-Qr-OwC" id="UjO-8a-0wm"/>
+                        <segue destination="Jsx-ih-8bj" kind="show" identifier="showItemDetail" id="cfF-0Z-IqH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UW3-DY-Ayw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2084" y="142.57871064467767"/>
         </scene>
+        <!--ItemDetail-->
+        <scene sceneID="h4F-2S-NGM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateNewPost" referencedIdentifier="ItemDetail" id="Jsx-ih-8bj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h62-gQ-iNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2754" y="142"/>
+        </scene>
         <!--My Store-->
         <scene sceneID="1SC-xA-mkV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrx-d5-1eN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Store" id="peE-fE-uHw"/>
+                    <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="peE-fE-uHw"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qdn-zO-fSj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -142,4 +156,7 @@
             <point key="canvasLocation" x="1144.8" y="142.57871064467767"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MyStore" width="25" height="25"/>
+    </resources>
 </document>

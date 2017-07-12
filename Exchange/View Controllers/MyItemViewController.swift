@@ -17,6 +17,10 @@ class MyItemViewController: UIViewController {
     }
     @IBOutlet weak var collectionView: UICollectionView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // fetch post
@@ -38,7 +42,8 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCell", for: indexPath) as! MyItemPostImageCell
         let imageURL = URL(string: post[indexPath.row].imageURL)
         cell.postImage.kf.setImage(with: imageURL)
-        
+        cell.delegate = self
+        cell.displayItemDetail()
         return cell
     }
     
@@ -78,7 +83,13 @@ extension MyItemViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3
     }
+}
+
+extension MyItemViewController: DisplayItemDetailHandler {
     
+    func display() {
+        self.performSegue(withIdentifier: "showItemDetail", sender: self)
+    }
 }
 
 

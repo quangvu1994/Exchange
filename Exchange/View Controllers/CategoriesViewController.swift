@@ -20,6 +20,17 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifer = segue.identifier {
+            if identifer == "FinishSelectingCategory" {
+                let viewController = segue.destination as! CreatePostViewController
+                let indexPath = tableView.indexPathForSelectedRow!
+                let cell = tableView.cellForRow(at: indexPath) as! CategoryCell
+                viewController.category = cell.categoryName.text!
+            }
+        }
+    }
 }
 
 extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,17 +44,6 @@ extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryList.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-            }else {
-                cell.accessoryType = .checkmark
-            }
-            
-        }
     }
     
 }
