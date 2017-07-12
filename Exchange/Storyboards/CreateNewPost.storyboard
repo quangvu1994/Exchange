@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List Your Item-->
+        <!--List Item-->
         <scene sceneID="RJ8-jw-6n0">
             <objects>
                 <viewController storyboardIdentifier="ItemDetail" id="5gc-i7-yMx" customClass="CreatePostViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-ec-71Q">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="149"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
@@ -101,8 +101,8 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-WP-zVJ">
                                                     <rect key="frame" x="327" y="8" width="0.0" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                    <color key="textColor" red="0.30792370438575745" green="0.57171386480331421" blue="0.75692379474639893" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -127,32 +127,29 @@
                                     <outlet property="delegate" destination="5gc-i7-yMx" id="o7Z-zZ-rJ0"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkJ-fe-RhD">
-                                <rect key="frame" x="36" y="554" width="303" height="34"/>
-                                <color key="backgroundColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQW-5L-7Do">
+                                <rect key="frame" x="80" y="554" width="215" height="34"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <state key="normal" title="Post">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="postItem:" destination="5gc-i7-yMx" eventType="touchUpInside" id="alB-iO-iw8"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XkJ-fe-RhD" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leadingMargin" constant="20" id="7te-10-FUx"/>
-                            <constraint firstItem="Tel-vT-iOK" firstAttribute="top" secondItem="XkJ-fe-RhD" secondAttribute="bottom" constant="30" id="Dg7-dA-IYW"/>
+                            <constraint firstItem="Tel-vT-iOK" firstAttribute="top" secondItem="mQW-5L-7Do" secondAttribute="bottom" constant="30" id="4EU-qN-DdR"/>
+                            <constraint firstItem="mQW-5L-7Do" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="20" id="BaY-Fq-Aj8"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" id="LHj-PL-RyG"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="top" secondItem="h3S-Sf-3Lj" secondAttribute="top" id="baY-iq-FNZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XkJ-fe-RhD" secondAttribute="trailing" constant="20" id="h6M-JM-f4L"/>
+                            <constraint firstItem="mQW-5L-7Do" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" constant="80" id="cs1-iv-hJT"/>
+                            <constraint firstAttribute="trailing" secondItem="mQW-5L-7Do" secondAttribute="trailing" constant="80" id="dih-w5-3S7"/>
                             <constraint firstAttribute="trailing" secondItem="LpC-Po-nQw" secondAttribute="trailing" id="mFf-TC-QXI"/>
-                            <constraint firstItem="XkJ-fe-RhD" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="20" id="xaA-gR-2mg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List Your Item" id="Gcd-6U-GWK"/>
+                    <navigationItem key="navigationItem" title="List Item" id="Gcd-6U-GWK"/>
                     <connections>
-                        <outlet property="postButton" destination="XkJ-fe-RhD" id="QHU-iK-YTj"/>
+                        <outlet property="postButton" destination="mQW-5L-7Do" id="AfL-Tt-A7c"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
                         <segue destination="eLL-8Q-qev" kind="show" identifier="showMarketplace" id="W8R-Hx-fhg"/>
                     </connections>
@@ -169,7 +166,7 @@
             </objects>
             <point key="canvasLocation" x="1969" y="648"/>
         </scene>
-        <!--Categories-->
+        <!--Category-->
         <scene sceneID="OdO-P8-mqi">
             <objects>
                 <viewController id="YgO-fe-tJW" customClass="CategoriesViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -225,9 +222,9 @@
                             <constraint firstAttribute="trailing" secondItem="45g-gd-ytJ" secondAttribute="trailing" id="fV7-wF-Bnw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="vfN-Ig-DwK">
+                    <navigationItem key="navigationItem" title="Category" id="vfN-Ig-DwK">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="qYs-1D-uuv">
-                            <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.2752523422" green="0.50926548240000002" blue="0.68242192270000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="wUY-dz-CyR" kind="unwind" unwindAction="unwindToCreatePostWith_sender:" id="R30-W9-Xra"/>
                             </connections>
@@ -249,12 +246,12 @@
                     <tabBarItem key="tabBarItem" title="List Item" image="AddItem" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

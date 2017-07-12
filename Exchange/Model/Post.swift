@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase.FIRDataSnapshot
 
 class Post {
+    var index: Int?
     var imageURL: String
     var imageHeight: CGFloat
     var key: String?

@@ -27,6 +27,19 @@ class MarketplaceViewController: UIViewController {
             self.post = allPosts
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let index = sender as? Int else {
+            return
+        }
+        
+        if let identifier = segue.identifier {
+            if identifier == "displayItemDetail" {
+                let viewControllerDestination = segue.destination as! ItemDetailViewController
+                viewControllerDestination.selectedPost = post[index]
+            }
+        }
+    }
 }
 
 extension MarketplaceViewController: UICollectionViewDataSource {
@@ -39,6 +52,9 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
         let imageURL = URL(string: post[indexPath.row].imageURL)
         cell.postImage.kf.setImage(with: imageURL)
+        cell.delegate = self
+        cell.addTapGestureToDisplayItemDetail()
+        cell.index = indexPath.row
         return cell
     }
     
@@ -79,4 +95,12 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 3
     }
+}
+
+extension MarketplaceViewController: DisplayItemDetailHandler {
+    
+    func display(index: Int) {
+        self.performSegue(withIdentifier: "displayItemDetail", sender: index)
+    }
+    
 }

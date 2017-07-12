@@ -185,6 +185,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
                         <outlet property="searchDisplayController" destination="QZA-t0-fy8" id="6uH-tB-kGt"/>
+                        <segue destination="X2a-j8-3Ge" kind="show" identifier="displayItemDetail" id="5Y0-Z9-8jv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +200,14 @@
             </objects>
             <point key="canvasLocation" x="2657" y="-182"/>
         </scene>
+        <!--Item Detail-->
+        <scene sceneID="36d-r1-7rd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyItem" referencedIdentifier="Item Detail" id="X2a-j8-3Ge" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZs-FI-gfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3365" y="-183"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="Va9-nI-6Ha">
             <objects>
@@ -209,9 +218,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

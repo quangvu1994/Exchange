@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Kingfisher
 
 class MyItemViewController: UIViewController {
     var post = [Post]() {
@@ -15,6 +16,7 @@ class MyItemViewController: UIViewController {
             collectionView.reloadData()
         }
     }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -29,7 +31,21 @@ class MyItemViewController: UIViewController {
             self.post = allPosts
         })
     }
+
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let index = sender as? Int else {
+            return
+        }
+        
+        if let identifier = segue.identifier {
+            if identifier == "showItemDetail" {
+                let destinationViewController = segue.destination as! ItemDetailViewController
+                destinationViewController.selectedPost = post[index]
+            }
+        }
+    }
+ 
 }
 
 extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -43,8 +59,10 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let imageURL = URL(string: post[indexPath.row].imageURL)
         cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
-        cell.displayItemDetail()
+        cell.addTapGestureToDisplayItemDetail()
+        cell.index = indexPath.row
         return cell
+
     }
     
     // Display the collection view header
@@ -87,8 +105,8 @@ extension MyItemViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyItemViewController: DisplayItemDetailHandler {
     
-    func display() {
-        self.performSegue(withIdentifier: "showItemDetail", sender: self)
+    func display(index: Int) {
+        self.performSegue(withIdentifier: "showItemDetail", sender: index)
     }
 }
 
