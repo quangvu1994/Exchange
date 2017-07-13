@@ -59,10 +59,14 @@ class EXPhotoHelper: NSObject {
 extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let handler = completionHandler else {
+            return
+        }
+        
         // Grab the selected image
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.selectedImage = selectedImage
-            self.completionHandler?(selectedImage)
+            handler(selectedImage)
         }
         
         picker.dismiss(animated: true, completion: nil)

@@ -33,6 +33,7 @@ class CreatePostViewController: UIViewController {
         actionButton.layer.cornerRadius = 6
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
+        print(self)
         switch scenario {
         case .edit:
             actionButton.setTitle("Edit", for: .normal)
@@ -57,6 +58,7 @@ class CreatePostViewController: UIViewController {
         case .exchange:
             print("Exchange item")
             UIApplication.shared.endIgnoringInteractionEvents()
+            self.performSegue(withIdentifier: "Exchange Sequence", sender: self)
         default:
             guard let selectedImage = photoHelper.selectedImage,
                 let postTitle = postTitleDelegate?.getInformation(),
@@ -98,11 +100,15 @@ class CreatePostViewController: UIViewController {
         }
     }
 
-    @IBAction func unwindToCreatePost(_sender: UIStoryboardSegue) {
-        // Update the category cell 
+    @IBAction func unwindFromCategorySelection(_ sender: UIStoryboardSegue) {
+        // Update the category cell
         let indexPath = IndexPath(row: 3, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! CreatePostCategoryCell
         cell.categoryName.text = self.category
+    }
+    
+    @IBAction func unwindFromExchangeSequence(_ sender: UIStoryboardSegue) {
+        print("Cancel pressed")
     }
 }
 

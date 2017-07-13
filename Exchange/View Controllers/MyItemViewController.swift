@@ -46,7 +46,6 @@ class MyItemViewController: UIViewController {
             }
         }
     }
- 
 }
 
 extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSource {

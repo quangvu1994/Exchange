@@ -13,7 +13,7 @@
         <!--My Store-->
         <scene sceneID="kMv-qI-ahr">
             <objects>
-                <viewController id="f4j-rf-TO1" customClass="MyItemViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="My Item" id="f4j-rf-TO1" customClass="MyItemViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KWr-pd-rlV"/>
                         <viewControllerLayoutGuide type="bottom" id="diF-Fu-gCz"/>

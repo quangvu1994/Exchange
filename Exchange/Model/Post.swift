@@ -19,6 +19,8 @@ class Post {
     var postDescription: String
     var postCategory: String
     let poster: User
+    var selected: Bool = false
+    
     var dictValue: [String : Any] {
         let createdAgo = creationDate.timeIntervalSince1970
         let userDict = ["uid" : poster.uid,
