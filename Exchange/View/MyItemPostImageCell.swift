@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DisplayItemDetailHandler {
+protocol DisplayItemDetailHandler: class {
     func display(index: Int)
 }
 
@@ -16,7 +16,7 @@ class MyItemPostImageCell: UICollectionViewCell {
     
     var index: Int?
     @IBOutlet weak var postImage: UIImageView!
-    var delegate: DisplayItemDetailHandler?
+    weak var delegate: DisplayItemDetailHandler?
     
     func addTapGestureToDisplayItemDetail() {
         

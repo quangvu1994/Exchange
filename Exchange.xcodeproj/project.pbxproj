@@ -32,11 +32,14 @@
 		5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */; };
 		5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */; };
 		5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */; };
-		5B971F221F17EA6000B1FCF6 /* ExchangeSequence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B971F211F17EA6000B1FCF6 /* ExchangeSequence.storyboard */; };
-		5B971F251F17F17F00B1FCF6 /* ExchangeSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F241F17F17F00B1FCF6 /* ExchangeSequenceViewController.swift */; };
+		5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */; };
+		5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */; };
 		5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */; };
 		5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */; };
+		5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */; };
 		5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */; };
+		5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */; };
+		5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */; };
 		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
 		5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */; };
 		5BA92F081F11FCBC006CE880 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F071F11FCBC006CE880 /* Post.swift */; };
@@ -80,11 +83,14 @@
 		5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "View Controllers/ProfileViewController.swift"; sourceTree = "<group>"; };
-		5B971F211F17EA6000B1FCF6 /* ExchangeSequence.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExchangeSequence.storyboard; sourceTree = "<group>"; };
-		5B971F241F17F17F00B1FCF6 /* ExchangeSequenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeSequenceViewController.swift; sourceTree = "<group>"; };
+		5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExchangeSequence.storyboard; path = Storyboards/ExchangeSequence.storyboard; sourceTree = "<group>"; };
+		5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeSequenceViewController.swift; path = "View Controllers/ExchangeSequenceViewController.swift"; sourceTree = "<group>"; };
 		5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXCollectionViewCell.swift; path = View/EXCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXConfirmViewController.swift; path = "View Controllers/EXConfirmViewController.swift"; sourceTree = "<group>"; };
+		5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableDescriptionCell.swift; path = View/EXTableDescriptionCell.swift; sourceTree = "<group>"; };
 		5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilities.swift; path = "Extension /UICollectionViewUtilities.swift"; sourceTree = "<group>"; };
+		5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableButtonCell.swift; path = View/EXTableButtonCell.swift; sourceTree = "<group>"; };
+		5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableImageCell.swift; path = View/EXTableImageCell.swift; sourceTree = "<group>"; };
 		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
 		5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPhotoHelper.swift; path = Helper/EXPhotoHelper.swift; sourceTree = "<group>"; };
 		5BA92F071F11FCBC006CE880 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
@@ -187,10 +193,10 @@
 		5B724F801F0B2C3E00BE4E4E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */,
 				5B724F831F0B2D1300BE4E4E /* Main.storyboard */,
 				5BB302A71F143F0F003C149B /* MyItem.storyboard */,
 				5BB302A11F1439BE003C149B /* CreateNewPost.storyboard */,
-				5B971F211F17EA6000B1FCF6 /* ExchangeSequence.storyboard */,
 				5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */,
 				5BFE717B1F0B3DD5007697EB /* Profile.storyboard */,
 				5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */,
@@ -245,6 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */,
+				5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */,
+				5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */,
+				5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */,
 			);
 			name = "Exchange Sequence";
 			sourceTree = "<group>";
@@ -252,7 +261,7 @@
 		5B971F261F17F18400B1FCF6 /* Exchange Sequence */ = {
 			isa = PBXGroup;
 			children = (
-				5B971F241F17F17F00B1FCF6 /* ExchangeSequenceViewController.swift */,
+				5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */,
 				5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */,
 			);
 			name = "Exchange Sequence";
@@ -405,8 +414,8 @@
 				5BB302A81F143F0F003C149B /* MyItem.storyboard in Resources */,
 				5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */,
 				5BB302A21F1439BE003C149B /* CreateNewPost.storyboard in Resources */,
+				5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */,
 				5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */,
-				5B971F221F17EA6000B1FCF6 /* ExchangeSequence.storyboard in Resources */,
 				5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */,
 				5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */,
 				5B6C55881F0C71C100F4120A /* GoogleService-Info.plist in Resources */,
@@ -468,18 +477,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */,
 				5B6A615A1F157AF1009FCE55 /* MainTabBarController.swift in Sources */,
 				5B6A61641F16DFFE009FCE55 /* EXScenarios.swift in Sources */,
 				5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */,
 				5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */,
 				5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */,
+				5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
-				5B971F251F17F17F00B1FCF6 /* ExchangeSequenceViewController.swift in Sources */,
+				5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */,
 				5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */,
 				5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */,
+				5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */,
 				5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,

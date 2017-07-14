@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol PostInformationRetriever {
+protocol PostInformationRetriever: class {
     func getInformation() -> String?
 }
 
@@ -21,9 +21,9 @@ class CreatePostViewController: UIViewController {
     var currentPost: Post?
     var scenario: EXScenarios = .post
     
-    var postTitleDelegate: PostInformationRetriever?
-    var postDescriptionDelegate: PostInformationRetriever?
-    var postCategoryDelegate: PostInformationRetriever?
+    weak var postTitleDelegate: PostInformationRetriever?
+    weak var postDescriptionDelegate: PostInformationRetriever?
+    weak var postCategoryDelegate: PostInformationRetriever?
     
     let photoHelper = EXPhotoHelper()
     var category: String = ""
@@ -36,11 +36,11 @@ class CreatePostViewController: UIViewController {
         print(self)
         switch scenario {
         case .edit:
-            actionButton.setTitle("Edit", for: .normal)
+            actionButton.setTitle("Save Changes", for: .normal)
         case .exchange:
-            actionButton.setTitle("Exchange", for: .normal)
+            actionButton.setTitle("Exchange Item", for: .normal)
         default:
-            actionButton.setTitle("Post", for: .normal)
+            actionButton.setTitle("Post Item", for: .normal)
         }
         
     }
@@ -198,6 +198,9 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
+            if let currentPost = currentPost {
+                return currentPost.imageHeight
+            }
             return 200
         case 1:
             return 40

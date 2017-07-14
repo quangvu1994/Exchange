@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ImageSelectHandler {
+protocol ImageSelectHandler: class {
     func storeSelectedImages(for selectedCell: EXCollectionViewCell)
 }
 
@@ -18,7 +18,7 @@ class EXCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var checkMark: UIImageView!
     var buttonIsSelected = false
     var index: Int?
-    var delegate: ImageSelectHandler?
+    weak var delegate: ImageSelectHandler?
     
     override func awakeFromNib() {
         checkMark.isHidden = true

@@ -12,7 +12,7 @@ class PostThumbImageCell: UICollectionViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
     var index: Int?
-    var delegate: DisplayItemDetailHandler?
+    weak var delegate: DisplayItemDetailHandler?
     
     func addTapGestureToDisplayItemDetail() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostThumbImageCell.callDelegate))
