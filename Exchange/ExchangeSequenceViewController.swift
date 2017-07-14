@@ -12,7 +12,6 @@ import FirebaseDatabase
 class ExchangeSequenceViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var addItemButton: UIButton!
     
     var myPost = [Post]() {
         didSet {
@@ -27,8 +26,6 @@ class ExchangeSequenceViewController: UIViewController {
         PostService.fetchPost(fromPath: dataRef, completionHandler: { post in
             self.myPost = post
         })
-        addItemButton.layer.cornerRadius = 6
-        
         collectionView.delegate = self
     }
     
@@ -41,10 +38,13 @@ class ExchangeSequenceViewController: UIViewController {
             }
         }
     }
-    
     @IBAction func addItemAction(_ sender: UIButton) {
         // Filter myPost with only selected post
         self.performSegue(withIdentifier: "Finish Selecing Item", sender: self)
+    }
+    
+    @IBAction func unwindFromStepTwo(_ sender: UIStoryboardSegue) {
+        print("Back")
     }
 }
 
@@ -110,6 +110,5 @@ extension ExchangeSequenceViewController: ImageSelectHandler {
         }
         selectedCell.toggleSelectedCheckmark()
         myPost[index].selected = selectedCell.buttonIsSelected
-        print(myPost[index].selected)
     }
 }

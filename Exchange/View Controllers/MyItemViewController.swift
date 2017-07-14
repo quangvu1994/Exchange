@@ -82,7 +82,7 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension MyItemViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfColumns: CGFloat = 3
+        let numberOfColumns: CGFloat = 2
         let spacingLength: CGFloat = 3
         
         let totalHorizontalSpacing = (numberOfColumns - 1) * spacingLength

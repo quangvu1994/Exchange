@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LpC-Po-nQw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="526"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CameraCell" rowHeight="100" id="g5g-jr-ozC" customClass="CreatePostCameraCell" customModule="Exchange" customModuleProvider="target">
@@ -128,9 +128,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQW-5L-7Do">
-                                <rect key="frame" x="100" y="556" width="175" height="32"/>
+                                <rect key="frame" x="20" y="558" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ViP-EH-d17"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <state key="normal" title="Button Name">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -141,12 +144,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tel-vT-iOK" firstAttribute="top" secondItem="mQW-5L-7Do" secondAttribute="bottom" constant="30" id="4EU-qN-DdR"/>
-                            <constraint firstItem="mQW-5L-7Do" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="30" id="BaY-Fq-Aj8"/>
+                            <constraint firstAttribute="trailing" secondItem="mQW-5L-7Do" secondAttribute="trailing" constant="20" id="66i-eE-tyh"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" id="LHj-PL-RyG"/>
+                            <constraint firstItem="mQW-5L-7Do" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" constant="20" id="MEC-O5-epv"/>
+                            <constraint firstItem="mQW-5L-7Do" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" constant="25" id="WMc-OG-vnc"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="top" secondItem="h3S-Sf-3Lj" secondAttribute="top" id="baY-iq-FNZ"/>
-                            <constraint firstItem="mQW-5L-7Do" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" constant="100" id="cs1-iv-hJT"/>
-                            <constraint firstAttribute="trailing" secondItem="mQW-5L-7Do" secondAttribute="trailing" constant="100" id="dih-w5-3S7"/>
+                            <constraint firstItem="Tel-vT-iOK" firstAttribute="top" secondItem="mQW-5L-7Do" secondAttribute="bottom" constant="20" id="l0a-Xd-id3"/>
                             <constraint firstAttribute="trailing" secondItem="LpC-Po-nQw" secondAttribute="trailing" id="mFf-TC-QXI"/>
                         </constraints>
                     </view>
@@ -208,7 +211,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="categoryName" destination="qFU-0o-BVB" id="PDi-60-efH"/>
-                                            <segue destination="wUY-dz-CyR" kind="unwind" identifier="FinishSelectingCategory" unwindAction="unwindToCreatePostWith_sender:" id="NDj-Kd-Ux8"/>
+                                            <segue destination="wUY-dz-CyR" kind="unwind" identifier="FinishSelectingCategory" unwindAction="unwindFromCategorySelection:" id="oYe-0a-bMc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

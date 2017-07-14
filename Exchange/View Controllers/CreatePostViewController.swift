@@ -30,7 +30,7 @@ class CreatePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        actionButton.layer.cornerRadius = 6
+        actionButton.layer.cornerRadius = 3
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
         print(self)
@@ -166,7 +166,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             }else {
                 cell.descriptionText.textColor = UIColor.lightGray
                 cell.descriptionText.text = "Item Description"
-                cell.placeHolder = "Item Title"
+                cell.placeHolder = "Item Description"
             }
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false

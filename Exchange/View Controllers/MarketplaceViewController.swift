@@ -75,7 +75,7 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
     
     // Set the size of each cell in the collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let columns: CGFloat = 3
+        let columns: CGFloat = 2
         let spacing: CGFloat = 3
         // 2 spaces multiply by the length of each space = total horizontal spacing
         let totalHorizontalSpacing = (columns - 1) * spacing

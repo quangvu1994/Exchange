@@ -145,21 +145,21 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrU-C0-hCf">
-                                            <rect key="frame" x="0.0" y="75" width="375" height="5"/>
-                                            <color key="backgroundColor" red="0.82352941176470584" green="0.40784313725490196" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <rect key="frame" x="0.0" y="77" width="375" height="3"/>
+                                            <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="5" id="16C-22-mmC"/>
+                                                <constraint firstAttribute="height" constant="3" id="pFz-5u-hgE"/>
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="ZrU-C0-hCf" secondAttribute="trailing" id="1lL-Or-Oxp"/>
-                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" id="MKW-as-4ww"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZrU-C0-hCf" secondAttribute="trailing" id="VD8-7e-mBO"/>
                                         <constraint firstItem="H51-w8-Sri" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="XIV-ix-Zre"/>
-                                        <constraint firstAttribute="bottom" secondItem="ZrU-C0-hCf" secondAttribute="bottom" id="c5a-Ap-Ru6"/>
                                         <constraint firstItem="H51-w8-Sri" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="eI5-0k-wnE"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZrU-C0-hCf" secondAttribute="bottom" id="jUH-kg-W6J"/>
                                         <constraint firstAttribute="trailing" secondItem="H51-w8-Sri" secondAttribute="trailing" constant="20" id="q2M-1r-yqf"/>
+                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" id="s8G-RV-OzL"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="searchBar" destination="H51-w8-Sri" id="QiX-O8-X0z"/>
@@ -173,10 +173,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Ufh-3R-m6q" secondAttribute="bottom" id="9cW-84-qqz"/>
-                            <constraint firstAttribute="trailing" secondItem="Ufh-3R-m6q" secondAttribute="trailing" id="PUL-Fa-mWi"/>
-                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="leading" secondItem="MFe-LZ-aOX" secondAttribute="leading" id="RkC-Su-pH4"/>
-                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="hDz-cN-xKT"/>
+                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="8YE-Bd-Iuo"/>
+                            <constraint firstAttribute="trailing" secondItem="Ufh-3R-m6q" secondAttribute="trailing" id="INL-VA-3bZ"/>
+                            <constraint firstItem="Ufh-3R-m6q" firstAttribute="leading" secondItem="MFe-LZ-aOX" secondAttribute="leading" id="Pds-HK-yDb"/>
+                            <constraint firstAttribute="bottom" secondItem="Ufh-3R-m6q" secondAttribute="bottom" id="zuz-kS-1OH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
