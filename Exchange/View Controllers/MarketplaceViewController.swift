@@ -29,12 +29,12 @@ class MarketplaceViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let index = sender as? Int else {
-            return
-        }
-        
         if let identifier = segue.identifier {
             if identifier == "displayItemDetail" {
+                guard let index = sender as? Int else {
+                    return
+                }
+                
                 let viewControllerDestination = segue.destination as! CreatePostViewController
                 viewControllerDestination.currentPost = post[index]
                 viewControllerDestination.scenario = .exchange

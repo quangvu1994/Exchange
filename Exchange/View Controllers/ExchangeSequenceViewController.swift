@@ -18,6 +18,8 @@ class ExchangeSequenceViewController: UIViewController {
             collectionView.reloadData()
         }
     }
+    
+    var exchangeItem: Post?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +34,16 @@ class ExchangeSequenceViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifer = segue.identifier {
             if identifer == "Finish Selecting Item" {
-                let selectedPost = myPost.filter {($0.selected == true)}
+                let selectedItems = myPost.filter { $0.selected == true }
                 let destinationViewController = segue.destination as! EXConfirmViewController
-                destinationViewController.selectedPost = selectedPost
+                destinationViewController.selectedItems = selectedItems
+                destinationViewController.exchangeItem = exchangeItem
             }
         }
     }
     @IBAction func addItemAction(_ sender: UIButton) {
         // Filter myPost with only selected post
-        self.performSegue(withIdentifier: "Finish Selecing Item", sender: self)
+        self.performSegue(withIdentifier: "Finish Selecting Item", sender: self)
     }
     
     @IBAction func unwindFromStepTwo(_ sender: UIStoryboardSegue) {

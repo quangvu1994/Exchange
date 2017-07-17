@@ -7,16 +7,39 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class EXConfirmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var selectedPost = [Post]()
+    var selectedItems = [Post]()
+    var exchangeItem: Post?
     weak var messageDelegate: PostInformationRetriever?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        hideKeyboardOnTap()
+    }
+    @IBAction func sendRequest(_ sender: UIButton) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        guard let exchangeItem = exchangeItem,
+            let exchangeItemKey = exchangeItem.key,
+            let messageDelegate = messageDelegate else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                // Display an alert if user fail to fill out the required info
+                let alertController = UIAlertController(title: nil, message: "Unable to send request. Please try again", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
+        }
+        // Write the request to our database
+        let request = Request(arrayOfYoursItems: selectedItems, theirItem: exchangeItem)
+        request.message = messageDelegate.getInformation()!
+        let requestRef = Database.database().reference().child("Outgoing Request").child(User.currentUser.uid).child(exchangeItemKey)
+        RequestService.writeNewRequest(at: requestRef, for: request)
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
 }
 
@@ -29,14 +52,21 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableImageCell
+            if let exchangeItem = exchangeItem {
+                let imageURL = URL(string: exchangeItem.imageURL)
+                cell.requestItemImage.kf.setImage(with: imageURL)
+            }
+            
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
             cell.titleText.text = "Exchange with"
+            cell.descriptionText.text = selectedItems.map { $0.postTitle }.joined(separator: ", ")
             cell.descriptionText.isEditable = false
             return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
             cell.titleText.text = "Say something to the owner"
@@ -45,6 +75,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             cell.placeHolder = "Your message"
             messageDelegate = cell
             return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath)
             return cell
@@ -56,7 +87,10 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 200
+            guard let exchangeItem = exchangeItem else {
+                return 200
+            }
+            return exchangeItem.imageHeight
         case 1:
             return 100
         case 2:

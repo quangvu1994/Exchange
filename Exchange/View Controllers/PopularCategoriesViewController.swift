@@ -22,6 +22,12 @@ class PopularCategoriesViewController: UIViewController {
         self.tableView.separatorStyle = .none
     }
     
+    @IBAction func categorySelected(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "showCategoryDetail", sender: nil)
+    }
+    
+    @IBAction func unwindFromMarketplace(_ sender: UIStoryboardSegue){
+    }
 }
 
 extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataSource {

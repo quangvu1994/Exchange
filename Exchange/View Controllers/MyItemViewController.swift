@@ -21,6 +21,7 @@ class MyItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {

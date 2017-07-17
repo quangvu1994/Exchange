@@ -30,7 +30,6 @@
 		5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C558B1F0CBC4F00F4120A /* UserService.swift */; };
 		5B724F841F0B2D1300BE4E4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F831F0B2D1300BE4E4E /* Main.storyboard */; };
 		5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */; };
-		5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */; };
 		5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */; };
 		5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */; };
 		5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */; };
@@ -51,6 +50,11 @@
 		5BB302A81F143F0F003C149B /* MyItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB302A71F143F0F003C149B /* MyItem.storyboard */; };
 		5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB302A91F143FA1003C149B /* MyItemPostImageCell.swift */; };
 		5BB302AC1F144012003C149B /* MyItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB302AB1F144012003C149B /* MyItemHeaderView.swift */; };
+		5BB734D01F1D1EC600F12074 /* ProfileOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734CF1F1D1EC600F12074 /* ProfileOptionCell.swift */; };
+		5BB734D31F1D57D000F12074 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D21F1D57D000F12074 /* RequestViewController.swift */; };
+		5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D41F1D58B500F12074 /* RequestTableViewCell.swift */; };
+		5BB734D71F1D6BDC00F12074 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D61F1D6BDC00F12074 /* Request.swift */; };
+		5BB734D91F1D6D6600F12074 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D81F1D6D6600F12074 /* RequestService.swift */; };
 		5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */; };
 		5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
@@ -81,7 +85,6 @@
 		5B724F831F0B2D1300BE4E4E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
 		5B724F8A1F0B2DA100BE4E4E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Supporting/Info.plist; sourceTree = "<group>"; };
 		5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
-		5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "View Controllers/ProfileViewController.swift"; sourceTree = "<group>"; };
 		5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExchangeSequence.storyboard; path = Storyboards/ExchangeSequence.storyboard; sourceTree = "<group>"; };
 		5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeSequenceViewController.swift; path = "View Controllers/ExchangeSequenceViewController.swift"; sourceTree = "<group>"; };
@@ -102,6 +105,11 @@
 		5BB302A71F143F0F003C149B /* MyItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyItem.storyboard; path = Storyboards/MyItem.storyboard; sourceTree = "<group>"; };
 		5BB302A91F143FA1003C149B /* MyItemPostImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyItemPostImageCell.swift; path = View/MyItemPostImageCell.swift; sourceTree = "<group>"; };
 		5BB302AB1F144012003C149B /* MyItemHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyItemHeaderView.swift; path = View/MyItemHeaderView.swift; sourceTree = "<group>"; };
+		5BB734CF1F1D1EC600F12074 /* ProfileOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileOptionCell.swift; path = View/ProfileOptionCell.swift; sourceTree = "<group>"; };
+		5BB734D21F1D57D000F12074 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestViewController.swift; path = "View Controllers/RequestViewController.swift"; sourceTree = "<group>"; };
+		5BB734D41F1D58B500F12074 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTableViewCell.swift; path = View/RequestTableViewCell.swift; sourceTree = "<group>"; };
+		5BB734D61F1D6BDC00F12074 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Model/Request.swift; sourceTree = "<group>"; };
+		5BB734D81F1D6D6600F12074 /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestService.swift; path = Service/RequestService.swift; sourceTree = "<group>"; };
 		5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = Storyboards/Explore.storyboard; sourceTree = "<group>"; };
 		5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceViewController.swift; path = "View Controllers/MarketplaceViewController.swift"; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
@@ -134,7 +142,6 @@
 		5B2CD8A51F0B2968001E0D6B = {
 			isa = PBXGroup;
 			children = (
-				5B724F931F0B336E00BE4E4E /* Default-568h@2x.png */,
 				5B2CD8B01F0B2968001E0D6B /* Exchange */,
 				5B2CD8AF1F0B2968001E0D6B /* Products */,
 				7C07BE225F38B9F1911B3C9B /* Pods */,
@@ -186,6 +193,7 @@
 			children = (
 				5B6C558B1F0CBC4F00F4120A /* UserService.swift */,
 				5BA92F091F12B27E006CE880 /* PostService.swift */,
+				5BB734D81F1D6D6600F12074 /* RequestService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 			children = (
 				5B6C55891F0C7CAD00F4120A /* User.swift */,
 				5BA92F071F11FCBC006CE880 /* Post.swift */,
+				5BB734D61F1D6BDC00F12074 /* Request.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -219,6 +228,7 @@
 				5BB302AD1F144068003C149B /* Explore */,
 				5B971F231F17EFE800B1FCF6 /* Exchange Sequence */,
 				5BB302B11F1440EE003C149B /* CreateNewPost */,
+				5BB734D11F1D1ECA00F12074 /* Profile */,
 				5BB302B21F144117003C149B /* MyItem */,
 			);
 			name = View;
@@ -229,11 +239,11 @@
 			children = (
 				5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */,
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
-				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
 				5BB302B01F1440E2003C149B /* MyItem */,
 				5BB302AF1F1440AC003C149B /* CreateNewPost */,
 				5B971F261F17F18400B1FCF6 /* Exchange Sequence */,
 				5BB302AE1F14408E003C149B /* Explore */,
+				5BB734CC1F1D1DD000F12074 /* Profile */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -332,6 +342,24 @@
 			name = MyItem;
 			sourceTree = "<group>";
 		};
+		5BB734CC1F1D1DD000F12074 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5BB734D21F1D57D000F12074 /* RequestViewController.swift */,
+				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		5BB734D11F1D1ECA00F12074 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5BB734CF1F1D1EC600F12074 /* ProfileOptionCell.swift */,
+				5BB734D41F1D58B500F12074 /* RequestTableViewCell.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		7C07BE225F38B9F1911B3C9B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,7 +444,6 @@
 				5BB302A21F1439BE003C149B /* CreateNewPost.storyboard in Resources */,
 				5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */,
 				5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */,
-				5B724F941F0B336E00BE4E4E /* Default-568h@2x.png in Resources */,
 				5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */,
 				5B6C55881F0C71C100F4120A /* GoogleService-Info.plist in Resources */,
 			);
@@ -485,6 +512,7 @@
 				5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */,
 				5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
+				5BB734D31F1D57D000F12074 /* RequestViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
 				5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
@@ -493,21 +521,25 @@
 				5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */,
 				5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */,
 				5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */,
+				5BB734D71F1D6BDC00F12074 /* Request.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,
 				5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */,
 				5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */,
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
+				5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
 				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,
 				5BA92F101F12BA93006CE880 /* UIImageUtilities.swift in Sources */,
 				5BA92F081F11FCBC006CE880 /* Post.swift in Sources */,
+				5BB734D01F1D1EC600F12074 /* ProfileOptionCell.swift in Sources */,
 				5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */,
 				5B24A10A1F104C290068BBD9 /* CategoryCell.swift in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,
 				5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,
+				5BB734D91F1D6D6600F12074 /* RequestService.swift in Sources */,
 				5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */,
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
 				5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */,

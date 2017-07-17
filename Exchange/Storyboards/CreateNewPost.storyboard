@@ -70,9 +70,6 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -244,7 +241,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pei-F6-sCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wUY-dz-CyR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="-95"/>
+            <point key="canvasLocation" x="2783" y="143"/>
         </scene>
         <!--List Item-->
         <scene sceneID="0aF-Te-wIg">
@@ -276,7 +273,7 @@
                 <viewControllerPlaceholder storyboardName="ExchangeSequence" id="gXE-Rt-VZ7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vis-Wr-TR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2776.8000000000002" y="649.92503748125944"/>
+            <point key="canvasLocation" x="2288" y="597"/>
         </scene>
     </scenes>
     <resources>

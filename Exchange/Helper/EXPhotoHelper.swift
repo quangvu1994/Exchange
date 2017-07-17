@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class EXPhotoHelper: NSObject {
     
@@ -19,7 +20,7 @@ class EXPhotoHelper: NSObject {
     func presentActionSheet(from viewController: UIViewController){
         // Create an UIAlertController
         let alertController = UIAlertController(title: nil, message: "Post Picture", preferredStyle: .actionSheet)
-        // Camera available -> Add photo UIAlertAction
+        // Camera available -> Add photo¡ UIAlertAction
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let capturePhotoAction = UIAlertAction(title: "Take a photo", style: .default, handler: { (action) in
                 // Display camera
@@ -48,9 +49,11 @@ class EXPhotoHelper: NSObject {
     */
     func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController){
         let imagePickerController = UIImagePickerController()
+        imagePickerController.mediaTypes = [kUTTypeImage as String]
         imagePickerController.sourceType = sourceType
         // Set the image picker controller delegate to handle the selected image
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = false
         // Present
         viewController.present(imagePickerController, animated: true, completion: nil)
     }
@@ -60,6 +63,7 @@ extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationController
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let handler = completionHandler else {
+            print("No image handler")
             return
         }
         

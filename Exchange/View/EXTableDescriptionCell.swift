@@ -47,6 +47,10 @@ class EXTableDescriptionCell: UITableViewCell, UITextViewDelegate {
 extension EXTableDescriptionCell: PostInformationRetriever {
     
     func getInformation() -> String? {
+        if descriptionText.textColor == UIColor.lightGray {
+            return ""
+        }
+        
         return descriptionText.text
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Quang Vu. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Kingfisher
 
 protocol PostInformationRetriever: class {
     func getInformation() -> String?
@@ -25,7 +25,8 @@ class CreatePostViewController: UIViewController {
     weak var postDescriptionDelegate: PostInformationRetriever?
     weak var postCategoryDelegate: PostInformationRetriever?
     
-    let photoHelper = EXPhotoHelper()
+    
+    var photoHelper = EXPhotoHelper()
     var category: String = ""
     
     override func viewDidLoad() {
@@ -33,7 +34,6 @@ class CreatePostViewController: UIViewController {
         actionButton.layer.cornerRadius = 3
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
-        print(self)
         switch scenario {
         case .edit:
             actionButton.setTitle("Save Changes", for: .normal)
@@ -56,9 +56,8 @@ class CreatePostViewController: UIViewController {
             print("Edit post")
             UIApplication.shared.endIgnoringInteractionEvents()
         case .exchange:
-            print("Exchange item")
-            UIApplication.shared.endIgnoringInteractionEvents()
             self.performSegue(withIdentifier: "Exchange Sequence", sender: self)
+            UIApplication.shared.endIgnoringInteractionEvents()
         default:
             guard let selectedImage = photoHelper.selectedImage,
                 let postTitle = postTitleDelegate?.getInformation(),
@@ -99,6 +98,16 @@ class CreatePostViewController: UIViewController {
             })
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Exchange Sequence" {
+                let navControllerDestination = segue.destination as! UINavigationController
+                let viewControllerDestination = navControllerDestination.viewControllers.first as! ExchangeSequenceViewController
+                viewControllerDestination.exchangeItem = currentPost
+            }
+        }
+    }
 
     @IBAction func unwindFromCategorySelection(_ sender: UIStoryboardSegue) {
         // Update the category cell
@@ -122,6 +131,8 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraCell", for: indexPath) as! CreatePostCameraCell
+            
+            // Possile memory issue
             photoHelper.completionHandler = { (selectedImage) in
                 cell.postImage.image = selectedImage
             }

@@ -15,5 +15,6 @@ target ‘Exchange’ do
   pod 'FacebookLogin'
   pod 'FirebaseUI/Facebook'
   pod 'FirebaseUI/Google'
+  pod 'DKCamera'
   
 end

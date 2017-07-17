@@ -134,7 +134,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="my7-u5-W08" id="c0l-Tq-FjQ"/>
-                        <segue destination="mCU-5e-opI" kind="show" identifier="Finish Selecing Item" id="715-WM-UJ6"/>
+                        <segue destination="mCU-5e-opI" kind="show" identifier="Finish Selecting Item" id="715-WM-UJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYH-t9-7HP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -233,7 +233,8 @@
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="sendRequest:" destination="l03-sh-JCT" eventType="touchUpInside" id="gec-kF-AMf"/>
+                                                        <action selector="sendRequest:" destination="mCU-5e-opI" eventType="touchUpInside" id="vcM-0j-Uby"/>
+                                                        <segue destination="HtK-Rf-rsg" kind="unwind" unwindAction="unwindFromExchangeSequence:" id="dC9-dO-iHI"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -298,7 +299,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPD-Bj-qZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2776.8000000000002" y="649.92503748125944"/>
+            <point key="canvasLocation" x="2790" y="682"/>
         </scene>
     </scenes>
     <resources>

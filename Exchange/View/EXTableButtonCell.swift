@@ -17,9 +17,4 @@ class EXTableButtonCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    @IBAction func sendRequest(_ sender: UIButton) {
-        print("Request sent")
-    }
-
 }

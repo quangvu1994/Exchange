@@ -46,7 +46,7 @@
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="m7y-c2-HAe" kind="show" id="aKb-9Y-LO9"/>
+                                                        <action selector="categorySelected:" destination="30y-t2-bjh" eventType="touchUpInside" id="wFH-dk-l5C"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -84,6 +84,7 @@
                     <navigationItem key="navigationItem" title="Explore" id="E2J-0T-bY6"/>
                     <connections>
                         <outlet property="tableView" destination="Tt0-tz-6qB" id="60w-MD-h2Q"/>
+                        <segue destination="m7y-c2-HAe" kind="show" identifier="showCategoryDetail" id="Xy5-HR-M8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-Nz-WVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,6 +182,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
                         <barButtonItem key="backBarButtonItem" title="Back" id="jkT-07-3hb"/>
+                        <barButtonItem key="leftBarButtonItem" image="Back Icon" id="3Fq-8L-JCb">
+                            <connections>
+                                <action selector="navigateBackToPopularView:" destination="m7y-c2-HAe" id="9wf-f5-HPb"/>
+                                <segue destination="y12-vT-fPz" kind="unwind" identifier="unwindFromMarketplace" unwindAction="unwindFromMarketplace:" id="jFZ-El-HfJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
@@ -189,6 +196,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="y12-vT-fPz" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="QZA-t0-fy8">
                     <connections>
                         <outlet property="delegate" destination="m7y-c2-HAe" id="MzX-Ht-T7h"/>
@@ -215,7 +223,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -234,6 +242,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back Icon" width="25" height="25"/>
         <image name="Search" width="25" height="25"/>
     </resources>
 </document>

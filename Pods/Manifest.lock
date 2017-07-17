@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - DKCamera (1.3.2)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -80,6 +81,7 @@ PODS:
   - Kingfisher (3.10.2)
 
 DEPENDENCIES:
+  - DKCamera
   - FacebookCore
   - FacebookLogin
   - Firebase/Auth
@@ -93,6 +95,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DKCamera: 66d105f92dee94985608a87e688b3b8300995cf2
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
@@ -111,6 +114,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
 
-PODFILE CHECKSUM: fcb866d76bb259a1e1f6e7a4ce32329b9e44038e
+PODFILE CHECKSUM: e63f660b625d867bd54fcd376c18c01865330dd5
 
 COCOAPODS: 1.2.1
