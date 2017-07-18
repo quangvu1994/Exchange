@@ -117,7 +117,7 @@ class CreatePostViewController: UIViewController {
     }
     
     @IBAction func unwindFromExchangeSequence(_ sender: UIStoryboardSegue) {
-        print("Cancel pressed")
+        print("Unwinded")
     }
 }
 

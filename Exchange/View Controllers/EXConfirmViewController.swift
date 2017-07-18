@@ -21,6 +21,7 @@ class EXConfirmViewController: UIViewController {
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
     }
+    
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         guard let exchangeItem = exchangeItem,
@@ -39,8 +40,17 @@ class EXConfirmViewController: UIViewController {
         request.message = messageDelegate.getInformation()!
         let requestRef = Database.database().reference().child("Outgoing Request").child(User.currentUser.uid).child(exchangeItemKey)
         RequestService.writeNewRequest(at: requestRef, for: request)
+        let alertController = UIAlertController(title: nil, message: "Request sent!", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+            self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: self)
+        })
+        
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
         UIApplication.shared.endIgnoringInteractionEvents()
     }
+
 }
 
 extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
