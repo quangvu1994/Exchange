@@ -6,6 +6,7 @@
 //  Copyright © 2017 Quang Vu. All rights reserved.
 //
 import FirebaseDatabase.FIRDataSnapshot
+
 class Request {
     var requesterItems: [Post]
     var posterItem: Post

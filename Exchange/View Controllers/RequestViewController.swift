@@ -22,7 +22,9 @@ class RequestViewController: UIViewController {
         switch requestSegmentControl.selectedSegmentIndex {
         case 0:
             // Fetch outgoing request
-            print("Sent")
+            RequestService.retrieveIncomingRequest(completionHandler: { (listOfRequest) in
+                print(listOfRequest)
+            })
         case 1:
             print("Received")
         default:
