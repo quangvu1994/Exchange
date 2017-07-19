@@ -22,7 +22,7 @@ class MarketplaceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // fetch all post
-        let allPostReference = Database.database().reference().child("allPosts").child("allCategories")
+        let allPostReference = Database.database().reference().child("allItems").child("allCategories")
         PostService.fetchPost(fromPath: allPostReference, completionHandler: { (allPosts) in
             self.post = allPosts
         })

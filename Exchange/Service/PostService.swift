@@ -29,6 +29,7 @@ class PostService {
             guard let downloadURL = metaData?.downloadURL() else {
                 return completion(nil)
             }
+            
             let imageURL = downloadURL.absoluteString
             completion(imageURL)
         })
@@ -36,21 +37,21 @@ class PostService {
     
     static func writePostToFIRDatabase(for post: Post, completion: @escaping (Bool) -> Void) {
         let currentUID = User.currentUser.uid
-        let postRef = Database.database().reference().child("posts").child(currentUID).childByAutoId()
+        let postRef = Database.database().reference().child("items").child(currentUID).childByAutoId()
         postRef.updateChildValues(post.dictValue)
         // Also write to all post parent node
-        let allPostRef = Database.database().reference().child("allPosts").child("allCategories").childByAutoId()
+        let allPostRef = Database.database().reference().child("allItems").child("allCategories").childByAutoId()
         allPostRef.updateChildValues(post.dictValue)
         completion(true)
 
     }
     
     /**
-     Fetch all posts from the provided database reference path
+     Fetch all items from the provided database reference path
     */
-    static func fetchPost(fromPath postRef: DatabaseReference, completionHandler: @escaping ([Post]) -> Void) {
+    static func fetchPost(fromPath reference: DatabaseReference, completionHandler: @escaping ([Post]) -> Void) {
         
-        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        reference.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return completionHandler([])
             }

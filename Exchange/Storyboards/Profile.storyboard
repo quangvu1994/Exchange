@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZkU-mS-URF">
-                                <rect key="frame" x="0.0" y="404" width="375" height="263"/>
+                                <rect key="frame" x="0.0" y="454" width="375" height="213"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProfileCell" id="ts7-Fk-ERJ" customClass="ProfileOptionCell" customModule="Exchange" customModuleProvider="target">
@@ -57,25 +57,25 @@
                                     <outlet property="delegate" destination="kd0-mH-H4y" id="gAZ-7w-jfa"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-DN-23f">
-                                <rect key="frame" x="87" y="70" width="200" height="200"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-DN-23f">
+                                <rect key="frame" x="87" y="120" width="200" height="200"/>
+                                <color key="backgroundColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="RM5-5H-cvI"/>
                                     <constraint firstAttribute="width" constant="200" id="UTp-7b-1dX"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akz-tr-PKO">
-                                <rect key="frame" x="143" y="320" width="90" height="24"/>
+                                <rect key="frame" x="143" y="370" width="90" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OLB-DN-23f" firstAttribute="centerX" secondItem="kV3-2z-tpF" secondAttribute="centerX" id="0GL-3l-VxI"/>
-                            <constraint firstItem="OLB-DN-23f" firstAttribute="top" secondItem="kH9-LH-KAu" secondAttribute="bottom" constant="50" id="9ty-tL-V8a"/>
+                            <constraint firstItem="OLB-DN-23f" firstAttribute="top" secondItem="kH9-LH-KAu" secondAttribute="bottom" constant="100" id="9ty-tL-V8a"/>
                             <constraint firstItem="ZkU-mS-URF" firstAttribute="top" secondItem="akz-tr-PKO" secondAttribute="bottom" constant="60" id="EwC-2g-Jsb"/>
                             <constraint firstItem="ZkU-mS-URF" firstAttribute="leading" secondItem="kV3-2z-tpF" secondAttribute="leading" id="MUO-Oy-yaM"/>
                             <constraint firstAttribute="bottom" secondItem="ZkU-mS-URF" secondAttribute="bottom" id="OjC-fI-NL3"/>
@@ -266,6 +266,7 @@
     </scenes>
     <resources>
         <image name="Back Icon" width="25" height="25"/>
+        <image name="Camera" width="50" height="50"/>
         <image name="Profile" width="25" height="25"/>
     </resources>
 </document>

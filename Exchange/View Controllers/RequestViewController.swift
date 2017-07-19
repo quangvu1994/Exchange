@@ -16,10 +16,12 @@ class RequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        // fetch outgoing request
     }
     @IBAction func switchRequestType(_ sender: UISegmentedControl) {
         switch requestSegmentControl.selectedSegmentIndex {
         case 0:
+            // Fetch outgoing request
             print("Sent")
         case 1:
             print("Received")

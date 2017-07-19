@@ -13,22 +13,51 @@ class RequestService {
     /**
      Write a new request to our database
     */
-    static func writeNewRequest(at databaseReference: DatabaseReference, for request: Request) {
-        databaseReference.setValue(request.dictValue)
+    static func writeNewRequest(for request: Request, completionHandler: @escaping (Bool) -> Void) {
+        let allRequestRef = Database.database().reference().child("Requests").childByAutoId()
+        // Update child value -> don't want to wipe every others info
+        allRequestRef.setValue(request.dictValue, withCompletionBlock: { (error, snapshot) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completionHandler(false)
+            }
+            
+            guard let postKey = request.posterItem.key else {
+                return completionHandler(false)
+            }
+            
+            let userID = User.currentUser.uid
+            let posterID = request.posterItem.poster.uid
+            let data = [
+                "users/\(userID)/Outgoing Request/\(snapshot.key)": postKey,
+                "users/\(posterID)/Incoming Request/\(snapshot.key)": postKey
+            ]
+            Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    return completionHandler(false)
+                }
+            })
+            
+            completionHandler(true)
+        })
     }
     
     /**
      Retrievei all incoming request for our current user
     */
-    static func retrieveIncomingRequest() {
-        
+    static func retrieveIncomingRequest(completionHandler: @escaping ([Request]) -> Void) {
+        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request")
+        outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in 
+            // Get the 
+        })
     }
     
     
     /**
      Retrieve all outgoing request for our current user
     */
-    static func retrieveOutgoingRequest() {
+    static func retrieveOutgoingRequest(completionHandler: @escaping ([Request]) -> Void) {
         
     }
 }

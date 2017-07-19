@@ -27,7 +27,7 @@ class MyItemViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // fetch post
-        let postRef = Database.database().reference().child("posts").child(User.currentUser.uid)
+        let postRef = Database.database().reference().child("items").child(User.currentUser.uid)
         PostService.fetchPost(fromPath: postRef, completionHandler: { (allPosts) in
             self.post = allPosts
         })

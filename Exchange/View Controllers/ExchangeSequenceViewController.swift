@@ -24,7 +24,7 @@ class ExchangeSequenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // fetch post
-        let dataRef = Database.database().reference().child("posts").child(User.currentUser.uid)
+        let dataRef = Database.database().reference().child("items").child(User.currentUser.uid)
         PostService.fetchPost(fromPath: dataRef, completionHandler: { post in
             self.myPost = post
         })

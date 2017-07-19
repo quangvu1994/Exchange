@@ -29,6 +29,8 @@ class ProfileViewController: UIViewController {
         // Round profile picture
         profilePicture.layer.cornerRadius = profilePicture.frame.height / 2
         profilePicture.clipsToBounds = true
+        profilePicture.layer.borderColor = UIColor.black.cgColor
+        profilePicture.layer.borderWidth = 1.0
     }
     
 }

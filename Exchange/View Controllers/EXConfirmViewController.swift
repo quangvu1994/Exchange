@@ -25,30 +25,39 @@ class EXConfirmViewController: UIViewController {
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         guard let exchangeItem = exchangeItem,
-            let exchangeItemKey = exchangeItem.key,
             let messageDelegate = messageDelegate else {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 // Display an alert if user fail to fill out the required info
-                let alertController = UIAlertController(title: nil, message: "Unable to send request. Please try again", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
+                self.displayFailureDialog()
                 return
         }
         // Write the request to our database
-        let request = Request(arrayOfYoursItems: selectedItems, theirItem: exchangeItem)
+        let request = Request(requesterItems: selectedItems, posterItem: exchangeItem)
+        // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
-        let requestRef = Database.database().reference().child("Outgoing Request").child(User.currentUser.uid).child(exchangeItemKey)
-        RequestService.writeNewRequest(at: requestRef, for: request)
-        let alertController = UIAlertController(title: nil, message: "Request sent!", preferredStyle: .alert)
+        RequestService.writeNewRequest(for: request, completionHandler: { (success) in
+            if !success {
+                self.displayFailureDialog()
+                return
+            }
+        })
+        
+        // Display successful dialog
+        let alertController = UIAlertController(title: nil, message: "Your exchange request has been sent!", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
             self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: self)
         })
-        
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
+    func displayFailureDialog(){
+        let alertController = UIAlertController(title: nil, message: "Unable to send request. Please try again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }
