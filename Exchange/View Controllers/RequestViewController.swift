@@ -7,39 +7,72 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RequestViewController: UIViewController {
     
     @IBOutlet weak var requestSegmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    var requestList = [Request]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         // fetch outgoing request
+        RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
+            self?.requestList = outgoingRequest
+        })
     }
     @IBAction func switchRequestType(_ sender: UISegmentedControl) {
         switch requestSegmentControl.selectedSegmentIndex {
         case 0:
             // Fetch outgoing request
-            RequestService.retrieveIncomingRequest(completionHandler: { (listOfRequest) in
-                print(listOfRequest)
+            RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
+                self?.requestList = outgoingRequest
             })
         case 1:
-            print("Received")
+            // Fetch incoming request
+            RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (incomingRequest) in
+                self?.requestList = incomingRequest
+            })
         default:
             break
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Show Request Detail" {
+                
+            }
+        }
+    }
 }
 
-extension RequestViewController: UITableViewDataSource {
+extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return requestList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Request Cell", for: indexPath) as! RequestTableViewCell
+        cell.itemTitle.text = requestList[indexPath.row].posterItem.postTitle
+        let imageURL = URL(string: requestList[indexPath.row].posterItem.imageURL)
+        cell.itemImage.kf.setImage(with: imageURL)
+        cell.poster.text = requestList[indexPath.row].posterItem.poster.username
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
 }

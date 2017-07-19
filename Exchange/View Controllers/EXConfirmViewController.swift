@@ -27,17 +27,16 @@ class EXConfirmViewController: UIViewController {
         guard let exchangeItem = exchangeItem,
             let messageDelegate = messageDelegate else {
                 UIApplication.shared.endIgnoringInteractionEvents()
-                // Display an alert if user fail to fill out the required info
-                self.displayFailureDialog()
+                self.displayWarningMessage(message: "Unable to send request, please try again")
                 return
         }
         // Write the request to our database
         let request = Request(requesterItems: selectedItems, posterItem: exchangeItem)
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
-        RequestService.writeNewRequest(for: request, completionHandler: { (success) in
+        RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in
             if !success {
-                self.displayFailureDialog()
+                self?.displayWarningMessage(message: "Unable to send request, please try again")
                 return
             }
         })
@@ -52,14 +51,6 @@ class EXConfirmViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         UIApplication.shared.endIgnoringInteractionEvents()
     }
-    
-    func displayFailureDialog(){
-        let alertController = UIAlertController(title: nil, message: "Unable to send request. Please try again", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
 }
 
 extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {

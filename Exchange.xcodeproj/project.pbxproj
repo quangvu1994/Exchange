@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BD9CD8B4D2301E287A5D8E0 /* Pods_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE866939FA449451BC0350A /* Pods_Exchange.framework */; };
+		5B1E6F321F2008F1003E4351 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */; };
 		5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */; };
 		5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */; };
 		5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestDetailViewController.swift; path = "View Controllers/RequestDetailViewController.swift"; sourceTree = "<group>"; };
 		5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreCategoryCell.swift; path = View/ExploreCategoryCell.swift; sourceTree = "<group>"; };
 		5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = "View Controllers/CreatePostViewController.swift"; sourceTree = "<group>"; };
 		5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostDescriptionCell.swift; path = View/CreatePostDescriptionCell.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				5BB734D21F1D57D000F12074 /* RequestViewController.swift */,
 				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
+				5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
 				5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */,
+				5B1E6F321F2008F1003E4351 /* RequestDetailViewController.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
 				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,
 				5BA92F101F12BA93006CE880 /* UIImageUtilities.swift in Sources */,

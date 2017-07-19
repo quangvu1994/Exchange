@@ -25,8 +25,8 @@ class ExchangeSequenceViewController: UIViewController {
         super.viewDidLoad()
         // fetch post
         let dataRef = Database.database().reference().child("items").child(User.currentUser.uid)
-        PostService.fetchPost(fromPath: dataRef, completionHandler: { post in
-            self.myPost = post
+        PostService.fetchPost(fromPath: dataRef, completionHandler: { [weak self] post in
+            self?.myPost = post
         })
         collectionView.delegate = self
     }

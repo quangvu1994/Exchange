@@ -28,8 +28,8 @@ class MyItemViewController: UIViewController {
         super.viewWillAppear(animated)
         // fetch post
         let postRef = Database.database().reference().child("items").child(User.currentUser.uid)
-        PostService.fetchPost(fromPath: postRef, completionHandler: { (allPosts) in
-            self.post = allPosts
+        PostService.fetchPost(fromPath: postRef, completionHandler: { [weak self] (allPosts) in
+            self?.post = allPosts
         })
     }
 

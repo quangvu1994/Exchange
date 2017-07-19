@@ -68,7 +68,6 @@ class RequestService {
                     requestList.append(request)
                     dispatchGroup.leave()
                 })
-
             }
             dispatchGroup.notify(queue: .main, execute: {
                 completionHandler(requestList)
@@ -81,6 +80,31 @@ class RequestService {
      Retrieve all outgoing request for our current user
     */
     static func retrieveOutgoingRequest(completionHandler: @escaping ([Request]) -> Void) {
-        
+        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request")
+        outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.value as? [String: String] else {
+                return completionHandler([])
+            }
+            let requestRefList: [String] = snapshot.reversed().flatMap {
+                return $0.key
+            }
+            
+            let dispatchGroup = DispatchGroup()
+            var requestList = [Request]()
+            
+            for requestRef in requestRefList {
+                dispatchGroup.enter()
+                Database.database().reference().child("Requests/\(requestRef)").observeSingleEvent(of: .value, with: { snapshot in
+                    guard let request = Request(snapshot: snapshot) else {
+                        return
+                    }
+                    requestList.append(request)
+                    dispatchGroup.leave()
+                })
+            }
+            dispatchGroup.notify(queue: .main, execute: {
+                completionHandler(requestList)
+            })
+        })
     }
 }

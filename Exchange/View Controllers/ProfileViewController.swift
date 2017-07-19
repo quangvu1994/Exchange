@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuration()
@@ -31,6 +36,10 @@ class ProfileViewController: UIViewController {
         profilePicture.clipsToBounds = true
         profilePicture.layer.borderColor = UIColor.black.cgColor
         profilePicture.layer.borderWidth = 1.0
+    }
+    
+    @IBAction func unwindToProfileView(_ sender: UIStoryboardSegue) {
+        print("Unwinded")
     }
     
 }

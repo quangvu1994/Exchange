@@ -65,17 +65,14 @@ class CreatePostViewController: UIViewController {
                 let postCategory = postCategoryDelegate?.getInformation() else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     // Display an alert if user fail to fill out the required info
-                    let alertController = UIAlertController(title: nil, message: "Please fill out all information", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.displayWarningMessage(message: "Please fill out all information")
                     return
             }
             
-            PostService.writePostImageToFIRStorage(selectedImage, completion: { (downloadURL) in
+            PostService.writePostImageToFIRStorage(selectedImage, completion: { [weak self] (downloadURL) in
                 guard let downloadURL = downloadURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    print("Something wrong, try post again")
+                    self?.displayWarningMessage(message: "Unable to upload image, please try posting again")
                     return
                 }
                 
@@ -85,13 +82,13 @@ class CreatePostViewController: UIViewController {
                 post.postDescription = postDescription
                 post.postCategory = postCategory
                 
-                PostService.writePostToFIRDatabase(for: post, completion: { (completed) in
+                PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (completed) in
                     if completed {
                         // Reload the table view with the original data
-                        self.tableView.reloadData()
-                        self.performSegue(withIdentifier: "showMarketplace", sender: self)
+                        self?.tableView.reloadData()
+                        self?.performSegue(withIdentifier: "showMarketplace", sender: self)
                     }else {
-                        print("Something wrong, try post again")
+                        self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
                     }
                     UIApplication.shared.endIgnoringInteractionEvents()
                 })
