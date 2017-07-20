@@ -13,6 +13,7 @@ class RequestTableViewCell: UITableViewCell {
     @IBOutlet weak var poster: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var status: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

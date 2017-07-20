@@ -17,6 +17,7 @@ class Post {
     var creationDate: Date
     var postTitle: String
     var postDescription: String
+    var tradeLocation: String
     var postCategory: String
     let poster: User
     var selected: Bool = false

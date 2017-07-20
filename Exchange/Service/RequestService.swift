@@ -22,12 +22,12 @@ class RequestService {
                 return completionHandler(false)
             }
             
-            guard let postKey = request.posterItem.key else {
+            guard let postKey = request.posterItem[0].key else {
                 return completionHandler(false)
             }
             
             let userID = User.currentUser.uid
-            let posterID = request.posterItem.poster.uid
+            let posterID = request.posterItem[0].poster.uid
             let data = [
                 "users/\(userID)/Outgoing Request/\(snapshot.key)": postKey,
                 "users/\(posterID)/Incoming Request/\(snapshot.key)": postKey

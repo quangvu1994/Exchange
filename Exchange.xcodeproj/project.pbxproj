@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4BD9CD8B4D2301E287A5D8E0 /* Pods_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE866939FA449451BC0350A /* Pods_Exchange.framework */; };
-		5B1E6F321F2008F1003E4351 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */; };
 		5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */; };
 		5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */; };
 		5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */; };
@@ -57,11 +56,14 @@
 		5BB734D91F1D6D6600F12074 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D81F1D6D6600F12074 /* RequestService.swift */; };
 		5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */; };
 		5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */; };
+		5BDA2CDB1F213B3800CEC9CE /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CDA1F213B3800CEC9CE /* RequestDetailViewController.swift */; };
+		5BDA2CE21F213C5C00CEC9CE /* PartnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */; };
+		5BDA2CE41F213C9F00CEC9CE /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */; };
+		5BDA2CE61F21619100CEC9CE /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestDetailViewController.swift; path = "View Controllers/RequestDetailViewController.swift"; sourceTree = "<group>"; };
 		5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreCategoryCell.swift; path = View/ExploreCategoryCell.swift; sourceTree = "<group>"; };
 		5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = "View Controllers/CreatePostViewController.swift"; sourceTree = "<group>"; };
 		5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostDescriptionCell.swift; path = View/CreatePostDescriptionCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,10 @@
 		5BB734D81F1D6D6600F12074 /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestService.swift; path = Service/RequestService.swift; sourceTree = "<group>"; };
 		5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = Storyboards/Explore.storyboard; sourceTree = "<group>"; };
 		5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceViewController.swift; path = "View Controllers/MarketplaceViewController.swift"; sourceTree = "<group>"; };
+		5BDA2CDA1F213B3800CEC9CE /* RequestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestDetailViewController.swift; path = "View Controllers/RequestDetailViewController.swift"; sourceTree = "<group>"; };
+		5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartnerTableViewCell.swift; path = View/PartnerTableViewCell.swift; sourceTree = "<group>"; };
+		5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionTableViewCell.swift; path = View/CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = View/ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
 		5BFE717B1F0B3DD5007697EB /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Storyboards/Profile.storyboard; sourceTree = "<group>"; };
 		6EE866939FA449451BC0350A /* Pods_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -346,7 +352,7 @@
 			children = (
 				5BB734D21F1D57D000F12074 /* RequestViewController.swift */,
 				5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */,
-				5B1E6F311F2008F1003E4351 /* RequestDetailViewController.swift */,
+				5BDA2CDA1F213B3800CEC9CE /* RequestDetailViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -354,10 +360,21 @@
 		5BB734D11F1D1ECA00F12074 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5BDA2CDC1F213BC300CEC9CE /* TableViewCellWIthCollection */,
 				5BB734CF1F1D1EC600F12074 /* ProfileOptionCell.swift */,
 				5BB734D41F1D58B500F12074 /* RequestTableViewCell.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		5BDA2CDC1F213BC300CEC9CE /* TableViewCellWIthCollection */ = {
+			isa = PBXGroup;
+			children = (
+				5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */,
+				5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */,
+				5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */,
+			);
+			name = TableViewCellWIthCollection;
 			sourceTree = "<group>";
 		};
 		7C07BE225F38B9F1911B3C9B /* Pods */ = {
@@ -528,9 +545,9 @@
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
 				5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */,
-				5B1E6F321F2008F1003E4351 /* RequestDetailViewController.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
 				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,
+				5BDA2CE61F21619100CEC9CE /* ButtonTableViewCell.swift in Sources */,
 				5BA92F101F12BA93006CE880 /* UIImageUtilities.swift in Sources */,
 				5BA92F081F11FCBC006CE880 /* Post.swift in Sources */,
 				5BB734D01F1D1EC600F12074 /* ProfileOptionCell.swift in Sources */,
@@ -540,7 +557,10 @@
 				5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,
 				5BB734D91F1D6D6600F12074 /* RequestService.swift in Sources */,
+				5BDA2CE21F213C5C00CEC9CE /* PartnerTableViewCell.swift in Sources */,
+				5BDA2CDB1F213B3800CEC9CE /* RequestDetailViewController.swift in Sources */,
 				5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */,
+				5BDA2CE41F213C9F00CEC9CE /* CollectionTableViewCell.swift in Sources */,
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
 				5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */,
 				5BB302AC1F144012003C149B /* MyItemHeaderView.swift in Sources */,

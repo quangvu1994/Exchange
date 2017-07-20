@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0AS-Qr-OwC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lP2-25-2Ti">
                                     <size key="itemSize" width="119" height="108"/>
@@ -61,16 +61,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
-                                            <rect key="frame" x="143" y="25" width="90" height="24"/>
-                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                            <rect key="frame" x="139" y="30" width="98.5" height="24"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello and welcome to my store. Feel free to message me for anything that you want to trade" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="54" width="355" height="86"/>
+                                            <rect key="frame" x="10" y="59" width="355" height="81"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                            <color key="textColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-Sd-x0t">
@@ -85,13 +85,13 @@
                                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="9S4-Sd-x0t" firstAttribute="top" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="7" id="49M-Zc-hQv"/>
-                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="25" id="Ah1-WM-9ln"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
                                         <constraint firstAttribute="bottom" secondItem="9S4-Sd-x0t" secondAttribute="bottom" id="S9L-YH-LbM"/>
                                         <constraint firstAttribute="trailing" secondItem="9S4-Sd-x0t" secondAttribute="trailing" id="of6-Nb-a5H"/>
                                         <constraint firstItem="9S4-Sd-x0t" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leading" id="qJo-Yb-JOE"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="centerX" secondItem="pzC-JM-P9z" secondAttribute="centerX" id="sR7-zQ-XUy"/>
+                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="30" id="uBT-tq-PxU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g3e-9B-7L8" secondAttribute="trailing" constant="2" id="xB6-va-olx"/>
                                     </constraints>
                                     <connections>
@@ -105,9 +105,10 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0AS-Qr-OwC" firstAttribute="top" secondItem="jRa-K3-6wx" secondAttribute="top" id="1wA-Of-pkA"/>
+                            <constraint firstItem="0AS-Qr-OwC" firstAttribute="top" secondItem="jRa-K3-6wx" secondAttribute="top" constant="-20" id="1wA-Of-pkA"/>
                             <constraint firstAttribute="bottomMargin" secondItem="0AS-Qr-OwC" secondAttribute="bottom" id="2yi-2f-UON"/>
                             <constraint firstAttribute="trailing" secondItem="0AS-Qr-OwC" secondAttribute="trailing" id="6Pd-JQ-Hgc"/>
                             <constraint firstItem="0AS-Qr-OwC" firstAttribute="leading" secondItem="jRa-K3-6wx" secondAttribute="leading" id="RNh-IZ-6kg"/>
@@ -129,12 +130,12 @@
                 <viewControllerPlaceholder storyboardName="CreateNewPost" referencedIdentifier="ItemDetail" id="M8k-9r-Nm8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MI-7W-Yd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="142"/>
+            <point key="canvasLocation" x="2750" y="142"/>
         </scene>
         <!--My Store-->
         <scene sceneID="1SC-xA-mkV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lrx-d5-1eN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrx-d5-1eN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="peE-fE-uHw"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -48,14 +48,32 @@ class EXPhotoHelper: NSObject {
      Present a image picker controller: Capture photo or Photo library
     */
     func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController){
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.mediaTypes = [kUTTypeImage as String]
-        imagePickerController.sourceType = sourceType
-        // Set the image picker controller delegate to handle the selected image
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = false
-        // Present
-        viewController.present(imagePickerController, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.mediaTypes = [kUTTypeImage as String]
+            imagePickerController.sourceType = sourceType
+            // Set the image picker controller delegate to handle the selected image
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = false
+            // Present
+            viewController.present(imagePickerController, animated: true, completion: nil)
+        })
+    }
+    
+    /**
+     Resize an image to the new specific size
+    */
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
 
@@ -69,8 +87,12 @@ extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationController
         
         // Grab the selected image
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.selectedImage = selectedImage
-            handler(selectedImage)
+            guard let resizedImage = resizeImage(image: selectedImage, newWidth: 200) else {
+                self.selectedImage = selectedImage
+                return handler(selectedImage)
+            }
+            self.selectedImage = resizedImage
+            handler(resizedImage)
         }
         
         picker.dismiss(animated: true, completion: nil)

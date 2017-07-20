@@ -1,83 +1,77 @@
 //
-//  RequestDetailViewController.swift
+//  ConfirmedRequestViewController.swift
 //  Exchange
 //
-//  Created by Quang Vu on 7/19/17.
+//  Created by Quang Vu on 7/20/17.
 //  Copyright © 2017 Quang Vu. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
 class RequestDetailViewController: UIViewController {
     
-    @IBOutlet weak var negotiateButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var requestMessage: UITextView!
-    
-    @IBOutlet weak var requesterItemsCollectionView: UICollectionView!
-    @IBOutlet weak var posterItemsCollectionView: UICollectionView!
-    
+    @IBOutlet weak var tableView: UITableView!
     var request: Request?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        guard let request = request else {
-            fatalError("Request not found")
-        }
-        
-        requestMessage.text = request.message
-    }
-    
-    func configure() {
-        negotiateButton.layer.cornerRadius = 3
-        negotiateButton.layer.borderColor = UIColor(red: 210/255, green: 104/255, blue: 84/255, alpha: 1.0).cgColor
-        negotiateButton.layer.borderWidth = 1
-        confirmButton.layer.cornerRadius = 3
-        requestMessage.isUserInteractionEnabled = false
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
     }
 }
 
-extension RequestDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let request = request else {
-            fatalError("Request not found")
-        }
-        if collectionView == self.requesterItemsCollectionView {
-            return request.requesterItems.count
-        } else {
-            return 1
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let request = request else {
-            fatalError("Request not found")
-        }
-        
-        if collectionView == self.requesterItemsCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Requester Item Cell", for: indexPath) as! MyItemPostImageCell
-            let imageURL = URL(string: request.requesterItems[indexPath.row].imageURL)
-            cell.postImage.kf.setImage(with: imageURL)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Trade Partner Info", for: indexPath) as! PartnerTableViewCell
+            if let request = request {
+                cell.username.text = request.posterItem[0].poster.username
+            }
             return cell
-        }else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Poster Item Cell", for: indexPath) as! MyItemPostImageCell
-            let imageURL = URL(string: request.posterItem.imageURL)
-            cell.postImage.kf.setImage(with: imageURL)
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
+            if let request = request {
+                cell.itemList = request.requesterItems
+            }
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Trade For", for: indexPath)
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
+            if let request = request {
+                cell.itemList = request.posterItem
+            }
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath) as! ButtonTableViewCell
+            return cell
+            
+        default:
+            fatalError("Unrecognized index path row")
         }
     }
-}
-
-extension RequestDetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: requesterItemsCollectionView.bounds.height, height: requesterItemsCollectionView.bounds.height)
-    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 200
+        case 1:
+            return 150
+        case 2:
+            return 40
+        case 3:
+            return 150
+        case 4:
+            return 80
+        default:
+            fatalError("Unrecognized index path row")
+        }
     }
-    
 }

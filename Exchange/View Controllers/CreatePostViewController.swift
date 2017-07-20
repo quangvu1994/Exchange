@@ -29,6 +29,11 @@ class CreatePostViewController: UIViewController {
     var photoHelper = EXPhotoHelper()
     var category: String = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         actionButton.layer.cornerRadius = 3
@@ -194,6 +199,23 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if scenario == .exchange {
                 cell.accessoryType = .none
+                cell.isUserInteractionEnabled = false
+            }
+            return cell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            
+            self.postDescriptionDelegate = cell
+            if let currentPost = currentPost {
+                cell.descriptionText.text = currentPost.postDescription
+                cell.placeHolder = "Item Title"
+            }else {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Description"
+                cell.placeHolder = "Item Description"
+            }
+            if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
             return cell

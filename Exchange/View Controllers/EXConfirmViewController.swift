@@ -31,7 +31,7 @@ class EXConfirmViewController: UIViewController {
                 return
         }
         // Write the request to our database
-        let request = Request(requesterItems: selectedItems, posterItem: exchangeItem)
+        let request = Request(requesterItems: selectedItems, posterItem: [exchangeItem])
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
         RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in
