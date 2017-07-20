@@ -26,6 +26,7 @@ class MyItemViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         // fetch post
         let postRef = Database.database().reference().child("items").child(User.currentUser.uid)
         PostService.fetchPost(fromPath: postRef, completionHandler: { [weak self] (allPosts) in

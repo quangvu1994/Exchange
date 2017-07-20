@@ -25,9 +25,6 @@ class PopularCategoriesViewController: UIViewController {
     @IBAction func categorySelected(_ sender: UIButton) {
         self.performSegue(withIdentifier: "showCategoryDetail", sender: nil)
     }
-    
-    @IBAction func unwindFromMarketplace(_ sender: UIStoryboardSegue){
-    }
 }
 
 extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataSource {

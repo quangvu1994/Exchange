@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configuration()
-        hideKeyboardOnTap()
         username.text = User.currentUser.username
     }
     

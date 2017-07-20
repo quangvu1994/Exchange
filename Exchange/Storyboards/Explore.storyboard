@@ -35,11 +35,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EyP-e0-qvI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-m7-mPP">
-                                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="199.5"/>
+                                                    <rect key="frame" x="188" y="0.0" width="187" height="199"/>
                                                     <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="0.55086151541095896" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
                                                     <state key="normal" title="Category">
@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="1804" y="-182"/>
         </scene>
-        <!--Marketplace-->
+        <!--Marketplace View Controller-->
         <scene sceneID="scE-4L-uwa">
             <objects>
                 <viewController storyboardIdentifier="Marketplace" id="m7y-c2-HAe" customClass="MarketplaceViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -141,10 +141,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="H51-w8-Sri">
-                                            <rect key="frame" x="20" y="18" width="335" height="44"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrU-C0-hCf">
                                             <rect key="frame" x="0.0" y="77" width="375" height="3"/>
                                             <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -152,18 +148,25 @@
                                                 <constraint firstAttribute="height" constant="3" id="pFz-5u-hgE"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPB-Xb-bVa">
+                                            <rect key="frame" x="50" y="25" width="275" height="27"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="YPB-Xb-bVa" secondAttribute="trailing" constant="50" id="9QK-mt-bsv"/>
+                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="50" id="ERg-s4-48Q"/>
                                         <constraint firstAttribute="trailing" secondItem="ZrU-C0-hCf" secondAttribute="trailing" id="VD8-7e-mBO"/>
-                                        <constraint firstItem="H51-w8-Sri" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="20" id="XIV-ix-Zre"/>
-                                        <constraint firstItem="H51-w8-Sri" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="eI5-0k-wnE"/>
+                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="top" secondItem="YPB-Xb-bVa" secondAttribute="bottom" constant="25" id="bUY-On-OAh"/>
+                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="top" secondItem="VMf-UG-1pE" secondAttribute="top" constant="25" id="eN4-JD-4WE"/>
                                         <constraint firstAttribute="bottom" secondItem="ZrU-C0-hCf" secondAttribute="bottom" id="jUH-kg-W6J"/>
-                                        <constraint firstAttribute="trailing" secondItem="H51-w8-Sri" secondAttribute="trailing" constant="20" id="q2M-1r-yqf"/>
                                         <constraint firstItem="ZrU-C0-hCf" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" id="s8G-RV-OzL"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="searchBar" destination="H51-w8-Sri" id="QiX-O8-X0z"/>
+                                        <outlet property="categoryName" destination="YPB-Xb-bVa" id="pI0-yl-ohH"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -180,15 +183,11 @@
                             <constraint firstAttribute="bottom" secondItem="Ufh-3R-m6q" secondAttribute="bottom" id="zuz-kS-1OH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Marketplace" id="x27-vF-dan">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="x27-vF-dan">
                         <barButtonItem key="backBarButtonItem" title="Back" id="jkT-07-3hb"/>
-                        <barButtonItem key="leftBarButtonItem" image="Back Icon" id="3Fq-8L-JCb">
-                            <connections>
-                                <action selector="navigateBackToPopularView:" destination="m7y-c2-HAe" id="9wf-f5-HPb"/>
-                                <segue destination="y12-vT-fPz" kind="unwind" identifier="unwindFromMarketplace" unwindAction="unwindFromMarketplace:" id="jFZ-El-HfJ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
                         <outlet property="searchDisplayController" destination="QZA-t0-fy8" id="6uH-tB-kGt"/>
@@ -196,7 +195,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="y12-vT-fPz" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="QZA-t0-fy8">
                     <connections>
                         <outlet property="delegate" destination="m7y-c2-HAe" id="MzX-Ht-T7h"/>
@@ -223,12 +221,13 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -242,7 +241,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back Icon" width="25" height="25"/>
         <image name="Search" width="25" height="25"/>
     </resources>
 </document>

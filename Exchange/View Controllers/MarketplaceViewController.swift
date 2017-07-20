@@ -10,14 +10,22 @@ import UIKit
 import FirebaseDatabase
 import Kingfisher
 
-class MarketplaceViewController: UIViewController {
+class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     
     var post = [Post]() {
         didSet {
             collectionView.reloadData()
         }
     }
+    
+    let searchBar = UISearchBar()
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchBar.delegate = self
+        addSearchBarOnNavigationController()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,6 +49,29 @@ class MarketplaceViewController: UIViewController {
             }
         }
     }
+    
+    func addSearchBarOnNavigationController() {
+        searchBar.tintColor = UIColor(red: 210/255, green: 104/255, blue: 84/255, alpha: 1.0)
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "Search"
+        self.navigationItem.titleView = searchBar
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+    }
+    
 }
 
 extension MarketplaceViewController: UICollectionViewDataSource {
@@ -65,7 +96,6 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         }
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MarketplaceHeaderView", for: indexPath) as! MarketplaceHeaderView
-        
         return headerView
     }
 }

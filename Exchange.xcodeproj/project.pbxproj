@@ -37,7 +37,6 @@
 		5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */; };
 		5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */; };
 		5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */; };
-		5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */; };
 		5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */; };
 		5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */; };
 		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
@@ -93,7 +92,6 @@
 		5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXCollectionViewCell.swift; path = View/EXCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXConfirmViewController.swift; path = "View Controllers/EXConfirmViewController.swift"; sourceTree = "<group>"; };
 		5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableDescriptionCell.swift; path = View/EXTableDescriptionCell.swift; sourceTree = "<group>"; };
-		5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewUtilities.swift; path = "Extension /UICollectionViewUtilities.swift"; sourceTree = "<group>"; };
 		5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableButtonCell.swift; path = View/EXTableButtonCell.swift; sourceTree = "<group>"; };
 		5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableImageCell.swift; path = View/EXTableImageCell.swift; sourceTree = "<group>"; };
 		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */,
 				5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */,
 				5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */,
-				5B9D50941F15521700E4DC19 /* UICollectionViewUtilities.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -520,7 +517,6 @@
 				5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */,
-				5B9D50951F15521700E4DC19 /* UICollectionViewUtilities.swift in Sources */,
 				5BA92F0A1F12B27E006CE880 /* PostService.swift in Sources */,
 				5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */,
 				5BA92F0C1F12B5FF006CE880 /* FIRStorageUtilities.swift in Sources */,

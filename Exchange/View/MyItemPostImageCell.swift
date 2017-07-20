@@ -17,7 +17,6 @@ class MyItemPostImageCell: UICollectionViewCell {
     var index: Int?
     @IBOutlet weak var postImage: UIImageView!
     weak var delegate: DisplayItemDetailHandler?
-    
     func addTapGestureToDisplayItemDetail() {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyItemPostImageCell.callDelegateMethod))

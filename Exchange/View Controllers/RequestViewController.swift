@@ -52,9 +52,14 @@ class RequestViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "Show Request Detail" {
-                
+                let detailViewController = segue.destination as! RequestDetailViewController
+                detailViewController.request = requestList[tableView.indexPathForSelectedRow!.row]
             }
         }
+    }
+    
+    @IBAction func unwindToRequestViewController(_ sender: UIStoryboardSegue) {
+        print("unwinded")
     }
 }
 
@@ -73,6 +78,6 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 140
     }
 }

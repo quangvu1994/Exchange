@@ -52,7 +52,7 @@
                                         </constraints>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
-                                            <outlet property="postImage" destination="fMR-ed-TUE" id="N7M-ho-sj0"/>
+                                            <outlet property="postImage" destination="fMR-ed-TUE" id="U8i-CQ-qXs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -61,15 +61,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
-                                            <rect key="frame" x="147" y="10" width="81" height="22"/>
-                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                            <rect key="frame" x="143" y="25" width="90" height="24"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                             <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello and welcome to my store. Feel free to message me for anything that you want to trade" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="37" width="355" height="103"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="10" y="54" width="355" height="86"/>
+                                            <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -82,10 +82,10 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="9S4-Sd-x0t" firstAttribute="top" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="7" id="49M-Zc-hQv"/>
-                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="10" id="Ah1-WM-9ln"/>
+                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="25" id="Ah1-WM-9ln"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
                                         <constraint firstAttribute="bottom" secondItem="9S4-Sd-x0t" secondAttribute="bottom" id="S9L-YH-LbM"/>
@@ -107,7 +107,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0AS-Qr-OwC" firstAttribute="top" secondItem="jRa-K3-6wx" secondAttribute="topMargin" id="2c1-ri-yy0"/>
+                            <constraint firstItem="0AS-Qr-OwC" firstAttribute="top" secondItem="jRa-K3-6wx" secondAttribute="top" id="1wA-Of-pkA"/>
                             <constraint firstAttribute="bottomMargin" secondItem="0AS-Qr-OwC" secondAttribute="bottom" id="2yi-2f-UON"/>
                             <constraint firstAttribute="trailing" secondItem="0AS-Qr-OwC" secondAttribute="trailing" id="6Pd-JQ-Hgc"/>
                             <constraint firstItem="0AS-Qr-OwC" firstAttribute="leading" secondItem="jRa-K3-6wx" secondAttribute="leading" id="RNh-IZ-6kg"/>
@@ -134,17 +134,17 @@
         <!--My Store-->
         <scene sceneID="1SC-xA-mkV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrx-d5-1eN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lrx-d5-1eN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="peE-fE-uHw"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qdn-zO-fSj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
