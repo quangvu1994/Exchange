@@ -58,24 +58,24 @@
                                             <outlet property="postImage" destination="YSB-le-EPj" id="gMb-QH-GVS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="151" id="lO4-EL-8Yo" customClass="CreatePostDescriptionCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="375" height="151"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="97" id="lO4-EL-8Yo" customClass="CreatePostDescriptionCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lO4-EL-8Yo" id="32I-Yt-uCh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-ec-71Q">
-                                                    <rect key="frame" x="15" y="45" width="345" height="95.5"/>
+                                                    <rect key="frame" x="15" y="45" width="345" height="41.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-R8-Gx5">
                                                     <rect key="frame" x="15" y="10" width="94.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -94,7 +94,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="70" id="61j-c0-Wda" customClass="CreatePostCategoryCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="279" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="225" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61j-c0-Wda" id="Rfy-RE-DJT">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
@@ -103,7 +103,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-EX-hkm">
                                                     <rect key="frame" x="15" y="0.0" width="72" height="69.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-WP-zVJ">
@@ -126,6 +126,42 @@
                                         <connections>
                                             <outlet property="categoryName" destination="bpk-WP-zVJ" id="sVl-VJ-vTv"/>
                                             <segue destination="YgO-fe-tJW" kind="show" id="QXI-BE-sHV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Phone Cell" rowHeight="107" id="Qsq-zf-dVu" customClass="CreatePostPhoneCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="295" width="375" height="107"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qsq-zf-dVu" id="29X-o1-5br">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeU-Nd-r6t">
+                                                    <rect key="frame" x="15" y="10" width="95" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riG-tj-fBt">
+                                                    <rect key="frame" x="15" y="45.5" width="330" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="2IB-4c-WO6"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qeU-Nd-r6t" firstAttribute="leading" secondItem="29X-o1-5br" secondAttribute="leading" constant="15" id="15m-Pb-52G"/>
+                                                <constraint firstAttribute="trailing" secondItem="riG-tj-fBt" secondAttribute="trailing" constant="30" id="D13-9Y-rhs"/>
+                                                <constraint firstItem="riG-tj-fBt" firstAttribute="top" secondItem="qeU-Nd-r6t" secondAttribute="bottom" constant="15" id="og0-QQ-DH8"/>
+                                                <constraint firstItem="qeU-Nd-r6t" firstAttribute="top" secondItem="29X-o1-5br" secondAttribute="top" constant="10" id="xVW-nd-bce"/>
+                                                <constraint firstItem="riG-tj-fBt" firstAttribute="leading" secondItem="29X-o1-5br" secondAttribute="leading" constant="15" id="zD1-Ma-Opg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headerText" destination="qeU-Nd-r6t" id="f3T-v9-jZN"/>
+                                            <outlet property="phoneTextField" destination="riG-tj-fBt" id="Vrj-a9-5mu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -260,7 +296,7 @@
                     <tabBarItem key="tabBarItem" title="List Item" image="AddItem" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>

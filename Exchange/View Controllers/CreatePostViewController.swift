@@ -43,6 +43,10 @@ class CreatePostViewController: UIViewController {
         actionButton.layer.cornerRadius = 3
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
+        // Push view up when keyboard shows up
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        
         switch scenario {
         case .edit:
             actionButton.setTitle("Save Changes", for: .normal)
@@ -53,6 +57,7 @@ class CreatePostViewController: UIViewController {
         }
         
     }
+
     
     @IBAction func openPhotoHelper(_ sender: UIButton) {
         photoHelper.presentActionSheet(from: self)
@@ -239,7 +244,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.placeHolder = "Where we'll meet"
             
             if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.postDescription
+                cell.descriptionText.text = currentPost.tradeLocation
             } else {
                 if let text = postTradeLocationDelegate?.getInformation() {
                     cell.descriptionText.text = text
@@ -255,20 +260,19 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
-            cell.headerText.text = "Contact Info"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Phone Cell", for: indexPath) as! CreatePostPhoneCell
+            cell.headerText.text = "Phone Number"
             self.postContactInfoDelegate = cell
-            cell.placeHolder = "Best way to get in touch with you"
-            
+            cell.phoneTextField.placeholder = "(XXX) XXX-XXXX"
             
             if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.postDescription
+                cell.phoneTextField.text = currentPost.contactInfo
             } else {
                 if let text = postContactInfoDelegate?.getInformation() {
-                    cell.descriptionText.text = text
+                    cell.phoneTextField.text = text
                 } else {
-                    cell.descriptionText.textColor = UIColor.lightGray
-                    cell.descriptionText.text = "Best way to get in touch with you"
+                    cell.phoneTextField.textColor = UIColor.lightGray
+                    cell.phoneTextField.placeholder = "(XXX) XXX-XXXX"
                 }
             }
             
@@ -298,7 +302,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             return 150
         case 5:
-            return 150
+            return 110
         default:
             fatalError("Unable to locate the current row")
         }

@@ -20,6 +20,8 @@ class EXConfirmViewController: UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     @IBAction func sendRequest(_ sender: UIButton) {

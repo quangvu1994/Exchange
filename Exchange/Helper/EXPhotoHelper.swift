@@ -87,7 +87,7 @@ extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationController
         
         // Grab the selected image
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            guard let resizedImage = resizeImage(image: selectedImage, newWidth: 200) else {
+            guard let resizedImage = resizeImage(image: selectedImage, newWidth: 350) else {
                 self.selectedImage = selectedImage
                 return handler(selectedImage)
             }

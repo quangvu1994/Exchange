@@ -34,4 +34,12 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
 }

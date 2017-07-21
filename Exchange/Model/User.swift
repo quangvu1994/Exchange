@@ -13,6 +13,7 @@ class User {
     // MARK: - Properties
     var uid: String
     var username: String
+    var phoneNumber: String?
     
     // Singleton User
     private static var _current: User?

@@ -46,4 +46,8 @@ extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
         return categoryList.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
 }

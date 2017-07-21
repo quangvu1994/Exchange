@@ -13,6 +13,7 @@ class PartnerTableViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var address: UITextView!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var message: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -41,7 +41,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-m7-mPP">
                                                     <rect key="frame" x="188" y="0.0" width="187" height="199"/>
                                                     <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="0.55086151541095896" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                     <state key="normal" title="Category">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>

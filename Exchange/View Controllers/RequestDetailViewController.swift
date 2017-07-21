@@ -33,8 +33,11 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "Trade Partner Info", for: indexPath) as! PartnerTableViewCell
             if let request = request,
                 let segmentIndex = segmentIndex {
+                cell.address.text = request.posterItem[0].tradeLocation
+                cell.message.text = request.message
                 if segmentIndex == 0 {
                     cell.username.text = request.posterItem[0].poster.username
+                    cell.phoneNumber.text = request.posterItem[0].contactInfo
                 } else {
                     cell.username.text = request.requesterName
                 }
@@ -67,7 +70,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 200
+            return 450
         case 1:
             return 150
         case 2:
