@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreatePostCategoryCell: UITableViewCell, PostInformationRetriever {
+class CreatePostCategoryCell: UITableViewCell, PostInformationHandler {
     
     @IBOutlet weak var categoryName: UILabel!
     
@@ -18,11 +18,14 @@ class CreatePostCategoryCell: UITableViewCell, PostInformationRetriever {
     }
     
     func getInformation() -> String? {
-        /**
         if categoryName.text == "" {
             return nil
         }
-        */
+
         return categoryName.text
+    }
+    
+    func resetInformation() {
+        self.categoryName.text = ""
     }
 }

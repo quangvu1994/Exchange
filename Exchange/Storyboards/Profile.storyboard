@@ -196,8 +196,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="briefDescription" destination="paW-yo-ZdT" id="P2A-rN-58x"/>
                                             <outlet property="itemImage" destination="yqB-oN-TSs" id="IZ8-z5-AW0"/>
-                                            <outlet property="itemTitle" destination="paW-yo-ZdT" id="b6o-tS-uRF"/>
                                             <outlet property="poster" destination="4oI-OF-7AP" id="mMf-Uu-SHa"/>
                                             <outlet property="status" destination="dU0-7V-Aju" id="Stf-Gp-g3Q"/>
                                         </connections>

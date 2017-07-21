@@ -58,46 +58,56 @@
                                             <outlet property="postImage" destination="YSB-le-EPj" id="gMb-QH-GVS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="150" id="lO4-EL-8Yo" customClass="CreatePostDescriptionCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="151" id="lO4-EL-8Yo" customClass="CreatePostDescriptionCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lO4-EL-8Yo" id="32I-Yt-uCh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-ec-71Q">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="149"/>
+                                                    <rect key="frame" x="15" y="45" width="345" height="95.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-R8-Gx5">
+                                                    <rect key="frame" x="15" y="10" width="94.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="j7D-ec-71Q" secondAttribute="trailing" constant="15" id="3UX-ka-gUP"/>
-                                                <constraint firstAttribute="bottom" secondItem="j7D-ec-71Q" secondAttribute="bottom" id="R0Y-ev-95n"/>
-                                                <constraint firstItem="j7D-ec-71Q" firstAttribute="top" secondItem="32I-Yt-uCh" secondAttribute="top" id="tW8-kj-RYf"/>
-                                                <constraint firstItem="j7D-ec-71Q" firstAttribute="leading" secondItem="32I-Yt-uCh" secondAttribute="leading" constant="15" id="zDS-eD-Pfa"/>
+                                                <constraint firstAttribute="trailing" secondItem="j7D-ec-71Q" secondAttribute="trailing" constant="15" id="FxD-Yv-BJt"/>
+                                                <constraint firstAttribute="bottom" secondItem="j7D-ec-71Q" secondAttribute="bottom" constant="10" id="Rhe-p8-WDE"/>
+                                                <constraint firstItem="vo6-R8-Gx5" firstAttribute="top" secondItem="32I-Yt-uCh" secondAttribute="top" constant="10" id="SIJ-hl-T60"/>
+                                                <constraint firstItem="j7D-ec-71Q" firstAttribute="top" secondItem="vo6-R8-Gx5" secondAttribute="bottom" constant="15" id="UOn-rc-9eJ"/>
+                                                <constraint firstItem="vo6-R8-Gx5" firstAttribute="leading" secondItem="32I-Yt-uCh" secondAttribute="leading" constant="15" id="tUC-O6-Mvp"/>
+                                                <constraint firstItem="j7D-ec-71Q" firstAttribute="leading" secondItem="32I-Yt-uCh" secondAttribute="leading" constant="15" id="wkp-NE-aZ2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionText" destination="j7D-ec-71Q" id="ybe-ij-teJ"/>
+                                            <outlet property="headerText" destination="vo6-R8-Gx5" id="L0J-xA-Q5n"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="60" id="61j-c0-Wda" customClass="CreatePostCategoryCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="278" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="70" id="61j-c0-Wda" customClass="CreatePostCategoryCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="279" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61j-c0-Wda" id="Rfy-RE-DJT">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-EX-hkm">
-                                                    <rect key="frame" x="15" y="0.0" width="72" height="59"/>
+                                                    <rect key="frame" x="15" y="0.0" width="72" height="69.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-WP-zVJ">
-                                                    <rect key="frame" x="327" y="8" width="0.0" height="43.5"/>
+                                                    <rect key="frame" x="327" y="8" width="0.0" height="53.5"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                                     <color key="textColor" red="0.30792370438575745" green="0.57171386480331421" blue="0.75692379474639893" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -160,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdG-ZB-kAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712" y="143"/>
+            <point key="canvasLocation" x="1711.2" y="142.57871064467767"/>
         </scene>
         <!--Marketplace-->
         <scene sceneID="9JS-Bc-iqz">
@@ -250,7 +260,7 @@
                     <tabBarItem key="tabBarItem" title="List Item" image="AddItem" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>

@@ -10,6 +10,7 @@ import UIKit
 
 class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
     
+    @IBOutlet weak var headerText: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
     var placeHolder: String?
     
@@ -42,12 +43,17 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
     }
 }
 
-extension CreatePostDescriptionCell: PostInformationRetriever {
+extension CreatePostDescriptionCell: PostInformationHandler {
     
     func getInformation() -> String? {
-        if descriptionText.textColor == UIColor.lightGray {
+        if descriptionText.text == "" || descriptionText.textColor == UIColor.lightGray {
             return nil
         }
         return descriptionText.text
+    }
+    
+    func resetInformation() {
+        descriptionText.text = placeHolder!
+        descriptionText.textColor = UIColor.lightGray
     }
 }

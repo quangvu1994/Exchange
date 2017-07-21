@@ -57,6 +57,7 @@ class RequestViewController: UIViewController {
             if identifier == "Show Request Detail" {
                 let detailViewController = segue.destination as! RequestDetailViewController
                 detailViewController.request = requestList[tableView.indexPathForSelectedRow!.row]
+                detailViewController.segmentIndex = requestSegmentControl.selectedSegmentIndex
             }
         }
     }
@@ -73,10 +74,16 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Request Cell", for: indexPath) as! RequestTableViewCell
-        cell.itemTitle.text = requestList[indexPath.row].posterItem[0].postTitle
+        if requestSegmentControl.selectedSegmentIndex == 0 {
+            cell.poster.text = requestList[indexPath.row].posterItem[0].poster.username
+            cell.briefDescription.text = requestList[indexPath.row].posterItem[0].postTitle
+        } else {
+            cell.poster.text = requestList[indexPath.row].requesterName
+            cell.briefDescription.text = requestList[indexPath.row].message
+        }
+        
         let imageURL = URL(string: requestList[indexPath.row].posterItem[0].imageURL)
         cell.itemImage.kf.setImage(with: imageURL)
-        cell.poster.text = requestList[indexPath.row].posterItem[0].poster.username
         cell.status.text = requestList[indexPath.row].status
         return cell
     }

@@ -8,6 +8,7 @@
 import FirebaseDatabase.FIRDataSnapshot
 
 class Request {
+    var requesterName: String
     var requesterItems: [Post]
     var posterItem: [Post]
     var message: String = ""
@@ -25,6 +26,7 @@ class Request {
         }
         
         return [
+            "Requester Name": requesterName,
             "Requester Items": items1,
             "Poster Item": items2,
             "Message": message,
@@ -32,16 +34,18 @@ class Request {
         ]
     }
     
-    init(requesterItems: [Post], posterItem: [Post]) {
+    init(requesterName: String, requesterItems: [Post], posterItem: [Post]) {
         self.requesterItems = requesterItems
         self.posterItem = posterItem
+        self.requesterName = requesterName
     }
     
 
     init?(snapshot: DataSnapshot) {
         guard let basicInfoSnapshot = snapshot.value as? [String: Any],
             let message = basicInfoSnapshot["Message"] as? String,
-            let status = basicInfoSnapshot["Status"] as? String else {
+            let status = basicInfoSnapshot["Status"] as? String,
+            let requesterName = basicInfoSnapshot["Requester Name"] as? String else {
             return nil
         }
         if let posterItemSnapshot = snapshot.childSnapshot(forPath: "Poster Item").children.allObjects as? [DataSnapshot] {
@@ -76,5 +80,6 @@ class Request {
         
         self.message = message
         self.status = status
+        self.requesterName = requesterName
     }
 }

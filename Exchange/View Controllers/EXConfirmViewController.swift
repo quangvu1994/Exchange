@@ -14,7 +14,7 @@ class EXConfirmViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var selectedItems = [Post]()
     var exchangeItem: Post?
-    weak var messageDelegate: PostInformationRetriever?
+    weak var messageDelegate: PostInformationHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class EXConfirmViewController: UIViewController {
                 return
         }
         // Write the request to our database
-        let request = Request(requesterItems: selectedItems, posterItem: [exchangeItem])
+        let request = Request(requesterName: User.currentUser.username, requesterItems: selectedItems, posterItem: [exchangeItem])
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
         RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in

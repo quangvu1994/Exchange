@@ -9,8 +9,10 @@
 import UIKit
 import Kingfisher
 
-protocol PostInformationRetriever: class {
+protocol PostInformationHandler: class {
     func getInformation() -> String?
+    
+    func resetInformation()
 }
 
 class CreatePostViewController: UIViewController {
@@ -21,9 +23,11 @@ class CreatePostViewController: UIViewController {
     var currentPost: Post?
     var scenario: EXScenarios = .post
     
-    weak var postTitleDelegate: PostInformationRetriever?
-    weak var postDescriptionDelegate: PostInformationRetriever?
-    weak var postCategoryDelegate: PostInformationRetriever?
+    weak var postTitleDelegate: PostInformationHandler?
+    weak var postDescriptionDelegate: PostInformationHandler?
+    weak var postCategoryDelegate: PostInformationHandler?
+    weak var postTradeLocationDelegate: PostInformationHandler?
+    weak var postContactInfoDelegate: PostInformationHandler?
     
     
     var photoHelper = EXPhotoHelper()
@@ -67,7 +71,9 @@ class CreatePostViewController: UIViewController {
             guard let selectedImage = photoHelper.selectedImage,
                 let postTitle = postTitleDelegate?.getInformation(),
                 let postDescription = postDescriptionDelegate?.getInformation(),
-                let postCategory = postCategoryDelegate?.getInformation() else {
+                let postCategory = postCategoryDelegate?.getInformation(),
+                let tradeLocation = postTradeLocationDelegate?.getInformation(),
+                let contactInfo = postContactInfoDelegate?.getInformation() else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     // Display an alert if user fail to fill out the required info
                     self.displayWarningMessage(message: "Please fill out all information")
@@ -86,11 +92,19 @@ class CreatePostViewController: UIViewController {
                 post.postTitle = postTitle
                 post.postDescription = postDescription
                 post.postCategory = postCategory
+                post.tradeLocation = tradeLocation
+                post.contactInfo = contactInfo
                 
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (completed) in
                     if completed {
-                        // Reload the table view with the original data
-                        self?.tableView.reloadData()
+                        // Clear everything in the table view
+                        self?.photoHelper.selectedImage = nil
+                        self?.postTitleDelegate?.resetInformation()
+                        self?.postDescriptionDelegate?.resetInformation()
+                        self?.postCategoryDelegate?.resetInformation()
+                        self?.postTradeLocationDelegate?.resetInformation()
+                        self?.postContactInfoDelegate?.resetInformation()
+                        
                         self?.performSegue(withIdentifier: "showMarketplace", sender: self)
                     }else {
                         self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
@@ -126,9 +140,9 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -143,7 +157,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 let imageURL = URL(string: currentPost.imageURL)
                 cell.postImage.kf.setImage(with: imageURL)
             } else {
-                cell.postImage.image = nil
+                cell.postImage.image = photoHelper.selectedImage
             }
             
             if scenario == .exchange {
@@ -153,15 +167,20 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
-            
+
+            cell.headerText.text = "Title"
             self.postTitleDelegate = cell
+            cell.placeHolder = "Item Title"
+            
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postTitle
-                cell.placeHolder = "Item Title"
-            }else {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Item Title"
-                cell.placeHolder = "Item Title"
+            } else {
+                if let text = postTitleDelegate?.getInformation() {
+                    cell.descriptionText.text = text
+                } else {
+                    cell.descriptionText.textColor = UIColor.lightGray
+                    cell.descriptionText.text = "Item Title"
+                }
             }
             
             if scenario == .exchange {
@@ -173,14 +192,20 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             
             self.postDescriptionDelegate = cell
+            cell.headerText.text = "Description"
+            cell.placeHolder = "Item Description"
+            
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
-                cell.placeHolder = "Item Title"
-            }else {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Item Description"
-                cell.placeHolder = "Item Description"
+            } else {
+                if let text = postDescriptionDelegate?.getInformation() {
+                    cell.descriptionText.text = text
+                } else {
+                    cell.descriptionText.textColor = UIColor.lightGray
+                    cell.descriptionText.text = "Item Description"
+                }
             }
+            
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
@@ -189,12 +214,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
             self.postCategoryDelegate = cell
-            
             if let currentPost = currentPost {
                 cell.categoryName.text = currentPost.postCategory
                 self.category = currentPost.postCategory
+                
             }else {
-                cell.categoryName.text = ""
+                if let text = postCategoryDelegate?.getInformation() {
+                    cell.categoryName.text = text
+                } else {
+                    cell.categoryName.text = ""
+                }
             }
             
             if scenario == .exchange {
@@ -205,21 +234,49 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            cell.headerText.text = "Trade Location"
+            self.postTradeLocationDelegate = cell
+            cell.placeHolder = "Where we'll meet"
             
-            self.postDescriptionDelegate = cell
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
-                cell.placeHolder = "Item Title"
-            }else {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Item Description"
-                cell.placeHolder = "Item Description"
+            } else {
+                if let text = postTradeLocationDelegate?.getInformation() {
+                    cell.descriptionText.text = text
+                } else {
+                    cell.descriptionText.textColor = UIColor.lightGray
+                    cell.descriptionText.text = "Where we'll meet"
+                }
             }
+            
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
             return cell
-
+            
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            cell.headerText.text = "Contact Info"
+            self.postContactInfoDelegate = cell
+            cell.placeHolder = "Best way to get in touch with you"
+            
+            
+            if let currentPost = currentPost {
+                cell.descriptionText.text = currentPost.postDescription
+            } else {
+                if let text = postContactInfoDelegate?.getInformation() {
+                    cell.descriptionText.text = text
+                } else {
+                    cell.descriptionText.textColor = UIColor.lightGray
+                    cell.descriptionText.text = "Best way to get in touch with you"
+                }
+            }
+            
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
+            return cell
+            
         default:
             fatalError("Unable to locate the current row")
         }
@@ -233,11 +290,15 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return 200
         case 1:
-            return 40
+            return 100
         case 2:
             return 150
         case 3:
             return 60
+        case 4:
+            return 150
+        case 5:
+            return 150
         default:
             fatalError("Unable to locate the current row")
         }

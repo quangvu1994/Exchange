@@ -12,6 +12,7 @@ class RequestDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var request: Request?
+    var segmentIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,13 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Trade Partner Info", for: indexPath) as! PartnerTableViewCell
-            if let request = request {
-                cell.username.text = request.posterItem[0].poster.username
+            if let request = request,
+                let segmentIndex = segmentIndex {
+                if segmentIndex == 0 {
+                    cell.username.text = request.posterItem[0].poster.username
+                } else {
+                    cell.username.text = request.requesterName
+                }
             }
             return cell
         case 1:
