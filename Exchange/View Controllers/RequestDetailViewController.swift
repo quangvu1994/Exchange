@@ -37,9 +37,10 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
                 cell.message.text = request.message
                 if segmentIndex == 0 {
                     cell.username.text = request.posterItem[0].poster.username
-                    cell.phoneNumber.text = request.posterItem[0].contactInfo
+                    cell.phoneNumber.text = request.posterItem[0].poster.phoneNumber
                 } else {
-                    cell.username.text = request.requesterName
+                    cell.username.text = request.requester.username
+                    cell.phoneNumber.text = request.requester.phoneNumber
                 }
             }
             return cell

@@ -63,33 +63,22 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
                                             <rect key="frame" x="139" y="50" width="98.5" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello and welcome to my store. Feel free to message me for anything that you want to trade" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="79" width="355" height="111"/>
+                                            <rect key="frame" x="10" y="79" width="355" height="116"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-Sd-x0t">
-                                            <rect key="frame" x="0.0" y="197" width="375" height="3"/>
-                                            <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="3" id="CEu-Ig-zTX"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="9S4-Sd-x0t" firstAttribute="top" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="7" id="49M-Zc-hQv"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
-                                        <constraint firstAttribute="bottom" secondItem="9S4-Sd-x0t" secondAttribute="bottom" id="S9L-YH-LbM"/>
-                                        <constraint firstAttribute="trailing" secondItem="9S4-Sd-x0t" secondAttribute="trailing" id="of6-Nb-a5H"/>
-                                        <constraint firstItem="9S4-Sd-x0t" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leading" id="qJo-Yb-JOE"/>
+                                        <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="5" id="hxD-6T-uqV"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="centerX" secondItem="pzC-JM-P9z" secondAttribute="centerX" id="sR7-zQ-XUy"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="uBT-tq-PxU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g3e-9B-7L8" secondAttribute="trailing" constant="2" id="xB6-va-olx"/>
@@ -136,7 +125,9 @@
         <scene sceneID="1SC-xA-mkV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrx-d5-1eN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="peE-fE-uHw"/>
+                    <tabBarItem key="tabBarItem" title="My Store" image="Home" id="peE-fE-uHw">
+                        <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="-1"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qdn-zO-fSj">
@@ -159,6 +150,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MyStore" width="25" height="25"/>
+        <image name="Home" width="25" height="25"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TdO-hm-tx8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ayN-bP-yMh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,17 +25,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-HH-LTE">
-                                <rect key="frame" x="83.5" y="80" width="209" height="82"/>
+                                <rect key="frame" x="89" y="124" width="198" height="75.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl1-c3-ddc">
-                                        <rect key="frame" x="8" y="0.0" width="192.5" height="54"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="198" height="50.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="42"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade yours for theirs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51b-Ht-Ul1">
-                                        <rect key="frame" x="0.0" y="54" width="209" height="28"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="23"/>
+                                        <rect key="frame" x="0.5" y="50.5" width="197" height="25"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="21"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -75,12 +75,117 @@
                             <constraint firstItem="Qb5-zj-qfD" firstAttribute="top" secondItem="Exn-kk-drk" secondAttribute="top" id="xs4-tI-cWN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ac9-lQ-d8k"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fJ1-WX-dO1" id="Cje-Rz-snQ"/>
                         <outlet property="facebookLoginButton" destination="D76-5b-dWt" id="C06-CT-eP4"/>
+                        <segue destination="pQP-4T-pV2" kind="show" identifier="Show Sign Up" id="PFc-kX-Owe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkE-8x-KJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1887.2" y="-370.16491754122939"/>
+        </scene>
+        <!--Sign Up-->
+        <scene sceneID="rtD-ya-hcQ">
+            <objects>
+                <viewController id="pQP-4T-pV2" customClass="SignupViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iEY-kl-w79"/>
+                        <viewControllerLayoutGuide type="bottom" id="uYO-Y4-M8u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8av-Nx-ZYc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZRr-5y-Tg2">
+                                <rect key="frame" x="50" y="164" width="275" height="227"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your phone number so that other users can connect with you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tON-2u-hDA">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8Pd-XU-uZO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wf8-dr-QDN">
+                                        <rect key="frame" x="0.0" y="85" width="275" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHO-fg-J79">
+                                        <rect key="frame" x="0.0" y="140" width="275" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-Oc-klk">
+                                        <rect key="frame" x="0.0" y="195" width="275" height="32"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Get Started">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getStartedAction:" destination="pQP-4T-pV2" eventType="touchUpInside" id="DQb-pB-ucT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kHO-fg-J79" firstAttribute="width" secondItem="ZRr-5y-Tg2" secondAttribute="width" id="9VJ-UC-h0s"/>
+                                    <constraint firstItem="Wf8-dr-QDN" firstAttribute="width" secondItem="ZRr-5y-Tg2" secondAttribute="width" id="ASS-MD-JuQ"/>
+                                    <constraint firstItem="tON-2u-hDA" firstAttribute="width" secondItem="ZRr-5y-Tg2" secondAttribute="width" id="YVY-kF-dL2"/>
+                                    <constraint firstItem="a5k-Oc-klk" firstAttribute="width" secondItem="ZRr-5y-Tg2" secondAttribute="width" id="g9f-Ik-jb5"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZRr-5y-Tg2" secondAttribute="trailing" constant="50" id="VPB-L9-X8J"/>
+                            <constraint firstItem="ZRr-5y-Tg2" firstAttribute="top" secondItem="iEY-kl-w79" secondAttribute="bottom" constant="100" id="un1-OG-Ewy"/>
+                            <constraint firstItem="ZRr-5y-Tg2" firstAttribute="leading" secondItem="8av-Nx-ZYc" secondAttribute="leading" constant="50" id="xHJ-sN-GOk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="Pd1-mf-3Xu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="iy5-xF-QEd">
+                            <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="rmG-xy-sxq" kind="unwind" unwindAction="unwindToLoginView:" id="voa-ef-Fv0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="getStartedButton" destination="a5k-Oc-klk" id="uov-fv-oop"/>
+                        <outlet property="phoneNumber" destination="kHO-fg-J79" id="SCD-bd-jKc"/>
+                        <outlet property="username" destination="Wf8-dr-QDN" id="sJ9-zD-eDw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlm-gE-VhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rmG-xy-sxq" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2780" y="-370"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4YY-jL-nK3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayN-bP-yMh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y25-YW-Zrz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TdO-hm-tx8" kind="relationship" relationship="rootViewController" id="OLe-gY-73Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSv-4a-dq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="948" y="-370.16491754122939"/>
         </scene>

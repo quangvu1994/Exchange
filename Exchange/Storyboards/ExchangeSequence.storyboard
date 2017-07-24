@@ -25,7 +25,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="my7-u5-W08">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="umL-2J-q7b">
                                     <size key="itemSize" width="93" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -71,25 +71,15 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your items in exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omg-sf-9tW">
                                             <rect key="frame" x="50" y="12.5" width="275" height="25"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POx-mK-FJ8">
-                                            <rect key="frame" x="0.0" y="47" width="375" height="3"/>
-                                            <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="3" id="xg7-oo-IZd"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="POx-mK-FJ8" secondAttribute="bottom" id="0g0-k3-jed"/>
                                         <constraint firstItem="Omg-sf-9tW" firstAttribute="centerY" secondItem="7Zb-sJ-vpY" secondAttribute="centerY" id="6lB-77-r5t"/>
                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Omg-sf-9tW" secondAttribute="trailing" constant="50" id="EfQ-3R-HYP"/>
-                                        <constraint firstAttribute="trailing" secondItem="POx-mK-FJ8" secondAttribute="trailing" id="OQC-ye-u8W"/>
                                         <constraint firstItem="Omg-sf-9tW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="7Zb-sJ-vpY" secondAttribute="leading" constant="50" id="RMv-wy-GhT"/>
-                                        <constraint firstItem="POx-mK-FJ8" firstAttribute="leading" secondItem="7Zb-sJ-vpY" secondAttribute="leading" id="W4p-tT-BUj"/>
                                         <constraint firstItem="Omg-sf-9tW" firstAttribute="height" secondItem="7Zb-sJ-vpY" secondAttribute="height" multiplier="1:2" id="iLx-N1-Swg"/>
                                     </constraints>
                                 </collectionReusableView>
@@ -126,7 +116,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Step 1" id="Uzh-4b-SIZ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="r36-oV-uXh">
-                            <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="0Bu-Ve-7D0" kind="unwind" unwindAction="unwindFromExchangeSequence:" id="Y19-9e-cCo"/>
                             </connections>
@@ -188,13 +178,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gz-dO-POJ">
-                                                    <rect key="frame" x="25" y="15" width="250" height="24"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="25" y="15" width="250" height="23"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-kC-hg4">
-                                                    <rect key="frame" x="25" y="54" width="325" height="134.5"/>
+                                                    <rect key="frame" x="25" y="53" width="325" height="125.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
@@ -203,7 +193,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6gz-dO-POJ" secondAttribute="trailing" constant="100" id="4l7-Nq-sdZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="MVJ-kC-hg4" secondAttribute="bottom" id="6wp-to-oX9"/>
+                                                <constraint firstAttribute="bottom" secondItem="MVJ-kC-hg4" secondAttribute="bottom" constant="10" id="6wp-to-oX9"/>
                                                 <constraint firstItem="MVJ-kC-hg4" firstAttribute="leading" secondItem="s7a-3H-rM7" secondAttribute="leading" constant="25" id="FLH-nO-EUV"/>
                                                 <constraint firstAttribute="trailing" secondItem="MVJ-kC-hg4" secondAttribute="trailing" constant="25" id="bOh-zw-wCr"/>
                                                 <constraint firstItem="MVJ-kC-hg4" firstAttribute="top" secondItem="6gz-dO-POJ" secondAttribute="bottom" constant="15" id="oDR-NA-BDP"/>
@@ -265,7 +255,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Step 2" id="6yc-NQ-BgA">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="vaZ-JF-l2e">
-                            <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="HtK-Rf-rsg" kind="unwind" unwindAction="unwindFromStepTwo:" id="sth-cC-OgQ"/>
                             </connections>
@@ -286,13 +276,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzR-8X-AdX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jZ-pW-4GZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jZ-pW-4GZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

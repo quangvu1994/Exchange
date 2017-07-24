@@ -43,7 +43,7 @@ class ExchangeSequenceViewController: UIViewController {
     }
     @IBAction func addItemAction(_ sender: UIButton) {
         // Filter myPost with only selected post
-        self.performSegue(withIdentifier: "Finish Selecting Item", sender: self)
+        self.performSegue(withIdentifier: "Finish Selecting Item", sender: nil)
     }
     
     @IBAction func unwindFromStepTwo(_ sender: UIStoryboardSegue) {
@@ -94,6 +94,10 @@ extension ExchangeSequenceViewController: UICollectionViewDelegateFlowLayout {
         let cellSize = CGSize(width: cellWidth, height: cellWidth)
         
         return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3.0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

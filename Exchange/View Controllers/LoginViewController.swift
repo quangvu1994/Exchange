@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var facebookLoginButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLoginButtons()
@@ -24,6 +29,10 @@ class LoginViewController: UIViewController {
     
     func configureLoginButtons() {
         facebookLoginButton.layer.cornerRadius = 6
+    }
+    
+    @IBAction func unwindToLoginView(_ sender: UIStoryboardSegue) {
+        print("Back to login")
     }
     
     @IBAction func facebookLoginAction(_ sender: UIButton) {
@@ -35,11 +44,13 @@ class LoginViewController: UIViewController {
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
                 assertionFailure("Failed to login \(error.localizedDescription)")
+                UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
             // Grab the Faebook access token
             guard let accessToken = FBSDKAccessToken.current() else {
                 assertionFailure("Failed to retrieve Facebook access token")
+                UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
             // Use the access token to create the Firebase Facebook credential
@@ -55,11 +66,12 @@ class LoginViewController: UIViewController {
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
-                    
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
-                // Handle any case if we don't have a firebase user yet
+                // Make sure that user has logged in
                 guard let currentFIRAuthUser = currentFIRAuthUser else {
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
                 
@@ -68,25 +80,13 @@ class LoginViewController: UIViewController {
                     // If we doesn't have an user, write the current user to the database
                     if let user = userFromOurDatabase {
                         User.setCurrentUser(user)
+                        // Transfer them to the main view
+                        let initialViewController = UIStoryboard.initialViewController(type: .main)
+                        self.view.window?.rootViewController = initialViewController
+                        self.view.window?.makeKeyAndVisible()
                     } else {
-                        // Handle case if the user doesn't have a display name
-                        guard let username = currentFIRAuthUser.displayName else {
-                            return
-                        }
-                        
-                        UserService.createNewUser(currentFIRAuthUser, username: username, completion: { (user) in
-                            // Making sure that we do have our User
-                            guard let user = user else {
-                                return
-                            }
-                            User.setCurrentUser(user)
-                        })
+                        self.performSegue(withIdentifier: "Show Sign Up", sender: nil)
                     }
-                    
-                    // Transfer them to the main view
-                    let initialViewController = UIStoryboard.initialViewController(type: .main)
-                    self.view.window?.rootViewController = initialViewController
-                    self.view.window?.makeKeyAndVisible()
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                 })

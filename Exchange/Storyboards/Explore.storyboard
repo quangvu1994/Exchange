@@ -105,7 +105,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ufh-3R-m6q">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gvX-v6-YOt">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="80"/>
@@ -141,29 +141,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrU-C0-hCf">
-                                            <rect key="frame" x="0.0" y="77" width="375" height="3"/>
-                                            <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="3" id="pFz-5u-hgE"/>
-                                            </constraints>
-                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPB-Xb-bVa">
-                                            <rect key="frame" x="50" y="25" width="275" height="27"/>
+                                            <rect key="frame" x="50" y="25" width="275" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="YPB-Xb-bVa" secondAttribute="trailing" constant="50" id="9QK-mt-bsv"/>
                                         <constraint firstItem="YPB-Xb-bVa" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="50" id="ERg-s4-48Q"/>
-                                        <constraint firstAttribute="trailing" secondItem="ZrU-C0-hCf" secondAttribute="trailing" id="VD8-7e-mBO"/>
-                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="top" secondItem="YPB-Xb-bVa" secondAttribute="bottom" constant="25" id="bUY-On-OAh"/>
                                         <constraint firstItem="YPB-Xb-bVa" firstAttribute="top" secondItem="VMf-UG-1pE" secondAttribute="top" constant="25" id="eN4-JD-4WE"/>
-                                        <constraint firstAttribute="bottom" secondItem="ZrU-C0-hCf" secondAttribute="bottom" id="jUH-kg-W6J"/>
-                                        <constraint firstItem="ZrU-C0-hCf" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" id="s8G-RV-OzL"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="categoryName" destination="YPB-Xb-bVa" id="pI0-yl-ohH"/>
@@ -221,13 +210,13 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

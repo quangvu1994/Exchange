@@ -27,8 +27,6 @@ class CreatePostViewController: UIViewController {
     weak var postDescriptionDelegate: PostInformationHandler?
     weak var postCategoryDelegate: PostInformationHandler?
     weak var postTradeLocationDelegate: PostInformationHandler?
-    weak var postContactInfoDelegate: PostInformationHandler?
-    
     
     var photoHelper = EXPhotoHelper()
     var category: String = ""
@@ -70,15 +68,15 @@ class CreatePostViewController: UIViewController {
             print("Edit post")
             UIApplication.shared.endIgnoringInteractionEvents()
         case .exchange:
-            self.performSegue(withIdentifier: "Exchange Sequence", sender: self)
+            self.performSegue(withIdentifier: "Exchange Sequence", sender: nil)
             UIApplication.shared.endIgnoringInteractionEvents()
         default:
             guard let selectedImage = photoHelper.selectedImage,
                 let postTitle = postTitleDelegate?.getInformation(),
                 let postDescription = postDescriptionDelegate?.getInformation(),
                 let postCategory = postCategoryDelegate?.getInformation(),
-                let tradeLocation = postTradeLocationDelegate?.getInformation(),
-                let contactInfo = postContactInfoDelegate?.getInformation() else {
+                let tradeLocation = postTradeLocationDelegate?.getInformation()
+                else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     // Display an alert if user fail to fill out the required info
                     self.displayWarningMessage(message: "Please fill out all information")
@@ -98,7 +96,6 @@ class CreatePostViewController: UIViewController {
                 post.postDescription = postDescription
                 post.postCategory = postCategory
                 post.tradeLocation = tradeLocation
-                post.contactInfo = contactInfo
                 
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (completed) in
                     if completed {
@@ -108,9 +105,8 @@ class CreatePostViewController: UIViewController {
                         self?.postDescriptionDelegate?.resetInformation()
                         self?.postCategoryDelegate?.resetInformation()
                         self?.postTradeLocationDelegate?.resetInformation()
-                        self?.postContactInfoDelegate?.resetInformation()
-                        
-                        self?.performSegue(withIdentifier: "showMarketplace", sender: self)
+                        self?.tableView.reloadData()
+                        self?.performSegue(withIdentifier: "showMarketplace", sender: nil)
                     }else {
                         self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
                     }
@@ -145,7 +141,7 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -259,28 +255,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
             
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Phone Cell", for: indexPath) as! CreatePostPhoneCell
-            cell.headerText.text = "Phone Number"
-            self.postContactInfoDelegate = cell
-            cell.phoneTextField.placeholder = "(XXX) XXX-XXXX"
-            
-            if let currentPost = currentPost {
-                cell.phoneTextField.text = currentPost.contactInfo
-            } else {
-                if let text = postContactInfoDelegate?.getInformation() {
-                    cell.phoneTextField.text = text
-                } else {
-                    cell.phoneTextField.textColor = UIColor.lightGray
-                    cell.phoneTextField.placeholder = "(XXX) XXX-XXXX"
-                }
-            }
-            
-            if scenario == .exchange {
-                cell.isUserInteractionEnabled = false
-            }
-            return cell
-            
         default:
             fatalError("Unable to locate the current row")
         }
@@ -301,8 +275,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return 60
         case 4:
             return 150
-        case 5:
-            return 110
         default:
             fatalError("Unable to locate the current row")
         }

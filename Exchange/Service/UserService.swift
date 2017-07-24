@@ -14,9 +14,12 @@ class UserService {
     /**
      Write a new user in the database
     */
-    static func createNewUser(_ user: FIRUser, username: String, completion: @escaping (User?) -> Void){
+    static func createNewUser(_ user: FIRUser, phoneNumber: String, username: String, completion: @escaping (User?) -> Void){
         //  Store username
-        let data = ["username": username]
+        let data = [
+            "username": username,
+            "phoneNumber": phoneNumber
+        ]
         // Generate a path in our FIRDatabase
         let userPath = Database.database().reference().child("users").child(user.uid)
         userPath.setValue(data, withCompletionBlock: { (error, ref) in
@@ -24,9 +27,7 @@ class UserService {
                 assertionFailure("Error occurred when writing new user to the database \(error.localizedDescription)")
                 return
             }
-            // Read from our database and instantiate a new user for completion handler???
-            // We might just need to instantiate immediately because we have all the required info
-            // no need to read from database
+            
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let newUser = User(snapshot: snapshot)
                 completion(newUser)

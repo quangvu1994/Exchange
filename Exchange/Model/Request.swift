@@ -8,7 +8,7 @@
 import FirebaseDatabase.FIRDataSnapshot
 
 class Request {
-    var requesterName: String
+    var requester: User
     var requesterItems: [Post]
     var posterItem: [Post]
     var message: String = ""
@@ -16,6 +16,11 @@ class Request {
     var dictValue: [String: Any] {
         var items1 = [String: Any]()
         var items2 = [String: Any]()
+        let requesterData = [
+            "requester_id": requester.uid,
+            "requester_username": requester.username,
+            "requester_phone": requester.phoneNumber
+        ]
         
         for i in 0..<requesterItems.count {
             items1[requesterItems[i].key!] = requesterItems[i].dictValue
@@ -26,29 +31,32 @@ class Request {
         }
         
         return [
-            "Requester Name": requesterName,
-            "Requester Items": items1,
-            "Poster Item": items2,
-            "Message": message,
-            "Status": status
+            "requester": requesterData,
+            "requester_items": items1,
+            "poster_items": items2,
+            "message": message,
+            "status": status
         ]
     }
     
-    init(requesterName: String, requesterItems: [Post], posterItem: [Post]) {
+    init(requester: User, requesterItems: [Post], posterItem: [Post]) {
         self.requesterItems = requesterItems
         self.posterItem = posterItem
-        self.requesterName = requesterName
+        self.requester = requester
     }
     
 
     init?(snapshot: DataSnapshot) {
         guard let basicInfoSnapshot = snapshot.value as? [String: Any],
-            let message = basicInfoSnapshot["Message"] as? String,
-            let status = basicInfoSnapshot["Status"] as? String,
-            let requesterName = basicInfoSnapshot["Requester Name"] as? String else {
+            let message = basicInfoSnapshot["message"] as? String,
+            let status = basicInfoSnapshot["status"] as? String,
+            let requester = basicInfoSnapshot["requester"] as? [String: String],
+            let requesterID = requester["requester_id"],
+            let requesterName = requester["requester_username"],
+            let requesterPhone = requester["requester_phone"] else {
             return nil
         }
-        if let posterItemSnapshot = snapshot.childSnapshot(forPath: "Poster Item").children.allObjects as? [DataSnapshot] {
+        if let posterItemSnapshot = snapshot.childSnapshot(forPath: "poster_items").children.allObjects as? [DataSnapshot] {
             let posterItems: [Post] = posterItemSnapshot.reversed().flatMap {
                 guard let item = Post(snapshot: $0) else {
                     return nil
@@ -63,7 +71,7 @@ class Request {
         }
         
         // offeredItemSnapshot can be empty - user can request without any item
-        if let offeredItemSnapshot = snapshot.childSnapshot(forPath: "Requester Items").children.allObjects as? [DataSnapshot] {
+        if let offeredItemSnapshot = snapshot.childSnapshot(forPath: "requester_items").children.allObjects as? [DataSnapshot] {
             
             let offeredItems: [Post] = offeredItemSnapshot.reversed().flatMap {
                 guard let item = Post(snapshot: $0) else {
@@ -80,6 +88,6 @@ class Request {
         
         self.message = message
         self.status = status
-        self.requesterName = requesterName
+        self.requester = User(uid: requesterID, username: requesterName, phoneNumber: requesterPhone)
     }
 }

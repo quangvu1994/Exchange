@@ -33,7 +33,7 @@ class EXConfirmViewController: UIViewController {
                 return
         }
         // Write the request to our database
-        let request = Request(requesterName: User.currentUser.username, requesterItems: selectedItems, posterItem: [exchangeItem])
+        let request = Request(requester: User.currentUser, requesterItems: selectedItems, posterItem: [exchangeItem])
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
         RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in
@@ -47,7 +47,7 @@ class EXConfirmViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: "Your exchange request has been sent!", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-            self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: self)
+            self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: nil)
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -104,9 +104,9 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return exchangeItem.imageHeight
         case 1:
-            return 100
-        case 2:
             return 150
+        case 2:
+            return 200
         case 3:
             return 80
         default:

@@ -84,7 +84,7 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension MyItemViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfColumns: CGFloat = 2
+        let numberOfColumns: CGFloat = 3
         let spacingLength: CGFloat = 3
         
         let totalHorizontalSpacing = (numberOfColumns - 1) * spacingLength
@@ -94,7 +94,11 @@ extension MyItemViewController: UICollectionViewDelegateFlowLayout {
         return cellSize
     }
     
-    // Spacing between section and cell items
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3.0, left: 0, bottom: 0, right: 0)
+    }
+    
+    // Spacing between section
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 3
     }

@@ -22,6 +22,7 @@ class RequestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        fetchingRequest()
     }
     
     override func viewDidLoad() {
@@ -30,26 +31,10 @@ class RequestViewController: UIViewController {
         requestSegmentControl.layer.cornerRadius = 0
         requestSegmentControl.layer.borderColor = UIColor(red: 210/255, green: 104/255, blue: 84/255, alpha: 1.0).cgColor
         requestSegmentControl.layer.borderWidth = 1
-        // fetch outgoing request
-        RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
-            self?.requestList = outgoingRequest
-        })
     }
+    
     @IBAction func switchRequestType(_ sender: UISegmentedControl) {
-        switch requestSegmentControl.selectedSegmentIndex {
-        case 0:
-            // Fetch outgoing request
-            RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
-                self?.requestList = outgoingRequest
-            })
-        case 1:
-            // Fetch incoming request
-            RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (incomingRequest) in
-                self?.requestList = incomingRequest
-            })
-        default:
-            break
-        }
+        fetchingRequest()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +50,23 @@ class RequestViewController: UIViewController {
     @IBAction func unwindToRequestViewController(_ sender: UIStoryboardSegue) {
         print("unwinded")
     }
+    
+    func fetchingRequest() {
+        switch requestSegmentControl.selectedSegmentIndex {
+        case 0:
+            // Fetch outgoing request
+            RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
+                self?.requestList = outgoingRequest
+            })
+        case 1:
+            // Fetch incoming request
+            RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (incomingRequest) in
+                self?.requestList = incomingRequest
+            })
+        default:
+            break
+        }
+    }
 }
 
 extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
@@ -78,7 +80,7 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
             cell.poster.text = requestList[indexPath.row].posterItem[0].poster.username
             cell.briefDescription.text = requestList[indexPath.row].posterItem[0].postTitle
         } else {
-            cell.poster.text = requestList[indexPath.row].requesterName
+            cell.poster.text = requestList[indexPath.row].requester.username
             cell.briefDescription.text = requestList[indexPath.row].message
         }
         
@@ -92,7 +94,7 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
         if requestSegmentControl.selectedSegmentIndex == 2 {
             //segue to confirmation page
         } else {
-            self.performSegue(withIdentifier: "Show Request Detail", sender: self)
+            self.performSegue(withIdentifier: "Show Request Detail", sender: nil)
 
         }
     }

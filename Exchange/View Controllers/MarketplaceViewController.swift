@@ -51,7 +51,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     }
     
     func addSearchBarOnNavigationController() {
-        searchBar.tintColor = UIColor(red: 210/255, green: 104/255, blue: 84/255, alpha: 1.0)
+        searchBar.tintColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Search"
         self.navigationItem.titleView = searchBar
@@ -117,6 +117,10 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
         let itemSize = CGSize(width: itemWidth, height: itemWidth)
         
         return itemSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3.0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

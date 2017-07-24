@@ -21,6 +21,7 @@
 		5B2CD8BC1F0B2968001E0D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */; };
 		5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */; };
 		5B4D89411F10AB32009FFEE2 /* PostThumbImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */; };
+		5B502B661F23D56F00DE49B0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B502B651F23D56F00DE49B0 /* SignupViewController.swift */; };
 		5B6A615A1F157AF1009FCE55 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */; };
 		5B6A61641F16DFFE009FCE55 /* EXScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A61631F16DFFE009FCE55 /* EXScenarios.swift */; };
 		5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */; };
@@ -60,7 +61,6 @@
 		5BDA2CE21F213C5C00CEC9CE /* PartnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */; };
 		5BDA2CE41F213C9F00CEC9CE /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */; };
 		5BDA2CE61F21619100CEC9CE /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */; };
-		5BDA2CE81F2265E200CEC9CE /* CreatePostPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE71F2265E200CEC9CE /* CreatePostPhoneCell.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +79,7 @@
 		5B2CD8BB1F0B2968001E0D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularCategoriesViewController.swift; path = "View Controllers/PopularCategoriesViewController.swift"; sourceTree = "<group>"; };
 		5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostThumbImageCell.swift; path = View/PostThumbImageCell.swift; sourceTree = "<group>"; };
+		5B502B651F23D56F00DE49B0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = "View Controllers/SignupViewController.swift"; sourceTree = "<group>"; };
 		5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = "View Controllers/MainTabBarController.swift"; sourceTree = "<group>"; };
 		5B6A61631F16DFFE009FCE55 /* EXScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXScenarios.swift; path = Helper/EXScenarios.swift; sourceTree = "<group>"; };
 		5B6C55811F0C630300F4120A /* StoryboardUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardUtilities.swift; path = "Extension /StoryboardUtilities.swift"; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartnerTableViewCell.swift; path = View/PartnerTableViewCell.swift; sourceTree = "<group>"; };
 		5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionTableViewCell.swift; path = View/CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = View/ButtonTableViewCell.swift; sourceTree = "<group>"; };
-		5BDA2CE71F2265E200CEC9CE /* CreatePostPhoneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostPhoneCell.swift; path = View/CreatePostPhoneCell.swift; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
 		5BFE717B1F0B3DD5007697EB /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Storyboards/Profile.storyboard; sourceTree = "<group>"; };
 		6EE866939FA449451BC0350A /* Pods_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +246,7 @@
 			children = (
 				5B6A61591F157AF1009FCE55 /* MainTabBarController.swift */,
 				5B6C55831F0C665100F4120A /* LoginViewController.swift */,
+				5B502B651F23D56F00DE49B0 /* SignupViewController.swift */,
 				5BB302B01F1440E2003C149B /* MyItem */,
 				5BB302AF1F1440AC003C149B /* CreateNewPost */,
 				5B971F261F17F18400B1FCF6 /* Exchange Sequence */,
@@ -336,7 +337,6 @@
 				5B24A1011F1026570068BBD9 /* CreatePostCategoryCell.swift */,
 				5B24A1031F1027F10068BBD9 /* CreatePostCameraCell.swift */,
 				5B24A1091F104C290068BBD9 /* CategoryCell.swift */,
-				5BDA2CE71F2265E200CEC9CE /* CreatePostPhoneCell.swift */,
 			);
 			name = CreateNewPost;
 			sourceTree = "<group>";
@@ -567,7 +567,7 @@
 				5B24A1021F1026570068BBD9 /* CreatePostCategoryCell.swift in Sources */,
 				5B4D893F1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift in Sources */,
 				5BB302AC1F144012003C149B /* MyItemHeaderView.swift in Sources */,
-				5BDA2CE81F2265E200CEC9CE /* CreatePostPhoneCell.swift in Sources */,
+				5B502B661F23D56F00DE49B0 /* SignupViewController.swift in Sources */,
 				5B24A1081F1044A60068BBD9 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

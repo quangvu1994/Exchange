@@ -13,25 +13,29 @@ class User {
     // MARK: - Properties
     var uid: String
     var username: String
-    var phoneNumber: String?
+    var phoneNumber: String
     
     // Singleton User
     private static var _current: User?
     
-    init(uid: String, username: String){
+    init(uid: String, username: String, phoneNumber: String){
         self.uid = uid
         self.username = username
+        self.phoneNumber = phoneNumber
     }
     
     init?(snapshot: DataSnapshot){
         guard let snapshotValue = snapshot.value as? [String: Any],
             let username = snapshotValue["username"] as? String,
-                !username.isEmpty else {
+            let phoneNumber = snapshotValue["phoneNumber"] as? String,
+                !username.isEmpty,
+                !phoneNumber.isEmpty else {
             return nil
         }
         
         self.uid = snapshot.key
         self.username = username
+        self.phoneNumber = phoneNumber
     }
         
     static func setCurrentUser(_ user: User){

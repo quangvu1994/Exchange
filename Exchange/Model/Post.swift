@@ -19,14 +19,14 @@ class Post {
     var postDescription: String
     var postCategory: String
     var tradeLocation: String
-    var contactInfo: String
     let poster: User
     var selected: Bool = false
     
     var dictValue: [String : Any] {
         let createdAgo = creationDate.timeIntervalSince1970
         let userDict = ["uid" : poster.uid,
-                        "username" : poster.username]
+                        "username" : poster.username,
+                        "phoneNumber": poster.phoneNumber]
         
         return ["image_url" : imageURL,
                 "image_height" : imageHeight,
@@ -34,7 +34,6 @@ class Post {
                 "post_description": postDescription,
                 "post_category": postCategory,
                 "trade_location": tradeLocation,
-                "contact_info": contactInfo,
                 "created_at" : createdAgo,
                 "poster" : userDict]
     }
@@ -48,7 +47,6 @@ class Post {
         self.postTitle = ""
         self.postCategory = "Others"
         self.tradeLocation = ""
-        self.contactInfo = ""
     }
     
     init?(snapshot: DataSnapshot) {
@@ -59,11 +57,11 @@ class Post {
             let postDescription = postData["post_description"] as? String,
             let postCategory = postData["post_category"] as? String,
             let tradeLocation = postData["trade_location"] as? String,
-            let contactInfo = postData["contact_info"] as? String,
             let poster = postData["poster"] as? [String: Any],
             let creationDate = postData["created_at"] as? TimeInterval,
             let uid = poster["uid"] as? String,
-            let username = poster["username"] as? String
+            let username = poster["username"] as? String,
+            let phoneNumber = poster["phoneNumber"] as? String
             else {return nil}
         
         self.key = snapshot.key
@@ -72,10 +70,9 @@ class Post {
         self.postTitle = postTitle
         self.postDescription = postDescription
         self.tradeLocation = tradeLocation
-        self.contactInfo = contactInfo
         self.postCategory = postCategory
         self.creationDate = Date(timeIntervalSince1970: creationDate)
-        self.poster = User(uid: uid, username: username)
+        self.poster = User(uid: uid, username: username, phoneNumber: phoneNumber)
     }
     
 }
