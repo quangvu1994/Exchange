@@ -30,8 +30,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // fetch all post
-        let allPostReference = Database.database().reference().child("allItems").child("allCategories")
-        PostService.fetchPost(fromPath: allPostReference, completionHandler: { [weak self] (allPosts) in
+        PostService.fetchPost(completionHandler: { [weak self] (allPosts) in
             self?.post = allPosts
         })
     }

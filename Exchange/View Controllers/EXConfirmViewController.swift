@@ -13,7 +13,7 @@ class EXConfirmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var selectedItems = [Post]()
-    var exchangeItem: Post?
+    var exchangeItems = [Post]()
     weak var messageDelegate: PostInformationHandler?
     
     override func viewDidLoad() {
@@ -26,14 +26,16 @@ class EXConfirmViewController: UIViewController {
     
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
-        guard let exchangeItem = exchangeItem,
-            let messageDelegate = messageDelegate else {
+        guard let messageDelegate = messageDelegate else {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 self.displayWarningMessage(message: "Unable to send request, please try again")
                 return
         }
+        let requesterItemsRefList: [String] = selectedItems.flatMap { $0.key }
+        let posterItemsRefList: [String] = exchangeItems.flatMap { $0.key }
+
         // Write the request to our database
-        let request = Request(requester: User.currentUser, requesterItems: selectedItems, posterItem: [exchangeItem])
+        let request = Request(requester: User.currentUser, requesterItemsRefList: requesterItemsRefList, posterItemsRefList: posterItemsRefList)
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
         RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in

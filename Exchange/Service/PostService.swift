@@ -37,21 +37,28 @@ class PostService {
     
     static func writePostToFIRDatabase(for post: Post, completion: @escaping (Bool) -> Void) {
         let currentUID = User.currentUser.uid
-        let postRef = Database.database().reference().child("items").child(currentUID).childByAutoId()
-        postRef.updateChildValues(post.dictValue)
-        // Also write to all post parent node
-        let allPostRef = Database.database().reference().child("allItems").child("allCategories").childByAutoId()
-        allPostRef.updateChildValues(post.dictValue)
-        completion(true)
-
+        let allPostRef = Database.database().reference().child("allItems").childByAutoId()
+        allPostRef.updateChildValues(post.dictValue, withCompletionBlock: { (error, snapshot) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completion(false)
+            }
+            
+            let data = ["\(snapshot.key)": true]
+            let postRef = Database.database().reference().child("items").child(currentUID)
+            postRef.updateChildValues(data)
+            completion(true)
+        })
     }
     
     /**
-     Fetch all items from the provided database reference path
+     Fetch all items from the "all items" object
     */
-    static func fetchPost(fromPath reference: DatabaseReference, completionHandler: @escaping ([Post]) -> Void) {
+    static func fetchPost(completionHandler: @escaping ([Post]) -> Void) {
         
-        reference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let ref = Database.database().reference().child("allItems")
+
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return completionHandler([])
             }
@@ -63,6 +70,39 @@ class PostService {
                 return post
             }
             completionHandler(allPost)
+        })
+    }
+    
+    /**
+     Fetch all post for a specific user
+    */
+    static func fetchPost(for userid: String, completionHandler: @escaping ([Post]) -> Void) {
+        let ref = Database.database().reference().child("items").child(userid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.value as? [String: Bool] else {
+                return completionHandler([])
+            }
+            
+            let allPostRef = snapshot.reversed().flatMap {
+                return $0.key
+            }
+            
+            let dispatchGroup = DispatchGroup()
+            var postList = [Post]()
+            
+            for postRef in allPostRef {
+                dispatchGroup.enter()
+                Database.database().reference().child("allItems/\(postRef)").observeSingleEvent(of: .value, with: { snapshot in
+                    guard let post = Post(snapshot: snapshot) else {
+                        return
+                    }
+                    postList.append(post)
+                    dispatchGroup.leave()
+                })
+            }
+            dispatchGroup.notify(queue: .main, execute: {
+                completionHandler(postList)
+            })
         })
     }
 }

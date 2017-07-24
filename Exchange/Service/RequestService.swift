@@ -22,16 +22,18 @@ class RequestService {
                 return completionHandler(false)
             }
             
-            guard let postKey = request.posterItem[0].key else {
-                return completionHandler(false)
-            }
-            
             let userID = User.currentUser.uid
             let posterID = request.posterItem[0].poster.uid
-            let data = [
-                "users/\(userID)/Outgoing Request/\(snapshot.key)": postKey,
-                "users/\(posterID)/Incoming Request/\(snapshot.key)": postKey
+            var data: [String: Any] = [
+                "users/\(userID)/Outgoing Request/\(snapshot.key)": true,
+                "users/\(posterID)/Incoming Request/\(snapshot.key)": true
             ]
+
+            for postRef in request.posterItemsRefList {
+                data["allItems/\(postRef)/requested_by"] = [userID: true]
+            }
+
+            
             Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
                 if let error = error {
                     assertionFailure(error.localizedDescription)
@@ -49,7 +51,7 @@ class RequestService {
     static func retrieveIncomingRequest(completionHandler: @escaping ([Request]) -> Void) {
         let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request")
         outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.value as? [String: String] else {
+            guard let snapshot = snapshot.value as? [String: Bool] else {
                 return completionHandler([])
             }
             let requestRefList: [String] = snapshot.reversed().flatMap {

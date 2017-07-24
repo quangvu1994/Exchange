@@ -19,6 +19,8 @@ class Post {
     var postDescription: String
     var postCategory: String
     var tradeLocation: String
+    var availability: Bool = true
+    var requestedBy = [String: Bool]()
     let poster: User
     var selected: Bool = false
     
@@ -34,8 +36,11 @@ class Post {
                 "post_description": postDescription,
                 "post_category": postCategory,
                 "trade_location": tradeLocation,
+                "availability": availability,
                 "created_at" : createdAgo,
-                "poster" : userDict]
+                "poster" : userDict,
+                "requested_by": requestedBy
+        ]
     }
     
     init(imageURL: String, imageHeight: CGFloat){
@@ -57,6 +62,7 @@ class Post {
             let postDescription = postData["post_description"] as? String,
             let postCategory = postData["post_category"] as? String,
             let tradeLocation = postData["trade_location"] as? String,
+            let availability = postData["availability"] as? Bool,
             let poster = postData["poster"] as? [String: Any],
             let creationDate = postData["created_at"] as? TimeInterval,
             let uid = poster["uid"] as? String,
@@ -71,6 +77,7 @@ class Post {
         self.postDescription = postDescription
         self.tradeLocation = tradeLocation
         self.postCategory = postCategory
+        self.availability = availability
         self.creationDate = Date(timeIntervalSince1970: creationDate)
         self.poster = User(uid: uid, username: username, phoneNumber: phoneNumber)
     }
