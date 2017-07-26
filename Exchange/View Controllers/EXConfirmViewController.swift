@@ -12,8 +12,8 @@ import FirebaseDatabase
 class EXConfirmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var selectedItems = [Post]()
-    var exchangeItems = [Post]()
+    var requesterItems = [Post]()
+    var posterItems = [Post]()
     weak var messageDelegate: PostInformationHandler?
     
     override func viewDidLoad() {
@@ -31,14 +31,14 @@ class EXConfirmViewController: UIViewController {
                 self.displayWarningMessage(message: "Unable to send request, please try again")
                 return
         }
-        let requesterItemsRefList: [String] = selectedItems.flatMap { $0.key }
-        let posterItemsRefList: [String] = exchangeItems.flatMap { $0.key }
 
         // Write the request to our database
-        let request = Request(requester: User.currentUser, requesterItemsRefList: requesterItemsRefList, posterItemsRefList: posterItemsRefList)
+        let request = Request(requesterItems: requesterItems, posterItems: posterItems)
         // Safe to force unwrap
         request.message = messageDelegate.getInformation()!
-        RequestService.writeNewRequest(for: request, completionHandler: { [weak self](success) in
+        
+        // NOTE: need dispatch group here
+        RequestService.writeNewRequest(for: User.currentUser.uid, and: posterItems[0].poster.uid, with: request, completionHandler: { [weak self] (success) in
             if !success {
                 self?.displayWarningMessage(message: "Unable to send request, please try again")
                 return
@@ -67,17 +67,15 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableImageCell
-            if let exchangeItem = exchangeItem {
-                let imageURL = URL(string: exchangeItem.imageURL)
-                cell.requestItemImage.kf.setImage(with: imageURL)
-            }
+            let imageURL = URL(string: posterItems[0].imageURL)
+            cell.requestItemImage.kf.setImage(with: imageURL)
             
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
             cell.titleText.text = "Exchange with"
-            cell.descriptionText.text = selectedItems.map { $0.postTitle }.joined(separator: ", ")
+            cell.descriptionText.text = requesterItems.map { $0.postTitle }.joined(separator: ", ")
             cell.descriptionText.isEditable = false
             return cell
             
@@ -101,10 +99,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            guard let exchangeItem = exchangeItem else {
-                return 200
-            }
-            return exchangeItem.imageHeight
+            return posterItems[0].imageHeight
         case 1:
             return 150
         case 2:

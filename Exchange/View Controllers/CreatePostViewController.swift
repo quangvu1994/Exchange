@@ -47,13 +47,28 @@ class CreatePostViewController: UIViewController {
         
         switch scenario {
         case .edit:
-            actionButton.setTitle("Save Changes", for: .normal)
+            if let currItem = currentPost {
+                if !currItem.requestedBy.isEmpty {
+                    actionButton.alpha = 0.5
+                    actionButton.setTitle("In Exchange", for: .normal)
+                } else {
+                    actionButton.setTitle("Save Changes", for: .normal)
+                }
+            }
+            
         case .exchange:
-            actionButton.setTitle("Exchange Item", for: .normal)
+            // If the user has already requested this item, change the text
+            if let currItem = currentPost,
+                let _ = currItem.requestedBy["\(User.currentUser.uid)"] {
+                actionButton.alpha = 0.5
+                actionButton.setTitle("In Exchange", for: .normal)
+            } else {
+                actionButton.setTitle("Exchange Item", for: .normal)
+            }
+
         default:
             actionButton.setTitle("Post Item", for: .normal)
         }
-        
     }
 
     
@@ -65,11 +80,27 @@ class CreatePostViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         switch scenario {
         case .edit:
-            print("Edit post")
+            if actionButton.titleLabel?.text == "In Exchange" {
+                let alertController = UIAlertController(title: nil, message: "All exchange requests contain this item need to be finalized before you can edit this item", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+
+            } else {
+                print("Edit")
+            }
             UIApplication.shared.endIgnoringInteractionEvents()
         case .exchange:
-            self.performSegue(withIdentifier: "Exchange Sequence", sender: nil)
+            if actionButton.titleLabel?.text == "In Exchange" {
+                let alertController = UIAlertController(title: nil, message: "You have already sent a request for this item. You can review your request under 'Outgoing Request' tab in your profile", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                self.performSegue(withIdentifier: "Exchange Sequence", sender: nil)
+            }
             UIApplication.shared.endIgnoringInteractionEvents()
+            
         default:
             guard let selectedImage = photoHelper.selectedImage,
                 let postTitle = postTitleDelegate?.getInformation(),
@@ -106,7 +137,7 @@ class CreatePostViewController: UIViewController {
                         self?.postCategoryDelegate?.resetInformation()
                         self?.postTradeLocationDelegate?.resetInformation()
                         self?.tableView.reloadData()
-                        self?.performSegue(withIdentifier: "showMarketplace", sender: nil)
+                        self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
                     }else {
                         self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
                     }
@@ -121,7 +152,15 @@ class CreatePostViewController: UIViewController {
             if identifier == "Exchange Sequence" {
                 let navControllerDestination = segue.destination as! UINavigationController
                 let viewControllerDestination = navControllerDestination.viewControllers.first as! ExchangeSequenceViewController
-                viewControllerDestination.exchangeItem = currentPost
+                viewControllerDestination.posterItems.append(currentPost!)
+                
+            } else {
+                let marketplaceView = segue.destination as! MarketplaceViewController
+                guard let category = sender as? String else {
+                    marketplaceView.category = "others"
+                    return
+                }
+                marketplaceView.category = category
             }
         }
     }
@@ -134,8 +173,14 @@ class CreatePostViewController: UIViewController {
     }
     
     @IBAction func unwindFromExchangeSequence(_ sender: UIStoryboardSegue) {
-        print("Unwinded")
+        if let identifier = sender.identifier {
+            if identifier == "Finish Exchange Sequence" {
+                actionButton.alpha = 0.5
+                actionButton.setTitle("In Exchange", for: .normal)
+            }
+        }
     }
+    
 }
 
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {

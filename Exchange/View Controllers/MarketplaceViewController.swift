@@ -17,7 +17,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
             collectionView.reloadData()
         }
     }
-    
+    var category: String?
     let searchBar = UISearchBar()
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -31,7 +31,15 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
         super.viewWillAppear(animated)
         // fetch all post
         PostService.fetchPost(completionHandler: { [weak self] (allPosts) in
-            self?.post = allPosts
+            guard let category = self?.category else {
+                self?.post = allPosts
+                return
+            }
+            
+            // Filter by category and availability
+            self?.post = allPosts.filter {
+                $0.postCategory.lowercased() == category.lowercased() && $0.availability
+            }
         })
     }
     
@@ -95,6 +103,9 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         }
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MarketplaceHeaderView", for: indexPath) as! MarketplaceHeaderView
+        if let categoryName = category {
+            headerView.categoryName.text = categoryName
+        }
         return headerView
     }
 }

@@ -1,18 +1,18 @@
 //
-//  ExchangeSequenceViewController.swift
+//  SelectingMyItemsViewController.swift
 //  Exchange
 //
-//  Created by Quang Vu on 7/13/17.
+//  Created by Quang Vu on 7/25/17.
 //  Copyright © 2017 Quang Vu. All rights reserved.
 //
 
 import UIKit
 import FirebaseDatabase
 
-class ExchangeSequenceViewController: UIViewController {
+class SelectingMyItemsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     var currItems = [Post]() {
         didSet {
             collectionView.reloadData()
@@ -24,9 +24,9 @@ class ExchangeSequenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // fetch post
-        PostService.fetchPost(for: posterItems[0].poster.uid, completionHandler: { [weak self] post in
+        PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] post in
             self?.currItems = post.filter {
-                $0.requestedBy["\(User.currentUser.uid)"] != true && $0.availability == true
+                $0.availability == true
             }
         })
         collectionView.delegate = self
@@ -34,24 +34,25 @@ class ExchangeSequenceViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifer = segue.identifier {
-            if identifer == "Finish Selecting Their Items" {
+            if identifer == "Finish Selecting My Items" {
                 let selectedItems = currItems.filter { $0.selected == true }
-                let stepTwoViewController = segue.destination as! SelectingMyItemsViewController
-                stepTwoViewController.posterItems = posterItems + selectedItems
+                let stepThreeViewController = segue.destination as! EXConfirmViewController
+                stepThreeViewController.posterItems = posterItems
+                stepThreeViewController.requesterItems = selectedItems
             }
         }
     }
     @IBAction func addItemAction(_ sender: UIButton) {
         // Filter myPost with only selected post
-        self.performSegue(withIdentifier: "Finish Selecting Their Items", sender: nil)
+        self.performSegue(withIdentifier: "Finish Selecting My Items", sender: nil)
     }
     
-    @IBAction func unwindFromStepTwo(_ sender: UIStoryboardSegue) {
+    @IBAction func unwindFromStepThree(_ sender: UIStoryboardSegue) {
         print("Back")
     }
 }
 
-extension ExchangeSequenceViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension SelectingMyItemsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currItems.count
@@ -72,13 +73,13 @@ extension ExchangeSequenceViewController: UICollectionViewDataSource, UICollecti
             fatalError("Undefined collection view kind")
         }
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "EX Header", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Step 2 Header", for: indexPath)
         
         return header
     }
 }
 
-extension ExchangeSequenceViewController: UICollectionViewDelegateFlowLayout {
+extension SelectingMyItemsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfRows: CGFloat = 3
         let spacingWidth: CGFloat = 3
@@ -103,7 +104,7 @@ extension ExchangeSequenceViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ExchangeSequenceViewController: ImageSelectHandler {
+extension SelectingMyItemsViewController: ImageSelectHandler {
     func storeSelectedImages(for selectedCell: EXCollectionViewCell) {
         guard let index = selectedCell.index else {
             print("This cell doesn't have an assigned index")

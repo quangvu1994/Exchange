@@ -35,7 +35,11 @@ extension UIViewController {
     }
     
     func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -150 // Move view 150 points upward
+        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y -= keyboardSize.height
+        } else {
+            self.view.frame.origin.y = -150 // Move view 150 points upward
+        }
     }
     
     func keyboardWillHide(sender: NSNotification) {

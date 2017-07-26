@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
 
-    var itemList = [Post]() {
+    var itemList = [String: Any]() {
         didSet {
             collectionView.reloadData()
         }
@@ -32,8 +32,13 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item Cell", for: indexPath) as! MyItemPostImageCell
-        let imageURL = URL(string: itemList[indexPath.row].imageURL)
-        cell.postImage.kf.setImage(with: imageURL)
+        let key = Array(itemList.keys)[indexPath.row]
+        
+        if let itemDataDict = itemList[key] as? [String : Any],
+            let url = itemDataDict["image_url"] as? String {
+                let imageURL = URL(string: url)
+                cell.postImage.kf.setImage(with: imageURL)
+        }
         return cell
     }
 }

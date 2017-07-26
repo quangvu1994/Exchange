@@ -13,7 +13,7 @@ class RequestService {
     /**
      Write a new request to our database
     */
-    static func writeNewRequest(for request: Request, completionHandler: @escaping (Bool) -> Void) {
+    static func writeNewRequest(for requesterID: String, and posterID: String, with request: Request, completionHandler: @escaping (Bool) -> Void) {
         let allRequestRef = Database.database().reference().child("Requests").childByAutoId()
         // Update child value -> don't want to wipe every others info
         allRequestRef.setValue(request.dictValue, withCompletionBlock: { (error, snapshot) in
@@ -22,15 +22,17 @@ class RequestService {
                 return completionHandler(false)
             }
             
-            let userID = User.currentUser.uid
-            let posterID = request.posterItem[0].poster.uid
             var data: [String: Any] = [
-                "users/\(userID)/Outgoing Request/\(snapshot.key)": true,
+                "users/\(requesterID)/Outgoing Request/\(snapshot.key)": true,
                 "users/\(posterID)/Incoming Request/\(snapshot.key)": true
             ]
 
-            for postRef in request.posterItemsRefList {
-                data["allItems/\(postRef)/requested_by"] = [userID: true]
+            for postRef in request.posterItemsData.keys {
+                data["allItems/\(postRef)/requested_by"] = [requesterID: true]
+            }
+            
+            for reqRef in request.requesterItemsData.keys {
+                data["allItems/\(reqRef)/requested_by"] = [requesterID: true]
             }
 
             
@@ -54,6 +56,7 @@ class RequestService {
             guard let snapshot = snapshot.value as? [String: Bool] else {
                 return completionHandler([])
             }
+            // Obtains all request references
             let requestRefList: [String] = snapshot.reversed().flatMap {
                 return $0.key
             }
@@ -84,7 +87,7 @@ class RequestService {
     static func retrieveOutgoingRequest(completionHandler: @escaping ([Request]) -> Void) {
         let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request")
         outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.value as? [String: String] else {
+            guard let snapshot = snapshot.value as? [String: Bool] else {
                 return completionHandler([])
             }
             let requestRefList: [String] = snapshot.reversed().flatMap {

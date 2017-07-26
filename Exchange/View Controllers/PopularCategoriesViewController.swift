@@ -11,6 +11,12 @@ import UIKit
 class PopularCategoriesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var categoryList = [
+        ("Room Essential", "RoomEssential.png"),
+        ("Clothes", "Clothes.png"),
+        ("Electronic", "Electronic.png"),
+        ("Books", "Book.png")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +28,17 @@ class PopularCategoriesViewController: UIViewController {
         self.tableView.separatorStyle = .none
     }
     
-    @IBAction func categorySelected(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "showCategoryDetail", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let categoryIndex = sender as? Int else {
+            fatalError("Unrecognized index")
+        }
+        
+        if let identifier = segue.identifier {
+            if identifier == "showCategoryDetail" {
+                let destinationView = segue.destination as! MarketplaceViewController
+                destinationView.category = categoryList[categoryIndex].0
+            }
+        }
     }
 }
 
@@ -31,30 +46,12 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoryCell", for: indexPath) as! ExploreCategoryCell
-        switch indexPath.row {
-        case 0:
-            let backgroundImage = UIImage(named: "RoomEssential.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("ROOM ESSENTIAL", for: .normal)
-            
-        case 1:
-            let backgroundImage = UIImage(named: "Clothes.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("CLOTHES", for: .normal)
-            
-        case 2:
-            let backgroundImage = UIImage(named: "Electronic.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("ELECTRONIC", for: .normal)
-            
-        case 3:
-            let backgroundImage = UIImage(named: "Book.png")
-            cell.categoryBackgroundView.image = backgroundImage!
-            cell.categoryButton.setTitle("BOOKS", for: .normal)
-            
-        default:
-            fatalError("Unable to locate the current row")
-        }
+        let backgroundImage = UIImage(named: categoryList[indexPath.row].1)
+        cell.categoryBackgroundView.image = backgroundImage!
+        cell.categoryName.text = categoryList[indexPath.row].0
+        cell.index = indexPath.row
+        cell.delegate = self
+        cell.addOpenCategoryGesture()
         return cell
     }
     
@@ -66,4 +63,12 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+}
+
+extension PopularCategoriesViewController: DisplayItemDetailHandler {
+    
+    func display(index: Int) {
+        self.performSegue(withIdentifier: "showCategoryDetail", sender: index)
+    }
+    
 }

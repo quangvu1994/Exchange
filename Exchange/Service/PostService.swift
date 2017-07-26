@@ -74,6 +74,17 @@ class PostService {
     }
     
     /**
+     Fetch a specific post
+    */
+    static func fetchSpecificPost(for postID: String, completionHandler: @escaping (Post?) -> Void) {
+        let ref = Database.database().reference().child("allItems/\(postID)")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let post = Post(snapshot: snapshot)
+            completionHandler(post)
+        })
+    }
+    
+    /**
      Fetch all post for a specific user
     */
     static func fetchPost(for userid: String, completionHandler: @escaping ([Post]) -> Void) {

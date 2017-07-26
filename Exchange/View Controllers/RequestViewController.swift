@@ -55,12 +55,12 @@ class RequestViewController: UIViewController {
         switch requestSegmentControl.selectedSegmentIndex {
         case 0:
             // Fetch outgoing request
-            RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (outgoingRequest) in
+            RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (outgoingRequest) in
                 self?.requestList = outgoingRequest
             })
         case 1:
             // Fetch incoming request
-            RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (incomingRequest) in
+            RequestService.retrieveIncomingRequest(completionHandler: { [weak self] (incomingRequest) in
                 self?.requestList = incomingRequest
             })
         default:
@@ -77,14 +77,13 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Request Cell", for: indexPath) as! RequestTableViewCell
         if requestSegmentControl.selectedSegmentIndex == 0 {
-            cell.poster.text = requestList[indexPath.row].posterItem[0].poster.username
-            cell.briefDescription.text = requestList[indexPath.row].posterItem[0].postTitle
+            cell.poster.text = requestList[indexPath.row].posterName
+            cell.briefDescription.text = requestList[indexPath.row].firstPostTitle
         } else {
-            cell.poster.text = requestList[indexPath.row].requester.username
+            cell.poster.text = requestList[indexPath.row].requesterName
             cell.briefDescription.text = requestList[indexPath.row].message
         }
-        
-        let imageURL = URL(string: requestList[indexPath.row].posterItem[0].imageURL)
+        let imageURL = URL(string: requestList[indexPath.row].firstPostImageURL)
         cell.itemImage.kf.setImage(with: imageURL)
         cell.status.text = requestList[indexPath.row].status
         return cell

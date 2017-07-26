@@ -70,6 +70,11 @@ class Post {
             let phoneNumber = poster["phoneNumber"] as? String
             else {return nil}
         
+        // Requested by can be empty
+        if let requestedBy = postData["requested_by"] as? [String: Bool] {
+            self.requestedBy = requestedBy
+        }
+        
         self.key = snapshot.key
         self.imageURL = imageURL
         self.imageHeight = imageHeight
