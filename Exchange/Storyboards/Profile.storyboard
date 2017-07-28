@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="1959.2" y="554.57271364317842"/>
         </scene>
-        <!--Your Request-->
+        <!--Title-->
         <scene sceneID="M3F-EV-gb3">
             <objects>
                 <viewController id="VHj-u0-Q7m" customClass="RequestViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -129,8 +129,8 @@
                                     <constraint firstAttribute="height" constant="40" id="3i6-qR-gCk"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Outgoing"/>
-                                    <segment title="Incoming"/>
+                                    <segment title="In Progress"/>
+                                    <segment title="Completed"/>
                                 </segments>
                                 <color key="tintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
@@ -141,7 +141,7 @@
                                 <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Request Cell" rowHeight="136" id="ynE-ce-GNq" customClass="RequestTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Request Cell" rowHeight="136" id="ynE-ce-GNq" customClass="RequestTableViewCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ynE-ce-GNq" id="vmw-Ed-22x">
@@ -177,10 +177,10 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dU0-7V-Aju">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZS-ax-q9c">
                                                             <rect key="frame" x="0.0" y="70.5" width="45.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -199,13 +199,13 @@
                                             <outlet property="briefDescription" destination="paW-yo-ZdT" id="P2A-rN-58x"/>
                                             <outlet property="itemImage" destination="yqB-oN-TSs" id="IZ8-z5-AW0"/>
                                             <outlet property="poster" destination="4oI-OF-7AP" id="mMf-Uu-SHa"/>
-                                            <outlet property="status" destination="dU0-7V-Aju" id="Stf-Gp-g3Q"/>
+                                            <outlet property="status" destination="GZS-ax-q9c" id="1tg-Gc-VVb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="VHj-u0-Q7m" id="zts-7a-Oxj"/>
-                                    <outlet property="delegate" destination="VHj-u0-Q7m" id="GxB-J5-nte"/>
+                                    <outlet property="dataSource" destination="VHj-u0-Q7m" id="a4D-eK-Y3G"/>
+                                    <outlet property="delegate" destination="VHj-u0-Q7m" id="UKn-Hd-p8f"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -220,7 +220,7 @@
                             <constraint firstAttribute="trailing" secondItem="CrX-9j-J8V" secondAttribute="trailing" id="qyU-TD-DAc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Request" id="t8j-no-gdE">
+                    <navigationItem key="navigationItem" title="Title" id="t8j-no-gdE">
                         <barButtonItem key="leftBarButtonItem" image="Back Icon" id="2nA-Fi-pQj">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -378,10 +378,18 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pah-Qc-omk">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                     </imageView>
+                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-4U-q9n">
+                                                                        <rect key="frame" x="23.5" y="30" width="33.5" height="20"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="16"/>
+                                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
+                                                                <constraint firstItem="DYG-4U-q9n" firstAttribute="centerY" secondItem="lqL-Z4-tXZ" secondAttribute="centerY" id="GrZ-fb-NQB"/>
                                                                 <constraint firstAttribute="trailing" secondItem="pah-Qc-omk" secondAttribute="trailing" id="XCK-mx-hRE"/>
+                                                                <constraint firstItem="DYG-4U-q9n" firstAttribute="centerX" secondItem="lqL-Z4-tXZ" secondAttribute="centerX" id="edT-Kf-bvr"/>
                                                                 <constraint firstItem="pah-Qc-omk" firstAttribute="leading" secondItem="lqL-Z4-tXZ" secondAttribute="leading" id="hit-pH-srD"/>
                                                                 <constraint firstAttribute="bottom" secondItem="pah-Qc-omk" secondAttribute="bottom" id="tdK-b8-GLo"/>
                                                                 <constraint firstItem="pah-Qc-omk" firstAttribute="top" secondItem="lqL-Z4-tXZ" secondAttribute="top" id="tfW-Lw-EjH"/>
@@ -389,6 +397,7 @@
                                                             <size key="customSize" width="80" height="80"/>
                                                             <connections>
                                                                 <outlet property="postImage" destination="pah-Qc-omk" id="lbS-7n-8Sh"/>
+                                                                <outlet property="soldLabel" destination="DYG-4U-q9n" id="Oxh-0h-9ad"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -532,7 +541,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="N1T-jZ-uBz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VcJ-W2-1Bb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VcJ-W2-1Bb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -549,24 +558,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJU-u5-QGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1020" y="554.57271364317842"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="pbo-dX-Skh">
-            <objects>
-                <viewController id="TFx-z4-iEA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uxp-Ei-kE5"/>
-                        <viewControllerLayoutGuide type="bottom" id="uek-Oh-3lJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1jd-Og-kAv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7eN-ic-Dah" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3654" y="1084"/>
         </scene>
     </scenes>
     <resources>

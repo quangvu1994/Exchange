@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CollectionTableViewCell: UITableViewCell {
 
+    var status: String?
     var itemList = [String: Any]() {
         didSet {
             collectionView.reloadData()
@@ -39,6 +41,22 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
                 let imageURL = URL(string: url)
                 cell.postImage.kf.setImage(with: imageURL)
         }
+        
+        // Observe the availability of the item
+        let itemRef = Database.database().reference().child("allItems/\(key)/availability")
+        itemRef.observe(.value, with: { (snapshot) in
+            guard let availability = snapshot.value as? Bool else {
+                return
+            }
+            
+            if !availability && self.status != "Confirmed"{
+                cell.postImage.alpha = 0.5
+                cell.soldLabel.isHidden = false
+            } else {
+                cell.postImage.alpha = 1.0
+                cell.soldLabel.isHidden = true
+            }
+        })
         return cell
     }
 }

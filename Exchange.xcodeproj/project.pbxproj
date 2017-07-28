@@ -34,6 +34,11 @@
 		5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */; };
 		5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */; };
 		5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */; };
+		5B942CF71F2A56CF00171215 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CF61F2A56CF00171215 /* File.swift */; };
+		5B942CF91F2A57F900171215 /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */; };
+		5B942CFB1F2AF95D00171215 /* ItemSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B942CFA1F2AF95D00171215 /* ItemSlide.xib */; };
+		5B942CFD1F2AF97E00171215 /* ItemSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CFC1F2AF97E00171215 /* ItemSlide.swift */; };
+		5B942CFF1F2AF9F800171215 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CFE1F2AF9F800171215 /* ItemDetailViewController.swift */; };
 		5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */; };
 		5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */; };
 		5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */; };
@@ -94,6 +99,11 @@
 		5B724F951F0B37A400BE4E4E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "View Controllers/ProfileViewController.swift"; sourceTree = "<group>"; };
 		5B7CF0751F1929EE00AB000E /* ExchangeSequence.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExchangeSequence.storyboard; path = Storyboards/ExchangeSequence.storyboard; sourceTree = "<group>"; };
 		5B7CF0771F192A5600AB000E /* ExchangeSequenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExchangeSequenceViewController.swift; path = "View Controllers/ExchangeSequenceViewController.swift"; sourceTree = "<group>"; };
+		5B942CF61F2A56CF00171215 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = Model/File.swift; sourceTree = "<group>"; };
+		5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollapsibleTableViewHeader.swift; path = "Extension /CollapsibleTableViewHeader.swift"; sourceTree = "<group>"; };
+		5B942CFA1F2AF95D00171215 /* ItemSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemSlide.xib; path = View/ItemSlide.xib; sourceTree = "<group>"; };
+		5B942CFC1F2AF97E00171215 /* ItemSlide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemSlide.swift; path = View/ItemSlide.swift; sourceTree = "<group>"; };
+		5B942CFE1F2AF9F800171215 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemDetailViewController.swift; path = "View Controllers/ItemDetailViewController.swift"; sourceTree = "<group>"; };
 		5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXCollectionViewCell.swift; path = View/EXCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXConfirmViewController.swift; path = "View Controllers/EXConfirmViewController.swift"; sourceTree = "<group>"; };
 		5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableDescriptionCell.swift; path = View/EXTableDescriptionCell.swift; sourceTree = "<group>"; };
@@ -193,6 +203,7 @@
 				5B24A1051F103D6F0068BBD9 /* UIViewControllerUtilities.swift */,
 				5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */,
 				5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */,
+				5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -227,6 +238,7 @@
 				5B6C55891F0C7CAD00F4120A /* User.swift */,
 				5BA92F071F11FCBC006CE880 /* Post.swift */,
 				5BB734D61F1D6BDC00F12074 /* Request.swift */,
+				5B942CF61F2A56CF00171215 /* File.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -303,6 +315,8 @@
 				5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */,
 				5B4D89401F10AB32009FFEE2 /* PostThumbImageCell.swift */,
 				5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */,
+				5B942CFA1F2AF95D00171215 /* ItemSlide.xib */,
+				5B942CFC1F2AF97E00171215 /* ItemSlide.swift */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -312,6 +326,7 @@
 			children = (
 				5B4D893E1F10A8F9009FFEE2 /* PopularCategoriesViewController.swift */,
 				5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */,
+				5B942CFE1F2AF9F800171215 /* ItemDetailViewController.swift */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -468,6 +483,7 @@
 				5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */,
 				5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */,
 				5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */,
+				5B942CFB1F2AF95D00171215 /* ItemSlide.xib in Resources */,
 				5B6C55881F0C71C100F4120A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,9 +562,12 @@
 				5BE9D09B1F283D1400C34B7E /* SelectingMyItemsViewController.swift in Sources */,
 				5BB734D71F1D6BDC00F12074 /* Request.swift in Sources */,
 				5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */,
+				5B942CFD1F2AF97E00171215 /* ItemSlide.swift in Sources */,
+				5B942CFF1F2AF9F800171215 /* ItemDetailViewController.swift in Sources */,
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,
 				5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */,
 				5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */,
+				5B942CF71F2A56CF00171215 /* File.swift in Sources */,
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
 				5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */,
@@ -560,6 +579,7 @@
 				5BB734D01F1D1EC600F12074 /* ProfileOptionCell.swift in Sources */,
 				5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */,
 				5B24A10A1F104C290068BBD9 /* CategoryCell.swift in Sources */,
+				5B942CF91F2A57F900171215 /* CollapsibleTableViewHeader.swift in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,
 				5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */,
 				5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */,

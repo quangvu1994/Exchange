@@ -50,9 +50,8 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
                     return
                 }
                 
-                let viewControllerDestination = segue.destination as! CreatePostViewController
-                viewControllerDestination.currentPost = post[index]
-                viewControllerDestination.scenario = .exchange
+                let viewControllerDestination = segue.destination as! ItemDetailViewController
+                viewControllerDestination.post = post[index]
             }
         }
     }

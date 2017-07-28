@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
-    let options = ["Personal Info", "Your Request"]
+    let options = ["Personal Info", "Outgoing Requests", "Incoming Requests"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -41,6 +41,15 @@ class ProfileViewController: UIViewController {
         print("Unwinded")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Show Request" {
+                let destination = segue.destination as! RequestViewController
+                destination.index = tableView.indexPathForSelectedRow!.row
+            }
+        }
+    }
+    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -60,6 +69,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             self.performSegue(withIdentifier: "Show Profile Detail", sender: nil)
         case 1:
+            self.performSegue(withIdentifier: "Show Request", sender: nil)
+        case 2:
             self.performSegue(withIdentifier: "Show Request", sender: nil)
         default:
             fatalError("Unrecognized index path")

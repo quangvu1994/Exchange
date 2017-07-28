@@ -14,6 +14,7 @@ class RequestDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var request: Request?
     var segmentIndex: Int?
+    var index: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,17 @@ class RequestDetailViewController: UIViewController {
         var data: [String: Any] = [
             "Requests/\(requestRef)/status": "Confirmed"
         ]
+        
         let posterItemsKey = Array(request.posterItemsData.keys)
         for itemRef in posterItemsKey {
             data["allItems/\(itemRef)/availability"] = false
-            data["allItems/\(itemRef)/requested_by/\(request.posterID)"] = [:]
+            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+        }
+        
+        let requesterItemsKey = Array(request.requesterItemsData.keys)
+        for itemRef in requesterItemsKey {
+            data["allItems/\(itemRef)/availability"] = false
+            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
         }
         
         // While this is going on, we can also display a spinner
@@ -80,7 +88,7 @@ class RequestDetailViewController: UIViewController {
         ]
         let posterItemsKey = Array(request.posterItemsData.keys)
         for itemRef in posterItemsKey {
-            data["allItems/\(itemRef)/requested_by/\(request.posterID)"] = [:]
+            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
         }
         
         let requesterItemsKey = Array(request.requesterItemsData.keys)
@@ -124,7 +132,15 @@ class RequestDetailViewController: UIViewController {
 extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let request = request else {
+            fatalError("No request found")
+        }
+        
+        if request.status != "In Progress" || index! == 1 {
+            return 4
+        } else {
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,6 +164,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
                 cell.itemList = request.requesterItemsData
+                cell.status = request.status
             }
             return cell
         case 2:
@@ -157,6 +174,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
                 cell.itemList = request.posterItemsData
+                cell.status = request.status
             }
             return cell
         case 4:

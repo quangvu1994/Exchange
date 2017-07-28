@@ -186,7 +186,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
                         <outlet property="searchDisplayController" destination="QZA-t0-fy8" id="6uH-tB-kGt"/>
-                        <segue destination="X2a-j8-3Ge" kind="show" identifier="displayItemDetail" id="5Y0-Z9-8jv"/>
+                        <segue destination="JnG-n2-gjI" kind="show" identifier="displayItemDetail" id="nBJ-rq-pjw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,15 +199,72 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2740" y="-183"/>
+            <point key="canvasLocation" x="2740" y="-183.05847076461771"/>
         </scene>
-        <!--ItemDetail-->
-        <scene sceneID="36d-r1-7rd">
+        <!--Hello-->
+        <scene sceneID="6pH-3b-v95">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateNewPost" referencedIdentifier="ItemDetail" id="X2a-j8-3Ge" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fZs-FI-gfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="JnG-n2-gjI" customClass="ItemDetailViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ma4-b6-1zX"/>
+                        <viewControllerLayoutGuide type="bottom" id="OIl-ug-azL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X1E-Iz-BjH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-Um-6AK">
+                                <rect key="frame" x="0.0" y="-10" width="375" height="333.5"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JnG-n2-gjI" id="3NF-kS-2pi"/>
+                                </connections>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I1G-JI-XEu">
+                                <rect key="frame" x="0.0" y="323.5" width="375" height="299.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="His-gl-x8g">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="His-gl-x8g" id="e5X-7E-kY1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="JnG-n2-gjI" id="AZa-je-dCB"/>
+                                    <outlet property="delegate" destination="JnG-n2-gjI" id="hfj-gG-JV3"/>
+                                </connections>
+                            </tableView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-eF-9oT">
+                                <rect key="frame" x="100" y="50" width="175" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OIl-ug-azL" firstAttribute="top" secondItem="I1G-JI-XEu" secondAttribute="bottom" id="0cs-5b-jCl"/>
+                            <constraint firstItem="I1G-JI-XEu" firstAttribute="top" secondItem="oZf-Um-6AK" secondAttribute="bottom" id="7ad-iz-s2i"/>
+                            <constraint firstItem="Rb8-eF-9oT" firstAttribute="leading" secondItem="X1E-Iz-BjH" secondAttribute="leading" constant="100" id="9PV-vK-xIT"/>
+                            <constraint firstAttribute="trailing" secondItem="oZf-Um-6AK" secondAttribute="trailing" id="BCs-NM-2P7"/>
+                            <constraint firstAttribute="trailing" secondItem="Rb8-eF-9oT" secondAttribute="trailing" constant="100" id="EZY-Ob-mzI"/>
+                            <constraint firstItem="oZf-Um-6AK" firstAttribute="leading" secondItem="X1E-Iz-BjH" secondAttribute="leading" id="FrI-P0-JcB"/>
+                            <constraint firstItem="I1G-JI-XEu" firstAttribute="leading" secondItem="X1E-Iz-BjH" secondAttribute="leading" id="KzO-fR-qZd"/>
+                            <constraint firstAttribute="trailing" secondItem="I1G-JI-XEu" secondAttribute="trailing" id="TBu-1W-pgn"/>
+                            <constraint firstItem="Rb8-eF-9oT" firstAttribute="top" secondItem="X1E-Iz-BjH" secondAttribute="top" constant="50" id="ebu-XC-GJg"/>
+                            <constraint firstItem="oZf-Um-6AK" firstAttribute="top" secondItem="X1E-Iz-BjH" secondAttribute="top" constant="-10" id="m0u-wq-Jdz"/>
+                            <constraint firstItem="oZf-Um-6AK" firstAttribute="height" secondItem="X1E-Iz-BjH" secondAttribute="height" multiplier="1:2" id="uSv-UC-p89"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hello" id="5YU-ng-NV6"/>
+                    <connections>
+                        <outlet property="itemScrollView" destination="oZf-Um-6AK" id="Ia0-6h-SaG"/>
+                        <outlet property="pageControl" destination="Rb8-eF-9oT" id="tyb-hJ-QQY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdp-jC-Aat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365" y="-183"/>
+            <point key="canvasLocation" x="3621.5999999999999" y="-183.05847076461771"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Va9-nI-6Ha">
