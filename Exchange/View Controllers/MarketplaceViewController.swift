@@ -78,6 +78,9 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = false
     }
     
+    @IBAction func unwindFromItemDetail(_ sender: UIStoryboardSegue) {
+        print("Unwinded")
+    }
 }
 
 extension MarketplaceViewController: UICollectionViewDataSource {

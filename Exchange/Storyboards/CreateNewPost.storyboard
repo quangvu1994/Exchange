@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List Item-->
+        <!--New Item-->
         <scene sceneID="RJ8-jw-6n0">
             <objects>
-                <viewController storyboardIdentifier="ItemDetail" id="5gc-i7-yMx" customClass="CreatePostViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create New Item" id="5gc-i7-yMx" customClass="CreatePostViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="asF-rt-ZQy"/>
                         <viewControllerLayoutGuide type="bottom" id="Tel-vT-iOK"/>
@@ -208,12 +208,11 @@
                             <constraint firstItem="GIu-d7-iGw" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" id="ymu-PB-Sf1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List Item" id="Gcd-6U-GWK"/>
+                    <navigationItem key="navigationItem" title="New Item" id="Gcd-6U-GWK"/>
                     <connections>
                         <outlet property="actionButton" destination="mQW-5L-7Do" id="ah3-pj-GhD"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
                         <segue destination="eLL-8Q-qev" kind="show" identifier="showMarketplace" id="W8R-Hx-fhg"/>
-                        <segue destination="gXE-Rt-VZ7" kind="presentation" identifier="Exchange Sequence" id="Gbc-Xp-TeY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdG-ZB-kAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,7 +225,7 @@
                 <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="Marketplace" id="eLL-8Q-qev" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5K6-ob-XWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1536" y="640"/>
+            <point key="canvasLocation" x="1514" y="592"/>
         </scene>
         <!--Category-->
         <scene sceneID="OdO-P8-mqi">
@@ -325,14 +324,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yZ-Vb-ygl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="903" y="143"/>
-        </scene>
-        <!--ExchangeSequence-->
-        <scene sceneID="rhI-bs-0N3">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ExchangeSequence" id="gXE-Rt-VZ7" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vis-Wr-TR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1865" y="640"/>
         </scene>
     </scenes>
     <resources>

@@ -32,6 +32,11 @@ class MyItemViewController: UIViewController {
             self?.post = allPosts
         })
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,12 +45,16 @@ class MyItemViewController: UIViewController {
         }
         
         if let identifier = segue.identifier {
-            if identifier == "displayItemDetail" {
-                let destinationViewController = segue.destination as! CreatePostViewController
-                destinationViewController.currentPost = post[index]
+            if identifier == "showItemDetail" {
+                let destinationViewController = segue.destination as! ItemDetailViewController
+                destinationViewController.post = post[index]
                 destinationViewController.scenario = .edit
             }
         }
+    }
+    
+    @IBAction func unwindFromPersonalItemDetail(_ sender: UIStoryboardSegue) {
+        print("unwinded")
     }
 }
 
@@ -111,7 +120,7 @@ extension MyItemViewController: UICollectionViewDelegateFlowLayout {
 extension MyItemViewController: DisplayItemDetailHandler {
     
     func display(index: Int) {
-        self.performSegue(withIdentifier: "displayItemDetail", sender: index)
+        self.performSegue(withIdentifier: "showItemDetail", sender: index)
     }
 }
 

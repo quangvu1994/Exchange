@@ -106,20 +106,20 @@
                     <navigationItem key="navigationItem" id="e4l-TX-aXS"/>
                     <connections>
                         <outlet property="collectionView" destination="0AS-Qr-OwC" id="UjO-8a-0wm"/>
-                        <segue destination="M8k-9r-Nm8" kind="show" identifier="displayItemDetail" id="vRI-CW-LoL"/>
+                        <segue destination="K1n-uv-ry9" kind="show" identifier="showItemDetail" id="0gd-9g-7tn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UW3-DY-Ayw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2084" y="142.57871064467767"/>
         </scene>
-        <!--ItemDetail-->
-        <scene sceneID="a6n-wp-N7J">
+        <!--Item Detail-->
+        <scene sceneID="Kjn-vI-tSO">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateNewPost" referencedIdentifier="ItemDetail" id="M8k-9r-Nm8" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2MI-7W-Yd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="Item Detail" id="K1n-uv-ry9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9i-sQ-RPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2750" y="142"/>
+            <point key="canvasLocation" x="2747" y="218"/>
         </scene>
         <!--My Store-->
         <scene sceneID="1SC-xA-mkV">

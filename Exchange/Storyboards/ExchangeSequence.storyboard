@@ -118,7 +118,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="r36-oV-uXh">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="0Bu-Ve-7D0" kind="unwind" unwindAction="unwindFromExchangeSequence:" id="Y19-9e-cCo"/>
+                                <segue destination="0Bu-Ve-7D0" kind="unwind" unwindAction="unwindFromExchangeSequence:" id="b1e-at-wjz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -274,10 +274,9 @@
         <!--Navigation Controller-->
         <scene sceneID="DzS-Mo-u8R">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RPD-Bj-qZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzR-8X-AdX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jZ-pW-4GZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jZ-pW-4GZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -291,6 +290,7 @@
                         <segue destination="cj9-Ag-vop" kind="relationship" relationship="rootViewController" id="1fm-cr-Xc3"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RPD-Bj-qZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2537" y="681"/>
         </scene>
