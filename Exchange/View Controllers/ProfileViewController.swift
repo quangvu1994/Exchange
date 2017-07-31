@@ -84,8 +84,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 do {
                     try Auth.auth().signOut()
                     if Auth.auth().currentUser == nil {
-                        FBSDKAccessToken.setCurrent(nil)
-                        FBSDKProfile.setCurrent(nil)
+                        FBSDKLoginManager().logOut()
                         let initialViewController = UIStoryboard.initialViewController(type: .login)
                         self.view.window?.rootViewController = initialViewController
                         self.view.window?.makeKeyAndVisible()
