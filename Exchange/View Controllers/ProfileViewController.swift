@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
-    let options = ["Personal Info", "Outgoing Requests", "Incoming Requests"]
+    let options = ["Personal Info", "Outgoing Requests", "Incoming Requests", "Log Out"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -60,6 +62,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileOptionCell
+        if indexPath.row == 3 {
+            cell.accessoryType = .none
+        }
         cell.optionName.text = options[indexPath.row]
         return cell
     }
@@ -72,6 +77,30 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             self.performSegue(withIdentifier: "Show Request", sender: nil)
         case 2:
             self.performSegue(withIdentifier: "Show Request", sender: nil)
+        case 3:
+            // Handle log out
+            let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to logout?", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                do {
+                    try Auth.auth().signOut()
+                    if Auth.auth().currentUser == nil {
+                        FBSDKAccessToken.setCurrent(nil)
+                        FBSDKProfile.setCurrent(nil)
+                        let initialViewController = UIStoryboard.initialViewController(type: .login)
+                        self.view.window?.rootViewController = initialViewController
+                        self.view.window?.makeKeyAndVisible()
+                    } else {
+                        print("Handle failed to sign out here")
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            })
+            let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+
         default:
             fatalError("Unrecognized index path")
         }

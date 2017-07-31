@@ -42,11 +42,25 @@ class LoginViewController: UIViewController {
         // Initialize facebook login manager
         let fbManager = FBSDKLoginManager()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            guard let result = result else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                return
+            }
+            // If canceled, bring user back to main screen
+            if result.isCancelled {
+                // Transfer them to the main view
+                let initialViewController = UIStoryboard.initialViewController(type: .login)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                return
+            }
             if let error = error {
                 assertionFailure("Failed to login \(error.localizedDescription)")
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
+            
             // Grab the Faebook access token
             guard let accessToken = FBSDKAccessToken.current() else {
                 assertionFailure("Failed to retrieve Facebook access token")

@@ -148,7 +148,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Image Cell" rowHeight="150" id="YB3-XO-7qY" customClass="CollectionTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Image Cell" rowHeight="150" id="YB3-XO-7qY" customClass="EXTableCollectionCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YB3-XO-7qY" id="c1O-9I-nhR">
@@ -165,7 +165,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="X2y-CL-ulv">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Collection Image Cell" id="X2y-CL-ulv" customClass="MyItemPostImageCell" customModule="Exchange" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="11" width="95" height="88"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -191,6 +191,10 @@
                                                                 <constraint firstItem="XUG-oc-IX8" firstAttribute="top" secondItem="X2y-CL-ulv" secondAttribute="top" id="ktz-4C-zvW"/>
                                                                 <constraint firstAttribute="trailing" secondItem="XUG-oc-IX8" secondAttribute="trailing" id="xRv-ha-Bqo"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="postImage" destination="XUG-oc-IX8" id="t4c-uq-z48"/>
+                                                                <outlet property="soldLabel" destination="8Sw-Vj-9wX" id="AoC-ng-zzJ"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -203,7 +207,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionView" destination="ZsK-s5-FxP" id="Gld-bU-X0Q"/>
+                                            <outlet property="collectionView" destination="ZsK-s5-FxP" id="FC0-sO-pgm"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Trade For" id="Unn-WC-Yho">

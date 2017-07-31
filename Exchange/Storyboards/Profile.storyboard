@@ -102,7 +102,6 @@
                         <outlet property="profilePicture" destination="OLB-DN-23f" id="bVU-7x-GKc"/>
                         <outlet property="tableView" destination="ZkU-mS-URF" id="mUA-mm-CsT"/>
                         <outlet property="username" destination="akz-tr-PKO" id="CgQ-np-EWw"/>
-                        <segue destination="Jqw-bF-3GD" kind="show" identifier="Show Profile Detail" id="a7K-Sm-i8z"/>
                         <segue destination="VHj-u0-Q7m" kind="show" identifier="Show Request" id="w6M-1h-0ga"/>
                     </connections>
                 </viewController>
@@ -515,24 +514,6 @@
                 <exit id="wtb-7m-t4k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3701.5999999999999" y="240.62968515742131"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="hOS-xC-Tzb">
-            <objects>
-                <viewController id="Jqw-bF-3GD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NKg-Ga-Nsp"/>
-                        <viewControllerLayoutGuide type="bottom" id="3A6-ZH-YuI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rLw-yu-CXg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n6D-D4-ORN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2748" y="933.28335832083962"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nXB-2L-rdn">

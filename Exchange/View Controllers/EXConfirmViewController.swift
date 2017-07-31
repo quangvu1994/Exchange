@@ -61,8 +61,8 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! CollectionTableViewCell
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
+            cell.itemList = requesterItems
             return cell
             
         case 1:
@@ -70,12 +70,12 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! CollectionTableViewCell
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
+            cell.itemList = posterItems
             return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as! CollectionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cash Cell", for: indexPath) as! EXCashCell
             
             return cell
         case 4:
@@ -102,8 +102,10 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
         case 2:
             return 150
         case 3:
-            return 200
+            return 80
         case 4:
+            return 200
+        case 5:
             return 80
         default:
             fatalError("Unrecognize index path row")
