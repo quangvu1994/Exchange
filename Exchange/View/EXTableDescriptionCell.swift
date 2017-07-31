@@ -42,15 +42,11 @@ class EXTableDescriptionCell: UITableViewCell, UITextViewDelegate {
             descriptionText.textColor = UIColor.lightGray
         }
     }
-}
 
-extension EXTableDescriptionCell: PostInformationHandler {
-    
     func getInformation() -> String? {
         if descriptionText.textColor == UIColor.lightGray {
             return ""
         }
-        
         return descriptionText.text
     }
     
@@ -58,5 +54,4 @@ extension EXTableDescriptionCell: PostInformationHandler {
         descriptionText.text = placeHolder!
         descriptionText.textColor = UIColor.lightGray
     }
-    
 }

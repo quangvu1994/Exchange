@@ -41,9 +41,6 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
             descriptionText.textColor = UIColor.lightGray
         }
     }
-}
-
-extension CreatePostDescriptionCell: PostInformationHandler {
     
     func getInformation() -> String? {
         if descriptionText.text == "" || descriptionText.textColor == UIColor.lightGray {

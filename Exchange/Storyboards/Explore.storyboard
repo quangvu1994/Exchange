@@ -227,7 +227,7 @@
                                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="krv-Vf-7eT">
                                                     <rect key="frame" x="168" y="133.5" width="39" height="37"/>
                                                 </pageControl>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-IE-Wx6">
+                                                <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-IE-Wx6">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="190.5"/>
                                                 </scrollView>
                                             </subviews>
@@ -395,7 +395,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5YU-ng-NV6">
                         <barButtonItem key="leftBarButtonItem" image="Back Icon" id="pnn-BO-XF6">
-                            <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="backAction:" destination="JnG-n2-gjI" id="cob-dp-3Mt"/>
                             </connections>

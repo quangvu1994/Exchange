@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BD9CD8B4D2301E287A5D8E0 /* Pods_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE866939FA449451BC0350A /* Pods_Exchange.framework */; };
+		5B04C0311F2FC99D00CFB19C /* EXCashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04C0301F2FC99D00CFB19C /* EXCashCell.swift */; };
 		5B24A0F51F0F3A230068BBD9 /* ExploreCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */; };
 		5B24A0FE1F10212E0068BBD9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */; };
 		5B24A1001F1025A00068BBD9 /* CreatePostDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */; };
@@ -47,7 +48,6 @@
 		5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */; };
 		5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */; };
 		5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */; };
-		5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */; };
 		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
 		5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */; };
 		5BA92F081F11FCBC006CE880 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F071F11FCBC006CE880 /* Post.swift */; };
@@ -75,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B04C0301F2FC99D00CFB19C /* EXCashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXCashCell.swift; path = View/EXCashCell.swift; sourceTree = "<group>"; };
 		5B24A0F41F0F3A230068BBD9 /* ExploreCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreCategoryCell.swift; path = View/ExploreCategoryCell.swift; sourceTree = "<group>"; };
 		5B24A0FD1F10212E0068BBD9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = "View Controllers/CreatePostViewController.swift"; sourceTree = "<group>"; };
 		5B24A0FF1F1025A00068BBD9 /* CreatePostDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreatePostDescriptionCell.swift; path = View/CreatePostDescriptionCell.swift; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXConfirmViewController.swift; path = "View Controllers/EXConfirmViewController.swift"; sourceTree = "<group>"; };
 		5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableDescriptionCell.swift; path = View/EXTableDescriptionCell.swift; sourceTree = "<group>"; };
 		5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableButtonCell.swift; path = View/EXTableButtonCell.swift; sourceTree = "<group>"; };
-		5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableImageCell.swift; path = View/EXTableImageCell.swift; sourceTree = "<group>"; };
 		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
 		5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPhotoHelper.swift; path = Helper/EXPhotoHelper.swift; sourceTree = "<group>"; };
 		5BA92F071F11FCBC006CE880 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */,
 				5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */,
 				5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */,
-				5B9D91151F192E0E00071B53 /* EXTableImageCell.swift */,
+				5B04C0301F2FC99D00CFB19C /* EXCashCell.swift */,
 			);
 			name = "Exchange Sequence";
 			sourceTree = "<group>";
@@ -566,7 +566,6 @@
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5BB734D31F1D57D000F12074 /* RequestViewController.swift in Sources */,
 				5B6C55821F0C630300F4120A /* StoryboardUtilities.swift in Sources */,
-				5B9D91161F192E0E00071B53 /* EXTableImageCell.swift in Sources */,
 				5B24A1061F103D6F0068BBD9 /* UIViewControllerUtilities.swift in Sources */,
 				5BB302AA1F143FA1003C149B /* MyItemPostImageCell.swift in Sources */,
 				5B3B0CCC1F2BAFAB00093F73 /* ItemImageCell.swift in Sources */,
@@ -585,6 +584,7 @@
 				5B942CF71F2A56CF00171215 /* File.swift in Sources */,
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,
 				5B6C558C1F0CBC4F00F4120A /* UserService.swift in Sources */,
+				5B04C0311F2FC99D00CFB19C /* EXCashCell.swift in Sources */,
 				5BB734D51F1D58B500F12074 /* RequestTableViewCell.swift in Sources */,
 				5B724F961F0B37A400BE4E4E /* ProfileViewController.swift in Sources */,
 				5B24A1041F1027F10068BBD9 /* CreatePostCameraCell.swift in Sources */,

@@ -14,7 +14,6 @@ class EXConfirmViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var requesterItems = [Post]()
     var posterItems = [Post]()
-    weak var messageDelegate: PostInformationHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +25,12 @@ class EXConfirmViewController: UIViewController {
     
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
-        guard let messageDelegate = messageDelegate else {
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.displayWarningMessage(message: "Unable to send request, please try again")
-                return
-        }
-
+        let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! EXTableDescriptionCell
+        
         // Write the request to our database
         let request = Request(requesterItems: requesterItems, posterItems: posterItems)
         // Safe to force unwrap
-        request.message = messageDelegate.getInformation()!
+        request.message = cell.getInformation()!
         
         // NOTE: need dispatch group here
         RequestService.writeNewRequest(for: User.currentUser.uid, and: posterItems[0].poster.uid, with: request, completionHandler: { [weak self] (success) in
@@ -60,35 +55,37 @@ class EXConfirmViewController: UIViewController {
 extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableImageCell
-            let imageURL = URL(string: posterItems[0].imageURL)
-            cell.requestItemImage.kf.setImage(with: imageURL)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! CollectionTableViewCell
             
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
-            cell.titleText.text = "Exchange with"
-            cell.descriptionText.text = requesterItems.map { $0.postTitle }.joined(separator: ", ")
-            cell.descriptionText.isEditable = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Trade For", for: indexPath)
             return cell
             
         case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! CollectionTableViewCell
+            
+            return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as! CollectionTableViewCell
+            
+            return cell
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
             cell.titleText.text = "Say something to the owner"
             cell.descriptionText.textColor = UIColor.lightGray
             cell.descriptionText.text = "Your message"
             cell.placeHolder = "Your message"
-            messageDelegate = cell
             return cell
-            
-        case 3:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath)
             return cell
         default:
@@ -99,12 +96,14 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return posterItems[0].imageHeight
-        case 1:
             return 150
+        case 1:
+            return 40
         case 2:
-            return 200
+            return 150
         case 3:
+            return 200
+        case 4:
             return 80
         default:
             fatalError("Unrecognize index path row")

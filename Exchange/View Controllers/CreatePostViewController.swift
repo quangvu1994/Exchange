@@ -9,12 +9,6 @@
 import UIKit
 import Kingfisher
 
-protocol PostInformationHandler: class {
-    func getInformation() -> String?
-    
-    func resetInformation()
-}
-
 class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,19 +17,11 @@ class CreatePostViewController: UIViewController {
     var currentPost: Post?
     var scenario: EXScenarios = .post
     
-    weak var postTitleDelegate: PostInformationHandler?
-    weak var postDescriptionDelegate: PostInformationHandler?
-    weak var postCategoryDelegate: PostInformationHandler?
-    weak var postTradeLocationDelegate: PostInformationHandler?
-    
     var photoHelper = EXPhotoHelper()
     var category: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = false
         actionButton.layer.cornerRadius = 3
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
@@ -52,8 +38,11 @@ class CreatePostViewController: UIViewController {
         }
     }
 
-    
-    @IBAction func openPhotoHelper(_ sender: UIButton) {
+    func openImagePicker(gesture: UITapGestureRecognizer) {
+        guard let view = gesture.view else {
+            return
+        }
+        photoHelper.imageIdentifier = view.tag
         photoHelper.presentActionSheet(from: self)
     }
     
@@ -64,40 +53,62 @@ class CreatePostViewController: UIViewController {
             print("Save Changes")
             
         default:
-            guard let selectedImage = photoHelper.selectedImage,
-                let postTitle = postTitleDelegate?.getInformation(),
-                let postDescription = postDescriptionDelegate?.getInformation(),
-                let postCategory = postCategoryDelegate?.getInformation(),
-                let tradeLocation = postTradeLocationDelegate?.getInformation()
-                else {
+            var imageList: [UIImage]?
+            var postTitle: String?
+            var postDescription: String?
+            var postCategory: String?
+            var tradeLocation: String?
+            
+            for row in 0..<tableView.numberOfRows(inSection: 0) {
+                switch row {
+                case 0:
+                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCameraCell
+                    imageList = cell.getImageInformation()
+                case 1:
+                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                    postTitle = cell.getInformation()
+                case 2:
+                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                    postDescription = cell.getInformation()
+                    
+                case 3:
+                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCategoryCell
+                    postCategory = cell.getInformation()
+                case 4:
+                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                    tradeLocation = cell.getInformation()
+                default:
+                    fatalError("Unrecognized row")
+                }
+            }
+            
+            guard let selectedImages = imageList,
+                let title = postTitle,
+                let description = postDescription,
+                let category = postCategory,
+                let location = tradeLocation else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     // Display an alert if user fail to fill out the required info
                     self.displayWarningMessage(message: "Please fill out all information")
                     return
             }
             
-            PostService.writePostImageToFIRStorage(selectedImage, completion: { [weak self] (downloadURL) in
-                guard let downloadURL = downloadURL else {
+            PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
+                guard let imagesURL = imagesURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     self?.displayWarningMessage(message: "Unable to upload image, please try posting again")
                     return
                 }
                 
-                let imageHeight = selectedImage.aspectHeight
-                let post = Post(imageURL: downloadURL, imageHeight: imageHeight)
-                post.postTitle = postTitle
-                post.postDescription = postDescription
-                post.postCategory = postCategory
-                post.tradeLocation = tradeLocation
+                let post = Post(imagesURL: imagesURL)
+                post.postTitle = title
+                post.postDescription = description
+                post.postCategory = category
+                post.tradeLocation = location
                 
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (completed) in
                     if completed {
                         // Clear everything in the table view
-                        self?.photoHelper.selectedImage = nil
-                        self?.postTitleDelegate?.resetInformation()
-                        self?.postDescriptionDelegate?.resetInformation()
-                        self?.postCategoryDelegate?.resetInformation()
-                        self?.postTradeLocationDelegate?.resetInformation()
                         self?.tableView.reloadData()
                         self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
                     }else {
@@ -141,16 +152,46 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraCell", for: indexPath) as! CreatePostCameraCell
             
-            // Possile memory issue
-            photoHelper.completionHandler = { (selectedImage) in
-                cell.postImage.image = selectedImage
+            cell.firstImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreatePostViewController.openImagePicker(gesture:))))
+            cell.secondImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreatePostViewController.openImagePicker(gesture:))))
+            cell.thirdImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(CreatePostViewController.openImagePicker(gesture:))))
+            cell.fourthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(CreatePostViewController.openImagePicker(gesture:))))
+            
+            photoHelper.completionHandler = { [unowned self] (selectedImage) in
+                switch self.photoHelper.imageIdentifier {
+                case 0:
+                    cell.firstImage.image = selectedImage
+                    cell.firstImageSet = true
+                case 1:
+                    cell.secondImage.image = selectedImage
+                    cell.secondImageSet = true
+                case 2:
+                    cell.thirdImage.image = selectedImage
+                    cell.thirdImageSet = true
+                case 3:
+                    cell.fourthImage.image = selectedImage
+                    cell.fourthImageSet = true
+                default:
+                    fatalError("Unrecognized Image")
+                }
             }
             
             if let currentPost = currentPost {
-                let imageURL = URL(string: currentPost.imageURL)
-                cell.postImage.kf.setImage(with: imageURL)
-            } else {
-                cell.postImage.image = photoHelper.selectedImage
+                for i in 0..<currentPost.imagesURL.count {
+                    let url = URL(string: currentPost.imagesURL[i])
+                    switch i {
+                    case 0:
+                        cell.firstImage.kf.setImage(with: url)
+                    case 1:
+                        cell.secondImage.kf.setImage(with: url)
+                    case 2:
+                        cell.thirdImage.kf.setImage(with: url)
+                    case 3:
+                        cell.fourthImage.kf.setImage(with: url)
+                    default:
+                        fatalError("Unrecognized image index")
+                    }
+                }
             }
             
             if scenario == .exchange {
@@ -162,13 +203,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
 
             cell.headerText.text = "Title"
-            self.postTitleDelegate = cell
             cell.placeHolder = "Item Title"
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postTitle
             } else {
-                if let text = postTitleDelegate?.getInformation() {
+                if let text = cell.getInformation() {
                     cell.descriptionText.text = text
                 } else {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -184,14 +224,13 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             
-            self.postDescriptionDelegate = cell
             cell.headerText.text = "Description"
             cell.placeHolder = "Item Description"
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
             } else {
-                if let text = postDescriptionDelegate?.getInformation() {
+                if let text = cell.getInformation() {
                     cell.descriptionText.text = text
                 } else {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -206,13 +245,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
-            self.postCategoryDelegate = cell
             if let currentPost = currentPost {
                 cell.categoryName.text = currentPost.postCategory
                 self.category = currentPost.postCategory
                 
             }else {
-                if let text = postCategoryDelegate?.getInformation() {
+                if let text = cell.getInformation() {
                     cell.categoryName.text = text
                 } else {
                     cell.categoryName.text = ""
@@ -228,13 +266,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             cell.headerText.text = "Trade Location"
-            self.postTradeLocationDelegate = cell
             cell.placeHolder = "Where we'll meet"
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.tradeLocation
             } else {
-                if let text = postTradeLocationDelegate?.getInformation() {
+                if let text = cell.getInformation() {
                     cell.descriptionText.text = text
                 } else {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -255,9 +292,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            if let currentPost = currentPost {
-                return currentPost.imageHeight
-            }
             return 200
         case 1:
             return 100

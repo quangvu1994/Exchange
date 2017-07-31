@@ -21,6 +21,14 @@ class ExchangeSequenceViewController: UIViewController {
     
     var posterItems = [Post]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // fetch post
@@ -59,7 +67,7 @@ extension ExchangeSequenceViewController: UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item Cell", for: indexPath) as! EXCollectionViewCell
-        let imageURL = URL(string: currItems[indexPath.row].imageURL)
+        let imageURL = URL(string: currItems[indexPath.row].imagesURL[0])
         cell.itemImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.addTapGesture()

@@ -49,13 +49,12 @@ class Request {
         self.posterName = posterItems[0].poster.username
         self.posterPhone = posterItems[0].poster.phoneNumber
         self.firstPostTitle = posterItems[0].postTitle
-        self.firstPostImageURL = posterItems[0].imageURL
+        self.firstPostImageURL = posterItems[0].imagesURL[0]
         self.tradeLocation = posterItems[0].tradeLocation
         
         for i in 0..<requesterItems.count {
             let itemData: [String: Any] = [
-                "image_url": requesterItems[i].imageURL,
-                "image_height": requesterItems[i].imageHeight,
+                "image_url": requesterItems[i].imagesURL[0],
                 "post_title": requesterItems[i].postTitle,
                 "post_description": requesterItems[i].postDescription
             ]
@@ -64,8 +63,7 @@ class Request {
         
         for i in 0..<posterItems.count {
             let itemData: [String: Any] = [
-                "image_url": posterItems[i].imageURL,
-                "image_height": posterItems[i].imageHeight,
+                "image_url": posterItems[i].imagesURL[0],
                 "post_title": posterItems[i].postTitle,
                 "post_description": posterItems[i].postDescription
             ]

@@ -31,6 +31,13 @@ class ItemDetailViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // If the user has already requested this item, change the text
@@ -132,7 +139,10 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Image Slide Cell", for: indexPath) as! ItemImageCell
             let slide = cell.createImageSlides(post: post)
-            cell.setupSlide(slide: slide)
+            cell.setupSlide(slide: slide, view: view)
+            cell.pageControl.numberOfPages = post.imagesURL.count
+            cell.pageControl.currentPage = 0
+            view.bringSubview(toFront: cell.pageControl)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Poster Information", for: indexPath) as! PosterInformationCell

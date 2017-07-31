@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreatePostCategoryCell: UITableViewCell, PostInformationHandler {
+class CreatePostCategoryCell: UITableViewCell {
     
     @IBOutlet weak var categoryName: UILabel!
     

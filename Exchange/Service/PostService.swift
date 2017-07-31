@@ -12,26 +12,40 @@ import FirebaseStorage
 
 class PostService {
     
-    static func writePostImageToFIRStorage(_ postImage: UIImage, completion: @escaping (String?) -> Void){
-        // Convert image to Data and lower the quality (Read class description) -> faster to upload
-        guard let imageData = UIImageJPEGRepresentation(postImage, 0.1) else {
-            return
+    static func writePostImageToFIRStorage(_ imageList: [UIImage], completion: @escaping ([String]?) -> Void){
+        var imagesURL = [String]()
+        let dispGroup = DispatchGroup()
+        
+        for image in imageList {
+            dispGroup.enter()
+            guard let imageData = UIImageJPEGRepresentation(image, 0.1) else {
+                dispGroup.leave()
+                return completion(nil)
+            }
+            
+            // Construct reference path
+            let ref = FIRStorageUtilities.constructReferencePath()
+            ref.putData(imageData, metadata: nil, completion: { (metaData, error) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    dispGroup.leave()
+                    return completion(nil)
+                }
+                
+                // Retrieve the downloadURL
+                guard let downloadURL = metaData?.downloadURL() else {
+                    dispGroup.leave()
+                    return completion(nil)
+                }
+                
+                let imageURL = downloadURL.absoluteString
+                imagesURL.append(imageURL)
+                dispGroup.leave()
+            })
         }
-        // Construct reference path
-        let ref = FIRStorageUtilities.constructReferencePath()
-        ref.putData(imageData, metadata: nil, completion: { (metaData, error) in
-            if let error = error {
-                assertionFailure(error.localizedDescription)
-                return completion(nil)
-            }
-            
-            // Retrieve the downloadURL
-            guard let downloadURL = metaData?.downloadURL() else {
-                return completion(nil)
-            }
-            
-            let imageURL = downloadURL.absoluteString
-            completion(imageURL)
+        
+        dispGroup.notify(queue: .main, execute: {
+            completion(imagesURL)
         })
     }
     

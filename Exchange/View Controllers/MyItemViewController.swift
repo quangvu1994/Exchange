@@ -66,7 +66,7 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCell", for: indexPath) as! MyItemPostImageCell
-        let imageURL = URL(string: post[indexPath.row].imageURL)
+        let imageURL = URL(string: post[indexPath.row].imagesURL[0])
         cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.addTapGestureToDisplayItemDetail()

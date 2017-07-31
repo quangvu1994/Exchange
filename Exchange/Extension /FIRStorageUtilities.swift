@@ -15,7 +15,11 @@ class FIRStorageUtilities {
     
     static func constructReferencePath() -> StorageReference {
         let userID = User.currentUser.uid
-        let timestamp = dateFormatter.string(from: Date())
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+
+        let timestamp = df.string(from: date)
         
         return Storage.storage().reference().child("images/posts/\(userID)/\(timestamp).jpg")
     }

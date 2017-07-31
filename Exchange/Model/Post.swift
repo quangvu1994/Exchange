@@ -11,8 +11,7 @@ import FirebaseDatabase.FIRDataSnapshot
 
 class Post {
     var index: Int?
-    var imageURL: String
-    var imageHeight: CGFloat
+    var imagesURL: [String]
     var key: String?
     var creationDate: Date
     var postTitle: String
@@ -30,8 +29,7 @@ class Post {
                         "username" : poster.username,
                         "phoneNumber": poster.phoneNumber]
         
-        return ["image_url" : imageURL,
-                "image_height" : imageHeight,
+        return ["post_images": imagesURL,
                 "post_title": postTitle,
                 "post_description": postDescription,
                 "post_category": postCategory,
@@ -43,9 +41,8 @@ class Post {
         ]
     }
     
-    init(imageURL: String, imageHeight: CGFloat){
-        self.imageURL = imageURL
-        self.imageHeight = imageHeight
+    init(imagesURL: [String]){
+        self.imagesURL = imagesURL
         self.poster = User.currentUser
         self.creationDate = Date()
         self.postDescription = ""
@@ -56,8 +53,7 @@ class Post {
     
     init?(snapshot: DataSnapshot) {
         guard let postData = snapshot.value as? [String: Any],
-            let imageURL = postData["image_url"] as? String,
-            let imageHeight = postData["image_height"] as? CGFloat,
+            let imagesURL = postData["post_images"] as? [String],
             let postTitle = postData["post_title"] as? String,
             let postDescription = postData["post_description"] as? String,
             let postCategory = postData["post_category"] as? String,
@@ -76,8 +72,7 @@ class Post {
         }
         
         self.key = snapshot.key
-        self.imageURL = imageURL
-        self.imageHeight = imageHeight
+        self.imagesURL = imagesURL
         self.postTitle = postTitle
         self.postDescription = postDescription
         self.tradeLocation = tradeLocation

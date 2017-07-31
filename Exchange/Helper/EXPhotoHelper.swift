@@ -13,6 +13,7 @@ class EXPhotoHelper: NSObject {
     
     var completionHandler: ((UIImage) -> Void)?
     var selectedImage: UIImage?
+    var imageIdentifier: Int = 0
 
     /**
      Present the action sheet
@@ -87,7 +88,7 @@ extension EXPhotoHelper: UIImagePickerControllerDelegate, UINavigationController
         
         // Grab the selected image
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            guard let resizedImage = resizeImage(image: selectedImage, newWidth: 350) else {
+            guard let resizedImage = resizeImage(image: selectedImage, newWidth: 400) else {
                 self.selectedImage = selectedImage
                 return handler(selectedImage)
             }

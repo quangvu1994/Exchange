@@ -91,7 +91,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
-        let imageURL = URL(string: post[indexPath.row].imageURL)
+        let imageURL = URL(string: post[indexPath.row].imagesURL[0])
         cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.addTapGestureToDisplayItemDetail()
@@ -127,7 +127,7 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
         let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
         // Instantiate a CGSize
         let itemSize = CGSize(width: itemWidth, height: itemWidth)
-        
+
         return itemSize
     }
     
