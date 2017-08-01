@@ -18,9 +18,8 @@ class EXConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         hideKeyboardOnTap()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     @IBAction func sendRequest(_ sender: UIButton) {
@@ -76,7 +75,6 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cash Cell", for: indexPath) as! EXCashCell
-            
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
@@ -84,6 +82,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             cell.descriptionText.textColor = UIColor.lightGray
             cell.descriptionText.text = "Your message"
             cell.placeHolder = "Your message"
+            cell.view = view
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath)

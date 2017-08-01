@@ -218,8 +218,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-AI-Ntl">
-                                                    <rect key="frame" x="158" y="28" width="59.5" height="18"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="15"/>
+                                                    <rect key="frame" x="156" y="27.5" width="63.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -230,43 +230,44 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cash Cell" id="G3H-cx-Jn2" customClass="EXCashCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cash Cell" id="G3H-cx-Jn2" customClass="EXCashCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="254" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3H-cx-Jn2" id="DWX-zv-dae">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-am-g1A">
-                                                    <rect key="frame" x="40" y="20" width="295" height="35.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h2r-ci-tJp">
+                                                    <rect key="frame" x="60" y="22.5" width="255" height="31"/>
                                                     <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stZ-HR-oFT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="35.5"/>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="stZ-HR-oFT">
+                                                            <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                                                             <color key="onTintColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <connections>
+                                                                <action selector="addCashToggle:" destination="G3H-cx-Jn2" eventType="valueChanged" id="0Hy-jC-612"/>
+                                                            </connections>
                                                         </switch>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-XX-RAf">
-                                                            <rect key="frame" x="59" y="0.0" width="78.5" height="35.5"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-XX-RAf">
+                                                            <rect key="frame" x="59" y="0.0" width="66" height="31"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYF-uR-TGm">
-                                                            <rect key="frame" x="147.5" y="0.0" width="147.5" height="35.5"/>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <rect key="frame" x="135" y="0.0" width="120" height="31"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="Oig-7q-6AR"/>
+                                                            </constraints>
+                                                            <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="YYF-uR-TGm" firstAttribute="width" secondItem="SdO-am-g1A" secondAttribute="width" multiplier="1:2" id="dTu-mS-2ki"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SdO-am-g1A" firstAttribute="leading" secondItem="DWX-zv-dae" secondAttribute="leading" constant="40" id="3qJ-Jy-R2K"/>
-                                                <constraint firstItem="SdO-am-g1A" firstAttribute="top" secondItem="DWX-zv-dae" secondAttribute="top" constant="20" id="BMR-Uy-XWH"/>
-                                                <constraint firstAttribute="bottom" secondItem="SdO-am-g1A" secondAttribute="bottom" constant="20" id="LQE-YN-20v"/>
-                                                <constraint firstAttribute="trailing" secondItem="SdO-am-g1A" secondAttribute="trailing" constant="40" id="q43-As-kTz"/>
+                                                <constraint firstItem="h2r-ci-tJp" firstAttribute="centerX" secondItem="DWX-zv-dae" secondAttribute="centerX" id="3Rq-hL-kPE"/>
+                                                <constraint firstItem="h2r-ci-tJp" firstAttribute="centerY" secondItem="DWX-zv-dae" secondAttribute="centerY" id="B3u-Uq-1Yw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

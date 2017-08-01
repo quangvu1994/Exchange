@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
         // Initialize facebook login manager
         let fbManager = FBSDKLoginManager()
         fbManager.loginBehavior = .browser
-        
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             guard let result = result else {
                 UIApplication.shared.endIgnoringInteractionEvents()
@@ -83,11 +82,13 @@ class LoginViewController: UIViewController {
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
+                    self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
                 // Make sure that user has logged in
                 guard let currentFIRAuthUser = currentFIRAuthUser else {
+                    self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }

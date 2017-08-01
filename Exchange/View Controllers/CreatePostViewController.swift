@@ -25,10 +25,6 @@ class CreatePostViewController: UIViewController {
         actionButton.layer.cornerRadius = 3
         tableView.tableFooterView = UIView()
         hideKeyboardOnTap()
-        // Push view up when keyboard shows up
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
-        
         switch scenario {
         case .edit:
             self.navigationItem.title = "Edit Item"
@@ -265,6 +261,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            cell.view = view
             cell.headerText.text = "Trade Location"
             cell.placeHolder = "Where we'll meet"
             

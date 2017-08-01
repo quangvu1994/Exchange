@@ -19,7 +19,7 @@ class ItemDetailViewController: UIViewController {
     // Convert date to a formatted string
     let timestampFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "MMMM d, YYYY"
         
         return dateFormatter
     }()
@@ -142,7 +142,6 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setupSlide(slide: slide, view: view)
             cell.pageControl.numberOfPages = post.imagesURL.count
             cell.pageControl.currentPage = 0
-            view.bringSubview(toFront: cell.pageControl)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Poster Information", for: indexPath) as! PosterInformationCell

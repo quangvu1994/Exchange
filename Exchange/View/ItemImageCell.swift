@@ -16,6 +16,8 @@ class ItemImageCell: UITableViewCell, UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        itemScrollView.layer.zPosition = 2
+        pageControl.layer.zPosition = 3
         itemScrollView.delegate = self
     }
     
@@ -35,6 +37,7 @@ class ItemImageCell: UITableViewCell, UIScrollViewDelegate {
         // Initialize the size of our scroll view and its content
         itemScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: itemScrollView.frame.height)
         itemScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slide.count), height: itemScrollView.frame.height)
+        itemScrollView.isPagingEnabled = true
         // Add the slide to the scroll view
         for i in 0..<slide.count {
             slide[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: itemScrollView.frame.height)
