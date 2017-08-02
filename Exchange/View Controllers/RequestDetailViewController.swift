@@ -165,6 +165,9 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             if let request = request {
                 cell.itemList = request.requesterItemsData
                 cell.status = request.status
+                if request.cashAmount != "" {
+                    cell.cashAmount = request.cashAmount
+                }
             }
             return cell
         case 2:
@@ -191,11 +194,11 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
         case 0:
             return 450
         case 1:
-            return 150
+            return 200
         case 2:
-            return 40
+            return 20
         case 3:
-            return 150
+            return 200
         case 4:
             return 80
         default:

@@ -22,8 +22,10 @@ class Request {
     var message: String = ""
     var tradeLocation: String
     var status = "In Progress"
+    var cashAmount: String = ""
     
     var dictValue: [String: Any] {
+        
         return [
             "requester_id": requesterID,
             "requester_name": requesterName,
@@ -37,6 +39,7 @@ class Request {
             "first_posterItem_imageURL": firstPostImageURL,
             "trade_location": tradeLocation,
             "message": message,
+            "cash_amount": cashAmount,
             "status": status
         ]
     }
@@ -78,6 +81,7 @@ class Request {
             let message = basicInfoSnapshot["message"] as? String,
             let firstPostTitle = basicInfoSnapshot["first_posterItem"] as? String,
             let status = basicInfoSnapshot["status"] as? String,
+            let cashAmount = basicInfoSnapshot["cash_amount"] as? String,
             let requesterID = basicInfoSnapshot["requester_id"] as? String,
             let requesterName = basicInfoSnapshot["requester_name"] as? String,
             let requesterPhone = basicInfoSnapshot["requester_phone"] as? String,
@@ -109,6 +113,7 @@ class Request {
         self.firstPostTitle = firstPostTitle
         self.message = message
         self.status = status
+        self.cashAmount = cashAmount
         self.tradeLocation = tradeLocation
     }
     

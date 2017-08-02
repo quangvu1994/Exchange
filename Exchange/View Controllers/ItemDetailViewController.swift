@@ -9,7 +9,6 @@
 import UIKit
 
 class ItemDetailViewController: UIViewController {
-    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var actionButton: UIButton!
@@ -26,6 +25,7 @@ class ItemDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -33,6 +33,7 @@ class ItemDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
@@ -62,7 +63,7 @@ class ItemDetailViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func actionHandler(_ sender: UIButton) {
         guard let post = post else {
             return
@@ -103,9 +104,15 @@ class ItemDetailViewController: UIViewController {
                 let editView = segue.destination as! CreatePostViewController
                 editView.currentPost = post
                 editView.scenario = .edit
+            } else if identifier == "Open User Store" {
+                let viewControllerDestination = segue.destination as! MyItemViewController
+                // Safe to force unwrap here
+                viewControllerDestination.userId = post?.poster.uid
+                viewControllerDestination.username = post?.poster.username
             }
         }
     }
+    
     
     @IBAction func backAction(_ sender: Any) {
         switch scenario {
@@ -123,6 +130,10 @@ class ItemDetailViewController: UIViewController {
                 actionButton.setTitle("In Exchange", for: .normal)
             }
         }
+    }
+    
+    func segueToUserStore() {
+        self.performSegue(withIdentifier: "Open User Store", sender: nil)
     }
 }
 
@@ -147,6 +158,7 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Poster Information", for: indexPath) as! PosterInformationCell
             
             cell.topLabel.text = post.poster.username
+            cell.topLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ItemDetailViewController.segueToUserStore)))
             cell.bottomLabel.text = timestampFormatter.string(from: post.creationDate)
             return cell
         case 2:

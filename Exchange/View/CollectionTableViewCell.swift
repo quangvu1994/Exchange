@@ -17,6 +17,8 @@ class CollectionTableViewCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
+    var cashAmount: String?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
@@ -29,11 +31,26 @@ class CollectionTableViewCell: UITableViewCell {
 
 extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemList.count
+        var numOfItems = itemList.count
+        if let _ = cashAmount {
+            numOfItems += 1
+        }
+        return numOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item Cell", for: indexPath) as! MyItemPostImageCell
+        // If there is cash
+        if let cashAmount = cashAmount {
+            // if this is the last cell
+            if indexPath.row == itemList.count {
+                cell.imageLabel.text = cashAmount
+                cell.imageLabel.isHidden = false
+                return cell
+            }
+        }
+
+        cell.imageLabel.text = "Sold"
         let key = Array(itemList.keys)[indexPath.row]
         
         if let itemDataDict = itemList[key] as? [String : Any],
@@ -51,10 +68,10 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
             
             if !availability && self.status != "Confirmed"{
                 cell.postImage.alpha = 0.5
-                cell.soldLabel.isHidden = false
+                cell.imageLabel.isHidden = false
             } else {
                 cell.postImage.alpha = 1.0
-                cell.soldLabel.isHidden = true
+                cell.imageLabel.isHidden = true
             }
         })
         return cell

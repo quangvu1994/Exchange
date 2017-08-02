@@ -24,30 +24,31 @@ class EXConfirmViewController: UIViewController {
     
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
-        let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! EXTableDescriptionCell
+        let messageCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! EXTableDescriptionCell
+        let cashCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! EXCashCell
         
         // Write the request to our database
         let request = Request(requesterItems: requesterItems, posterItems: posterItems)
         // Safe to force unwrap
-        request.message = cell.getInformation()!
-        
-        // NOTE: need dispatch group here
+        request.message = messageCell.getInformation()!
+        if cashCell.amountField.text != "" {
+            request.cashAmount = cashCell.amountField.text!
+        }
+
         RequestService.writeNewRequest(for: User.currentUser.uid, and: posterItems[0].poster.uid, with: request, completionHandler: { [weak self] (success) in
             if !success {
-                self?.displayWarningMessage(message: "Unable to send request, please try again")
+                self?.displayWarningMessage(message: "Unable to send request, please check your network and try again")
+                UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
+            let alertController = UIAlertController(title: nil, message: "Your exchange request has been sent!", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                self?.performSegue(withIdentifier: "Finish Exchange Sequence", sender: nil)
+            })
+            alertController.addAction(cancelAction)
+            self?.present(alertController, animated: true, completion: nil)
+            UIApplication.shared.endIgnoringInteractionEvents()
         })
-        
-        // Display successful dialog
-        let alertController = UIAlertController(title: nil, message: "Your exchange request has been sent!", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-            self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: nil)
-        })
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-        UIApplication.shared.endIgnoringInteractionEvents()
     }
 }
 

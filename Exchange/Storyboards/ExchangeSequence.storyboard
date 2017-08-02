@@ -271,7 +271,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="amountField" destination="YYF-uR-TGm" id="xNa-In-3Eh"/>
+                                            <outlet property="amountField" destination="YYF-uR-TGm" id="5ZE-8g-tpU"/>
                                             <outlet property="cashSwitch" destination="stZ-HR-oFT" id="2h0-md-rYA"/>
                                         </connections>
                                     </tableViewCell>

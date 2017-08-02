@@ -11,6 +11,8 @@ import FirebaseDatabase
 import Kingfisher
 
 class MyItemViewController: UIViewController {
+    var userId: String?
+    var username: String?
     var post = [Post]() {
         didSet {
             collectionView.reloadData()
@@ -26,18 +28,35 @@ class MyItemViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-        // fetch post
-        PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] (allPosts) in
-            self?.post = allPosts
-        })
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        if let userId = userId {
+            // fetch post for specific user
+            PostService.fetchPost(for: userId, completionHandler: { [weak self] (allPosts) in
+                self?.post = allPosts
+            })
+        } else {
+            // fetch post for current user
+            PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] (allPosts) in
+                self?.post = allPosts
+            })
+            self.navigationItem.leftBarButtonItem = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let index = sender as? Int else {
@@ -83,8 +102,11 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MyItemCollectionHeader", for: indexPath) as! MyItemHeaderView
-        headerView.username.text = User.currentUser.username
-        
+        if let username = username {
+            headerView.username.text = username
+        } else {
+            headerView.username.text = User.currentUser.username
+        }
         return headerView
     }
 }

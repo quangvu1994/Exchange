@@ -376,11 +376,12 @@
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pah-Qc-omk">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                        <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                                     </imageView>
-                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-4U-q9n">
-                                                                        <rect key="frame" x="23.5" y="30" width="33.5" height="20"/>
+                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-4U-q9n">
+                                                                        <rect key="frame" x="20" y="30" width="41" height="20"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="16"/>
-                                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -395,8 +396,8 @@
                                                             </constraints>
                                                             <size key="customSize" width="80" height="80"/>
                                                             <connections>
+                                                                <outlet property="imageLabel" destination="DYG-4U-q9n" id="mqM-Pk-2UL"/>
                                                                 <outlet property="postImage" destination="pah-Qc-omk" id="lbS-7n-8Sh"/>
-                                                                <outlet property="soldLabel" destination="DYG-4U-q9n" id="Oxh-0h-9ad"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>

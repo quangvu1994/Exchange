@@ -110,10 +110,10 @@ class CreatePostViewController: UIViewController {
                     }else {
                         self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
                     }
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 })
             })
         }
-        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

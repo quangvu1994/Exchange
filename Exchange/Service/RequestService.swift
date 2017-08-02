@@ -51,7 +51,7 @@ class RequestService {
      Retrievei all incoming request for our current user
     */
     static func retrieveIncomingRequest(completionHandler: @escaping ([Request]) -> Void) {
-        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request")
+        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request")
         outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.value as? [String: Bool] else {
                 return completionHandler([])
@@ -85,7 +85,7 @@ class RequestService {
      Retrieve all outgoing request for our current user
     */
     static func retrieveOutgoingRequest(completionHandler: @escaping ([Request]) -> Void) {
-        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request")
+        let outgoingRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request")
         outgoingRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.value as? [String: Bool] else {
                 return completionHandler([])

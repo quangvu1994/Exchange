@@ -267,7 +267,7 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uco-Ux-b2G">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uco-Ux-b2G">
                                                             <rect key="frame" x="77" y="0.0" width="85.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -404,6 +404,7 @@
                         <segue destination="i3R-2X-A3m" kind="unwind" identifier="Item Detail" unwindAction="unwindFromItemDetail:" id="c3b-Sa-skD"/>
                         <segue destination="i3R-2X-A3m" kind="unwind" identifier="Personal Item Detail" unwindAction="unwindFromPersonalItemDetail:" id="wJZ-zA-X8f"/>
                         <segue destination="6Do-v6-eAN" kind="show" identifier="Edit Item" id="jbe-oD-fJn"/>
+                        <segue destination="sbx-JY-VKd" kind="show" identifier="Open User Store" id="qv5-Vo-CN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdp-jC-Aat" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -442,6 +443,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3l-66-XXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4229" y="-272"/>
+        </scene>
+        <!--My Item-->
+        <scene sceneID="cLd-Wj-SyH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyItem" referencedIdentifier="My Item" id="sbx-JY-VKd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6J-LS-J3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4284" y="-184"/>
         </scene>
         <!--Create New Item-->
         <scene sceneID="6AZ-1f-L9n">
