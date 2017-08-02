@@ -66,6 +66,20 @@ class PostService {
     }
     
     /**
+     Update the existing post with a new data
+    */
+    static func updatePostOnFIR(for postID: String, with post: Post, completion: @escaping (Bool) -> Void) {
+        let allPostRef = Database.database().reference().child("allItems/\(postID)")
+        allPostRef.updateChildValues(post.dictValue, withCompletionBlock: { (error, snapshot) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completion(false)
+            }
+            completion(true)
+        })
+    }
+    
+    /**
      Fetch all items from the "all items" object
     */
     static func fetchPost(completionHandler: @escaping ([Post]) -> Void) {

@@ -105,10 +105,12 @@ class ItemDetailViewController: UIViewController {
                 editView.currentPost = post
                 editView.scenario = .edit
             } else if identifier == "Open User Store" {
+                guard let user = sender as? User else {
+                    return
+                }
                 let viewControllerDestination = segue.destination as! MyItemViewController
                 // Safe to force unwrap here
-                viewControllerDestination.userId = post?.poster.uid
-                viewControllerDestination.username = post?.poster.username
+                viewControllerDestination.user = user
             }
         }
     }
@@ -133,7 +135,14 @@ class ItemDetailViewController: UIViewController {
     }
     
     func segueToUserStore() {
-        self.performSegue(withIdentifier: "Open User Store", sender: nil)
+        // Fetch user info 
+        UserService.retrieveUser((post?.poster.uid)!, completion: { [weak self] (userFromFIR) in
+            guard let user = userFromFIR else {
+                self?.displayWarningMessage(message: "Unable to retrieve this user information, please check your network")
+                return
+            }
+            self?.performSegue(withIdentifier: "Open User Store", sender: user)
+        })
     }
 }
 

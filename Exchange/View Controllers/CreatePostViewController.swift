@@ -44,51 +44,75 @@ class CreatePostViewController: UIViewController {
     
     @IBAction func performAction(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
+        var imageList: [UIImage]?
+        var postTitle: String?
+        var postDescription: String?
+        var postCategory: String?
+        var tradeLocation: String?
+        
+        for row in 0..<tableView.numberOfRows(inSection: 0) {
+            switch row {
+            case 0:
+                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCameraCell
+                imageList = cell.getImageInformation()
+            case 1:
+                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                postTitle = cell.getInformation()
+            case 2:
+                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                postDescription = cell.getInformation()
+                
+            case 3:
+                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCategoryCell
+                postCategory = cell.getInformation()
+            case 4:
+                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
+                tradeLocation = cell.getInformation()
+            default:
+                fatalError("Unrecognized row")
+            }
+        }
+        
+        guard let selectedImages = imageList,
+            let title = postTitle,
+            let description = postDescription,
+            let category = postCategory,
+            let location = tradeLocation else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                // Display an alert if user fail to fill out the required info
+                self.displayWarningMessage(message: "Please fill out all information")
+                return
+        }
+        
         switch scenario {
         case .edit:
-            print("Save Changes")
+            PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
+                guard let imagesURL = imagesURL,
+                    let currentPost = self?.currentPost else {
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self?.displayWarningMessage(message: "Unable to upload image, please try again")
+                    return
+                }
+                
+                let post = Post(imagesURL: imagesURL)
+                post.postTitle = title
+                post.postDescription = description
+                post.postCategory = category
+                post.tradeLocation = location
+                
+                PostService.updatePostOnFIR(for: currentPost.key!, with: post, completion: { [weak self] (success) in
+                    if success {
+                        // Clear everything in the table view
+                        self?.tableView.reloadData()
+                        self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
+                    }else {
+                        self?.displayWarningMessage(message: "Unable to upload the post, please try again")
+                    }
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                })
+            })
             
         default:
-            var imageList: [UIImage]?
-            var postTitle: String?
-            var postDescription: String?
-            var postCategory: String?
-            var tradeLocation: String?
-            
-            for row in 0..<tableView.numberOfRows(inSection: 0) {
-                switch row {
-                case 0:
-                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCameraCell
-                    imageList = cell.getImageInformation()
-                case 1:
-                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                    postTitle = cell.getInformation()
-                case 2:
-                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                    postDescription = cell.getInformation()
-                    
-                case 3:
-                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCategoryCell
-                    postCategory = cell.getInformation()
-                case 4:
-                    let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                    tradeLocation = cell.getInformation()
-                default:
-                    fatalError("Unrecognized row")
-                }
-            }
-            
-            guard let selectedImages = imageList,
-                let title = postTitle,
-                let description = postDescription,
-                let category = postCategory,
-                let location = tradeLocation else {
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    // Display an alert if user fail to fill out the required info
-                    self.displayWarningMessage(message: "Please fill out all information")
-                    return
-            }
-            
             PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
@@ -102,8 +126,8 @@ class CreatePostViewController: UIViewController {
                 post.postCategory = category
                 post.tradeLocation = location
                 
-                PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (completed) in
-                    if completed {
+                PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (success) in
+                    if success {
                         // Clear everything in the table view
                         self?.tableView.reloadData()
                         self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
@@ -178,12 +202,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                     switch i {
                     case 0:
                         cell.firstImage.kf.setImage(with: url)
+                        cell.firstImageSet = true
                     case 1:
                         cell.secondImage.kf.setImage(with: url)
+                        cell.secondImageSet = true
                     case 2:
                         cell.thirdImage.kf.setImage(with: url)
+                        cell.thirdImageSet = true
                     case 3:
                         cell.fourthImage.kf.setImage(with: url)
+                        cell.fourthImageSet = true
                     default:
                         fatalError("Unrecognized image index")
                     }

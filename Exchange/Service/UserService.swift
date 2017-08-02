@@ -18,7 +18,8 @@ class UserService {
         //  Store username
         let data = [
             "username": username,
-            "phoneNumber": phoneNumber
+            "phoneNumber": phoneNumber,
+            "storeDescription": "Welcome to my store!"
         ]
         // Generate a path in our FIRDatabase
         let userPath = Database.database().reference().child("users").child(user.uid)

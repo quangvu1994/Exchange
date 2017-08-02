@@ -11,8 +11,7 @@ import FirebaseDatabase
 import Kingfisher
 
 class MyItemViewController: UIViewController {
-    var userId: String?
-    var username: String?
+    var user: User?
     var post = [Post]() {
         didSet {
             collectionView.reloadData()
@@ -32,9 +31,9 @@ class MyItemViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        if let userId = userId {
+        if let user = user {
             // fetch post for specific user
-            PostService.fetchPost(for: userId, completionHandler: { [weak self] (allPosts) in
+            PostService.fetchPost(for: user.uid, completionHandler: { [weak self] (allPosts) in
                 self?.post = allPosts
             })
         } else {
@@ -102,10 +101,14 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MyItemCollectionHeader", for: indexPath) as! MyItemHeaderView
-        if let username = username {
-            headerView.username.text = username
+        if let user = user {
+            headerView.username.text = user.username
+            headerView.userID = user.uid
+            headerView.shopBriefDescription.text = user.storeDescription
         } else {
             headerView.username.text = User.currentUser.username
+            headerView.userID = User.currentUser.uid
+            headerView.shopBriefDescription.text = User.currentUser.storeDescription
         }
         return headerView
     }

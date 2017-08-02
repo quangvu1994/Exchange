@@ -61,29 +61,45 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
-                                            <rect key="frame" x="139" y="50" width="98.5" height="24"/>
+                                            <rect key="frame" x="139" y="50" width="98.5" height="25"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello and welcome to my store. Feel free to message me for anything that you want to trade" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="79" width="355" height="116"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Welcome to my store!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
+                                            <rect key="frame" x="10" y="80" width="355" height="110"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Or-PGX">
+                                            <rect key="frame" x="340" y="50" width="30" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="eGm-v3-Aac"/>
+                                            </constraints>
+                                            <state key="normal" image="edit">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="editStoreDescription:" destination="pzC-JM-P9z" eventType="touchUpInside" id="ZmJ-Zx-YKJ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="2wb-Or-PGX" secondAttribute="bottom" constant="5" id="4i4-sP-4Pq"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
+                                        <constraint firstItem="2wb-Or-PGX" firstAttribute="height" secondItem="sdT-wv-bNg" secondAttribute="height" id="Jjj-3y-XdC"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
-                                        <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="5" id="hxD-6T-uqV"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="centerX" secondItem="pzC-JM-P9z" secondAttribute="centerX" id="sR7-zQ-XUy"/>
+                                        <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="10" id="uAh-6b-lwA"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="uBT-tq-PxU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g3e-9B-7L8" secondAttribute="trailing" constant="2" id="xB6-va-olx"/>
+                                        <constraint firstAttribute="trailing" secondItem="2wb-Or-PGX" secondAttribute="trailing" constant="5" id="xyA-YO-m0w"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="editButton" destination="2wb-Or-PGX" id="kLH-Eu-IPo"/>
                                         <outlet property="shopBriefDescription" destination="g3e-9B-7L8" id="6Hp-DD-g71"/>
                                         <outlet property="username" destination="sdT-wv-bNg" id="Pl4-Hn-mke"/>
                                     </connections>
@@ -160,5 +176,6 @@
     <resources>
         <image name="Back Icon" width="25" height="25"/>
         <image name="Home" width="25" height="25"/>
+        <image name="edit" width="25" height="25"/>
     </resources>
 </document>

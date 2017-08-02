@@ -7,9 +7,32 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-class MyItemHeaderView: UICollectionReusableView {
+class MyItemHeaderView: UICollectionReusableView, UITextViewDelegate {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var shopBriefDescription: UITextView!
-
+    @IBOutlet weak var editButton: UIButton!
+    var userID: String?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        shopBriefDescription.delegate = self
+    }
+    @IBAction func editStoreDescription(_ sender: Any) {
+        shopBriefDescription.isEditable = true
+        shopBriefDescription.tintColor = UIColor.white
+        shopBriefDescription.becomeFirstResponder()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        shopBriefDescription.isEditable = false
+        // Save the changes
+        guard let userID = userID else {
+            return
+        }
+    
+        Database.database().reference().child("users/\(userID)/storeDescription").setValue(shopBriefDescription.text!)
+        User.currentUser.storeDescription = shopBriefDescription.text!
+    }
 }

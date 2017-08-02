@@ -14,6 +14,7 @@ class User {
     var uid: String
     var username: String
     var phoneNumber: String
+    var storeDescription: String = "Welcome to my store!"
     
     // Singleton User
     private static var _current: User?
@@ -28,6 +29,7 @@ class User {
         guard let snapshotValue = snapshot.value as? [String: Any],
             let username = snapshotValue["username"] as? String,
             let phoneNumber = snapshotValue["phoneNumber"] as? String,
+            let storeDescription = snapshotValue["storeDescription"] as? String,
                 !username.isEmpty,
                 !phoneNumber.isEmpty else {
             return nil
@@ -36,6 +38,7 @@ class User {
         self.uid = snapshot.key
         self.username = username
         self.phoneNumber = phoneNumber
+        self.storeDescription = storeDescription
     }
         
     static func setCurrentUser(_ user: User){
