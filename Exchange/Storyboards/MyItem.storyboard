@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,19 +40,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-ed-TUE">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-ed-TUE">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                                 </imageView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-l2-t5T">
+                                                    <rect key="frame" x="84" y="0.0" width="86" height="34"/>
+                                                    <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="IHL-l2-t5T" secondAttribute="trailing" id="18b-HW-SlL"/>
+                                            <constraint firstItem="IHL-l2-t5T" firstAttribute="height" secondItem="UYJ-Pd-06G" secondAttribute="height" multiplier="1:5" id="7TI-2v-CSX"/>
+                                            <constraint firstAttribute="bottom" secondItem="fMR-ed-TUE" secondAttribute="bottom" id="99z-Fk-SBC"/>
+                                            <constraint firstAttribute="trailing" secondItem="fMR-ed-TUE" secondAttribute="trailing" id="IID-sl-F5A"/>
+                                            <constraint firstItem="fMR-ed-TUE" firstAttribute="leading" secondItem="UYJ-Pd-06G" secondAttribute="leading" id="KMX-VJ-NdR"/>
+                                            <constraint firstItem="IHL-l2-t5T" firstAttribute="width" secondItem="UYJ-Pd-06G" secondAttribute="width" multiplier="1:2" constant="1" id="PVc-Ki-zzC"/>
+                                            <constraint firstItem="fMR-ed-TUE" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="Slr-dD-iUG"/>
                                             <constraint firstAttribute="trailing" secondItem="fMR-ed-TUE" secondAttribute="trailing" id="V8h-6o-hYB"/>
+                                            <constraint firstItem="IHL-l2-t5T" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="aHb-LK-hO9"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="loH-Ld-Abl"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="leading" secondItem="UYJ-Pd-06G" secondAttribute="leading" id="ntP-yo-3KK"/>
                                             <constraint firstAttribute="bottom" secondItem="fMR-ed-TUE" secondAttribute="bottom" id="uDA-7E-jSb"/>
                                         </constraints>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
+                                            <outlet property="imageLabel" destination="IHL-l2-t5T" id="2Lr-uz-Vtl"/>
                                             <outlet property="postImage" destination="fMR-ed-TUE" id="U8i-CQ-qXs"/>
                                         </connections>
                                     </collectionViewCell>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class EXTableCollectionCell: UITableViewCell {
 
@@ -33,6 +34,18 @@ extension EXTableCollectionCell: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Collection Image Cell", for: indexPath) as! MyItemPostImageCell
         let url = URL(string: itemList[indexPath.row].imagesURL[0])
         cell.postImage.kf.setImage(with: url)
+        let itemRef = Database.database().reference().child("allItems/\(itemList[indexPath.row].key!)/availability")
+        itemRef.observe(.value, with: { (snapshot) in 
+            guard let availability = snapshot.value as? Bool else {
+                return
+            }
+            
+            if !availability {
+                cell.imageLabel.isHidden = false
+            } else {
+                cell.imageLabel.isHidden = true
+            }
+        })
         return cell
     }
 }

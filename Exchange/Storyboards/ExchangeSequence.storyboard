@@ -172,24 +172,27 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="88"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUG-oc-IX8">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUG-oc-IX8">
                                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="88"/>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sw-Vj-9wX">
-                                                                        <rect key="frame" x="30" y="34" width="35" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sw-Vj-9wX">
+                                                                        <rect key="frame" x="47.5" y="0.0" width="47.5" height="22"/>
+                                                                        <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="XUG-oc-IX8" secondAttribute="bottom" id="65I-wr-VZh"/>
-                                                                <constraint firstItem="XUG-oc-IX8" firstAttribute="leading" secondItem="X2y-CL-ulv" secondAttribute="leading" id="La1-JC-doK"/>
-                                                                <constraint firstItem="8Sw-Vj-9wX" firstAttribute="centerY" secondItem="X2y-CL-ulv" secondAttribute="centerY" id="M8R-7t-L2Q"/>
-                                                                <constraint firstItem="8Sw-Vj-9wX" firstAttribute="centerX" secondItem="X2y-CL-ulv" secondAttribute="centerX" id="jxR-HQ-g6r"/>
-                                                                <constraint firstItem="XUG-oc-IX8" firstAttribute="top" secondItem="X2y-CL-ulv" secondAttribute="top" id="ktz-4C-zvW"/>
-                                                                <constraint firstAttribute="trailing" secondItem="XUG-oc-IX8" secondAttribute="trailing" id="xRv-ha-Bqo"/>
+                                                                <constraint firstItem="XUG-oc-IX8" firstAttribute="top" secondItem="X2y-CL-ulv" secondAttribute="top" id="8EP-Zx-1Fa"/>
+                                                                <constraint firstAttribute="trailing" secondItem="8Sw-Vj-9wX" secondAttribute="trailing" id="DJq-ws-Xe4"/>
+                                                                <constraint firstAttribute="trailing" secondItem="XUG-oc-IX8" secondAttribute="trailing" id="JYN-na-g4V"/>
+                                                                <constraint firstItem="8Sw-Vj-9wX" firstAttribute="height" secondItem="X2y-CL-ulv" secondAttribute="height" multiplier="1:4" id="TLs-q9-gdx"/>
+                                                                <constraint firstItem="8Sw-Vj-9wX" firstAttribute="top" secondItem="X2y-CL-ulv" secondAttribute="top" id="UXh-Z7-21j"/>
+                                                                <constraint firstAttribute="bottom" secondItem="XUG-oc-IX8" secondAttribute="bottom" id="ZUV-1T-mFu"/>
+                                                                <constraint firstItem="8Sw-Vj-9wX" firstAttribute="width" secondItem="X2y-CL-ulv" secondAttribute="width" multiplier="1:2" id="po5-Zb-4dH"/>
+                                                                <constraint firstItem="XUG-oc-IX8" firstAttribute="leading" secondItem="X2y-CL-ulv" secondAttribute="leading" id="y4C-1w-Mro"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageLabel" destination="8Sw-Vj-9wX" id="E5i-p8-J0s"/>

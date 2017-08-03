@@ -38,9 +38,9 @@ class RequestViewController: UIViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        if index! == 1 {
+        if index! == 0 {
             self.title = "Outgoing Requests"
-        } else if index! == 2 {
+        } else if index! == 1 {
             self.title = "Incoming Requests"
         }
     }
@@ -66,7 +66,7 @@ class RequestViewController: UIViewController {
     
     func fetchingRequest() {
         let dispatchGroup = DispatchGroup()
-        if index! == 1 {
+        if index! == 0 {
             // Fetch outgoing request
             dispatchGroup.enter()
             RequestService.retrieveOutgoingRequest(completionHandler: { [weak self] (outgoingRequest) in

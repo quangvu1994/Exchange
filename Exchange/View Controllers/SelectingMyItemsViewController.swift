@@ -21,14 +21,17 @@ class SelectingMyItemsViewController: UIViewController {
     
     var posterItems = [Post]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // fetch post
         PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] post in
             self?.currItems = post.filter {
                 $0.availability == true
             }
         })
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         collectionView.delegate = self
     }
     

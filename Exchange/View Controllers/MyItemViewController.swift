@@ -89,6 +89,19 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.delegate = self
         cell.gestureDisplayingItemDetailWithIndex()
         cell.index = indexPath.row
+        
+        let itemRef = Database.database().reference().child("allItems/\(post[indexPath.row].key!)/availability")
+        itemRef.observe(.value, with: { (snapshot) in
+            guard let availability = snapshot.value as? Bool else {
+                return
+            }
+            
+            if !availability {
+                cell.imageLabel.isHidden = false
+            } else {
+                cell.imageLabel.isHidden = true
+            }
+        })
         return cell
 
     }
@@ -105,6 +118,7 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
             headerView.username.text = user.username
             headerView.userID = user.uid
             headerView.shopBriefDescription.text = user.storeDescription
+            headerView.editButton.isHidden = true
         } else {
             headerView.username.text = User.currentUser.username
             headerView.userID = User.currentUser.uid

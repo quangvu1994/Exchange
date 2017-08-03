@@ -153,7 +153,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             fatalError("No request found")
         }
         
-        if request.status != "In Progress" || index! == 1 {
+        if request.status != "In Progress" || index! == 0 {
             return 4
         } else {
             return 5

@@ -24,6 +24,12 @@ class MyItemPostImageCell: UICollectionViewCell {
     
     weak var delegate: DisplayItemDetailHandler?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageLabel.layer.masksToBounds = true
+        imageLabel.layer.cornerRadius = 3
+    }
+    
     func gestureDisplayingItemDetailWithIndex() {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyItemPostImageCell.displayDetailWithIndex))

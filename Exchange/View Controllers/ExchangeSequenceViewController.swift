@@ -23,20 +23,16 @@ class ExchangeSequenceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = false
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         // fetch post
         PostService.fetchPost(for: posterItems[0].poster.uid, completionHandler: { [weak self] post in
             self?.currItems = post.filter {
                 $0.requestedBy["\(User.currentUser.uid)"] != true && $0.availability == true
             }
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         collectionView.delegate = self
     }
     

@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
-    let options = ["Personal Info", "Outgoing Requests", "Incoming Requests", "Log Out"]
+    let options = ["Outgoing Requests", "Incoming Requests", "Log Out"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -78,12 +78,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            self.performSegue(withIdentifier: "Show Profile Detail", sender: nil)
+            self.performSegue(withIdentifier: "Show Request", sender: nil)
         case 1:
             self.performSegue(withIdentifier: "Show Request", sender: nil)
         case 2:
-            self.performSegue(withIdentifier: "Show Request", sender: nil)
-        case 3:
             // Handle log out
             let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to logout?", preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
