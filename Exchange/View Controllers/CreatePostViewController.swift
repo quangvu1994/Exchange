@@ -182,15 +182,19 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 case 0:
                     cell.firstImage.image = selectedImage
                     cell.firstImageSet = true
+                    cell.firstImage.contentMode = .scaleAspectFill
                 case 1:
                     cell.secondImage.image = selectedImage
                     cell.secondImageSet = true
+                    cell.secondImage.contentMode = .scaleAspectFill
                 case 2:
                     cell.thirdImage.image = selectedImage
                     cell.thirdImageSet = true
+                    cell.thirdImage.contentMode = .scaleAspectFill
                 case 3:
                     cell.fourthImage.image = selectedImage
                     cell.fourthImageSet = true
+                    cell.fourthImage.contentMode = .scaleAspectFill
                 default:
                     fatalError("Unrecognized Image")
                 }
@@ -203,15 +207,19 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                     case 0:
                         cell.firstImage.kf.setImage(with: url)
                         cell.firstImageSet = true
+                        cell.firstImage.contentMode = .scaleAspectFill
                     case 1:
                         cell.secondImage.kf.setImage(with: url)
                         cell.secondImageSet = true
+                        cell.secondImage.contentMode = .scaleAspectFill
                     case 2:
                         cell.thirdImage.kf.setImage(with: url)
                         cell.thirdImageSet = true
+                        cell.thirdImage.contentMode = .scaleAspectFill
                     case 3:
                         cell.fourthImage.kf.setImage(with: url)
                         cell.fourthImageSet = true
+                        cell.fourthImage.contentMode = .scaleAspectFill
                     default:
                         fatalError("Unrecognized image index")
                     }

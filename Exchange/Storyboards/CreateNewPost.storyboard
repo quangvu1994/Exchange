@@ -35,7 +35,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="171.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-rW-D8e">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-rW-D8e">
                                                     <rect key="frame" x="10" y="43.5" width="355" height="85"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="N3O-o6-GxJ">
@@ -56,10 +56,12 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="H4J-1F-9Do" firstAttribute="width" secondItem="N3O-o6-GxJ" secondAttribute="width" id="GEH-yS-AEc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="N3O-o6-GxJ" secondAttribute="bottom" id="KcG-a2-yp6"/>
                                                         <constraint firstItem="bDj-kP-dG7" firstAttribute="height" secondItem="N3O-o6-GxJ" secondAttribute="height" id="OTd-IL-8OL"/>
                                                         <constraint firstItem="bDj-kP-dG7" firstAttribute="width" secondItem="N3O-o6-GxJ" secondAttribute="width" id="Vcx-Z5-2rQ"/>
                                                         <constraint firstItem="db0-rf-rg3" firstAttribute="height" secondItem="N3O-o6-GxJ" secondAttribute="height" id="X8L-z0-AWr"/>
                                                         <constraint firstItem="db0-rf-rg3" firstAttribute="width" secondItem="N3O-o6-GxJ" secondAttribute="width" id="aaR-tM-xVu"/>
+                                                        <constraint firstItem="N3O-o6-GxJ" firstAttribute="top" secondItem="C0d-rW-D8e" secondAttribute="top" id="bOX-5n-ohx"/>
                                                         <constraint firstItem="H4J-1F-9Do" firstAttribute="height" secondItem="N3O-o6-GxJ" secondAttribute="height" id="kca-5F-2CR"/>
                                                     </constraints>
                                                 </stackView>
@@ -325,7 +327,7 @@
                     <tabBarItem key="tabBarItem" title="List Item" image="AddItem" id="PCd-Yq-eSg"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3x-xe-yXe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l3x-xe-yXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>

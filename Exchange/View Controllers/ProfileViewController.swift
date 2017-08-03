@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
     let options = ["Outgoing Requests", "Incoming Requests", "Log Out"]
+    var photoHelper = EXPhotoHelper()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,6 +23,11 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.isNavigationBarHidden = true
+        // If there is profile picture -> set it
+        if let profilePictureURL = User.currentUser.profilePictureURL {
+            profilePicture.contentMode = .scaleAspectFill
+            profilePicture.kf.setImage(with: URL(string: profilePictureURL))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,6 +39,41 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.configuration()
         username.text = User.currentUser.username
+        profilePicture.isUserInteractionEnabled = true
+        profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.openPhotoPicker)))
+        
+        // Handle taken picture
+        photoHelper.completionHandler = { [weak self] (image) in
+            self?.profilePicture.contentMode = .scaleAspectFill
+            self?.profilePicture.image = image
+            // Store image on Firebase Storage
+            guard let imageData = UIImageJPEGRepresentation(image, 0.1) else {
+                return
+            }
+            
+            let ref = FIRStorageUtilities.constructReferencePath()
+            ref.putData(imageData, metadata: nil, completion: { (metaData, error) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    return
+                }
+                
+                guard let downloadURL = metaData?.downloadURL() else {
+                    return
+                }
+                
+                let imageURL = downloadURL.absoluteString
+                
+                // Store the profile picture on FIRDatabase and update user default
+                let userRef = Database.database().reference().child("users/\(User.currentUser.uid)/profilePicture")
+                userRef.setValue(imageURL)
+                
+                // Update user default
+                User.currentUser.profilePictureURL = imageURL
+                User.setCurrentUser(User.currentUser, writeToUserDefaults: true)
+            })
+            
+        }
     }
     
     func configuration() {
@@ -43,6 +84,10 @@ class ProfileViewController: UIViewController {
         profilePicture.clipsToBounds = true
         profilePicture.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
         profilePicture.layer.borderWidth = 1.0
+    }
+    
+    func openPhotoPicker() {
+        photoHelper.presentActionSheet(from: self)
     }
     
     @IBAction func unwindToProfileView(_ sender: UIStoryboardSegue) {

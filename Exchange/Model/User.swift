@@ -14,6 +14,7 @@ class User: NSObject {
     var uid: String
     var username: String
     var phoneNumber: String
+    var profilePictureURL: String?
     var storeDescription: String = "Welcome to my store!"
     
     // Singleton User
@@ -38,7 +39,7 @@ class User: NSObject {
         self.username = username
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
-        
+        self.profilePictureURL = aDecoder.decodeObject(forKey: Constants.UserDefaults.profilePicture) as? String
         super.init()
     }
     
@@ -56,6 +57,7 @@ class User: NSObject {
         self.username = username
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
+        self.profilePictureURL = snapshotValue["profile_picture"] as? String
         super.init()
     }
         
@@ -87,5 +89,6 @@ extension User: NSCoding {
         aCoder.encode(username, forKey: Constants.UserDefaults.username)
         aCoder.encode(phoneNumber, forKey: Constants.UserDefaults.phoneNumber)
         aCoder.encode(storeDescription, forKey: Constants.UserDefaults.storeDescription)
+        aCoder.encode(profilePictureURL, forKey: Constants.UserDefaults.profilePicture)
     }
 }
