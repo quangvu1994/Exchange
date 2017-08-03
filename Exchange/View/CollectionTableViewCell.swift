@@ -78,11 +78,13 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
             }
             
             if !availability && self.status != "Confirmed"{
-                cell.postImage.alpha = 0.5
+                cell.postImage.alpha = 0.4
                 cell.imageLabel.isHidden = false
+                cell.postImage.isUserInteractionEnabled = false
             } else {
                 cell.postImage.alpha = 1.0
                 cell.imageLabel.isHidden = true
+                cell.postImage.isUserInteractionEnabled = true
             }
         })
         return cell

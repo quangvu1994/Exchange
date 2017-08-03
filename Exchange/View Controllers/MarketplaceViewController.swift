@@ -96,6 +96,20 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         cell.delegate = self
         cell.gestureDisplayingItemDetailWithIndex()
         cell.index = indexPath.row
+        // Observe the availability of this item
+        let itemRef = Database.database().reference().child("allItems/\(post[indexPath.row].key!)/availability")
+        itemRef.observe(.value, with: { (snapshot) in
+            guard let availability = snapshot.value as? Bool else {
+                return
+            }
+            
+            if !availability {
+                cell.itemLabel.isHidden = false
+            } else {
+                cell.itemLabel.isHidden = true
+            }
+        })
+        
         return cell
     }
     

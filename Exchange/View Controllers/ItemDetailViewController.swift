@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ItemDetailViewController: UIViewController {
 
@@ -62,13 +63,25 @@ class ItemDetailViewController: UIViewController {
                 actionButton.setTitle("Exchange Item", for: .normal)
             }
         }
+        
+        let itemRef = Database.database().reference().child("allItems/\(post.key!)/availability")
+        itemRef.observe(.value, with: { [weak self] (snapshot) in
+            guard let availability = snapshot.value as? Bool else {
+                return
+            }
+            
+            if !availability {
+                self?.actionButton.alpha = 0.5
+                self?.actionButton.setTitle("Item Sold", for: .normal)
+                self?.actionButton.isUserInteractionEnabled = false
+            }
+        })
     }
     
     @IBAction func actionHandler(_ sender: UIButton) {
         guard let post = post else {
             return
         }
-        
         UIApplication.shared.beginIgnoringInteractionEvents()
         switch post.poster.uid {
         case User.currentUser.uid:

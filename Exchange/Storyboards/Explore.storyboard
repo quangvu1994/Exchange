@@ -126,19 +126,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0b-8H-RP5">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0b-8H-RP5">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                                 </imageView>
+                                                <label hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvF-e5-FGu">
+                                                    <rect key="frame" x="85" y="0.0" width="85" height="28.5"/>
+                                                    <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="k0b-8H-RP5" secondAttribute="trailing" id="FVo-Ui-hxJ"/>
-                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="leading" secondItem="utZ-oY-kGk" secondAttribute="leading" id="GLS-JD-yAn"/>
-                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="top" secondItem="utZ-oY-kGk" secondAttribute="top" id="cQc-Rq-N1X"/>
-                                            <constraint firstAttribute="bottom" secondItem="k0b-8H-RP5" secondAttribute="bottom" id="cbT-hH-sZy"/>
+                                            <constraint firstItem="EvF-e5-FGu" firstAttribute="width" secondItem="utZ-oY-kGk" secondAttribute="width" multiplier="1:2" id="EEi-Dg-17L"/>
+                                            <constraint firstAttribute="bottom" secondItem="k0b-8H-RP5" secondAttribute="bottom" id="M0K-QB-ero"/>
+                                            <constraint firstItem="EvF-e5-FGu" firstAttribute="top" secondItem="utZ-oY-kGk" secondAttribute="top" id="kqY-VB-R6M"/>
+                                            <constraint firstAttribute="trailing" secondItem="EvF-e5-FGu" secondAttribute="trailing" id="l8k-61-NJY"/>
+                                            <constraint firstAttribute="trailing" secondItem="k0b-8H-RP5" secondAttribute="trailing" id="nKL-IP-kxo"/>
+                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="top" secondItem="utZ-oY-kGk" secondAttribute="top" id="wfG-DF-IAP"/>
+                                            <constraint firstItem="k0b-8H-RP5" firstAttribute="leading" secondItem="utZ-oY-kGk" secondAttribute="leading" id="yIn-Yu-mhA"/>
+                                            <constraint firstItem="EvF-e5-FGu" firstAttribute="height" secondItem="utZ-oY-kGk" secondAttribute="height" multiplier="1:6" id="zWN-A4-eqP"/>
                                         </constraints>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
+                                            <outlet property="itemLabel" destination="EvF-e5-FGu" id="486-94-Sgv"/>
                                             <outlet property="postImage" destination="k0b-8H-RP5" id="lib-2a-REs"/>
                                         </connections>
                                     </collectionViewCell>

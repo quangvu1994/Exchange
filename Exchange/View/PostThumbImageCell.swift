@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PostThumbImageCell: UICollectionViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var itemLabel: UILabel!
     var index: Int?
     weak var delegate: DisplayItemDetailHandler?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        itemLabel.layer.masksToBounds = true
+        itemLabel.layer.cornerRadius = 3
+    }
     
     func gestureDisplayingItemDetailWithIndex() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostThumbImageCell.displayDetailWithIndex))
