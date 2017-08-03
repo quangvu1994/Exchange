@@ -14,17 +14,17 @@ class PostThumbImageCell: UICollectionViewCell {
     var index: Int?
     weak var delegate: DisplayItemDetailHandler?
     
-    func addTapGestureToDisplayItemDetail() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostThumbImageCell.callDelegate))
+    func gestureDisplayingItemDetailWithIndex() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostThumbImageCell.displayDetailWithIndex))
         postImage.isUserInteractionEnabled = true
         postImage.addGestureRecognizer(tap)
     }
     
-    func callDelegate() {
+    func displayDetailWithIndex() {
         guard let delegate = delegate,
             let index = index else {
-            return
+                return
         }
-        delegate.display(index: index)
+        delegate.displayWithIndex(index: index)
     }
 }

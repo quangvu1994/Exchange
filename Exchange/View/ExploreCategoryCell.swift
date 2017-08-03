@@ -35,6 +35,6 @@ class ExploreCategoryCell: UITableViewCell {
             return
         }
         
-        delegate.display(index: index)
+        delegate.displayWithIndex(index: index)
     }
 }

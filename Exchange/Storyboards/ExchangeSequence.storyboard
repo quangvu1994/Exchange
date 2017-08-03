@@ -192,8 +192,8 @@
                                                                 <constraint firstAttribute="trailing" secondItem="XUG-oc-IX8" secondAttribute="trailing" id="xRv-ha-Bqo"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="imageLabel" destination="8Sw-Vj-9wX" id="E5i-p8-J0s"/>
                                                                 <outlet property="postImage" destination="XUG-oc-IX8" id="t4c-uq-z48"/>
-                                                                <outlet property="soldLabel" destination="8Sw-Vj-9wX" id="AoC-ng-zzJ"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>

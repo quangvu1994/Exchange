@@ -67,8 +67,11 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
 
 extension PopularCategoriesViewController: DisplayItemDetailHandler {
     
-    func display(index: Int) {
+    func displayWithIndex(index: Int) {
         self.performSegue(withIdentifier: "showCategoryDetail", sender: index)
     }
     
+    func displayWithFullInfo(imageURL: String, itemDescription: String, itemTitle: String) {
+        // Don't need this
+    }
 }

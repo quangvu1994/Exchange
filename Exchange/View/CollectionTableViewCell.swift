@@ -18,6 +18,7 @@ class CollectionTableViewCell: UITableViewCell {
         }
     }
     var cashAmount: String?
+    var controller: DisplayItemDetailHandler?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -50,13 +51,23 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
             }
         }
 
+        if let controller = controller {
+            cell.delegate = controller
+            cell.gestureDisplayingItemDetailWithInfo()
+        }
+        
         cell.imageLabel.text = "Sold"
         let key = Array(itemList.keys)[indexPath.row]
         
         if let itemDataDict = itemList[key] as? [String : Any],
-            let url = itemDataDict["image_url"] as? String {
+            let url = itemDataDict["image_url"] as? String,
+            let itemTitle = itemDataDict["post_title"] as? String,
+            let itemDescription = itemDataDict["post_description"] as? String {
                 let imageURL = URL(string: url)
                 cell.postImage.kf.setImage(with: imageURL)
+                cell.itemImageURL = url
+                cell.itemTitle = itemTitle
+                cell.itemDescription = itemDescription
         }
         
         // Observe the availability of the item

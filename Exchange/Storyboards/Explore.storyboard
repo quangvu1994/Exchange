@@ -114,13 +114,13 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gvX-v6-YOt">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="80"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostThumbImageCell" id="utZ-oY-kGk" customClass="PostThumbImageCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="60" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -144,11 +144,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarketplaceHeaderView" id="VMf-UG-1pE" customClass="MarketplaceHeaderView" customModule="Exchange" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPB-Xb-bVa">
-                                            <rect key="frame" x="50" y="25" width="275" height="26"/>
+                                            <rect key="frame" x="101.5" y="17" width="172" height="26"/>
                                             <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                                             <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -156,9 +156,8 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="YPB-Xb-bVa" secondAttribute="trailing" constant="50" id="9QK-mt-bsv"/>
-                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="leading" secondItem="VMf-UG-1pE" secondAttribute="leading" constant="50" id="ERg-s4-48Q"/>
-                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="top" secondItem="VMf-UG-1pE" secondAttribute="top" constant="25" id="eN4-JD-4WE"/>
+                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="centerY" secondItem="VMf-UG-1pE" secondAttribute="centerY" id="OG1-jy-br1"/>
+                                        <constraint firstItem="YPB-Xb-bVa" firstAttribute="centerX" secondItem="VMf-UG-1pE" secondAttribute="centerX" id="lwY-eO-YWQ"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="categoryName" destination="YPB-Xb-bVa" id="LZo-hz-jaX"/>

@@ -94,7 +94,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         let imageURL = URL(string: post[indexPath.row].imagesURL[0])
         cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
-        cell.addTapGestureToDisplayItemDetail()
+        cell.gestureDisplayingItemDetailWithIndex()
         cell.index = indexPath.row
         return cell
     }
@@ -146,8 +146,12 @@ extension MarketplaceViewController: UICollectionViewDelegateFlowLayout {
 
 extension MarketplaceViewController: DisplayItemDetailHandler {
     
-    func display(index: Int) {
+    func displayWithIndex(index: Int) {
         self.performSegue(withIdentifier: "displayItemDetail", sender: index)
+    }
+
+    func displayWithFullInfo(imageURL: String, itemDescription: String, itemTitle: String) {
+        // Not needed here
     }
     
 }

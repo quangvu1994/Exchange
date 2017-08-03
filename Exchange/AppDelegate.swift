@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import FirebaseAuthUI
 import FBSDKCoreKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,9 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Instantiate the Login storyboard
         let initialViewController: UIViewController
         initialViewController = UIStoryboard.initialViewController(type: .login)
-        
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
+        
+        // Register for push notification
+        //registerForPushNotifications()
         
         return true
     }
@@ -113,6 +116,49 @@ extension AppDelegate {
         // Call the mimic application(_:open url:options:) method from FBSDKApplicationDelegate to redirect back to our App
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         return handled
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            guard granted else {
+                return
+            }
+            // Get the permission that user has granted
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else {
+                return
+            }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Convert device token to string
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
+    // Push notification received
+    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
+        // Print notification payload data
+        print("Push notification received: \(data)")
     }
 }
 

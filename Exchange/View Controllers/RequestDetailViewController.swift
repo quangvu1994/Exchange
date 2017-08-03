@@ -127,6 +127,23 @@ class RequestDetailViewController: UIViewController {
         })
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Item Detail Pop Over" {
+                guard let infoTuple = sender as? (String, String, String) else {
+                    return
+                }
+                let destination = segue.destination as! ItemDetailPopOver
+                destination.information = infoTuple
+                self.tabBarController?.tabBar.isHidden = true
+            }
+        }
+    }
+    
+    @IBAction func unwindToRequestDetail(_ sender: UIStoryboardSegue) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }
 
 extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegate {
@@ -163,6 +180,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
+                cell.controller = self
                 cell.itemList = request.requesterItemsData
                 cell.status = request.status
                 if request.cashAmount != "" {
@@ -176,6 +194,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
+                cell.controller = self
                 cell.itemList = request.posterItemsData
                 cell.status = request.status
             }
@@ -204,5 +223,16 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
         default:
             fatalError("Unrecognized index path row")
         }
+    }
+}
+
+extension RequestDetailViewController: DisplayItemDetailHandler {
+
+    func displayWithIndex(index: Int) {
+        // Optional don't need this
+    }
+    
+    func displayWithFullInfo(imageURL: String, itemDescription: String, itemTitle: String) {
+        self.performSegue(withIdentifier: "Item Detail Pop Over", sender: (imageURL, itemDescription, itemTitle))
     }
 }
