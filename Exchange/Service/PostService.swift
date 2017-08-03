@@ -144,4 +144,33 @@ class PostService {
             })
         })
     }
+    
+    /**
+     Store all flagged post
+    */
+    static func flag(_ post: Post) {
+        // Grab post key
+        guard let postKey = post.key else { return }
+        
+        // Create reference
+        let flaggedPostRef = Database.database().reference().child("flaggedPosts").child(postKey)
+        
+        // Data
+        let flaggedDict: [String: Any] = ["image_url": post.imagesURL,
+                           "poster_uid": post.poster.uid,
+                           "reporter_uid": User.currentUser.uid]
+        
+        // Write
+        flaggedPostRef.updateChildValues(flaggedDict)
+        
+        // Increment flag count
+        let flagCountRef = flaggedPostRef.child("flag_count")
+        flagCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+            let currentCount = mutableData.value as? Int ?? 0
+            
+            mutableData.value = currentCount + 1
+            
+            return TransactionResult.success(withValue: mutableData)
+        })
+    }
 }

@@ -192,6 +192,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="x27-vF-dan">
                         <barButtonItem key="backBarButtonItem" title="Back" id="jkT-07-3hb"/>
+                        <barButtonItem key="leftBarButtonItem" image="Back Icon" id="mEt-ym-epo">
+                            <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="eUM-DF-52l" kind="unwind" unwindAction="unwindToPopularCateogry:" id="wNI-Gg-6Bz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -201,6 +207,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-1V-kfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eUM-DF-52l" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="QZA-t0-fy8">
                     <connections>
                         <outlet property="delegate" destination="m7y-c2-HAe" id="MzX-Ht-T7h"/>
@@ -407,6 +414,12 @@
                                 <action selector="backAction:" destination="JnG-n2-gjI" id="cob-dp-3Mt"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="OptionButton" id="CsC-n4-KVS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="flaggingPost:" destination="JnG-n2-gjI" id="CKu-W6-Ksc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="yQh-yA-9eV" id="DTN-ML-sAc"/>
@@ -430,7 +443,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -474,6 +487,7 @@
     </scenes>
     <resources>
         <image name="Back Icon" width="25" height="25"/>
+        <image name="OptionButton" width="24" height="24"/>
         <image name="Search" width="25" height="25"/>
     </resources>
 </document>

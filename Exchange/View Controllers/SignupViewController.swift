@@ -46,7 +46,7 @@ class SignupViewController: UIViewController {
             guard let user = user else {
                 return
             }
-            User.setCurrentUser(user)
+            User.setCurrentUser(user, writeToUserDefaults: true)
             let initialViewController = UIStoryboard.initialViewController(type: .main)
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()

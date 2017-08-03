@@ -136,6 +136,7 @@ class RequestDetailViewController: UIViewController {
                 }
                 let destination = segue.destination as! ItemDetailPopOver
                 destination.information = infoTuple
+                destination.fromRequestDetail = true
                 self.tabBarController?.tabBar.isHidden = true
             }
         }

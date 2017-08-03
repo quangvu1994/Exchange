@@ -17,12 +17,21 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
             collectionView.reloadData()
         }
     }
+    
+    var filteredData = [Post]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var isSearching = false
     var category: String?
     let searchBar = UISearchBar()
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MarketplaceViewController.hideSearchKeyboard)))
         searchBar.delegate = self
         addSearchBarOnNavigationController()
     }
@@ -44,6 +53,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        searchBar.endEditing(true)
         if let identifier = segue.identifier {
             if identifier == "displayItemDetail" {
                 guard let index = sender as? Int else {
@@ -54,6 +64,10 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
                 viewControllerDestination.post = post[index]
             }
         }
+    }
+    
+    func hideSearchKeyboard() {
+        searchBar.endEditing(true)
     }
     
     func addSearchBarOnNavigationController() {
@@ -78,6 +92,19 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = false
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+            collectionView.reloadData()
+        } else {
+            isSearching = true
+            filteredData = post.filter {
+                $0.postTitle.lowercased().contains((searchBar.text?.lowercased())!) || $0.postDescription.lowercased().contains((searchBar.text?.lowercased())!)
+            }
+        }
+    }
+    
     @IBAction func unwindFromItemDetail(_ sender: UIStoryboardSegue) {
         print("Unwinded")
     }
@@ -86,16 +113,25 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
 extension MarketplaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isSearching {
+            return filteredData.count
+        }
         return post.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
-        let imageURL = URL(string: post[indexPath.row].imagesURL[0])
+        var imageURL = URL(string: post[indexPath.row].imagesURL[0])
+
+        if isSearching {
+            imageURL = URL(string: filteredData[indexPath.row].imagesURL[0])
+        }
+        
         cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.gestureDisplayingItemDetailWithIndex()
         cell.index = indexPath.row
+        
         // Observe the availability of this item
         let itemRef = Database.database().reference().child("allItems/\(post[indexPath.row].key!)/availability")
         itemRef.observe(.value, with: { (snapshot) in

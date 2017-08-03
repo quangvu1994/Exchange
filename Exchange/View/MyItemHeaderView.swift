@@ -33,6 +33,8 @@ class MyItemHeaderView: UICollectionReusableView, UITextViewDelegate {
         }
     
         Database.database().reference().child("users/\(userID)/storeDescription").setValue(shopBriefDescription.text!)
+        // Update current user and our user default
         User.currentUser.storeDescription = shopBriefDescription.text!
+        User.setCurrentUser(User.currentUser, writeToUserDefaults: true)
     }
 }

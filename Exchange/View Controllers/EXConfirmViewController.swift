@@ -50,6 +50,22 @@ class EXConfirmViewController: UIViewController {
             UIApplication.shared.endIgnoringInteractionEvents()
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Open Item Detail Popup" {
+                let popUpDestination = segue.destination as! ItemDetailPopOver
+                guard let infoTuple = sender as? (String, String, String) else {
+                    return
+                }
+                popUpDestination.information = infoTuple
+            }
+        }
+    }
+    
+    @IBAction func unwindToEXConfirmView(_ sender: UIStoryboardSegue) {
+        // do nothing
+    }
 }
 
 extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
@@ -63,6 +79,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
             cell.itemList = requesterItems
+            cell.controller = self
             return cell
             
         case 1:
@@ -72,6 +89,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
             cell.itemList = posterItems
+            cell.controller = self
             return cell
             
         case 3:
@@ -110,5 +128,15 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             fatalError("Unrecognize index path row")
         }
+    }
+}
+
+extension EXConfirmViewController: DisplayItemDetailHandler {
+    func displayWithIndex(index: Int) {
+        // Do nothing
+    }
+    
+    func displayWithFullInfo(imageURL: String, itemDescription: String, itemTitle: String) {
+        self.performSegue(withIdentifier: "Open Item Detail Popup", sender: (imageURL, itemDescription, itemTitle))
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseDatabase.FIRDataSnapshot
 
-class User {
+class User: NSObject {
     // MARK: - Properties
     var uid: String
     var username: String
@@ -23,6 +23,23 @@ class User {
         self.uid = uid
         self.username = username
         self.phoneNumber = phoneNumber
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        // Decode to grab our user info
+        guard let uid = aDecoder.decodeObject(forKey: Constants.UserDefaults.uid) as? String,
+            let username = aDecoder.decodeObject(forKey: Constants.UserDefaults.username) as? String,
+            let phoneNumber = aDecoder.decodeObject(forKey: Constants.UserDefaults.phoneNumber) as? String,
+            let storeDescription = aDecoder.decodeObject(forKey: Constants.UserDefaults.storeDescription) as? String
+            else { return nil }
+        
+        self.uid = uid
+        self.username = username
+        self.phoneNumber = phoneNumber
+        self.storeDescription = storeDescription
+        
+        super.init()
     }
     
     init?(snapshot: DataSnapshot){
@@ -39,9 +56,19 @@ class User {
         self.username = username
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
+        super.init()
     }
         
-    static func setCurrentUser(_ user: User){
+    class func setCurrentUser(_ user: User, writeToUserDefaults: Bool = false) {
+        // Write user to user default
+        if writeToUserDefaults {
+            // Turn user object into data
+            let data = NSKeyedArchiver.archivedData(withRootObject: user)
+            
+            // Store the data
+            UserDefaults.standard.set(data, forKey: Constants.UserDefaults.currentUser)
+        }
+        
         _current = user
     }
     
@@ -50,5 +77,15 @@ class User {
             fatalError("There is no current user found")
         }
         return currentUser
+    }
+}
+
+extension User: NSCoding {
+    // Encode our user information in User Default
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(uid, forKey: Constants.UserDefaults.uid)
+        aCoder.encode(username, forKey: Constants.UserDefaults.username)
+        aCoder.encode(phoneNumber, forKey: Constants.UserDefaults.phoneNumber)
+        aCoder.encode(storeDescription, forKey: Constants.UserDefaults.storeDescription)
     }
 }

@@ -26,13 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Instantiate the Login storyboard
-        let initialViewController: UIViewController
-        initialViewController = UIStoryboard.initialViewController(type: .login)
-        window?.rootViewController = initialViewController
-        window?.makeKeyAndVisible()
-        
-        // Register for push notification
-        //registerForPushNotifications()
+        configureInitialRootViewController(for: window)
         
         return true
     }
@@ -159,6 +153,25 @@ extension AppDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
+    }
+    
+    func configureInitialRootViewController(for window: UIWindow?) {
+        let defaults = UserDefaults.standard
+        let initialViewController: UIViewController
+        
+        if Auth.auth().currentUser != nil,
+            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+            let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? User {
+            
+            User.setCurrentUser(user)
+            
+            initialViewController = UIStoryboard.initialViewController(type: .main)
+        } else {
+            initialViewController = UIStoryboard.initialViewController(type: .login)
+        }
+        
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
     }
 }
 

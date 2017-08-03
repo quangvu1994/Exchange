@@ -49,6 +49,7 @@
 		5B971F2C1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */; };
 		5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */; };
 		5B971F321F19291200B1FCF6 /* EXTableDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */; };
+		5B9B1D181F33A20C00F49402 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B1D171F33A20C00F49402 /* Constant.swift */; };
 		5B9D91141F192DAA00071B53 /* EXTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */; };
 		5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */; };
 		5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */; };
@@ -120,6 +121,7 @@
 		5B971F2B1F17F2CD00B1FCF6 /* EXCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXCollectionViewCell.swift; path = View/EXCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B971F2F1F1829E200B1FCF6 /* EXConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXConfirmViewController.swift; path = "View Controllers/EXConfirmViewController.swift"; sourceTree = "<group>"; };
 		5B971F311F19291200B1FCF6 /* EXTableDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableDescriptionCell.swift; path = View/EXTableDescriptionCell.swift; sourceTree = "<group>"; };
+		5B9B1D171F33A20C00F49402 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = Helper/Constant.swift; sourceTree = "<group>"; };
 		5B9D91131F192DAA00071B53 /* EXTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXTableButtonCell.swift; path = View/EXTableButtonCell.swift; sourceTree = "<group>"; };
 		5BA92F021F11A8C1006CE880 /* MarketplaceHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceHeaderView.swift; path = View/MarketplaceHeaderView.swift; sourceTree = "<group>"; };
 		5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPhotoHelper.swift; path = Helper/EXPhotoHelper.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */,
 				5B6A61631F16DFFE009FCE55 /* EXScenarios.swift */,
+				5B9B1D171F33A20C00F49402 /* Constant.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				5B8231611F2BC00200D3D8B6 /* ItemCategoryCell.swift in Sources */,
 				5BA92F061F11E5D5006CE880 /* EXPhotoHelper.swift in Sources */,
 				5BB302A41F143D3D003C149B /* MyItemViewController.swift in Sources */,
+				5B9B1D181F33A20C00F49402 /* Constant.swift in Sources */,
 				5B7CF0781F192A5600AB000E /* ExchangeSequenceViewController.swift in Sources */,
 				5B6C55841F0C665100F4120A /* LoginViewController.swift in Sources */,
 				5BB734D31F1D57D000F12074 /* RequestViewController.swift in Sources */,

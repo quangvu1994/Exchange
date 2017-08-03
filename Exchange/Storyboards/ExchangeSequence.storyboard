@@ -372,12 +372,21 @@
                     <connections>
                         <outlet property="tableView" destination="sf5-Xk-M2u" id="7tN-8f-EOO"/>
                         <segue destination="HtK-Rf-rsg" kind="unwind" identifier="Finish Exchange Sequence" unwindAction="unwindFromExchangeSequence:" id="AWC-x5-Req"/>
+                        <segue destination="Utc-xq-ggK" kind="presentation" identifier="Open Item Detail Popup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hwd-vf-at1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1CE-c0-Pei" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HtK-Rf-rsg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5120.8000000000002" y="680.5097451274363"/>
+        </scene>
+        <!--ItemDetailPopUp-->
+        <scene sceneID="9eT-pV-XLx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ItemDetailPopUp" id="Utc-xq-ggK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i9s-hU-lHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5756" y="680"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DzS-Mo-u8R">

@@ -107,6 +107,38 @@ class ItemDetailViewController: UIViewController {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
+    /**
+     Flagging post with inappropriate content
+    */
+    @IBAction func flaggingPost(_ sender: UIBarButtonItem) {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // Make sure that you can't report yourself
+        if post?.poster.uid != User.currentUser.uid {
+            let flagAction = UIAlertAction(title: "Report as Inappropriate", style: .default) { [weak self] _ in
+                guard let post = self?.post else {
+                    return
+                }
+                
+                PostService.flag(post)
+                
+                let okAlert = UIAlertController(title: nil, message: "The post has been flagged.", preferredStyle: .alert)
+                okAlert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self?.present(okAlert, animated: true)
+            }
+            
+            alertController.addAction(flagAction)
+        }
+        
+        // Add cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        // Prenset action sheet
+        present(alertController, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "Exchange Sequence" {

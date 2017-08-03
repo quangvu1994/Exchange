@@ -16,6 +16,7 @@ class ItemDetailPopOver: UIViewController {
     @IBOutlet weak var itemDescription: UITextView!
     @IBOutlet weak var closePopUpButton: UIButton!
     var information: (String, String, String)?
+    var fromRequestDetail = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +37,12 @@ class ItemDetailPopOver: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    @IBAction func closePopUp(_ sender: UIButton) {
+        if fromRequestDetail {
+            performSegue(withIdentifier: "Unwind To Request Detail", sender: nil)
+        } else {
+            performSegue(withIdentifier: "Unwind To EX Confirm View", sender: nil)
+        }
     }
 }

@@ -40,6 +40,10 @@ class PopularCategoriesViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToPopularCateogry(_ sender: UIStoryboardSegue) {
+        // Do nothing
+    }
 }
 
 extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataSource {

@@ -17,6 +17,8 @@ class EXTableCollectionCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
+    var controller: DisplayItemDetailHandler?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +34,16 @@ extension EXTableCollectionCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Collection Image Cell", for: indexPath) as! MyItemPostImageCell
+        if let controller = controller {
+            cell.delegate = controller
+            cell.gestureDisplayingItemDetailWithInfo()
+        }
+        
         let url = URL(string: itemList[indexPath.row].imagesURL[0])
+        cell.itemImageURL = itemList[indexPath.row].imagesURL[0]
+        cell.itemDescription = itemList[indexPath.row].postDescription
+        cell.itemTitle = itemList[indexPath.row].postTitle
+        
         cell.postImage.kf.setImage(with: url)
         let itemRef = Database.database().reference().child("allItems/\(itemList[indexPath.row].key!)/availability")
         itemRef.observe(.value, with: { (snapshot) in 

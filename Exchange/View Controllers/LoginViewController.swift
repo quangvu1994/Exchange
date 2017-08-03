@@ -97,7 +97,7 @@ class LoginViewController: UIViewController {
                 UserService.retrieveUser(currentFIRAuthUser.uid, completion: { (userFromOurDatabase) in
                     // If we doesn't have an user, write the current user to the database
                     if let user = userFromOurDatabase {
-                        User.setCurrentUser(user)
+                        User.setCurrentUser(user, writeToUserDefaults: true)
                         // Transfer them to the main view
                         let initialViewController = UIStoryboard.initialViewController(type: .main)
                         self.view.window?.rootViewController = initialViewController

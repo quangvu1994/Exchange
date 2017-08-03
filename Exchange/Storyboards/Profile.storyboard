@@ -520,7 +520,7 @@
         <!--Item Detail Pop Over-->
         <scene sceneID="2ip-yf-zWQ">
             <objects>
-                <viewController id="L6L-LE-kJo" customClass="ItemDetailPopOver" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDetailPopUp" id="L6L-LE-kJo" customClass="ItemDetailPopOver" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ecx-FJ-shE"/>
                         <viewControllerLayoutGuide type="bottom" id="ajk-ZR-oKQ"/>
@@ -536,7 +536,7 @@
                                         <rect key="frame" x="325" y="5" width="25" height="25"/>
                                         <state key="normal" image="Close"/>
                                         <connections>
-                                            <segue destination="Fuo-Ol-iAE" kind="unwind" unwindAction="unwindToRequestDetail:" id="lTL-cD-ORO"/>
+                                            <action selector="closePopUp:" destination="L6L-LE-kJo" eventType="touchUpInside" id="W3j-pi-ITX"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fjL-p6-Sh9">
@@ -545,7 +545,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-vk-vKS">
                                         <rect key="frame" x="10" y="301" width="335" height="138.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -584,11 +584,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closePopUpButton" destination="Tm5-6E-zMd" id="VP2-aN-5WI"/>
+                        <outlet property="closePopUpButton" destination="Tm5-6E-zMd" id="bdf-XO-8Q8"/>
                         <outlet property="itemDescription" destination="AjT-vk-vKS" id="91a-ZJ-N0Z"/>
                         <outlet property="itemImage" destination="fjL-p6-Sh9" id="Dez-4T-m4M"/>
                         <outlet property="itemTitle" destination="8L6-5d-A4J" id="Okh-j2-zya"/>
                         <outlet property="popUpView" destination="d3r-zn-8o1" id="Fms-v4-8fH"/>
+                        <segue destination="Fuo-Ol-iAE" kind="unwind" identifier="Unwind To EX Confirm View" unwindAction="unwindToEXConfirmView:" id="O7n-wS-crH"/>
+                        <segue destination="Fuo-Ol-iAE" kind="unwind" identifier="Unwind To Request Detail" unwindAction="unwindToRequestDetail:" id="IG2-Fi-HIE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCK-Fo-uoX" userLabel="First Responder" sceneMemberID="firstResponder"/>
