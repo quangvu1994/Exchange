@@ -41,9 +41,10 @@ class LoginViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         // Initialize facebook login manager
         let fbManager = FBSDKLoginManager()
-        fbManager.loginBehavior = .browser
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             guard let result = result else {
+                self.displayWarningMessage(message: "Fail to login")
+                self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }

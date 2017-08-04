@@ -40,13 +40,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-ed-TUE">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-ed-TUE">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                                 </imageView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y2-R4-mv2">
+                                                    <rect key="frame" x="64" y="74" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-l2-t5T">
                                                     <rect key="frame" x="84" y="0.0" width="86" height="34"/>
                                                     <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -59,9 +65,11 @@
                                             <constraint firstAttribute="trailing" secondItem="fMR-ed-TUE" secondAttribute="trailing" id="IID-sl-F5A"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="leading" secondItem="UYJ-Pd-06G" secondAttribute="leading" id="KMX-VJ-NdR"/>
                                             <constraint firstItem="IHL-l2-t5T" firstAttribute="width" secondItem="UYJ-Pd-06G" secondAttribute="width" multiplier="1:2" constant="1" id="PVc-Ki-zzC"/>
+                                            <constraint firstItem="4Y2-R4-mv2" firstAttribute="centerX" secondItem="UYJ-Pd-06G" secondAttribute="centerX" id="QzW-zv-qkQ"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="Slr-dD-iUG"/>
                                             <constraint firstAttribute="trailing" secondItem="fMR-ed-TUE" secondAttribute="trailing" id="V8h-6o-hYB"/>
                                             <constraint firstItem="IHL-l2-t5T" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="aHb-LK-hO9"/>
+                                            <constraint firstItem="4Y2-R4-mv2" firstAttribute="centerY" secondItem="UYJ-Pd-06G" secondAttribute="centerY" id="dgQ-iH-GpB"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="top" secondItem="UYJ-Pd-06G" secondAttribute="top" id="loH-Ld-Abl"/>
                                             <constraint firstItem="fMR-ed-TUE" firstAttribute="leading" secondItem="UYJ-Pd-06G" secondAttribute="leading" id="ntP-yo-3KK"/>
                                             <constraint firstAttribute="bottom" secondItem="fMR-ed-TUE" secondAttribute="bottom" id="uDA-7E-jSb"/>
@@ -70,6 +78,7 @@
                                         <connections>
                                             <outlet property="imageLabel" destination="IHL-l2-t5T" id="2Lr-uz-Vtl"/>
                                             <outlet property="postImage" destination="fMR-ed-TUE" id="U8i-CQ-qXs"/>
+                                            <outlet property="soldLabel" destination="4Y2-R4-mv2" id="Cqe-Pd-1gG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -78,20 +87,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
-                                            <rect key="frame" x="139" y="50" width="98.5" height="25"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                            <rect key="frame" x="133" y="50" width="109" height="26"/>
+                                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                                             <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Welcome to my store!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="80" width="355" height="110"/>
+                                            <rect key="frame" x="10" y="81" width="355" height="109"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Or-PGX">
-                                            <rect key="frame" x="340" y="50" width="30" height="25"/>
+                                            <rect key="frame" x="340" y="50" width="30" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="eGm-v3-Aac"/>
                                             </constraints>

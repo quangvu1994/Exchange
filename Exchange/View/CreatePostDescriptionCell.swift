@@ -36,7 +36,7 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
         }
         if descriptionText.textColor == UIColor.lightGray {
             descriptionText.text = ""
-            descriptionText.textColor = UIColor.black
+            descriptionText.textColor = UIColor.darkGray
         }
     }
     

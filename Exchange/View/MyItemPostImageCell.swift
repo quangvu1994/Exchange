@@ -21,6 +21,7 @@ class MyItemPostImageCell: UICollectionViewCell {
     var itemTitle: String?
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var imageLabel: UILabel!
+    @IBOutlet weak var soldLabel: UILabel!
     
     weak var delegate: DisplayItemDetailHandler?
     
@@ -28,6 +29,8 @@ class MyItemPostImageCell: UICollectionViewCell {
         super.awakeFromNib()
         imageLabel.layer.masksToBounds = true
         imageLabel.layer.cornerRadius = 3
+        soldLabel.layer.masksToBounds = true
+        soldLabel.layer.cornerRadius = 3
     }
     
     func gestureDisplayingItemDetailWithIndex() {

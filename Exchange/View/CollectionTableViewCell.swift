@@ -56,7 +56,6 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
             cell.gestureDisplayingItemDetailWithInfo()
         }
         
-        cell.imageLabel.text = "Sold"
         let key = Array(itemList.keys)[indexPath.row]
         
         if let itemDataDict = itemList[key] as? [String : Any],
@@ -78,13 +77,9 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
             }
             
             if !availability && self.status != "Confirmed"{
-                cell.postImage.alpha = 0.4
-                cell.imageLabel.isHidden = false
-                cell.postImage.isUserInteractionEnabled = false
+                cell.soldLabel.isHidden = false
             } else {
-                cell.postImage.alpha = 1.0
-                cell.imageLabel.isHidden = true
-                cell.postImage.isUserInteractionEnabled = true
+                cell.soldLabel.isHidden = true
             }
         })
         return cell

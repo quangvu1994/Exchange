@@ -18,6 +18,8 @@ class RequestTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        itemImage.layer.masksToBounds = true
+        itemImage.layer.cornerRadius = 3
     }
 
 }

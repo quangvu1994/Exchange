@@ -55,7 +55,6 @@ class RequestViewController: UIViewController {
                 let detailViewController = segue.destination as! RequestDetailViewController
                 detailViewController.request = request[tableView.indexPathForSelectedRow!.row]
                 detailViewController.index = index
-                detailViewController.segmentIndex = requestSegmentControl.selectedSegmentIndex
             }
         }
     }
@@ -102,7 +101,7 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Request Cell", for: indexPath) as! RequestTableViewCell
-        if index! == 1 {
+        if index! == 0{
             cell.poster.text = request[indexPath.row].posterName
             cell.briefDescription.text = request[indexPath.row].firstPostTitle
         } else {
