@@ -156,6 +156,10 @@
                                     <outlet property="delegate" destination="5gc-i7-yMx" id="o7Z-zZ-rJ0"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="k3Q-gX-spj">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQW-5L-7Do">
                                 <rect key="frame" x="10" y="568" width="355" height="40"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -183,18 +187,21 @@
                             <constraint firstItem="Tel-vT-iOK" firstAttribute="top" secondItem="mQW-5L-7Do" secondAttribute="bottom" constant="10" id="1Zb-z8-W1V"/>
                             <constraint firstItem="mQW-5L-7Do" firstAttribute="top" secondItem="GIu-d7-iGw" secondAttribute="bottom" constant="10" id="370-dg-2cx"/>
                             <constraint firstAttribute="trailing" secondItem="GIu-d7-iGw" secondAttribute="trailing" id="4qY-X1-3fs"/>
+                            <constraint firstItem="k3Q-gX-spj" firstAttribute="centerX" secondItem="h3S-Sf-3Lj" secondAttribute="centerX" id="L34-Ex-jog"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" id="LHj-PL-RyG"/>
                             <constraint firstItem="GIu-d7-iGw" firstAttribute="top" secondItem="LpC-Po-nQw" secondAttribute="bottom" id="SoJ-Ez-CjS"/>
                             <constraint firstItem="mQW-5L-7Do" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" constant="10" id="YPG-Nd-I9Z"/>
                             <constraint firstItem="LpC-Po-nQw" firstAttribute="top" secondItem="h3S-Sf-3Lj" secondAttribute="top" id="baY-iq-FNZ"/>
                             <constraint firstAttribute="trailing" secondItem="LpC-Po-nQw" secondAttribute="trailing" id="mFf-TC-QXI"/>
                             <constraint firstAttribute="trailing" secondItem="mQW-5L-7Do" secondAttribute="trailing" constant="10" id="qTw-WX-GBa"/>
+                            <constraint firstItem="k3Q-gX-spj" firstAttribute="centerY" secondItem="h3S-Sf-3Lj" secondAttribute="centerY" id="uPd-8x-Qre"/>
                             <constraint firstItem="GIu-d7-iGw" firstAttribute="leading" secondItem="h3S-Sf-3Lj" secondAttribute="leading" id="ymu-PB-Sf1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="Gcd-6U-GWK"/>
                     <connections>
                         <outlet property="actionButton" destination="mQW-5L-7Do" id="ah3-pj-GhD"/>
+                        <outlet property="activityIndicator" destination="k3Q-gX-spj" id="sXz-FP-RlT"/>
                         <outlet property="tableView" destination="LpC-Po-nQw" id="uli-4G-e7x"/>
                         <segue destination="eLL-8Q-qev" kind="show" identifier="showMarketplace" id="W8R-Hx-fhg"/>
                     </connections>

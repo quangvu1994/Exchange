@@ -195,7 +195,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Back Icon" id="mEt-ym-epo">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="eUM-DF-52l" kind="unwind" unwindAction="unwindToPopularCateogry:" id="wNI-Gg-6Bz"/>
+                                <segue destination="eUM-DF-52l" kind="unwind" unwindAction="unwindToPopularCategory:" id="LUB-kn-nHS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -48,7 +48,7 @@ class PopularCategoriesViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToPopularCateogry(_ sender: UIStoryboardSegue) {
+    @IBAction func unwindToPopularCategory(_ sender: UIStoryboardSegue) {
         // Do nothing
     }
 }
@@ -58,7 +58,7 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoryCell", for: indexPath) as! ExploreCategoryCell
         let backgroundImage = UIImage(named: categoryList[indexPath.row].1)
-        cell.categoryBackgroundView.image = backgroundImage!
+        cell.categoryBackgroundView.image = resizeImage(image: backgroundImage!, newWidth: 800)
         cell.categoryName.text = categoryList[indexPath.row].0
         cell.index = indexPath.row
         cell.delegate = self
@@ -73,6 +73,19 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     // Dynamically set the height of each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
 

@@ -13,12 +13,19 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var currentPost: Post?
     var scenario: EXScenarios = .post
     
     var photoHelper = EXPhotoHelper()
     var category: String = ""
+    var isReset = false
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.isReset = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,8 @@ class CreatePostViewController: UIViewController {
     
     @IBAction func performAction(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
+        view.alpha = 0.9
+        activityIndicator.startAnimating()
         var imageList: [UIImage]?
         var postTitle: String?
         var postDescription: String?
@@ -79,6 +88,8 @@ class CreatePostViewController: UIViewController {
             let category = postCategory,
             let location = tradeLocation else {
                 UIApplication.shared.endIgnoringInteractionEvents()
+                activityIndicator.stopAnimating()
+                view.alpha = 1
                 // Display an alert if user fail to fill out the required info
                 self.displayWarningMessage(message: "Please fill out all information")
                 return
@@ -90,6 +101,8 @@ class CreatePostViewController: UIViewController {
                 guard let imagesURL = imagesURL,
                     let currentPost = self?.currentPost else {
                     UIApplication.shared.endIgnoringInteractionEvents()
+                    self?.activityIndicator.stopAnimating()
+                    self?.view.alpha = 1
                     self?.displayWarningMessage(message: "Unable to upload image, please try again")
                     return
                 }
@@ -102,12 +115,12 @@ class CreatePostViewController: UIViewController {
                 
                 PostService.updatePostOnFIR(for: currentPost.key!, with: post, completion: { [weak self] (success) in
                     if success {
-                        // Clear everything in the table view
-                        self?.tableView.reloadData()
-                        self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
+                        self?.displayWarningMessage(message: "Item Edited")
                     }else {
-                        self?.displayWarningMessage(message: "Unable to upload the post, please try again")
+                        self?.displayWarningMessage(message: "Unable to edit the post, please try again")
                     }
+                    self?.activityIndicator.stopAnimating()
+                    self?.view.alpha = 1
                     UIApplication.shared.endIgnoringInteractionEvents()
                 })
             })
@@ -116,6 +129,8 @@ class CreatePostViewController: UIViewController {
             PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
+                    self?.activityIndicator.stopAnimating()
+                    self?.view.alpha = 1
                     self?.displayWarningMessage(message: "Unable to upload image, please try posting again")
                     return
                 }
@@ -129,11 +144,14 @@ class CreatePostViewController: UIViewController {
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (success) in
                     if success {
                         // Clear everything in the table view
+                        self?.isReset = true
                         self?.tableView.reloadData()
                         self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
                     }else {
                         self?.displayWarningMessage(message: "Unable to upload the post, please try posting again")
                     }
+                    self?.activityIndicator.stopAnimating()
+                    self?.view.alpha = 1
                     UIApplication.shared.endIgnoringInteractionEvents()
                 })
             })
@@ -225,7 +243,21 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
-            
+            if isReset {
+                cell.firstImage.image = UIImage(named: "Camera")
+                cell.secondImage.image = UIImage(named: "Camera")
+                cell.thirdImage.image = UIImage(named: "Camera")
+                cell.fourthImage.image = UIImage(named: "Camera")
+                cell.firstImageSet = false
+                cell.secondImageSet = false
+                cell.thirdImageSet = false
+                cell.fourthImageSet = false
+                cell.firstImage.contentMode = .center
+                cell.secondImage.contentMode = .center
+                cell.thirdImage.contentMode = .center
+                cell.fourthImage.contentMode = .center
+            }
+        
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
@@ -237,6 +269,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.headerText.text = "Title"
             cell.placeHolder = "Item Title"
             
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
+            
+            if isReset {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Title"
+                return cell
+            }
+            
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postTitle
             } else {
@@ -247,10 +289,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.descriptionText.text = "Item Title"
                 }
             }
-            
-            if scenario == .exchange {
-                cell.isUserInteractionEnabled = false
-            }
             return cell
     
         case 2:
@@ -258,6 +296,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.headerText.text = "Description"
             cell.placeHolder = "Item Description"
+            
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
+            
+            if isReset {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Description"
+                return cell
+            }
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
@@ -270,13 +318,21 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-            if scenario == .exchange {
-                cell.isUserInteractionEnabled = false
-            }
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
+            
+            if scenario == .exchange {
+                cell.accessoryType = .none
+                cell.isUserInteractionEnabled = false
+            }
+            
+            if isReset {
+                cell.categoryName.text = ""
+                return cell
+            }
+            
             if let currentPost = currentPost {
                 cell.categoryName.text = currentPost.postCategory
                 self.category = currentPost.postCategory
@@ -289,10 +345,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-            if scenario == .exchange {
-                cell.accessoryType = .none
-                cell.isUserInteractionEnabled = false
-            }
+            
             return cell
             
         case 4:
@@ -300,6 +353,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.view = view
             cell.headerText.text = "Trade Location"
             cell.placeHolder = "Where we'll meet"
+ 
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
+            
+            if isReset {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Where we'll meet"
+                return cell
+            }
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.tradeLocation
@@ -312,9 +375,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-            if scenario == .exchange {
-                cell.isUserInteractionEnabled = false
-            }
+            
             return cell
             
         default:
