@@ -96,13 +96,14 @@
                                             <rect key="frame" x="10" y="81" width="355" height="109"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Or-PGX">
-                                            <rect key="frame" x="340" y="50" width="30" height="26"/>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Or-PGX">
+                                            <rect key="frame" x="340" y="50" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="eGm-v3-Aac"/>
+                                                <constraint firstAttribute="height" constant="25" id="4AR-xs-ahE"/>
+                                                <constraint firstAttribute="width" constant="25" id="PJB-nF-5bC"/>
                                             </constraints>
                                             <state key="normal" image="edit">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,15 +115,14 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="2wb-Or-PGX" secondAttribute="bottom" constant="5" id="4i4-sP-4Pq"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
-                                        <constraint firstItem="2wb-Or-PGX" firstAttribute="height" secondItem="sdT-wv-bNg" secondAttribute="height" id="Jjj-3y-XdC"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
+                                        <constraint firstAttribute="trailing" secondItem="2wb-Or-PGX" secondAttribute="trailing" constant="10" id="KVa-xM-hQ9"/>
+                                        <constraint firstItem="2wb-Or-PGX" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="rRQ-Ze-hdY"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="centerX" secondItem="pzC-JM-P9z" secondAttribute="centerX" id="sR7-zQ-XUy"/>
                                         <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="10" id="uAh-6b-lwA"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="uBT-tq-PxU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g3e-9B-7L8" secondAttribute="trailing" constant="2" id="xB6-va-olx"/>
-                                        <constraint firstAttribute="trailing" secondItem="2wb-Or-PGX" secondAttribute="trailing" constant="5" id="xyA-YO-m0w"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="editButton" destination="2wb-Or-PGX" id="kLH-Eu-IPo"/>

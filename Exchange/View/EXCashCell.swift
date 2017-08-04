@@ -23,6 +23,11 @@ class EXCashCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func addCashToggle(_ sender: Any) {
         amountField.isEnabled = !amountField.isEnabled
+        if amountField.isEnabled {
+            amountField.becomeFirstResponder()
+        } else {
+            amountField.resignFirstResponder()
+        }
         amountField.text = ""
     }
     

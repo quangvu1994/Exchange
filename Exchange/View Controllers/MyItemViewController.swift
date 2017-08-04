@@ -35,11 +35,35 @@ class MyItemViewController: UIViewController {
             // fetch post for specific user
             PostService.fetchPost(for: user.uid, completionHandler: { [weak self] (allPosts) in
                 self?.post = allPosts
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (self?.view.bounds.width)!, height: (self?.view.bounds.height)!))
+                emptyLabel.textAlignment = .center
+                emptyLabel.font = UIFont(name: "Futura", size: 16)
+                emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+                emptyLabel.numberOfLines = 2
+                
+                if self?.post.count == 0 {
+                    emptyLabel.text = "\(user.username) doesn't have any item on the market"
+                    self?.collectionView.backgroundView = emptyLabel
+                } else {
+                    self?.collectionView.backgroundView = nil
+                }
             })
         } else {
             // fetch post for current user
             PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] (allPosts) in
                 self?.post = allPosts
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (self?.view.bounds.width)!, height: (self?.view.bounds.height)!))
+                emptyLabel.textAlignment = .center
+                emptyLabel.font = UIFont(name: "Futura", size: 16)
+                emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+                emptyLabel.numberOfLines = 2
+                
+                if self?.post.count == 0 {
+                    emptyLabel.text = "You don't have any item listed on the market"
+                    self?.collectionView.backgroundView = emptyLabel
+                } else {
+                    self?.collectionView.backgroundView = nil
+                }
             })
             self.navigationItem.leftBarButtonItem = nil
         }

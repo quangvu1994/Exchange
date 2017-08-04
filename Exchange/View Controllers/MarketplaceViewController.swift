@@ -36,6 +36,11 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
         addSearchBarOnNavigationController()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchBar.endEditing(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // fetch all post
@@ -49,11 +54,24 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
             self?.post = allPosts.filter {
                 $0.postCategory.lowercased() == category.lowercased() && $0.availability
             }
+            
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (self?.view.bounds.width)!, height: (self?.view.bounds.height)!))
+            emptyLabel.textAlignment = .center
+            emptyLabel.font = UIFont(name: "Futura", size: 16)
+            emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+            emptyLabel.numberOfLines = 2
+        
+            if self?.post.count == 0 {
+                emptyLabel.text = "Sorry, there is no item listed for this category yet"
+                self?.collectionView.backgroundView = emptyLabel
+            } else {
+                self?.collectionView.backgroundView = nil
+            }
+        
         })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        searchBar.endEditing(true)
         if let identifier = segue.identifier {
             if identifier == "displayItemDetail" {
                 guard let index = sender as? Int else {
@@ -97,10 +115,23 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
             isSearching = false
             view.endEditing(true)
             collectionView.reloadData()
+            collectionView.backgroundView = nil
         } else {
             isSearching = true
             filteredData = post.filter {
                 $0.postTitle.lowercased().contains((searchBar.text?.lowercased())!) || $0.postDescription.lowercased().contains((searchBar.text?.lowercased())!)
+            }
+            
+            if filteredData.count == 0 {
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+                emptyLabel.textAlignment = .center
+                emptyLabel.font = UIFont(name: "Futura", size: 16)
+                emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+                emptyLabel.numberOfLines = 2
+                emptyLabel.text = "No matched result"
+                collectionView.backgroundView = emptyLabel
+            } else {
+                collectionView.backgroundView = nil
             }
         }
     }
@@ -116,6 +147,7 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         if isSearching {
             return filteredData.count
         }
+        
         return post.count
     }
     

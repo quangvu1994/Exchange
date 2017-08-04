@@ -16,8 +16,13 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePicture: UIImageView!
     let options = ["Outgoing Requests", "Incoming Requests", "Log Out"]
     var photoHelper = EXPhotoHelper()
-    
+
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configuration()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +42,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configuration()
         username.text = User.currentUser.username
         profilePicture.isUserInteractionEnabled = true
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.openPhotoPicker)))
@@ -79,8 +83,9 @@ class ProfileViewController: UIViewController {
     func configuration() {
         // remove separators for empty cells
         tableView.tableFooterView = UIView()
-        // Round profile picture
-        profilePicture.layer.cornerRadius = profilePicture.frame.height / 2.0
+
+        
+        profilePicture.layer.cornerRadius = profilePicture.bounds.height/2
         profilePicture.clipsToBounds = true
         profilePicture.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
         profilePicture.layer.borderWidth = 1.0

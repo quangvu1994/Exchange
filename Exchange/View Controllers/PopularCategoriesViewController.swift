@@ -18,6 +18,8 @@ class PopularCategoriesViewController: UIViewController {
         ("Books", "Book.png")
     ]
     
+    var smallestFontSize: CGFloat = 20.0
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
