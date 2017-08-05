@@ -14,6 +14,7 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var descriptionText: UITextView!
     var placeHolder: String?
     var view: UIView?
+    var getInformation: ((String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +48,11 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
         if descriptionText.text == "" {
             descriptionText.text = placeHolder!
             descriptionText.textColor = UIColor.lightGray
+        } else {
+            guard let getInfo = getInformation else {
+                return
+            }
+            getInfo(descriptionText.text)
         }
     }
     
@@ -58,17 +64,5 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
         UIView.setAnimationDuration(movementDuration)
         self.view!.frame = self.view!.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
-    }
-    
-    func getInformation() -> String? {
-        if descriptionText.text == "" || descriptionText.textColor == UIColor.lightGray {
-            return nil
-        }
-        return descriptionText.text
-    }
-    
-    func resetInformation() {
-        descriptionText.text = placeHolder!
-        descriptionText.textColor = UIColor.lightGray
     }
 }

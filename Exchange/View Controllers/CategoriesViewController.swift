@@ -27,7 +27,7 @@ class CategoriesViewController: UIViewController {
                 let viewController = segue.destination as! CreatePostViewController
                 let indexPath = tableView.indexPathForSelectedRow!
                 let cell = tableView.cellForRow(at: indexPath) as! CategoryCell
-                viewController.category = cell.categoryName.text!
+                viewController.category = cell.categoryName.text
             }
         }
     }

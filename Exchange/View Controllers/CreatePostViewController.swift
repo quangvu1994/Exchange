@@ -19,12 +19,15 @@ class CreatePostViewController: UIViewController {
     var scenario: EXScenarios = .post
     
     var photoHelper = EXPhotoHelper()
-    var category: String = ""
-    var isReset = false
+    var imageList = [UIImage]()
+    var postTitle: String?
+    var postDescription: String?
+    var wishList: String?
+    var category: String?
+    var tradeLocation: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.isReset = false
     }
     
     override func viewDidLoad() {
@@ -53,40 +56,12 @@ class CreatePostViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         view.alpha = 0.9
         activityIndicator.startAnimating()
-        var imageList: [UIImage]?
-        var postTitle: String?
-        var postDescription: String?
-        var postCategory: String?
-        var tradeLocation: String?
-        
-        for row in 0..<tableView.numberOfRows(inSection: 0) {
-            switch row {
-            case 0:
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCameraCell
-                imageList = cell.getImageInformation()
-            case 1:
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                postTitle = cell.getInformation()
-            case 2:
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                postDescription = cell.getInformation()
-                
-            case 3:
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostCategoryCell
-                postCategory = cell.getInformation()
-            case 4:
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CreatePostDescriptionCell
-                tradeLocation = cell.getInformation()
-            default:
-                fatalError("Unrecognized row")
-            }
-        }
-        
-        guard let selectedImages = imageList,
-            let title = postTitle,
+
+        guard let title = postTitle,
             let description = postDescription,
-            let category = postCategory,
-            let location = tradeLocation else {
+            let category = category,
+            let location = tradeLocation,
+            let wishList = wishList else {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 activityIndicator.stopAnimating()
                 view.alpha = 1
@@ -97,7 +72,7 @@ class CreatePostViewController: UIViewController {
         
         switch scenario {
         case .edit:
-            PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
+            PostService.writePostImageToFIRStorage(imageList, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL,
                     let currentPost = self?.currentPost else {
                     UIApplication.shared.endIgnoringInteractionEvents()
@@ -112,6 +87,7 @@ class CreatePostViewController: UIViewController {
                 post.postDescription = description
                 post.postCategory = category
                 post.tradeLocation = location
+                post.wishList = wishList
                 
                 PostService.updatePostOnFIR(for: currentPost.key!, with: post, completion: { [weak self] (success) in
                     if success {
@@ -126,7 +102,7 @@ class CreatePostViewController: UIViewController {
             })
             
         default:
-            PostService.writePostImageToFIRStorage(selectedImages, completion: { [weak self] (imagesURL) in
+            PostService.writePostImageToFIRStorage(imageList, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     self?.activityIndicator.stopAnimating()
@@ -140,11 +116,17 @@ class CreatePostViewController: UIViewController {
                 post.postDescription = description
                 post.postCategory = category
                 post.tradeLocation = location
+                post.wishList = wishList
                 
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (success) in
                     if success {
                         // Clear everything in the table view
-                        self?.isReset = true
+                        self?.imageList.removeAll()
+                        self?.postTitle = nil
+                        self?.postDescription = nil
+                        self?.wishList = nil
+                        self?.category = nil
+                        self?.tradeLocation = nil
                         self?.tableView.reloadData()
                         self?.performSegue(withIdentifier: "showMarketplace", sender: post.postCategory)
                     }else {
@@ -172,17 +154,15 @@ class CreatePostViewController: UIViewController {
     }
 
     @IBAction func unwindFromCategorySelection(_ sender: UIStoryboardSegue) {
-        // Update the category cell
-        let indexPath = IndexPath(row: 3, section: 0)
-        let cell = tableView.cellForRow(at: indexPath) as! CreatePostCategoryCell
-        cell.categoryName.text = self.category
+        // Update category cell
+        tableView.reloadData()
     }
 }
 
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -216,6 +196,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     fatalError("Unrecognized Image")
                 }
+                self.imageList.append(selectedImage)
             }
             
             if let currentPost = currentPost {
@@ -226,36 +207,41 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                         cell.firstImage.kf.setImage(with: url)
                         cell.firstImageSet = true
                         cell.firstImage.contentMode = .scaleAspectFill
+                        self.imageList.append(cell.firstImage.image!)
                     case 1:
                         cell.secondImage.kf.setImage(with: url)
                         cell.secondImageSet = true
                         cell.secondImage.contentMode = .scaleAspectFill
+                        self.imageList.append(cell.secondImage.image!)
                     case 2:
                         cell.thirdImage.kf.setImage(with: url)
                         cell.thirdImageSet = true
                         cell.thirdImage.contentMode = .scaleAspectFill
+                        self.imageList.append(cell.thirdImage.image!)
                     case 3:
                         cell.fourthImage.kf.setImage(with: url)
                         cell.fourthImageSet = true
                         cell.fourthImage.contentMode = .scaleAspectFill
+                        self.imageList.append(cell.fourthImage.image!)
                     default:
                         fatalError("Unrecognized image index")
                     }
                 }
-            }
-            if isReset {
-                cell.firstImage.image = UIImage(named: "Camera")
-                cell.secondImage.image = UIImage(named: "Camera")
-                cell.thirdImage.image = UIImage(named: "Camera")
-                cell.fourthImage.image = UIImage(named: "Camera")
-                cell.firstImageSet = false
-                cell.secondImageSet = false
-                cell.thirdImageSet = false
-                cell.fourthImageSet = false
-                cell.firstImage.contentMode = .center
-                cell.secondImage.contentMode = .center
-                cell.thirdImage.contentMode = .center
-                cell.fourthImage.contentMode = .center
+            } else {
+                if imageList.isEmpty {
+                    cell.firstImage.image = UIImage(named: "Camera")
+                    cell.secondImage.image = UIImage(named: "Camera")
+                    cell.thirdImage.image = UIImage(named: "Camera")
+                    cell.fourthImage.image = UIImage(named: "Camera")
+                    cell.firstImageSet = false
+                    cell.secondImageSet = false
+                    cell.thirdImageSet = false
+                    cell.fourthImageSet = false
+                    cell.firstImage.contentMode = .center
+                    cell.secondImage.contentMode = .center
+                    cell.thirdImage.contentMode = .center
+                    cell.fourthImage.contentMode = .center
+                }
             }
         
             if scenario == .exchange {
@@ -265,26 +251,20 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
-
             cell.headerText.text = "Title"
             cell.placeHolder = "Item Title"
+            cell.getInformation = { [weak self] (text) in
+                self?.postTitle = text
+            }
             
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
             
-            if isReset {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Item Title"
-                return cell
-            }
-            
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postTitle
             } else {
-                if let text = cell.getInformation() {
-                    cell.descriptionText.text = text
-                } else {
+                if postTitle == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
                     cell.descriptionText.text = "Item Title"
                 }
@@ -296,31 +276,47 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.headerText.text = "Description"
             cell.placeHolder = "Item Description"
+            cell.getInformation = { [weak self] (text) in
+                self?.postDescription = text
+            }
             
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
             
-            if isReset {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Item Description"
-                return cell
-            }
-            
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
             } else {
-                if let text = cell.getInformation() {
-                    cell.descriptionText.text = text
-                } else {
+                if postDescription == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
                     cell.descriptionText.text = "Item Description"
                 }
             }
             
             return cell
-
         case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            cell.headerText.text = "Wish List"
+            cell.placeHolder = "What you would want in exchange"
+            cell.getInformation = { [weak self] (text) in
+                self?.wishList = text
+            }
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
+            }
+            
+            if let currentPost = currentPost {
+                cell.descriptionText.text = currentPost.wishList
+            } else {
+                if wishList == nil {
+                    cell.descriptionText.textColor = UIColor.lightGray
+                    cell.descriptionText.text = "What you would want in exchange"
+                }
+            }
+        
+            return cell
+
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
             
             if scenario == .exchange {
@@ -328,17 +324,11 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if isReset {
-                cell.categoryName.text = ""
-                return cell
-            }
-            
             if let currentPost = currentPost {
                 cell.categoryName.text = currentPost.postCategory
                 self.category = currentPost.postCategory
-                
             }else {
-                if let text = cell.getInformation() {
+                if let text = category {
                     cell.categoryName.text = text
                 } else {
                     cell.categoryName.text = ""
@@ -348,28 +338,23 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        case 4:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
             cell.view = view
             cell.headerText.text = "Trade Location"
             cell.placeHolder = "Where we'll meet"
- 
-            if scenario == .exchange {
-                cell.isUserInteractionEnabled = false
+            cell.getInformation = { [weak self] (text) in
+                self?.tradeLocation = text
             }
             
-            if isReset {
-                cell.descriptionText.textColor = UIColor.lightGray
-                cell.descriptionText.text = "Where we'll meet"
-                return cell
+            if scenario == .exchange {
+                cell.isUserInteractionEnabled = false
             }
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.tradeLocation
             } else {
-                if let text = cell.getInformation() {
-                    cell.descriptionText.text = text
-                } else {
+                if tradeLocation == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
                     cell.descriptionText.text = "Where we'll meet"
                 }
@@ -377,6 +362,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             
             return cell
+        
             
         default:
             fatalError("Unable to locate the current row")
@@ -392,8 +378,10 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             return 150
         case 3:
-            return 60
+            return 150
         case 4:
+            return 60
+        case 5:
             return 150
         default:
             fatalError("Unable to locate the current row")

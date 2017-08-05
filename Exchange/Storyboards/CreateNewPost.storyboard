@@ -130,7 +130,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-WP-zVJ">
                                                     <rect key="frame" x="327" y="8" width="0.0" height="53.5"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                     <color key="textColor" red="0.30792370438575745" green="0.57171386480331421" blue="0.75692379474639893" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -278,7 +278,7 @@
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="qYs-1D-uuv">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="wUY-dz-CyR" kind="unwind" unwindAction="unwindFromCategorySelection:" id="BRn-OV-LB2"/>
+                                <segue destination="wUY-dz-CyR" kind="unwind" unwindAction="unwindFromCategorySelection:" id="br4-nl-ppC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

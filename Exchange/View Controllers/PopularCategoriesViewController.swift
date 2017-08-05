@@ -12,11 +12,15 @@ class PopularCategoriesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var categoryList = [
-        ("Room Essential", "RoomEssential.png"),
-        ("Clothes", "Clothes.png"),
-        ("Electronic", "Electronic.png"),
-        ("Books", "Book.png")
+        "Room Essential",
+        "Clothes",
+        "Electronic",
+        "Books"
     ]
+    
+    var imageList = ["RoomEssential.png", "Clothes.png", "Electronic.png", "Book.png"]
+    
+    var compressImages = [UIImage]()
     
     var smallestFontSize: CGFloat = 20.0
     
@@ -30,6 +34,13 @@ class PopularCategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        // Compress all images
+        for image in imageList {
+            guard let compressData = UIImageJPEGRepresentation(UIImage(named: image)!, 0.2) else {
+                return
+            }
+            compressImages.append(UIImage(data: compressData)!)
+        }
     }
     
     func configureTableView() {
@@ -45,7 +56,7 @@ class PopularCategoriesViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "showCategoryDetail" {
                 let destinationView = segue.destination as! MarketplaceViewController
-                destinationView.category = categoryList[categoryIndex].0
+                destinationView.category = categoryList[categoryIndex]
             }
         }
     }
@@ -59,12 +70,12 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoryCell", for: indexPath) as! ExploreCategoryCell
-        let backgroundImage = UIImage(named: categoryList[indexPath.row].1)
-        cell.categoryBackgroundView.image = resizeImage(image: backgroundImage!, newWidth: 800)
-        cell.categoryName.text = categoryList[indexPath.row].0
         cell.index = indexPath.row
         cell.delegate = self
         cell.addOpenCategoryGesture()
+        cell.categoryName.text = categoryList[indexPath.row]
+        cell.categoryBackgroundView.image = compressImages[indexPath.row]
+
         return cell
     }
     

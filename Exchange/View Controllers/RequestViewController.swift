@@ -81,14 +81,36 @@ class RequestViewController: UIViewController {
             })
         }
         dispatchGroup.notify(queue: .main, execute: {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+            emptyLabel.textAlignment = .center
+            emptyLabel.font = UIFont(name: "Futura", size: 16)
+            emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+            emptyLabel.numberOfLines = 2
+            
             switch self.requestSegmentControl.selectedSegmentIndex {
             case 0:
                 self.request = self.request.filter { $0.status != "Confirmed"}
+                if self.request.count == 0 {
+                    emptyLabel.text = "No requested items"
+                    self.tableView.backgroundView = emptyLabel
+                } else {
+                    self.tableView.backgroundView = nil
+                }
             case 1:
                 self.request = self.request.filter { $0.status == "Confirmed"}
+                if self.request.count == 0 {
+                    emptyLabel.text = "No confirmed items"
+                    self.tableView.backgroundView = emptyLabel
+                } else {
+                    self.tableView.backgroundView = nil
+                }
             default:
                 break
             }
+            
+            
+
+            
         })
     }
 }

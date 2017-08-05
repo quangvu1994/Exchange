@@ -17,15 +17,4 @@ class CreatePostCategoryCell: UITableViewCell {
         // Initialization code
     }
     
-    func getInformation() -> String? {
-        if categoryName.text == "" {
-            return nil
-        }
-
-        return categoryName.text
-    }
-    
-    func resetInformation() {
-        self.categoryName.text = ""
-    }
 }
