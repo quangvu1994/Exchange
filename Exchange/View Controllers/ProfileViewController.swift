@@ -28,11 +28,7 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.isNavigationBarHidden = true
-        // If there is profile picture -> set it
-        if let profilePictureURL = User.currentUser.profilePictureURL {
-            profilePicture.contentMode = .scaleAspectFill
-            profilePicture.kf.setImage(with: URL(string: profilePictureURL))
-        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,6 +38,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // If there is profile picture -> set it
+        if let profilePictureURL = User.currentUser.profilePictureURL {
+            profilePicture.contentMode = .scaleAspectFill
+            profilePicture.kf.setImage(with: URL(string: profilePictureURL))
+        }
+        
         username.text = User.currentUser.username
         profilePicture.isUserInteractionEnabled = true
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.openPhotoPicker)))
@@ -83,8 +85,6 @@ class ProfileViewController: UIViewController {
     func configuration() {
         // remove separators for empty cells
         tableView.tableFooterView = UIView()
-
-        
         profilePicture.layer.cornerRadius = profilePicture.bounds.height/2
         profilePicture.clipsToBounds = true
         profilePicture.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
