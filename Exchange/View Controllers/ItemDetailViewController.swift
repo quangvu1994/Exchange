@@ -196,7 +196,7 @@ class ItemDetailViewController: UIViewController {
 
 extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -218,16 +218,24 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.topLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ItemDetailViewController.segueToUserStore)))
             cell.bottomLabel.text = timestampFormatter.string(from: post.creationDate)
             return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
             cell.titleLabel.text = post.postTitle
             cell.detailText.text = post.postDescription
             return cell
+            
         case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
+            cell.titleLabel.text = "Wish List"
+            cell.detailText.text = post.wishList
+            return cell
+            
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Category Cell", for: indexPath) as! ItemCategoryCell
             cell.categoryLabel.text = post.postCategory
             return cell
-        case 4:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
             cell.titleLabel.text = "Trade Location"
             cell.detailText.text = post.tradeLocation
@@ -246,8 +254,10 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             return 140
         case 3:
-            return 80
+            return 140
         case 4:
+            return 80
+        case 5:
             return 140
         default:
             fatalError("Unrecognized index path row")

@@ -18,7 +18,7 @@ class PopularCategoriesViewController: UIViewController {
         "Books"
     ]
     
-    var imageList = ["RoomEssential.png", "Clothes.png", "Electronic.png", "Book.png"]
+    var imageList = ["RoomEssential", "Clothes", "Electronic", "Book"]
     
     var compressImages = [UIImage]()
     
