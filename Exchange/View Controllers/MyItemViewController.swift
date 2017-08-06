@@ -59,7 +59,7 @@ class MyItemViewController: UIViewController {
                 emptyLabel.numberOfLines = 2
                 
                 if self?.post.count == 0 {
-                    emptyLabel.text = "You don't have any item listed on the market"
+                    emptyLabel.text = "You've not listed any item on the market"
                     self?.collectionView.backgroundView = emptyLabel
                 } else {
                     self?.collectionView.backgroundView = nil

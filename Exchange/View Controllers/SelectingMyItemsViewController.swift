@@ -12,6 +12,7 @@ import FirebaseDatabase
 class SelectingMyItemsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noItemView: UIView!
     
     var currItems = [Post]() {
         didSet {
@@ -28,6 +29,12 @@ class SelectingMyItemsViewController: UIViewController {
         PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] post in
             self?.currItems = post.filter {
                 $0.availability == true
+            }
+            
+            if (self?.currItems.isEmpty)! {
+                self?.collectionView.backgroundView = self?.noItemView
+            } else {
+                self?.collectionView.backgroundView = nil
             }
         })
     }

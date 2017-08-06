@@ -71,7 +71,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More items from this member" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omg-sf-9tW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More items from this member" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omg-sf-9tW">
                                             <rect key="frame" x="50" y="0.5" width="275" height="60"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                             <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -503,6 +503,27 @@
                                     <outlet property="delegate" destination="Jcs-5V-itC" id="TW2-Zx-qHK"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTH-y2-lqM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any item to exchange. Post an item or continue to send a request with cash" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqH-ox-4K3">
+                                        <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="CCX-cY-RnY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="centerY" secondItem="MTH-y2-lqM" secondAttribute="centerY" id="QIg-67-9fr"/>
+                                    <constraint firstAttribute="trailing" secondItem="aqH-ox-4K3" secondAttribute="trailing" constant="20" id="R4q-DW-by6"/>
+                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="leading" secondItem="MTH-y2-lqM" secondAttribute="leading" constant="20" id="dep-Rd-tGD"/>
+                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="centerX" secondItem="MTH-y2-lqM" secondAttribute="centerX" id="x4Z-by-kp3"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8P-pt-Iru">
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -522,11 +543,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9k8-tq-qQO" secondAttribute="trailing" id="5dl-L3-uZC"/>
                             <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="9k8-tq-qQO" secondAttribute="bottom" id="Edh-y9-cS6"/>
+                            <constraint firstItem="MTH-y2-lqM" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="NrG-Gc-elc"/>
                             <constraint firstItem="9k8-tq-qQO" firstAttribute="top" secondItem="o2K-Uv-bia" secondAttribute="top" id="SDv-a9-Xf6"/>
+                            <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="MTH-y2-lqM" secondAttribute="bottom" id="YM4-SX-SkI"/>
                             <constraint firstAttribute="trailing" secondItem="v8P-pt-Iru" secondAttribute="trailing" id="jEl-dE-ALb"/>
                             <constraint firstItem="v8P-pt-Iru" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="kwG-sC-CgP"/>
                             <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="v8P-pt-Iru" secondAttribute="bottom" id="okC-Ib-W7q"/>
+                            <constraint firstAttribute="trailing" secondItem="MTH-y2-lqM" secondAttribute="trailing" id="oyz-4r-ozv"/>
                             <constraint firstItem="9k8-tq-qQO" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="qcI-bV-KGl"/>
+                            <constraint firstItem="MTH-y2-lqM" firstAttribute="top" secondItem="o2K-Uv-bia" secondAttribute="top" id="t1N-bN-tIL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Step 2" id="Tf9-KV-H2q">
@@ -539,6 +564,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="9k8-tq-qQO" id="jTv-48-bkh"/>
+                        <outlet property="noItemView" destination="MTH-y2-lqM" id="qRP-79-uBm"/>
                         <segue destination="mCU-5e-opI" kind="show" identifier="Finish Selecting My Items" id="hsO-9u-cdK"/>
                     </connections>
                 </viewController>
