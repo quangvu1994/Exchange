@@ -147,7 +147,7 @@ class ItemDetailViewController: UIViewController {
             if identifier == "Exchange Sequence" {
                 let navControllerDestination = segue.destination as! UINavigationController
                 let viewControllerDestination = navControllerDestination.viewControllers.first as! ExchangeSequenceViewController
-                viewControllerDestination.posterItems.append(post!)
+                viewControllerDestination.originalItem = post
             } else if identifier == "Edit Item" {
                 let editView = segue.destination as! CreatePostViewController
                 editView.currentPost = post

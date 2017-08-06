@@ -16,21 +16,19 @@ class EXCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var checkMark: UIImageView!
-    var buttonIsSelected = false
+    var imageSelected = false
     var index: Int?
     weak var delegate: ImageSelectHandler?
-    
-    override func awakeFromNib() {
-        checkMark.isHidden = true
-    }
-    
+
     func toggleSelectedCheckmark() {
-        if buttonIsSelected {
+        if imageSelected {
+            itemImage.alpha = 1
             checkMark.isHidden = true
-            buttonIsSelected = false
+            imageSelected = false
         }else {
+            itemImage.alpha = 0.5
             checkMark.isHidden = false
-            buttonIsSelected = true
+            imageSelected = true
         }
     }
     

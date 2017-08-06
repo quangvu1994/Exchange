@@ -20,19 +20,16 @@ class SelectingMyItemsViewController: UIViewController {
     }
     
     var posterItems = [Post]()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate = self
         // fetch post
         PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] post in
             self?.currItems = post.filter {
                 $0.availability == true
             }
         })
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,6 +61,7 @@ extension SelectingMyItemsViewController: UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item Cell", for: indexPath) as! EXCollectionViewCell
         let imageURL = URL(string: currItems[indexPath.row].imagesURL[0])
+        cell.checkMark.isHidden = !currItems[indexPath.row].selected
         cell.itemImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.addTapGesture()
@@ -114,6 +112,6 @@ extension SelectingMyItemsViewController: ImageSelectHandler {
             return
         }
         selectedCell.toggleSelectedCheckmark()
-        currItems[index].selected = selectedCell.buttonIsSelected
+        currItems[index].selected = selectedCell.imageSelected
     }
 }

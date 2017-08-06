@@ -40,22 +40,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qds-7o-Ya3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qds-7o-Ya3">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="nuJ-T6-I0Y">
-                                                    <rect key="frame" x="130" y="130" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="nuJ-T6-I0Y">
+                                                    <rect key="frame" x="135" y="135" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="Nhw-YY-faa"/>
-                                                        <constraint firstAttribute="height" constant="30" id="WDk-YC-XPm"/>
+                                                        <constraint firstAttribute="width" constant="25" id="Nhw-YY-faa"/>
+                                                        <constraint firstAttribute="height" constant="25" id="WDk-YC-XPm"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="qds-7o-Ya3" firstAttribute="top" secondItem="G8S-wu-bUI" secondAttribute="top" id="30v-uY-z0T"/>
                                             <constraint firstAttribute="trailing" secondItem="nuJ-T6-I0Y" secondAttribute="trailing" constant="10" id="AoQ-w4-fGx"/>
-                                            <constraint firstAttribute="bottom" secondItem="nuJ-T6-I0Y" secondAttribute="bottom" constant="10" id="Ftv-Ts-iFV"/>
+                                            <constraint firstAttribute="bottom" secondItem="qds-7o-Ya3" secondAttribute="bottom" id="DEE-iR-JBd"/>
+                                            <constraint firstAttribute="bottom" secondItem="nuJ-T6-I0Y" secondAttribute="bottom" constant="10" id="MEt-JU-dLJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="qds-7o-Ya3" secondAttribute="trailing" id="QRP-UI-vui"/>
+                                            <constraint firstItem="qds-7o-Ya3" firstAttribute="leading" secondItem="G8S-wu-bUI" secondAttribute="leading" id="e2p-V8-2Ma"/>
                                         </constraints>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
@@ -222,7 +225,7 @@
                                             <outlet property="collectionView" destination="ZsK-s5-FxP" id="FC0-sO-pgm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Trade For" id="Unn-WC-Yho">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Trade For" id="Unn-WC-Yho">
                                         <rect key="frame" x="0.0" y="178" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Unn-WC-Yho" id="QsN-WM-Pb4">
@@ -230,9 +233,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-AI-Ntl">
-                                                    <rect key="frame" x="154.5" y="27" width="67.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="158" y="28.5" width="59" height="18.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="14"/>
+                                                    <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -271,7 +274,7 @@
                                                                 <constraint firstAttribute="width" constant="120" id="Oig-7q-6AR"/>
                                                             </constraints>
                                                             <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
                                                     </subviews>
@@ -402,7 +405,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzR-8X-AdX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jZ-pW-4GZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jZ-pW-4GZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -436,37 +439,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="civ-c2-StM">
-                                    <size key="itemSize" width="93" height="50"/>
+                                    <size key="itemSize" width="162" height="175"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Item Cell" id="Tds-Eb-dWm" customClass="EXCollectionViewCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="50" width="162" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="162" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVb-PR-UBw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tVb-PR-UBw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="175"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="d6T-Lq-KRd">
-                                                    <rect key="frame" x="130" y="130" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="d6T-Lq-KRd">
+                                                    <rect key="frame" x="127" y="140" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="OvM-ug-3yW"/>
-                                                        <constraint firstAttribute="height" constant="30" id="XQC-bN-wY3"/>
+                                                        <constraint firstAttribute="width" constant="25" id="OvM-ug-3yW"/>
+                                                        <constraint firstAttribute="height" constant="25" id="XQC-bN-wY3"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="d6T-Lq-KRd" secondAttribute="bottom" constant="10" id="3aG-Cl-lmk"/>
+                                            <constraint firstAttribute="trailing" secondItem="tVb-PR-UBw" secondAttribute="trailing" id="8x9-v5-4nC"/>
+                                            <constraint firstItem="tVb-PR-UBw" firstAttribute="leading" secondItem="Tds-Eb-dWm" secondAttribute="leading" id="CbV-wO-0Mm"/>
+                                            <constraint firstItem="tVb-PR-UBw" firstAttribute="top" secondItem="Tds-Eb-dWm" secondAttribute="top" id="Rw1-wf-eM8"/>
+                                            <constraint firstAttribute="bottom" secondItem="tVb-PR-UBw" secondAttribute="bottom" id="cSr-hW-LXE"/>
+                                            <constraint firstAttribute="bottom" secondItem="d6T-Lq-KRd" secondAttribute="bottom" constant="10" id="cgn-OH-o6Q"/>
                                             <constraint firstAttribute="trailing" secondItem="d6T-Lq-KRd" secondAttribute="trailing" constant="10" id="edU-kL-opI"/>
                                         </constraints>
-                                        <size key="customSize" width="170" height="170"/>
+                                        <size key="customSize" width="162" height="175"/>
                                         <connections>
                                             <outlet property="checkMark" destination="d6T-Lq-KRd" id="h0b-pO-Srj"/>
                                             <outlet property="itemImage" destination="tVb-PR-UBw" id="g7H-nj-dTM"/>
@@ -539,10 +545,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1T-87-0PP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b0D-DP-GPq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4220" y="681"/>
+            <point key="canvasLocation" x="4220" y="680.5097451274363"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Checkmark" width="25" height="25"/>
+        <image name="checkmark" width="25" height="25"/>
     </resources>
 </document>

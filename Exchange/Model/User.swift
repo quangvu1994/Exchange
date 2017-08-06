@@ -57,7 +57,7 @@ class User: NSObject {
         self.username = username
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
-        self.profilePictureURL = snapshotValue["profile_picture"] as? String
+        self.profilePictureURL = snapshotValue["profilePicture"] as? String
         super.init()
     }
         

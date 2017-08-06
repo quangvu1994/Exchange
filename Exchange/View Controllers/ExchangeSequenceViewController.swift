@@ -13,41 +13,52 @@ class ExchangeSequenceViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var currItems = [Post]() {
+    var posterItems = [Post]() {
         didSet {
             collectionView.reloadData()
         }
     }
     
-    var posterItems = [Post]()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // fetch post
-        PostService.fetchPost(for: posterItems[0].poster.uid, completionHandler: { [weak self] post in
-            self?.currItems = post.filter {
-                $0.requestedBy["\(User.currentUser.uid)"] != true && $0.availability == true
-            }
-        })
-    }
+    var originalItem: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        guard let originalItem = originalItem else {
+            return
+        }
+        // fetch post
+        PostService.fetchPost(for: originalItem.poster.uid, completionHandler: { [weak self] post in
+            self?.posterItems = post.filter {
+                $0.requestedBy["\(User.currentUser.uid)"] != true && $0.availability == true
+            }
+            
+            // Presect the original item
+            for post in (self?.posterItems)! {
+                if post.key == originalItem.key {
+                    post.selected = true
+                }
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifer = segue.identifier {
             if identifer == "Finish Selecting Their Items" {
-                let selectedItems = currItems.filter { $0.selected == true }
+                let selectedItems = posterItems.filter { $0.selected == true }
                 let stepTwoViewController = segue.destination as! SelectingMyItemsViewController
-                stepTwoViewController.posterItems = posterItems + selectedItems
+                stepTwoViewController.posterItems = selectedItems
             }
         }
     }
     @IBAction func addItemAction(_ sender: UIButton) {
-        // Filter myPost with only selected post
-        self.performSegue(withIdentifier: "Finish Selecting Their Items", sender: nil)
+        // Only continue if the user has selected at least one item
+        let selectedItems = posterItems.filter { $0.selected == true }
+        if !selectedItems.isEmpty {
+            self.performSegue(withIdentifier: "Finish Selecting Their Items", sender: nil)
+        } else {
+            self.displayWarningMessage(message: "Please select at least one item")
+        }
     }
     
     @IBAction func unwindFromStepTwo(_ sender: UIStoryboardSegue) {
@@ -58,12 +69,17 @@ class ExchangeSequenceViewController: UIViewController {
 extension ExchangeSequenceViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currItems.count
+        return posterItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item Cell", for: indexPath) as! EXCollectionViewCell
-        let imageURL = URL(string: currItems[indexPath.row].imagesURL[0])
+        let imageURL = URL(string: posterItems[indexPath.row].imagesURL[0])
+        cell.checkMark.isHidden = !posterItems[indexPath.row].selected
+        if !cell.checkMark.isHidden {
+            cell.itemImage.alpha = 0.5
+            cell.imageSelected = true
+        }
         cell.itemImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.addTapGesture()
@@ -114,6 +130,6 @@ extension ExchangeSequenceViewController: ImageSelectHandler {
             return
         }
         selectedCell.toggleSelectedCheckmark()
-        currItems[index].selected = selectedCell.buttonIsSelected
+        posterItems[index].selected = selectedCell.imageSelected
     }
 }

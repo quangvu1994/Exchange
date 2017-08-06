@@ -29,6 +29,15 @@ class EXTableCollectionCell: UITableViewCell {
 
 extension EXTableCollectionCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if itemList.count == 0 {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+            emptyLabel.textAlignment = .center
+            emptyLabel.font = UIFont(name: "Futura", size: 14)
+            emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+            emptyLabel.numberOfLines = 2
+            emptyLabel.text = "No items offered "
+            collectionView.backgroundView = emptyLabel
+        }
         return itemList.count
     }
     
