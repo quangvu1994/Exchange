@@ -28,13 +28,13 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="umL-2J-q7b">
                                     <size key="itemSize" width="93" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Item Cell" id="G8S-wu-bUI" customClass="EXCollectionViewCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="60" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -68,11 +68,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EX Header" id="7Zb-sJ-vpY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More items from this member" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omg-sf-9tW">
-                                            <rect key="frame" x="50" y="12.5" width="275" height="25"/>
+                                            <rect key="frame" x="50" y="0.5" width="275" height="60"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                             <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                         <constraint firstItem="Omg-sf-9tW" firstAttribute="centerY" secondItem="7Zb-sJ-vpY" secondAttribute="centerY" id="6lB-77-r5t"/>
                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Omg-sf-9tW" secondAttribute="trailing" constant="50" id="EfQ-3R-HYP"/>
                                         <constraint firstItem="Omg-sf-9tW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="7Zb-sJ-vpY" secondAttribute="leading" constant="50" id="RMv-wy-GhT"/>
-                                        <constraint firstItem="Omg-sf-9tW" firstAttribute="height" secondItem="7Zb-sJ-vpY" secondAttribute="height" multiplier="1:2" id="iLx-N1-Swg"/>
+                                        <constraint firstItem="Omg-sf-9tW" firstAttribute="height" secondItem="7Zb-sJ-vpY" secondAttribute="height" id="k5B-fY-K0e"/>
                                     </constraints>
                                 </collectionReusableView>
                                 <connections>
@@ -405,7 +405,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzR-8X-AdX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jZ-pW-4GZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jZ-pW-4GZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -440,13 +440,13 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="civ-c2-StM">
                                     <size key="itemSize" width="162" height="175"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Item Cell" id="Tds-Eb-dWm" customClass="EXCollectionViewCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="162" height="175"/>
+                                        <rect key="frame" x="0.0" y="60" width="162" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="175"/>
@@ -480,11 +480,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Step 2 Header" id="MYW-C6-xUh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your items in exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyo-xG-XDE">
-                                            <rect key="frame" x="50" y="12.5" width="275" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your items in exchange" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyo-xG-XDE">
+                                            <rect key="frame" x="50" y="0.0" width="275" height="60"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                             <color key="textColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -495,7 +495,7 @@
                                         <constraint firstItem="Fyo-xG-XDE" firstAttribute="leading" relation="lessThanOrEqual" secondItem="MYW-C6-xUh" secondAttribute="leading" constant="50" id="5H2-a8-KW3"/>
                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Fyo-xG-XDE" secondAttribute="trailing" constant="50" id="BTR-MQ-p1H"/>
                                         <constraint firstItem="Fyo-xG-XDE" firstAttribute="centerY" secondItem="MYW-C6-xUh" secondAttribute="centerY" id="EAC-vS-8ry"/>
-                                        <constraint firstItem="Fyo-xG-XDE" firstAttribute="height" secondItem="MYW-C6-xUh" secondAttribute="height" multiplier="1:2" id="gim-3w-FE0"/>
+                                        <constraint firstItem="Fyo-xG-XDE" firstAttribute="height" secondItem="MYW-C6-xUh" secondAttribute="height" id="zJr-S4-Zs6"/>
                                     </constraints>
                                 </collectionReusableView>
                                 <connections>
