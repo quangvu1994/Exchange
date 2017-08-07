@@ -21,5 +21,14 @@ class RequestTableViewCell: UITableViewCell {
         itemImage.layer.masksToBounds = true
         itemImage.layer.cornerRadius = 3
     }
+    
+    func setStatus(status: String) {
+        self.status.text = status
+        if status == "Accepted" {
+            self.status.textColor = UIColor(red: 121/255, green: 189/255, blue: 143/255, alpha: 1.0)
+        } else if status == "Rejected" {
+            self.status.textColor = UIColor(red: 220/255, green: 53/255, blue: 34/255, alpha: 1.0)
+        }
+    }
 
 }

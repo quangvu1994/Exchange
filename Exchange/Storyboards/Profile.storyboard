@@ -428,8 +428,39 @@
                                             <outlet property="collectionView" destination="DsB-NU-zOg" id="yWx-hD-iTQ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cancel Request Cell" rowHeight="89" id="teu-Qe-6Fz" customClass="CancelRequestCell" customModule="Exchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="481" width="375" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="teu-Qe-6Fz" id="A9N-M1-wBx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-cQ-Woi">
+                                                    <rect key="frame" x="20" y="24" width="335" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="cd3-a6-wWB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="14"/>
+                                                    <state key="normal" title="Cancel Request">
+                                                        <color key="titleColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="cancelRequest:" destination="67Y-eD-WlW" eventType="touchUpInside" id="fIb-Nd-Isk"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3vZ-cQ-Woi" firstAttribute="leading" secondItem="A9N-M1-wBx" secondAttribute="leading" constant="20" id="OMa-5k-DDC"/>
+                                                <constraint firstAttribute="trailing" secondItem="3vZ-cQ-Woi" secondAttribute="trailing" constant="20" id="TWI-vu-5q4"/>
+                                                <constraint firstItem="3vZ-cQ-Woi" firstAttribute="centerY" secondItem="A9N-M1-wBx" secondAttribute="centerY" id="mVi-4p-eyv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cancelButton" destination="3vZ-cQ-Woi" id="7ID-Zj-wZ1"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Trade For" rowHeight="57" id="aW3-cr-BSB">
-                                        <rect key="frame" x="0.0" y="481" width="375" height="57"/>
+                                        <rect key="frame" x="0.0" y="570" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aW3-cr-BSB" id="VkI-Pz-SEt">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
@@ -449,7 +480,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Button Cell" rowHeight="100" id="W92-G8-lzz" customClass="ButtonTableViewCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="538" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="627" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W92-G8-lzz" id="2nb-tW-DoR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
@@ -472,7 +503,7 @@
                                                             <rect key="frame" x="177.5" y="0.0" width="147.5" height="59.5"/>
                                                             <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="14"/>
-                                                            <state key="normal" title="Confirmed">
+                                                            <state key="normal" title="Accept">
                                                                 <color key="titleColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </state>
                                                             <connections>
@@ -517,7 +548,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Back Icon" id="8Ud-eZ-6Mu">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="wtb-7m-t4k" kind="unwind" unwindAction="unwindToRequestViewController:" id="vrc-3a-za5"/>
+                                <segue destination="wtb-7m-t4k" kind="unwind" identifier="Back" unwindAction="unwindToRequestViewController:" id="vrc-3a-za5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -619,7 +650,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="N1T-jZ-uBz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VcJ-W2-1Bb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VcJ-W2-1Bb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>

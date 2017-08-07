@@ -47,6 +47,8 @@ class ItemDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        actionButton.layer.masksToBounds = true
+        actionButton.layer.cornerRadius = 3
         // If the user has already requested this item, change the text
         guard let post = post else {
             return

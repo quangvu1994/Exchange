@@ -19,113 +19,192 @@ class RequestDetailViewController: UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        self.navigationItem.title = request?.status
     }
     
     @IBAction func confirmRequest(_ sender: UIButton) {
-        // Update the request status on the database + all items' availability + remove user from the requested by field
-        guard let request = request,
-            let requestRef = request.requestKey else {
-            return
-        }
-        
-        var data: [String: Any] = [
-            "Requests/\(requestRef)/status": "Confirmed"
-        ]
-        
-        let posterItemsKey = Array(request.posterItemsData.keys)
-        for itemRef in posterItemsKey {
-            data["allItems/\(itemRef)/availability"] = false
-            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-        }
-        
-        let requesterItemsKey = Array(request.requesterItemsData.keys)
-        for itemRef in requesterItemsKey {
-            data["allItems/\(itemRef)/availability"] = false
-            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-        }
-        
-        // While this is going on, we can also display a spinner
-        let dispatchGroup = DispatchGroup()
-        var success = true
-        dispatchGroup.enter()
-        Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
-            if let error = error {
-                assertionFailure(error.localizedDescription)
-                success = false
+        let alertController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            // Update the request status on the database + all items' availability + remove user from the requested by field
+            guard let request = self.request,
+                let requestRef = request.requestKey else {
+                    return
+            }
+            
+            var data: [String: Any] = [
+                "Requests/\(requestRef)/status": "Accepted"
+            ]
+            
+            let posterItemsKey = Array(request.posterItemsData.keys)
+            for itemRef in posterItemsKey {
+                data["allItems/\(itemRef)/availability"] = false
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            let requesterItemsKey = Array(request.requesterItemsData.keys)
+            for itemRef in requesterItemsKey {
+                data["allItems/\(itemRef)/availability"] = false
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            // While this is going on, we can also display a spinner
+            let dispatchGroup = DispatchGroup()
+            var success = true
+            dispatchGroup.enter()
+            Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    success = false
+                    dispatchGroup.leave()
+                    return
+                }
                 dispatchGroup.leave()
-                return
-            }
-            dispatchGroup.leave()
+            })
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                if success {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Request Accepted!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                        self.performSegue(withIdentifier: "Back", sender: nil)
+                    })
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Fail to confirm request! Check your network and retry again", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
         })
-        
-        dispatchGroup.notify(queue: .main, execute: {
-            if success {
-                let alertController
-                    = UIAlertController(title: nil, message: "Request Confirmed!", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController
-                    = UIAlertController(title: nil, message: "Fail to confirm request! Check your network and retry again", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
-        
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
     }
+    
     @IBAction func rejectRequest(_ sender: UIButton) {
-        // Update the request status on the database + all items' availability + remove user from the requested by field
-        guard let request = request,
-            let requestRef = request.requestKey else {
-                return
-        }
-        
-        var data: [String: Any] = [
-            "Requests/\(requestRef)/status": "Rejected"
-        ]
-        let posterItemsKey = Array(request.posterItemsData.keys)
-        for itemRef in posterItemsKey {
-            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-        }
-        
-        let requesterItemsKey = Array(request.requesterItemsData.keys)
-        for itemRef in requesterItemsKey {
-            data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-        }
-        
-        // While this is going on, we can also display a spinner
-        let dispatchGroup = DispatchGroup()
-        var success = true
-        dispatchGroup.enter()
-        Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
-            if let error = error {
-                assertionFailure(error.localizedDescription)
-                success = false
+        let alertController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            // Update the request status on the database + all items' availability + remove user from the requested by field
+            guard let request = self.request,
+                let requestRef = request.requestKey else {
+                    return
+            }
+            
+            var data: [String: Any] = [
+                "Requests/\(requestRef)/status": "Rejected"
+            ]
+            let posterItemsKey = Array(request.posterItemsData.keys)
+            for itemRef in posterItemsKey {
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            let requesterItemsKey = Array(request.requesterItemsData.keys)
+            for itemRef in requesterItemsKey {
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            // While this is going on, we can also display a spinner
+            let dispatchGroup = DispatchGroup()
+            var success = true
+            dispatchGroup.enter()
+            Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    success = false
+                    dispatchGroup.leave()
+                    return
+                }
                 dispatchGroup.leave()
-                return
-            }
-            dispatchGroup.leave()
+            })
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                if success {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Request Rejected!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in 
+                        self.performSegue(withIdentifier: "Back", sender: nil)
+                    })
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Fail to reject request! Check your network and retry again", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
         })
-        
-        dispatchGroup.notify(queue: .main, execute: {
-            if success {
-                let alertController
-                    = UIAlertController(title: nil, message: "Request Rejected!", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController
-                    = UIAlertController(title: nil, message: "Fail to reject request! Check your network and retry again", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
-        
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func cancelRequest(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            // Update the request status on the database + all items' availability + remove user from the requested by field
+            guard let request = self.request,
+                let requestRef = request.requestKey else {
+                    return
+            }
+            
+            var data: [String: Any] = [
+                "Requests/\(requestRef)/status": "Cancelled"
+            ]
+            let posterItemsKey = Array(request.posterItemsData.keys)
+            for itemRef in posterItemsKey {
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            let requesterItemsKey = Array(request.requesterItemsData.keys)
+            for itemRef in requesterItemsKey {
+                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
+            }
+            
+            // While this is going on, we can also display a spinner
+            let dispatchGroup = DispatchGroup()
+            var success = true
+            dispatchGroup.enter()
+            Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    success = false
+                    dispatchGroup.leave()
+                    return
+                }
+                dispatchGroup.leave()
+            })
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                if success {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Request Cancelled!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                        self.performSegue(withIdentifier: "Back", sender: nil)
+                    })
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController
+                        = UIAlertController(title: nil, message: "Fail to reject request! Check your network and retry again", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -153,7 +232,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             fatalError("No request found")
         }
         
-        if request.status != "In Progress" || index! == 0 {
+        if request.status != "In Progress" {
             return 4
         } else {
             return 5
@@ -177,6 +256,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
                 }
             }
             return cell
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
@@ -188,9 +268,11 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
                 }
             }
             return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Trade For", for: indexPath)
             return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
             if let request = request {
@@ -199,9 +281,15 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
                 cell.status = request.status
             }
             return cell
+            
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath) as! ButtonTableViewCell
-            return cell
+            if index! == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cancel Request Cell", for: indexPath) as! CancelRequestCell
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath) as! ButtonTableViewCell
+                return cell
+            }
             
         default:
             fatalError("Unrecognized index path row")
