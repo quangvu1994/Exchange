@@ -108,6 +108,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="332-Ke-sN9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZRr-5y-Tg2">
                                 <rect key="frame" x="50" y="164" width="275" height="227"/>
                                 <subviews>
@@ -116,26 +119,26 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="8Pd-XU-uZO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wf8-dr-QDN">
                                         <rect key="frame" x="0.0" y="85" width="275" height="30"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHO-fg-J79">
                                         <rect key="frame" x="0.0" y="140" width="275" height="30"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-Oc-klk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-Oc-klk">
                                         <rect key="frame" x="0.0" y="195" width="275" height="32"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.40784313729999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <state key="normal" title="Get Started">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -151,10 +154,20 @@
                                     <constraint firstItem="a5k-Oc-klk" firstAttribute="width" secondItem="ZRr-5y-Tg2" secondAttribute="width" id="g9f-Ik-jb5"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V9l-yW-XB1">
+                                <rect key="frame" x="169" y="491" width="37" height="37"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="V9l-yW-XB1" firstAttribute="top" secondItem="ZRr-5y-Tg2" secondAttribute="bottom" constant="100" id="69Q-UK-Q0P"/>
+                            <constraint firstAttribute="bottom" secondItem="332-Ke-sN9" secondAttribute="bottom" id="ATV-fE-3a4"/>
+                            <constraint firstAttribute="trailing" secondItem="332-Ke-sN9" secondAttribute="trailing" id="TtI-fz-Xrs"/>
                             <constraint firstAttribute="trailing" secondItem="ZRr-5y-Tg2" secondAttribute="trailing" constant="50" id="VPB-L9-X8J"/>
+                            <constraint firstItem="332-Ke-sN9" firstAttribute="leading" secondItem="8av-Nx-ZYc" secondAttribute="leading" id="f8J-f2-d2Z"/>
+                            <constraint firstItem="332-Ke-sN9" firstAttribute="top" secondItem="8av-Nx-ZYc" secondAttribute="top" id="kM4-Rm-AeA"/>
+                            <constraint firstItem="V9l-yW-XB1" firstAttribute="centerX" secondItem="8av-Nx-ZYc" secondAttribute="centerX" id="tic-cp-IqA"/>
                             <constraint firstItem="ZRr-5y-Tg2" firstAttribute="top" secondItem="iEY-kl-w79" secondAttribute="bottom" constant="100" id="un1-OG-Ewy"/>
                             <constraint firstItem="ZRr-5y-Tg2" firstAttribute="leading" secondItem="8av-Nx-ZYc" secondAttribute="leading" constant="50" id="xHJ-sN-GOk"/>
                         </constraints>
@@ -163,14 +176,17 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="iy5-xF-QEd">
                             <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="rmG-xy-sxq" kind="unwind" unwindAction="unwindToLoginView:" id="voa-ef-Fv0"/>
+                                <action selector="cancelAction:" destination="pQP-4T-pV2" id="Eu0-EM-84U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="V9l-yW-XB1" id="J7C-Eb-EA3"/>
+                        <outlet property="backgroundImage" destination="332-Ke-sN9" id="hHz-oM-XoS"/>
                         <outlet property="getStartedButton" destination="a5k-Oc-klk" id="uov-fv-oop"/>
                         <outlet property="phoneNumber" destination="kHO-fg-J79" id="SCD-bd-jKc"/>
                         <outlet property="username" destination="Wf8-dr-QDN" id="sJ9-zD-eDw"/>
+                        <segue destination="rmG-xy-sxq" kind="unwind" identifier="Cancel Signup" unwindAction="unwindToLoginView:" id="OFZ-Gy-9jZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlm-gE-VhL" userLabel="First Responder" sceneMemberID="firstResponder"/>

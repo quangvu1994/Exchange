@@ -8,49 +8,94 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class SignupViewController: UIViewController {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        if !getStartedButton.isEnabled {
-            getStartedButton.alpha = 0.5
-        } else {
-            getStartedButton.alpha = 1.0
-        }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardOnTap()
         getStartedButton.layer.cornerRadius = 3
         phoneNumber.delegate = self
         username.delegate = self
+        backgroundImage.image = resizeImage(image: UIImage(named: "Connect")!, newWidth: 1000)
+    }
+    
+    /**
+     Resize an image to the new specific size
+     */
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     @IBAction func getStartedAction(_ sender: UIButton) {
-        
+        UIApplication.shared.beginIgnoringInteractionEvents()
         guard let user = Auth.auth().currentUser,
             let username = username.text,
-            let phoneNumber = phoneNumber.text else {
-            return
+            let phoneNumber = phoneNumber.text,
+            !username.isEmpty,
+            !phoneNumber.isEmpty else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.displayWarningMessage(message: "Please fill out all information")
+                return
         }
         
-        UserService.createNewUser(user, phoneNumber: phoneNumber, username: username, completion: { (user) in
+        activityIndicator.startAnimating()
+        UserService.createNewUser(user, phoneNumber: phoneNumber, username: username, completion: { [unowned self] (user) in
             // Making sure that we do have our User
             guard let user = user else {
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
             User.setCurrentUser(user, writeToUserDefaults: true)
             let initialViewController = UIStoryboard.initialViewController(type: .main)
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
         })
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        performSegue(withIdentifier: "Cancel Signup", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "Cancel Signup" {
+                do {
+                    try Auth.auth().signOut()
+                    if Auth.auth().currentUser == nil {
+                        FBSDKLoginManager().logOut()
+                    } else {
+                        print("Handle failed to sign out here")
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }
 
@@ -83,21 +128,8 @@ extension SignupViewController: UITextFieldDelegate {
             }
             
             if number.characters.count != 10 {
-                let alertController = UIAlertController(title: nil, message: "Incorrect phone number", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                phoneNumber.text = nil
-                self.present(alertController, animated: true, completion: nil)
+                phoneNumber.text = ""
             }
-        }
-        
-        // Enable if user has filled out everything
-        if phoneNumber.text != "" && username.text != "" {
-            self.getStartedButton.isEnabled = true
-            self.getStartedButton.alpha = 1.0
-        } else {
-            self.getStartedButton.isEnabled = false
-            self.getStartedButton.alpha = 0.5
         }
     }
     

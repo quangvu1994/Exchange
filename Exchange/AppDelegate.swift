@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import FirebaseAuthUI
 import FBSDKCoreKit
+import FBSDKLoginKit
 import UserNotifications
 
 @UIApplicationMain
@@ -52,6 +53,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        if let nc = self.window?.rootViewController as? UINavigationController {
+            if nc.visibleViewController is SignupViewController {
+                do {
+                    try Auth.auth().signOut()
+
+                    if Auth.auth().currentUser == nil {
+                        FBSDKLoginManager().logOut()
+                    } else {
+                        print("Handle failed to sign out here")
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+        }
         self.saveContext()
     }
 
