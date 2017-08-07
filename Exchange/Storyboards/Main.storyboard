@@ -71,7 +71,7 @@
         <scene sceneID="8Mw-Qn-g7m">
             <objects>
                 <viewControllerPlaceholder storyboardName="MyItem" id="ifY-cv-cUS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Store" image="MyStore" id="T7t-ZT-hE8"/>
+                    <tabBarItem key="tabBarItem" title="My Store" image="Home" id="T7t-ZT-hE8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ci9-Bi-AF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,7 +80,7 @@
     </scenes>
     <resources>
         <image name="AddItem" width="25" height="25"/>
-        <image name="MyStore" width="25" height="25"/>
+        <image name="Home" width="25" height="25"/>
         <image name="Profile" width="25" height="25"/>
         <image name="Search" width="25" height="25"/>
     </resources>

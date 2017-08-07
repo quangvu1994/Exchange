@@ -49,6 +49,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
         PostService.fetchPost(completionHandler: { [weak self] (allPosts) in
             guard let category = self?.category else {
                 self?.post = allPosts
+                self?.activityIndicator.stopAnimating()
                 return
             }
             
@@ -191,6 +192,8 @@ extension MarketplaceViewController: UICollectionViewDataSource {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MarketplaceHeaderView", for: indexPath) as! MarketplaceHeaderView
         if let categoryName = category {
             headerView.categoryName.text = categoryName
+        } else {
+            headerView.categoryName.text = "All Items"
         }
         return headerView
     }

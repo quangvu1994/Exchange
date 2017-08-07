@@ -250,7 +250,7 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return view.frame.height/2
+            return view.frame.height*4/7
         case 1:
             return 80
         case 2:

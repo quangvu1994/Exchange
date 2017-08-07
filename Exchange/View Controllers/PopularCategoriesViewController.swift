@@ -23,7 +23,7 @@ class PopularCategoriesViewController: UIViewController {
         "Books", "Others"
     ]
     
-    var compressImages = [UIImage]()
+    var compressImages = [UIImage?]()
     
     var smallestFontSize: CGFloat = 20.0
     
@@ -33,16 +33,13 @@ class PopularCategoriesViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         // Compress all images
         for image in imageList {
-            guard let compressData = UIImageJPEGRepresentation(UIImage(named: image)!, 0.1) else {
-                return
-            }
-            compressImages.append(UIImage(data: compressData)!)
+            compressImages.append(self.resizeImage(image: UIImage(named: image)!))
         }
     }
     
@@ -91,17 +88,44 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
         return 250
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+    func resizeImage(image: UIImage) -> UIImage? {
         
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        var actualHeight = image.size.height
+        var actualWidth = image.size.width
+        let maxHeight: CGFloat = 600.0
+        let maxWidth: CGFloat = 800.0
+        var imgRatio = actualWidth/actualHeight
+        let maxRatio = maxWidth/maxHeight
+        let compressionQuality: CGFloat = 0.1
+        if (actualHeight > maxHeight || actualWidth > maxWidth){
+            if(imgRatio < maxRatio){
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight;
+                actualWidth = imgRatio * actualWidth;
+                actualHeight = maxHeight;
+            }
+            else if(imgRatio > maxRatio){
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth;
+                actualHeight = imgRatio * actualHeight;
+                actualWidth = maxWidth;
+            }
+            else{
+                actualHeight = maxHeight;
+                actualWidth = maxWidth;
+            }
+        }
+
+        UIGraphicsBeginImageContext(CGSize(width: actualWidth, height: actualHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: actualWidth, height: actualHeight))
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext(),
+            let compressedImage = UIImageJPEGRepresentation(newImage, compressionQuality) else {
+            return nil
+        }
         UIGraphicsEndImageContext()
         
-        return newImage
+        return UIImage(data: compressedImage)
     }
 }
 
