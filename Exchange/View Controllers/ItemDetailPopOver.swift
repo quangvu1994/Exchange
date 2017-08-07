@@ -21,7 +21,7 @@ class ItemDetailPopOver: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        popUpView.layer.cornerRadius = 10
+        popUpView.layer.cornerRadius = 5
         popUpView.layer.masksToBounds = true
         itemImage.layer.zPosition = 0
         closePopUpButton.layer.zPosition = 1

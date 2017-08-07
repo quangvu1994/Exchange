@@ -12,7 +12,9 @@ import UIKit
 class CategoriesViewController: UIViewController {
     
     var categoryList = [
-        "Clothes", "Room Essential", "Books", "Electronic", "Others"
+        "Fashion", "Shoes",
+        "Beauty", "Electronic", "Room Essential",
+        "Books", "Others"
     ]
     @IBOutlet weak var tableView: UITableView!
     

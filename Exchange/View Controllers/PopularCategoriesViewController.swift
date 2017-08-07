@@ -12,13 +12,16 @@ class PopularCategoriesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var categoryList = [
-        "Room Essential",
-        "Clothes",
-        "Electronic",
-        "Books"
+        "Fashion", "Shoes",
+        "Beauty", "Electronic", "Room Essential",
+        "Books", "Others"
     ]
     
-    var imageList = ["RoomEssential", "Clothes", "Electronic", "Book"]
+    var imageList = [
+        "Fashion", "Shoes",
+        "Beauty", "Electronic", "RoomEssential",
+        "Books", "Others"
+    ]
     
     var compressImages = [UIImage]()
     
@@ -36,7 +39,7 @@ class PopularCategoriesViewController: UIViewController {
         configureTableView()
         // Compress all images
         for image in imageList {
-            guard let compressData = UIImageJPEGRepresentation(UIImage(named: image)!, 0.2) else {
+            guard let compressData = UIImageJPEGRepresentation(UIImage(named: image)!, 0.1) else {
                 return
             }
             compressImages.append(UIImage(data: compressData)!)
@@ -80,12 +83,12 @@ extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return categoryList.count
     }
     
     // Dynamically set the height of each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 250
     }
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
