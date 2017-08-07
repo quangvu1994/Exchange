@@ -13,12 +13,14 @@ class RequestViewController: UIViewController {
     
     @IBOutlet weak var requestSegmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var request = [Request]() {
         didSet {
             tableView.reloadData()
         }
     }
+    var fetchResult = [Request]()
     
     var index: Int?
     
@@ -46,7 +48,7 @@ class RequestViewController: UIViewController {
     }
     
     @IBAction func switchRequestType(_ sender: UISegmentedControl) {
-        fetchingRequest()
+        filteringRequestResult()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,69 +66,51 @@ class RequestViewController: UIViewController {
     }
     
     func fetchingRequest() {
-        let dispatchGroup = DispatchGroup()
+        activityIndicator.startAnimating()
         if index! == 0 {
             // Fetch outgoing request
-            dispatchGroup.enter()
             RequestService.retrieveOutgoingRequest(completionHandler: { [unowned self] (outgoingRequest) in
-                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-                emptyLabel.textAlignment = .center
-                emptyLabel.font = UIFont(name: "Futura", size: 16)
-                emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
-                emptyLabel.numberOfLines = 2
-                
-                switch self.requestSegmentControl.selectedSegmentIndex {
-                case 0:
-                    self.request = outgoingRequest.filter { $0.status == "In Progress"}
-                    if self.request.count == 0 {
-                        emptyLabel.text = "No requested items"
-                        self.tableView.backgroundView = emptyLabel
-                    } else {
-                        self.tableView.backgroundView = nil
-                    }
-                case 1:
-                    self.request = outgoingRequest.filter { $0.status != "In Progress"}
-                    if self.request.count == 0 {
-                        emptyLabel.text = "No completed items"
-                        self.tableView.backgroundView = emptyLabel
-                    } else {
-                        self.tableView.backgroundView = nil
-                    }
-                default:
-                    break
-                }
+                self.fetchResult = outgoingRequest
+                self.filteringRequestResult()
+                self.activityIndicator.stopAnimating()
             })
+            
         } else {
             // Fetch incoming request
-            dispatchGroup.enter()
             RequestService.retrieveIncomingRequest(completionHandler: { [unowned self] (incomingRequest) in
-                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-                emptyLabel.textAlignment = .center
-                emptyLabel.font = UIFont(name: "Futura", size: 16)
-                emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
-                emptyLabel.numberOfLines = 2
-                
-                switch self.requestSegmentControl.selectedSegmentIndex {
-                case 0:
-                    self.request = incomingRequest.filter { $0.status == "In Progress"}
-                    if self.request.count == 0 {
-                        emptyLabel.text = "No requested items"
-                        self.tableView.backgroundView = emptyLabel
-                    } else {
-                        self.tableView.backgroundView = nil
-                    }
-                case 1:
-                    self.request = incomingRequest.filter { $0.status != "In Progress"}
-                    if self.request.count == 0 {
-                        emptyLabel.text = "No completed items"
-                        self.tableView.backgroundView = emptyLabel
-                    } else {
-                        self.tableView.backgroundView = nil
-                    }
-                default:
-                    break
-                }
+                self.fetchResult = incomingRequest
+                self.filteringRequestResult()
+                self.activityIndicator.stopAnimating()
             })
+        }
+    }
+    
+    func filteringRequestResult() {
+        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        emptyLabel.textAlignment = .center
+        emptyLabel.font = UIFont(name: "Futura", size: 16)
+        emptyLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+        emptyLabel.numberOfLines = 2
+        
+        switch self.requestSegmentControl.selectedSegmentIndex {
+        case 0:
+            self.request = fetchResult.filter { $0.status == "In Progress"}
+            if self.request.count == 0 {
+                emptyLabel.text = "No requested items"
+                self.tableView.backgroundView = emptyLabel
+            } else {
+                self.tableView.backgroundView = nil
+            }
+        case 1:
+            self.request = fetchResult.filter { $0.status != "In Progress"}
+            if self.request.count == 0 {
+                emptyLabel.text = "No completed items"
+                self.tableView.backgroundView = emptyLabel
+            } else {
+                self.tableView.backgroundView = nil
+            }
+        default:
+            break
         }
     }
 }

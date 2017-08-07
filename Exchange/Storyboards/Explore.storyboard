@@ -181,12 +181,18 @@
                                     <outlet property="delegate" destination="m7y-c2-HAe" id="bm1-hV-KUs"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HqS-fd-AWL">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ufh-3R-m6q" firstAttribute="top" secondItem="MFe-LZ-aOX" secondAttribute="top" id="8YE-Bd-Iuo"/>
                             <constraint firstAttribute="trailing" secondItem="Ufh-3R-m6q" secondAttribute="trailing" id="INL-VA-3bZ"/>
                             <constraint firstItem="Ufh-3R-m6q" firstAttribute="leading" secondItem="MFe-LZ-aOX" secondAttribute="leading" id="Pds-HK-yDb"/>
+                            <constraint firstItem="HqS-fd-AWL" firstAttribute="centerX" secondItem="MFe-LZ-aOX" secondAttribute="centerX" id="U3P-rc-ibT"/>
+                            <constraint firstItem="HqS-fd-AWL" firstAttribute="centerY" secondItem="MFe-LZ-aOX" secondAttribute="centerY" id="yft-ma-etk"/>
                             <constraint firstAttribute="bottom" secondItem="Ufh-3R-m6q" secondAttribute="bottom" id="zuz-kS-1OH"/>
                         </constraints>
                     </view>
@@ -196,6 +202,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="HqS-fd-AWL" id="hTP-hu-ySQ"/>
                         <outlet property="collectionView" destination="Ufh-3R-m6q" id="GTD-a1-maN"/>
                         <outlet property="searchDisplayController" destination="QZA-t0-fy8" id="6uH-tB-kGt"/>
                         <segue destination="JnG-n2-gjI" kind="show" identifier="displayItemDetail" id="nBJ-rq-pjw"/>
@@ -439,7 +446,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>

@@ -12,6 +12,7 @@ import Kingfisher
 
 class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var post = [Post]() {
         didSet {
             collectionView.reloadData()
@@ -43,6 +44,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        activityIndicator.startAnimating()
         // fetch all post
         PostService.fetchPost(completionHandler: { [weak self] (allPosts) in
             guard let category = self?.category else {
@@ -67,7 +69,7 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
             } else {
                 self?.collectionView.backgroundView = nil
             }
-        
+            self?.activityIndicator.stopAnimating()
         })
     }
     

@@ -137,7 +137,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="136" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CrX-9j-J8V">
-                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Request Cell" rowHeight="136" id="ynE-ce-GNq" customClass="RequestTableViewCell" customModule="Exchange" customModuleProvider="target">
@@ -207,15 +207,21 @@
                                     <outlet property="delegate" destination="VHj-u0-Q7m" id="UKn-Hd-p8f"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dnF-ZW-0VP">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dnF-ZW-0VP" firstAttribute="centerY" secondItem="q7G-K2-J9F" secondAttribute="centerY" id="3Uw-54-wSo"/>
                             <constraint firstItem="f3A-BU-DQ9" firstAttribute="leading" secondItem="q7G-K2-J9F" secondAttribute="leading" id="96e-Hx-dj6"/>
                             <constraint firstItem="CrX-9j-J8V" firstAttribute="top" secondItem="f3A-BU-DQ9" secondAttribute="bottom" constant="5" id="A2F-n5-hi9"/>
                             <constraint firstAttribute="trailing" secondItem="f3A-BU-DQ9" secondAttribute="trailing" id="Ibh-hV-VgZ"/>
+                            <constraint firstItem="dnF-ZW-0VP" firstAttribute="centerX" secondItem="q7G-K2-J9F" secondAttribute="centerX" id="Oj3-85-3J0"/>
                             <constraint firstItem="f3A-BU-DQ9" firstAttribute="top" secondItem="ed1-Uk-MOv" secondAttribute="bottom" id="USa-kG-laJ"/>
                             <constraint firstItem="CrX-9j-J8V" firstAttribute="leading" secondItem="q7G-K2-J9F" secondAttribute="leading" id="cv6-4k-7oS"/>
-                            <constraint firstAttribute="bottom" secondItem="CrX-9j-J8V" secondAttribute="bottom" id="met-s2-Gag"/>
+                            <constraint firstAttribute="bottom" secondItem="CrX-9j-J8V" secondAttribute="bottom" constant="50" id="met-s2-Gag"/>
                             <constraint firstAttribute="trailing" secondItem="CrX-9j-J8V" secondAttribute="trailing" id="qyU-TD-DAc"/>
                         </constraints>
                     </view>
@@ -228,6 +234,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="dnF-ZW-0VP" id="oY7-gR-u8U"/>
                         <outlet property="requestSegmentControl" destination="f3A-BU-DQ9" id="kQp-d6-Wmi"/>
                         <outlet property="tableView" destination="CrX-9j-J8V" id="ZzG-CC-glg"/>
                         <segue destination="67Y-eD-WlW" kind="show" identifier="Show Request Detail" id="uLW-4d-zlh"/>

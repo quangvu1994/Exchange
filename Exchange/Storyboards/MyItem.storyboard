@@ -135,6 +135,10 @@
                                     <outlet property="delegate" destination="f4j-rf-TO1" id="xXR-GJ-0qg"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HHw-5v-1Xr">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,7 +146,9 @@
                             <constraint firstItem="0AS-Qr-OwC" firstAttribute="top" secondItem="jRa-K3-6wx" secondAttribute="top" constant="-65" id="1wA-Of-pkA"/>
                             <constraint firstAttribute="bottomMargin" secondItem="0AS-Qr-OwC" secondAttribute="bottom" id="2yi-2f-UON"/>
                             <constraint firstAttribute="trailing" secondItem="0AS-Qr-OwC" secondAttribute="trailing" id="6Pd-JQ-Hgc"/>
+                            <constraint firstItem="HHw-5v-1Xr" firstAttribute="centerY" secondItem="jRa-K3-6wx" secondAttribute="centerY" id="D46-Tm-mrV"/>
                             <constraint firstItem="0AS-Qr-OwC" firstAttribute="leading" secondItem="jRa-K3-6wx" secondAttribute="leading" id="RNh-IZ-6kg"/>
+                            <constraint firstItem="HHw-5v-1Xr" firstAttribute="centerX" secondItem="jRa-K3-6wx" secondAttribute="centerX" id="yJo-gR-Q5q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4l-TX-aXS">
@@ -154,6 +160,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="HHw-5v-1Xr" id="DFm-EH-M1T"/>
                         <outlet property="collectionView" destination="0AS-Qr-OwC" id="UjO-8a-0wm"/>
                         <segue destination="K1n-uv-ry9" kind="show" identifier="showItemDetail" id="0gd-9g-7tn"/>
                     </connections>

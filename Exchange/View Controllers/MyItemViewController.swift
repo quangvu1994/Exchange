@@ -11,6 +11,7 @@ import FirebaseDatabase
 import Kingfisher
 
 class MyItemViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var user: User?
     var post = [Post]() {
         didSet {
@@ -31,6 +32,7 @@ class MyItemViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        activityIndicator.startAnimating()
         if let user = user {
             // fetch post for specific user
             PostService.fetchPost(for: user.uid, completionHandler: { [weak self] (allPosts) in
@@ -47,6 +49,7 @@ class MyItemViewController: UIViewController {
                 } else {
                     self?.collectionView.backgroundView = nil
                 }
+                self?.activityIndicator.stopAnimating()
             })
         } else {
             // fetch post for current user
@@ -64,6 +67,7 @@ class MyItemViewController: UIViewController {
                 } else {
                     self?.collectionView.backgroundView = nil
                 }
+                self?.activityIndicator.stopAnimating()
             })
             self.navigationItem.leftBarButtonItem = nil
         }

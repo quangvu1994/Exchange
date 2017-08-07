@@ -28,6 +28,8 @@ class RequestTableViewCell: UITableViewCell {
             self.status.textColor = UIColor(red: 121/255, green: 189/255, blue: 143/255, alpha: 1.0)
         } else if status == "Rejected" {
             self.status.textColor = UIColor(red: 220/255, green: 53/255, blue: 34/255, alpha: 1.0)
+        } else {
+            self.status.textColor = UIColor(red: 79/255, green: 146/255, blue: 193/255, alpha: 1.0)
         }
     }
 
