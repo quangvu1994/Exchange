@@ -102,8 +102,11 @@ class ProfileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "Show Request" {
+                guard let indexPath = sender as? IndexPath else {
+                    return
+                }
                 let destination = segue.destination as! RequestViewController
-                destination.index = tableView.indexPathForSelectedRow!.row
+                destination.index = indexPath.row
             }
         }
     }
@@ -128,9 +131,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            self.performSegue(withIdentifier: "Show Request", sender: nil)
+            self.performSegue(withIdentifier: "Show Request", sender: indexPath)
         case 1:
-            self.performSegue(withIdentifier: "Show Request", sender: nil)
+            self.performSegue(withIdentifier: "Show Request", sender: indexPath)
         case 2:
             // Handle log out
             let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to logout?", preferredStyle: .alert)
