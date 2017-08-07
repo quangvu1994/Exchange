@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var homeBackground: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,10 +26,27 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLoginButtons()
+        homeBackground.image = resizeImage(image: UIImage(named: "HomeScreen")!, newWidth: 1200)
     }
     
     func configureLoginButtons() {
         facebookLoginButton.layer.cornerRadius = 6
+    }
+    
+    /**
+     Resize an image to the new specific size
+     */
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     @IBAction func unwindToLoginView(_ sender: UIStoryboardSegue) {
