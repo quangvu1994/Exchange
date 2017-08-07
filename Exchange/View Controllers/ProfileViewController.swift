@@ -142,6 +142,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                     try Auth.auth().signOut()
                     if Auth.auth().currentUser == nil {
                         FBSDKLoginManager().logOut()
+                        // Wipe user default data
+                        let domain = Bundle.main.bundleIdentifier!
+                        UserDefaults.standard.removePersistentDomain(forName: domain)
+                        UserDefaults.standard.synchronize()
                         let initialViewController = UIStoryboard.initialViewController(type: .login)
                         self.view.window?.rootViewController = initialViewController
                         self.view.window?.makeKeyAndVisible()

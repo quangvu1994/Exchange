@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         // Invoked for proper use of Facebook SDK - In other words, setting up Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        // Instantiate the Login storyboard
         configureInitialRootViewController(for: window)
         
         return true
@@ -53,21 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        if let nc = self.window?.rootViewController as? UINavigationController {
-            if nc.visibleViewController is SignupViewController {
-                do {
-                    try Auth.auth().signOut()
-
-                    if Auth.auth().currentUser == nil {
-                        FBSDKLoginManager().logOut()
-                    } else {
-                        print("Handle failed to sign out here")
-                    }
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-            }
-        }
         self.saveContext()
     }
 
@@ -178,9 +161,7 @@ extension AppDelegate {
         if Auth.auth().currentUser != nil,
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? User {
-            
             User.setCurrentUser(user)
-            
             initialViewController = UIStoryboard.initialViewController(type: .main)
         } else {
             initialViewController = UIStoryboard.initialViewController(type: .login)

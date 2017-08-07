@@ -57,12 +57,14 @@ class LoginViewController: UIViewController {
         // Start the activity indicator
         self.activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
+        facebookLoginButton.alpha = 0.6
         // Initialize facebook login manager
         let fbManager = FBSDKLoginManager()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             guard let result = result else {
                 self.displayWarningMessage(message: "Fail to login")
                 self.activityIndicator.stopAnimating()
+                self.facebookLoginButton.alpha = 1
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
@@ -73,12 +75,14 @@ class LoginViewController: UIViewController {
                 self.view.window?.rootViewController = initialViewController
                 self.view.window?.makeKeyAndVisible()
                 self.activityIndicator.stopAnimating()
+                self.facebookLoginButton.alpha = 1
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
             if let error = error {
                 assertionFailure("Failed to login \(error.localizedDescription)")
                 self.activityIndicator.stopAnimating()
+                self.facebookLoginButton.alpha = 1
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
@@ -87,6 +91,7 @@ class LoginViewController: UIViewController {
             guard let accessToken = FBSDKAccessToken.current() else {
                 assertionFailure("Failed to retrieve Facebook access token")
                 self.activityIndicator.stopAnimating()
+                self.facebookLoginButton.alpha = 1
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
@@ -102,12 +107,14 @@ class LoginViewController: UIViewController {
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
                     self.activityIndicator.stopAnimating()
+                    self.facebookLoginButton.alpha = 1
                     UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
                 // Make sure that user has logged in
                 guard let currentFIRAuthUser = currentFIRAuthUser else {
                     self.activityIndicator.stopAnimating()
+                    self.facebookLoginButton.alpha = 1
                     UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
@@ -124,6 +131,7 @@ class LoginViewController: UIViewController {
                     } else {
                         self.performSegue(withIdentifier: "Show Sign Up", sender: nil)
                     }
+                    self.facebookLoginButton.alpha = 1
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                 })

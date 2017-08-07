@@ -42,6 +42,7 @@
 		5B82315F1F2BBFA600D3D8B6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82315E1F2BBFA600D3D8B6 /* CategoryCell.swift */; };
 		5B8231611F2BC00200D3D8B6 /* ItemCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8231601F2BC00200D3D8B6 /* ItemCategoryCell.swift */; };
 		5B84CA641F37E7270030CED6 /* CancelRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B84CA631F37E7270030CED6 /* CancelRequestCell.swift */; };
+		5B8B3AE41F3912DE000C027B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B3AE31F3912DE000C027B /* Launch Screen.storyboard */; };
 		5B942CF71F2A56CF00171215 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CF61F2A56CF00171215 /* File.swift */; };
 		5B942CF91F2A57F900171215 /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */; };
 		5B942CFB1F2AF95D00171215 /* ItemSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B942CFA1F2AF95D00171215 /* ItemSlide.xib */; };
@@ -115,6 +116,7 @@
 		5B82315E1F2BBFA600D3D8B6 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = View/CategoryCell.swift; sourceTree = "<group>"; };
 		5B8231601F2BC00200D3D8B6 /* ItemCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCategoryCell.swift; path = View/ItemCategoryCell.swift; sourceTree = "<group>"; };
 		5B84CA631F37E7270030CED6 /* CancelRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CancelRequestCell.swift; path = View/CancelRequestCell.swift; sourceTree = "<group>"; };
+		5B8B3AE31F3912DE000C027B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Storyboards/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5B942CF61F2A56CF00171215 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = Model/File.swift; sourceTree = "<group>"; };
 		5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollapsibleTableViewHeader.swift; path = "Extension /CollapsibleTableViewHeader.swift"; sourceTree = "<group>"; };
 		5B942CFA1F2AF95D00171215 /* ItemSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemSlide.xib; path = View/ItemSlide.xib; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */,
 				5BFE717B1F0B3DD5007697EB /* Profile.storyboard */,
 				5B724F8D1F0B2E0F00BE4E4E /* Login.storyboard */,
+				5B8B3AE31F3912DE000C027B /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				5B724F8E1F0B2E0F00BE4E4E /* Login.storyboard in Resources */,
 				5BB302A21F1439BE003C149B /* CreateNewPost.storyboard in Resources */,
 				5B7CF0761F1929EE00AB000E /* ExchangeSequence.storyboard in Resources */,
+				5B8B3AE41F3912DE000C027B /* Launch Screen.storyboard in Resources */,
 				5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */,
 				5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */,
 				5B942CFB1F2AF95D00171215 /* ItemSlide.xib in Resources */,
