@@ -235,7 +235,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-AI-Ntl">
                                                     <rect key="frame" x="158" y="28.5" width="59" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="14"/>
-                                                    <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -275,7 +275,7 @@
                                                             </constraints>
                                                             <color key="textColor" red="0.3079237044" green="0.57171386479999997" blue="0.75692379470000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -503,25 +503,28 @@
                                     <outlet property="delegate" destination="Jcs-5V-itC" id="TW2-Zx-qHK"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTH-y2-lqM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-Bs-UwM">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nla-fw-bs8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any item to exchange. Post an item or continue to send a request with cash" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqH-ox-4K3">
-                                        <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any item to exchange. Post an item or continue to send a request with cash" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh7-Og-0mc">
+                                        <rect key="frame" x="25" y="231.5" width="325" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="CCX-cY-RnY"/>
+                                            <constraint firstAttribute="height" constant="100" id="Xs0-OU-ggC"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="centerY" secondItem="MTH-y2-lqM" secondAttribute="centerY" id="QIg-67-9fr"/>
-                                    <constraint firstAttribute="trailing" secondItem="aqH-ox-4K3" secondAttribute="trailing" constant="20" id="R4q-DW-by6"/>
-                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="leading" secondItem="MTH-y2-lqM" secondAttribute="leading" constant="20" id="dep-Rd-tGD"/>
-                                    <constraint firstItem="aqH-ox-4K3" firstAttribute="centerX" secondItem="MTH-y2-lqM" secondAttribute="centerX" id="x4Z-by-kp3"/>
+                                    <constraint firstItem="mh7-Og-0mc" firstAttribute="leading" secondItem="nla-fw-bs8" secondAttribute="leading" constant="25" id="NW0-Tk-cEN"/>
+                                    <constraint firstAttribute="trailing" secondItem="mh7-Og-0mc" secondAttribute="trailing" constant="25" id="Nps-qE-NkF"/>
+                                    <constraint firstItem="mh7-Og-0mc" firstAttribute="centerY" secondItem="nla-fw-bs8" secondAttribute="centerY" id="tq0-aQ-hZ4"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8P-pt-Iru">
@@ -541,17 +544,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="v8P-pt-Iru" firstAttribute="top" secondItem="nla-fw-bs8" secondAttribute="bottom" id="2oG-rO-zqT"/>
                             <constraint firstAttribute="trailing" secondItem="9k8-tq-qQO" secondAttribute="trailing" id="5dl-L3-uZC"/>
+                            <constraint firstItem="nla-fw-bs8" firstAttribute="top" secondItem="9HU-UP-cOI" secondAttribute="bottom" id="6xM-MI-4Ki"/>
+                            <constraint firstItem="8EX-Bs-UwM" firstAttribute="centerX" secondItem="o2K-Uv-bia" secondAttribute="centerX" id="EA0-cJ-ZbL"/>
                             <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="9k8-tq-qQO" secondAttribute="bottom" id="Edh-y9-cS6"/>
-                            <constraint firstItem="MTH-y2-lqM" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="NrG-Gc-elc"/>
+                            <constraint firstItem="8EX-Bs-UwM" firstAttribute="centerX" secondItem="o2K-Uv-bia" secondAttribute="centerX" id="HC0-ho-Mmn"/>
+                            <constraint firstAttribute="trailing" secondItem="nla-fw-bs8" secondAttribute="trailing" id="LYd-d8-p6R"/>
                             <constraint firstItem="9k8-tq-qQO" firstAttribute="top" secondItem="o2K-Uv-bia" secondAttribute="top" id="SDv-a9-Xf6"/>
-                            <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="MTH-y2-lqM" secondAttribute="bottom" id="YM4-SX-SkI"/>
+                            <constraint firstItem="nla-fw-bs8" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="ayi-kk-dSH"/>
                             <constraint firstAttribute="trailing" secondItem="v8P-pt-Iru" secondAttribute="trailing" id="jEl-dE-ALb"/>
                             <constraint firstItem="v8P-pt-Iru" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="kwG-sC-CgP"/>
                             <constraint firstItem="OKb-5l-XFr" firstAttribute="top" secondItem="v8P-pt-Iru" secondAttribute="bottom" id="okC-Ib-W7q"/>
-                            <constraint firstAttribute="trailing" secondItem="MTH-y2-lqM" secondAttribute="trailing" id="oyz-4r-ozv"/>
+                            <constraint firstItem="8EX-Bs-UwM" firstAttribute="centerY" secondItem="o2K-Uv-bia" secondAttribute="centerY" id="pRl-fk-Jik"/>
                             <constraint firstItem="9k8-tq-qQO" firstAttribute="leading" secondItem="o2K-Uv-bia" secondAttribute="leading" id="qcI-bV-KGl"/>
-                            <constraint firstItem="MTH-y2-lqM" firstAttribute="top" secondItem="o2K-Uv-bia" secondAttribute="top" id="t1N-bN-tIL"/>
+                            <constraint firstItem="8EX-Bs-UwM" firstAttribute="centerY" secondItem="o2K-Uv-bia" secondAttribute="centerY" id="vss-aC-RSc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Step 2" id="Tf9-KV-H2q">
@@ -563,8 +570,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="8EX-Bs-UwM" id="kuc-sN-lRG"/>
                         <outlet property="collectionView" destination="9k8-tq-qQO" id="jTv-48-bkh"/>
-                        <outlet property="noItemView" destination="MTH-y2-lqM" id="qRP-79-uBm"/>
+                        <outlet property="noItemView" destination="nla-fw-bs8" id="NrZ-Mn-pXm"/>
                         <segue destination="mCU-5e-opI" kind="show" identifier="Finish Selecting My Items" id="hsO-9u-cdK"/>
                     </connections>
                 </viewController>

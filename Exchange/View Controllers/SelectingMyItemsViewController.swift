@@ -13,6 +13,7 @@ class SelectingMyItemsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noItemView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var currItems = [Post]() {
         didSet {
@@ -25,17 +26,16 @@ class SelectingMyItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        noItemView.alpha = 0
         // fetch post
+        activityIndicator.startAnimating()
         PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] post in
-            self?.currItems = post.filter {
-                $0.availability == true
-            }
+            self?.currItems = post.filter { $0.availability == true }
             
             if (self?.currItems.isEmpty)! {
-                self?.collectionView.backgroundView = self?.noItemView
-            } else {
-                self?.collectionView.backgroundView = nil
+                self?.noItemView.alpha = 1
             }
+            self?.activityIndicator.stopAnimating()
         })
     }
     

@@ -263,6 +263,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postTitle
+                self.postTitle = currentPost.postTitle
             } else {
                 if postTitle == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -286,6 +287,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.postDescription
+                self.postDescription = currentPost.postDescription
             } else {
                 if postDescription == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -307,6 +309,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.wishList
+                self.wishList = currentPost.wishList
             } else {
                 if wishList == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
@@ -353,6 +356,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let currentPost = currentPost {
                 cell.descriptionText.text = currentPost.tradeLocation
+                self.tradeLocation = currentPost.tradeLocation
             } else {
                 if tradeLocation == nil {
                     cell.descriptionText.textColor = UIColor.lightGray
