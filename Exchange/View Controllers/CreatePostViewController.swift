@@ -15,11 +15,16 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var currentPost: Post?
     var scenario: EXScenarios = .post
     
     var photoHelper = EXPhotoHelper()
-    var imageList = [UIImage]()
+    var imageList = [UIImage?].init(repeating: nil, count: 4)
+    var postKey: String? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var postTitle: String?
     var postDescription: String?
     var wishList: String?
@@ -37,6 +42,9 @@ class CreatePostViewController: UIViewController {
         hideKeyboardOnTap()
         switch scenario {
         case .edit:
+            if imageList[0] == nil {
+                activityIndicator.startAnimating()
+            }
             self.navigationItem.title = "Edit Item"
             actionButton.setTitle("Save Changes", for: .normal)
         default:
@@ -74,7 +82,7 @@ class CreatePostViewController: UIViewController {
         case .edit:
             PostService.writePostImageToFIRStorage(imageList, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL,
-                    let currentPost = self?.currentPost else {
+                    let postKey = self?.postKey else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     self?.activityIndicator.stopAnimating()
                     self?.view.alpha = 1
@@ -82,14 +90,14 @@ class CreatePostViewController: UIViewController {
                     return
                 }
                 
-                let post = Post(imagesURL: imagesURL)
+                let post = Post(imagesURL: imagesURL.reversed())
                 post.postTitle = title
                 post.postDescription = description
                 post.postCategory = category
                 post.tradeLocation = location
                 post.wishList = wishList
                 
-                PostService.updatePostOnFIR(for: currentPost.key!, with: post, completion: { [weak self] (success) in
+                PostService.updatePostOnFIR(for: postKey, with: post, completion: { [weak self] (success) in
                     if success {
                         self?.displayWarningMessage(message: "Item Edited")
                     }else {
@@ -111,7 +119,7 @@ class CreatePostViewController: UIViewController {
                     return
                 }
                 
-                let post = Post(imagesURL: imagesURL)
+                let post = Post(imagesURL: imagesURL.reversed())
                 post.postTitle = title
                 post.postDescription = description
                 post.postCategory = category
@@ -121,7 +129,7 @@ class CreatePostViewController: UIViewController {
                 PostService.writePostToFIRDatabase(for: post, completion: { [weak self] (success) in
                     if success {
                         // Clear everything in the table view
-                        self?.imageList.removeAll()
+                        self?.imageList = [UIImage?].init(repeating: nil, count: 4)
                         self?.postTitle = nil
                         self?.postDescription = nil
                         self?.wishList = nil
@@ -196,51 +204,49 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     fatalError("Unrecognized Image")
                 }
-                self.imageList.append(selectedImage)
+                self.imageList[self.photoHelper.imageIdentifier] = selectedImage
             }
             
-            if let currentPost = currentPost {
-                for i in 0..<currentPost.imagesURL.count {
-                    let url = URL(string: currentPost.imagesURL[i])
+
+            if imageList[0] == nil {
+                cell.firstImage.image = UIImage(named: "Camera")
+                cell.secondImage.image = UIImage(named: "Camera")
+                cell.thirdImage.image = UIImage(named: "Camera")
+                cell.fourthImage.image = UIImage(named: "Camera")
+                cell.firstImageSet = false
+                cell.secondImageSet = false
+                cell.thirdImageSet = false
+                cell.fourthImageSet = false
+                cell.firstImage.contentMode = .center
+                cell.secondImage.contentMode = .center
+                cell.thirdImage.contentMode = .center
+                cell.fourthImage.contentMode = .center
+            } else {
+                for i in 0..<imageList.count {
+                    guard let _ = imageList[i] else {
+                        continue
+                    }
+                    
                     switch i {
                     case 0:
-                        cell.firstImage.kf.setImage(with: url)
+                        cell.firstImage.image = imageList[i]
                         cell.firstImageSet = true
                         cell.firstImage.contentMode = .scaleAspectFill
-                        self.imageList.append(cell.firstImage.image!)
                     case 1:
-                        cell.secondImage.kf.setImage(with: url)
+                        cell.secondImage.image = imageList[i]
                         cell.secondImageSet = true
                         cell.secondImage.contentMode = .scaleAspectFill
-                        self.imageList.append(cell.secondImage.image!)
                     case 2:
-                        cell.thirdImage.kf.setImage(with: url)
+                        cell.thirdImage.image = imageList[i]
                         cell.thirdImageSet = true
                         cell.thirdImage.contentMode = .scaleAspectFill
-                        self.imageList.append(cell.thirdImage.image!)
                     case 3:
-                        cell.fourthImage.kf.setImage(with: url)
+                        cell.fourthImage.image = imageList[i]
                         cell.fourthImageSet = true
                         cell.fourthImage.contentMode = .scaleAspectFill
-                        self.imageList.append(cell.fourthImage.image!)
                     default:
-                        fatalError("Unrecognized image index")
+                        break
                     }
-                }
-            } else {
-                if imageList.isEmpty {
-                    cell.firstImage.image = UIImage(named: "Camera")
-                    cell.secondImage.image = UIImage(named: "Camera")
-                    cell.thirdImage.image = UIImage(named: "Camera")
-                    cell.fourthImage.image = UIImage(named: "Camera")
-                    cell.firstImageSet = false
-                    cell.secondImageSet = false
-                    cell.thirdImageSet = false
-                    cell.fourthImageSet = false
-                    cell.firstImage.contentMode = .center
-                    cell.secondImage.contentMode = .center
-                    cell.thirdImage.contentMode = .center
-                    cell.fourthImage.contentMode = .center
                 }
             }
         
@@ -261,14 +267,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.postTitle
-                self.postTitle = currentPost.postTitle
+            if postTitle == nil || postTitle == "" {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Title"
             } else {
-                if postTitle == nil {
-                    cell.descriptionText.textColor = UIColor.lightGray
-                    cell.descriptionText.text = "Item Title"
-                }
+                cell.descriptionText.text = postTitle
+                cell.descriptionText.textColor = UIColor.darkGray
             }
             return cell
     
@@ -285,14 +289,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.postDescription
-                self.postDescription = currentPost.postDescription
+            if postDescription == nil || postDescription == "" {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Item Description"
             } else {
-                if postDescription == nil {
-                    cell.descriptionText.textColor = UIColor.lightGray
-                    cell.descriptionText.text = "Item Description"
-                }
+                cell.descriptionText.text = postDescription
+                cell.descriptionText.textColor = UIColor.darkGray
             }
             
             return cell
@@ -307,16 +309,14 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.wishList
-                self.wishList = currentPost.wishList
+            if wishList == "" || wishList == nil {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "What you would want in exchange"
             } else {
-                if wishList == nil {
-                    cell.descriptionText.textColor = UIColor.lightGray
-                    cell.descriptionText.text = "What you would want in exchange"
-                }
+                cell.descriptionText.text = wishList
+                cell.descriptionText.textColor = UIColor.darkGray
             }
-        
+            
             return cell
 
         case 4:
@@ -327,18 +327,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if let currentPost = currentPost {
-                cell.categoryName.text = currentPost.postCategory
-                self.category = currentPost.postCategory
-            }else {
-                if let text = category {
-                    cell.categoryName.text = text
-                } else {
-                    cell.categoryName.text = ""
-                }
+            if let text = category {
+                cell.categoryName.text = text
+            } else {
+                cell.categoryName.text = ""
             }
-            
-            
+        
             return cell
             
         case 5:
@@ -354,16 +348,13 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if let currentPost = currentPost {
-                cell.descriptionText.text = currentPost.tradeLocation
-                self.tradeLocation = currentPost.tradeLocation
+            if tradeLocation == nil {
+                cell.descriptionText.textColor = UIColor.lightGray
+                cell.descriptionText.text = "Where we'll meet"
             } else {
-                if tradeLocation == nil {
-                    cell.descriptionText.textColor = UIColor.lightGray
-                    cell.descriptionText.text = "Where we'll meet"
-                }
+                cell.descriptionText.text = tradeLocation
+                cell.descriptionText.textColor = UIColor.darkGray
             }
-            
             
             return cell
         

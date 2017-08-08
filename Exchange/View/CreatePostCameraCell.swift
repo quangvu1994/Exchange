@@ -18,6 +18,7 @@ class CreatePostCameraCell: UITableViewCell {
     var secondImageSet = false
     var thirdImageSet = false
     var fourthImageSet = false
+    var getImageList: (([UIImage]) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Kingfisher
 
 class ItemDetailViewController: UIViewController {
 
@@ -152,8 +153,33 @@ class ItemDetailViewController: UIViewController {
                 viewControllerDestination.originalItem = post
             } else if identifier == "Edit Item" {
                 let editView = segue.destination as! CreatePostViewController
-                editView.currentPost = post
                 editView.scenario = .edit
+                if let post = post {
+                    let dispGroup = DispatchGroup()
+                    for i in 0..<post.imagesURL.count {
+                        dispGroup.enter()
+                        let url = URL(string: post.imagesURL[i])
+                        ImageDownloader.default.downloadImage(with: url!, options: [], progressBlock: nil) {
+                            (image, error, url, data) in
+                            if let error = error {
+                                assertionFailure(error.localizedDescription)
+                                return
+                            }
+                            editView.imageList[i] = image
+                            dispGroup.leave()
+                        }
+                    }
+                    dispGroup.notify(queue: .main, execute: {
+                        editView.postTitle = post.postTitle
+                        editView.postDescription = post.postDescription
+                        editView.tradeLocation = post.tradeLocation
+                        editView.wishList = post.wishList
+                        editView.category = post.postCategory
+                        editView.postKey = post.key
+                        editView.activityIndicator.stopAnimating()
+                    })
+                }
+                
             } else if identifier == "Open User Store" {
                 guard let user = sender as? User else {
                     return

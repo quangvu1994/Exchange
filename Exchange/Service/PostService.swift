@@ -12,11 +12,15 @@ import FirebaseStorage
 
 class PostService {
     
-    static func writePostImageToFIRStorage(_ imageList: [UIImage], completion: @escaping ([String]?) -> Void){
+    static func writePostImageToFIRStorage(_ imageList: [UIImage?], completion: @escaping ([String]?) -> Void){
         var imagesURL = [String]()
         let dispGroup = DispatchGroup()
         
         for image in imageList {
+            guard let image = image else {
+                continue
+            }
+            
             dispGroup.enter()
             guard let imageData = UIImageJPEGRepresentation(image, 0.1) else {
                 dispGroup.leave()
