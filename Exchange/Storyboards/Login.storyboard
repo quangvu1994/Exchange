@@ -29,21 +29,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D76-5b-dWt">
-                                <rect key="frame" x="25" y="577" width="325" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="vcg-Av-inF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Continue with Facebook">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookLoginAction:" destination="TdO-hm-tx8" eventType="touchUpInside" id="usH-2Z-oV3"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-WX-dO1">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8KB-PB-6Qj">
+                                <rect key="frame" x="25" y="547" width="325" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhX-KG-aXN">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="35"/>
+                                        <color key="backgroundColor" red="0.25008353590965271" green="0.35699042677879333" blue="0.61184781789779663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Login with Facebook">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="facebookLoginAction:" destination="TdO-hm-tx8" eventType="touchUpInside" id="Fei-2F-tbu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D76-5b-dWt">
+                                        <rect key="frame" x="0.0" y="45" width="325" height="35"/>
+                                        <color key="backgroundColor" red="0.84569686651229858" green="0.32430723309516907" blue="0.19610811769962311" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Login with Google">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="googleLoginAction:" destination="TdO-hm-tx8" eventType="touchUpInside" id="Otf-oL-uJv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-WX-dO1">
                                 <rect key="frame" x="169" y="315.5" width="37" height="37"/>
                                 <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
@@ -67,18 +80,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="D76-5b-dWt" secondAttribute="trailing" constant="25" id="1Bl-WY-4My"/>
                             <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="Qb5-zj-qfD" secondAttribute="bottom" id="8Fb-Ga-obE"/>
                             <constraint firstAttribute="bottom" secondItem="2w1-Ee-GbY" secondAttribute="bottom" id="8Pt-2C-BDL"/>
+                            <constraint firstAttribute="trailing" secondItem="8KB-PB-6Qj" secondAttribute="trailing" constant="25" id="8ef-QX-UD3"/>
                             <constraint firstItem="fJ1-WX-dO1" firstAttribute="centerX" secondItem="Exn-kk-drk" secondAttribute="centerX" id="PzA-O1-I76"/>
-                            <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="D76-5b-dWt" secondAttribute="bottom" constant="50" id="ScL-gW-QUm"/>
+                            <constraint firstItem="8KB-PB-6Qj" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" constant="25" id="SWm-C1-QbJ"/>
                             <constraint firstItem="fJ1-WX-dO1" firstAttribute="centerY" secondItem="Exn-kk-drk" secondAttribute="centerY" id="Tm0-z9-uza"/>
                             <constraint firstItem="KVI-HH-LTE" firstAttribute="top" secondItem="xZr-JZ-uk8" secondAttribute="bottom" constant="150" id="Usx-3m-7fb"/>
                             <constraint firstItem="KVI-HH-LTE" firstAttribute="centerX" secondItem="Exn-kk-drk" secondAttribute="centerX" id="W1M-A9-dkG"/>
                             <constraint firstItem="2w1-Ee-GbY" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" id="W5b-8p-LZL"/>
-                            <constraint firstItem="D76-5b-dWt" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" constant="25" id="aH2-Ii-NDh"/>
                             <constraint firstItem="2w1-Ee-GbY" firstAttribute="top" secondItem="Exn-kk-drk" secondAttribute="top" id="fPj-yo-Rjc"/>
                             <constraint firstItem="Qb5-zj-qfD" firstAttribute="leading" secondItem="Exn-kk-drk" secondAttribute="leading" id="gEp-4X-1dj"/>
+                            <constraint firstItem="8Qx-Wi-tFF" firstAttribute="top" secondItem="8KB-PB-6Qj" secondAttribute="bottom" constant="40" id="i7h-nc-0uJ"/>
                             <constraint firstAttribute="trailing" secondItem="Qb5-zj-qfD" secondAttribute="trailing" id="k7r-bM-apW"/>
                             <constraint firstAttribute="trailing" secondItem="2w1-Ee-GbY" secondAttribute="trailing" id="r7Y-Kd-7QI"/>
                             <constraint firstItem="Qb5-zj-qfD" firstAttribute="top" secondItem="Exn-kk-drk" secondAttribute="top" id="xs4-tI-cWN"/>
@@ -87,7 +100,8 @@
                     <navigationItem key="navigationItem" id="ac9-lQ-d8k"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fJ1-WX-dO1" id="Cje-Rz-snQ"/>
-                        <outlet property="facebookLoginButton" destination="D76-5b-dWt" id="C06-CT-eP4"/>
+                        <outlet property="facebookLoginButton" destination="RhX-KG-aXN" id="7ct-vR-HPW"/>
+                        <outlet property="googleLoginButton" destination="D76-5b-dWt" id="NpB-Hm-gj6"/>
                         <outlet property="homeBackground" destination="Qb5-zj-qfD" id="QWS-8T-YtX"/>
                         <segue destination="pQP-4T-pV2" kind="show" identifier="Show Sign Up" id="PFc-kX-Owe"/>
                     </connections>
@@ -99,7 +113,7 @@
         <!--Sign Up-->
         <scene sceneID="rtD-ya-hcQ">
             <objects>
-                <viewController id="pQP-4T-pV2" customClass="SignupViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="pQP-4T-pV2" customClass="SignupViewController" customModule="Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iEY-kl-w79"/>
                         <viewControllerLayoutGuide type="bottom" id="uYO-Y4-M8u"/>
@@ -199,7 +213,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayN-bP-yMh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y25-YW-Zrz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y25-YW-Zrz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

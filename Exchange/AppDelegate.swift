@@ -13,6 +13,7 @@ import FirebaseAuthUI
 import FBSDKCoreKit
 import FBSDKLoginKit
 import UserNotifications
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         // Invoked for proper use of Facebook SDK - In other words, setting up Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         configureInitialRootViewController(for: window)
@@ -107,53 +109,15 @@ extension AppDelegate {
     */
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // Call the mimic application(_:open url:options:) method from FBSDKApplicationDelegate to redirect back to our App
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
-        return handled
-    }
-    
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
-            guard granted else {
-                return
-            }
-            // Get the permission that user has granted
-            self.getNotificationSettings()
+        if url.scheme == "fb1937120849899485" {
+            let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+            return handled
+        } else {
+            return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
         }
     }
-    
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else {
-                return
-            }
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-    }
-    
-    func application(_ application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Convert device token to string
-        let tokenParts = deviceToken.map { data -> String in
-            return String(format: "%02.2hhx", data)
-        }
         
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-    }
-    
-    func application(_ application: UIApplication,
-                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error)")
-    }
-    
-    // Push notification received
-    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-        // Print notification payload data
-        print("Push notification received: \(data)")
-    }
-    
     func configureInitialRootViewController(for window: UIWindow?) {
         let defaults = UserDefaults.standard
         let initialViewController: UIViewController
