@@ -82,11 +82,15 @@ class MarketplaceViewController: UIViewController, UISearchBarDelegate {
                 }
                 
                 let viewControllerDestination = segue.destination as! ItemDetailViewController
-                viewControllerDestination.post = post[index]
+                if isSearching {
+                    viewControllerDestination.post = filteredData[index]
+                } else {
+                    viewControllerDestination.post = post[index]
+                }
             }
         }
     }
-    
+
     func hideSearchKeyboard() {
         searchBar.endEditing(true)
     }
@@ -156,13 +160,15 @@ extension MarketplaceViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
-        var imageURL = URL(string: post[indexPath.row].imagesURL[0])
 
         if isSearching {
-            imageURL = URL(string: filteredData[indexPath.row].imagesURL[0])
+            let imageURL = URL(string: filteredData[indexPath.row].imagesURL[0])
+            cell.postImage.kf.setImage(with: imageURL)
+        } else {
+            let imageURL = URL(string: post[indexPath.row].imagesURL[0])
+            cell.postImage.kf.setImage(with: imageURL)
         }
         
-        cell.postImage.kf.setImage(with: imageURL)
         cell.delegate = self
         cell.gestureDisplayingItemDetailWithIndex()
         cell.index = indexPath.row
