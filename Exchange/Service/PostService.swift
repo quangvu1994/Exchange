@@ -13,11 +13,11 @@ import FirebaseStorage
 class PostService {
     
     static func writePostImageToFIRStorage(_ imageList: [UIImage?], completion: @escaping ([String]?) -> Void){
-        var imagesURL = [String]()
+        var imagesURL = [String?].init(repeating: nil, count: imageList.count)
         let dispGroup = DispatchGroup()
         
-        for image in imageList {
-            guard let image = image else {
+        for i in 0..<imageList.count {
+            guard let image = imageList[i] else {
                 continue
             }
             
@@ -43,13 +43,14 @@ class PostService {
                 }
                 
                 let imageURL = downloadURL.absoluteString
-                imagesURL.append(imageURL)
+                imagesURL[i] = imageURL
                 dispGroup.leave()
             })
         }
         
         dispGroup.notify(queue: .main, execute: {
-            completion(imagesURL)
+            let finalizedImages: [String] = imagesURL.flatMap { return $0 }
+            completion(finalizedImages)
         })
     }
     

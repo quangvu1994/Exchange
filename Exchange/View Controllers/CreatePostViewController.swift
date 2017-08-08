@@ -64,7 +64,16 @@ class CreatePostViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         view.alpha = 0.9
         activityIndicator.startAnimating()
-
+        let filteredImage = imageList.filter { $0 != nil }
+        if filteredImage.count == 0 {
+            UIApplication.shared.endIgnoringInteractionEvents()
+            activityIndicator.stopAnimating()
+            view.alpha = 1
+            // Display an alert if user fail to fill out the required info
+            self.displayWarningMessage(message: "Please fill out all information")
+            return
+        }
+        
         guard let title = postTitle,
             let description = postDescription,
             let category = category,
@@ -77,10 +86,9 @@ class CreatePostViewController: UIViewController {
                 self.displayWarningMessage(message: "Please fill out all information")
                 return
         }
-        
         switch scenario {
         case .edit:
-            PostService.writePostImageToFIRStorage(imageList, completion: { [weak self] (imagesURL) in
+            PostService.writePostImageToFIRStorage(filteredImage, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL,
                     let postKey = self?.postKey else {
                     UIApplication.shared.endIgnoringInteractionEvents()
@@ -90,7 +98,7 @@ class CreatePostViewController: UIViewController {
                     return
                 }
                 
-                let post = Post(imagesURL: imagesURL.reversed())
+                let post = Post(imagesURL: imagesURL)
                 post.postTitle = title
                 post.postDescription = description
                 post.postCategory = category
@@ -110,7 +118,7 @@ class CreatePostViewController: UIViewController {
             })
             
         default:
-            PostService.writePostImageToFIRStorage(imageList, completion: { [weak self] (imagesURL) in
+            PostService.writePostImageToFIRStorage(filteredImage, completion: { [weak self] (imagesURL) in
                 guard let imagesURL = imagesURL else {
                     UIApplication.shared.endIgnoringInteractionEvents()
                     self?.activityIndicator.stopAnimating()
@@ -119,7 +127,7 @@ class CreatePostViewController: UIViewController {
                     return
                 }
                 
-                let post = Post(imagesURL: imagesURL.reversed())
+                let post = Post(imagesURL: imagesURL)
                 post.postTitle = title
                 post.postDescription = description
                 post.postCategory = category
@@ -206,9 +214,8 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 self.imageList[self.photoHelper.imageIdentifier] = selectedImage
             }
-            
-
-            if imageList[0] == nil {
+            let filteredImage = imageList.filter { $0 != nil }
+            if filteredImage.count == 0 {
                 cell.firstImage.image = UIImage(named: "Camera")
                 cell.secondImage.image = UIImage(named: "Camera")
                 cell.thirdImage.image = UIImage(named: "Camera")
@@ -267,7 +274,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if postTitle == nil || postTitle == "" {
+            if postTitle == nil {
                 cell.descriptionText.textColor = UIColor.lightGray
                 cell.descriptionText.text = "Item Title"
             } else {
@@ -289,7 +296,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if postDescription == nil || postDescription == "" {
+            if postDescription == nil {
                 cell.descriptionText.textColor = UIColor.lightGray
                 cell.descriptionText.text = "Item Description"
             } else {
@@ -309,7 +316,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
             }
             
-            if wishList == "" || wishList == nil {
+            if wishList == nil {
                 cell.descriptionText.textColor = UIColor.lightGray
                 cell.descriptionText.text = "What you would want in exchange"
             } else {

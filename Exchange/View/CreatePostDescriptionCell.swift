@@ -14,7 +14,7 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var descriptionText: UITextView!
     var placeHolder: String?
     var view: UIView?
-    var getInformation: ((String) -> Void)?
+    var getInformation: ((String?) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,13 +45,15 @@ class CreatePostDescriptionCell: UITableViewCell, UITextViewDelegate {
         if let _ = view {
             animateViewMoving(up: false, moveValue: 120)
         }
+        guard let getInfo = getInformation else {
+            return
+        }
+        
         if descriptionText.text == "" {
             descriptionText.text = placeHolder!
             descriptionText.textColor = UIColor.lightGray
+            getInfo(nil)
         } else {
-            guard let getInfo = getInformation else {
-                return
-            }
             getInfo(descriptionText.text)
         }
     }

@@ -33,6 +33,7 @@ class MyItemViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         activityIndicator.startAnimating()
+        collectionView.backgroundView = nil
         if let user = user {
             // fetch post for specific user
             PostService.fetchPost(for: user.uid, completionHandler: { [weak self] (allPosts) in
@@ -46,8 +47,6 @@ class MyItemViewController: UIViewController {
                 if self?.post.count == 0 {
                     emptyLabel.text = "\(user.username) doesn't have any item on the market"
                     self?.collectionView.backgroundView = emptyLabel
-                } else {
-                    self?.collectionView.backgroundView = nil
                 }
                 self?.activityIndicator.stopAnimating()
             })
@@ -64,8 +63,6 @@ class MyItemViewController: UIViewController {
                 if self?.post.count == 0 {
                     emptyLabel.text = "You've not listed any item on the market"
                     self?.collectionView.backgroundView = emptyLabel
-                } else {
-                    self?.collectionView.backgroundView = nil
                 }
                 self?.activityIndicator.stopAnimating()
             })
