@@ -28,13 +28,13 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lP2-25-2Ti">
                                     <size key="itemSize" width="119" height="108"/>
-                                    <size key="headerReferenceSize" width="50" height="200"/>
+                                    <size key="headerReferenceSize" width="50" height="180"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="PostImageCell" id="UYJ-Pd-06G" customClass="MyItemPostImageCell" customModule="Exchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="200" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="180" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -83,24 +83,24 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyItemCollectionHeader" id="pzC-JM-P9z" customClass="MyItemHeaderView" customModule="Exchange" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-wv-bNg">
-                                            <rect key="frame" x="133" y="50" width="109" height="26"/>
+                                            <rect key="frame" x="133" y="30" width="109" height="26"/>
                                             <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                                             <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Welcome to my store!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-9B-7L8">
-                                            <rect key="frame" x="10" y="81" width="355" height="109"/>
+                                            <rect key="frame" x="10" y="61" width="355" height="89"/>
                                             <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Or-PGX">
-                                            <rect key="frame" x="340" y="50" width="25" height="25"/>
+                                            <rect key="frame" x="340" y="30" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="4AR-xs-ahE"/>
                                                 <constraint firstAttribute="width" constant="25" id="PJB-nF-5bC"/>
@@ -118,10 +118,10 @@
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="leading" secondItem="pzC-JM-P9z" secondAttribute="leadingMargin" constant="2" id="B7u-K8-cRY"/>
                                         <constraint firstItem="g3e-9B-7L8" firstAttribute="top" secondItem="sdT-wv-bNg" secondAttribute="bottom" constant="5" id="KEc-bO-Vpq"/>
                                         <constraint firstAttribute="trailing" secondItem="2wb-Or-PGX" secondAttribute="trailing" constant="10" id="KVa-xM-hQ9"/>
-                                        <constraint firstItem="2wb-Or-PGX" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="rRQ-Ze-hdY"/>
+                                        <constraint firstItem="2wb-Or-PGX" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="30" id="rRQ-Ze-hdY"/>
                                         <constraint firstItem="sdT-wv-bNg" firstAttribute="centerX" secondItem="pzC-JM-P9z" secondAttribute="centerX" id="sR7-zQ-XUy"/>
-                                        <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="10" id="uAh-6b-lwA"/>
-                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="50" id="uBT-tq-PxU"/>
+                                        <constraint firstAttribute="bottom" secondItem="g3e-9B-7L8" secondAttribute="bottom" constant="30" id="uAh-6b-lwA"/>
+                                        <constraint firstItem="sdT-wv-bNg" firstAttribute="top" secondItem="pzC-JM-P9z" secondAttribute="top" constant="30" id="uBT-tq-PxU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g3e-9B-7L8" secondAttribute="trailing" constant="2" id="xB6-va-olx"/>
                                     </constraints>
                                     <connections>

@@ -61,27 +61,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mn6-Dv-WtE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="akz-tr-PKO">
-                                        <rect key="frame" x="133.5" y="315" width="109" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.82280081510000003" green="0.40975651140000002" blue="0.3294649422" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-DN-23f">
-                                        <rect key="frame" x="74.5" y="60" width="225" height="225"/>
-                                        <color key="backgroundColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="OLB-DN-23f" secondAttribute="height" multiplier="1:1" id="O3z-C2-1h6"/>
-                                        </constraints>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eS3-J3-PFz">
+                                        <rect key="frame" x="73.5" y="63" width="228" height="274.5"/>
+                                        <subviews>
+                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-DN-23f">
+                                                <rect key="frame" x="0.0" y="0.0" width="228" height="228.5"/>
+                                                <color key="backgroundColor" red="1" green="0.99997031690000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="OLB-DN-23f" secondAttribute="height" multiplier="1:1" id="O3z-C2-1h6"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="akz-tr-PKO">
+                                                <rect key="frame" x="59.5" y="248.5" width="109" height="26"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                                <color key="textColor" red="0.82280081510000003" green="0.40975651140000002" blue="0.3294649422" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="akz-tr-PKO" firstAttribute="centerX" secondItem="mn6-Dv-WtE" secondAttribute="centerX" id="085-ns-rxC"/>
-                                    <constraint firstItem="OLB-DN-23f" firstAttribute="width" secondItem="mn6-Dv-WtE" secondAttribute="width" multiplier="3:5" id="afj-FE-jbb"/>
-                                    <constraint firstItem="akz-tr-PKO" firstAttribute="top" secondItem="OLB-DN-23f" secondAttribute="bottom" constant="30" id="f2w-A2-sry"/>
-                                    <constraint firstItem="OLB-DN-23f" firstAttribute="top" secondItem="mn6-Dv-WtE" secondAttribute="top" constant="60" id="iPf-Oe-CUC"/>
-                                    <constraint firstItem="OLB-DN-23f" firstAttribute="centerX" secondItem="mn6-Dv-WtE" secondAttribute="centerX" id="sAg-U4-MFm"/>
+                                    <constraint firstItem="eS3-J3-PFz" firstAttribute="centerY" secondItem="mn6-Dv-WtE" secondAttribute="centerY" id="BxU-Yb-Bcn"/>
+                                    <constraint firstItem="eS3-J3-PFz" firstAttribute="centerX" secondItem="mn6-Dv-WtE" secondAttribute="centerX" id="jji-Kq-d6E"/>
+                                    <constraint firstItem="OLB-DN-23f" firstAttribute="height" secondItem="mn6-Dv-WtE" secondAttribute="height" multiplier="4:7" id="nFp-Z7-1s0"/>
                                 </constraints>
                             </view>
                         </subviews>

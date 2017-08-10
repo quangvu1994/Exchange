@@ -12,7 +12,11 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.unselectedItemTintColor = UIColor.black
+        if #available(iOS 10.0, *) {
+            tabBar.unselectedItemTintColor = UIColor.black
+        } else {
+            // Fallback on earlier versions
+        }
         tabBar.tintColor = UIColor(red: 210/255, green: 104/255, blue: 84/255, alpha: 1.0)
     }
 }

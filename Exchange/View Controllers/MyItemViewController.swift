@@ -51,6 +51,8 @@ class MyItemViewController: UIViewController {
                 self?.activityIndicator.stopAnimating()
             })
         } else {
+            self.navigationItem.leftBarButtonItem = nil
+            self.navigationController?.navigationBar.isUserInteractionEnabled = false
             // fetch post for current user
             PostService.fetchPost(for: User.currentUser.uid, completionHandler: { [weak self] (allPosts) in
                 self?.post = allPosts
@@ -66,7 +68,6 @@ class MyItemViewController: UIViewController {
                 }
                 self?.activityIndicator.stopAnimating()
             })
-            self.navigationItem.leftBarButtonItem = nil
         }
     }
     
@@ -128,7 +129,6 @@ extension MyItemViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
         })
         return cell
-
     }
     
     // Display the collection view header

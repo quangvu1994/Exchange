@@ -10,6 +10,7 @@ import FirebaseStorage
 
 class FIRStorageUtilities {
     
+    @available(iOS 10.0, *)
     static let dateFormatter = ISO8601DateFormatter()
 
     

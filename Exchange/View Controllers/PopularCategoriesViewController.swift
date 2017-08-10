@@ -19,7 +19,7 @@ class PopularCategoriesViewController: UIViewController {
     
     var imageList = [
         "Fashion", "Shoes",
-        "Beauty", "Electronic", "RoomEssential",
+        "Beauty", "Electronic", "Room Essential",
         "Books", "Others"
     ]
     
@@ -42,7 +42,7 @@ class PopularCategoriesViewController: UIViewController {
             compressImages.append(self.resizeImage(image: UIImage(named: image)!))
         }
     }
-    
+
     func configureTableView() {
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
