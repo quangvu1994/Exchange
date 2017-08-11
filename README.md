@@ -1,7 +1,9 @@
 
 # Exchange - Trade yours for theirs
 Exchange your unused items for things you love. Now, money is not a problem anymore.
-Available on App Store soon!
+
+# App Store
+Available Soon!
 
 # Inspiration
 As a college student, moving in and moving out is always a very painful process. I have to purchase a lot of things such as table, chairs, kitchen supplies, and many other things. They cost a lot of money and at the end of every year, I will have to sell or get rid of them to move out. Most of those items are still usable or just like new. It is really wasteful to throw them away. For that reason, I built a shopping app to help me and everyone who has the same problem, and I called the app, Exchange. It provides flexibility in shopping which allow users to buy or sell their items in many different ways, not just about money.
