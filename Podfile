@@ -11,6 +11,7 @@ target ‘Exchange’ do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Kingfisher', '~> 3.0'
+  pod 'Bolts'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FirebaseUI/Facebook'

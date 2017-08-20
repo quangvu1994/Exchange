@@ -81,6 +81,7 @@ PODS:
   - Kingfisher (3.10.2)
 
 DEPENDENCIES:
+  - Bolts
   - DKCamera
   - FacebookCore
   - FacebookLogin
@@ -114,6 +115,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
 
-PODFILE CHECKSUM: e63f660b625d867bd54fcd376c18c01865330dd5
+PODFILE CHECKSUM: e8f9cc6cd09e45520f5c6735b30117b06a1d5612
 
 COCOAPODS: 1.2.1

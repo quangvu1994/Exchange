@@ -112,4 +112,34 @@ class RequestService {
             })
         })
     }
+    
+    /**
+     Delete the request reference that belongs to an user. When there is no one tight to a request, remove the request
+     from the database
+    */
+    static func deleteRequest(from requestRef: DatabaseReference, requestID: String, completionHandler: @escaping (Bool) -> Void) {
+        requestRef.removeValue(completionBlock: { (error, _) in
+            if let error = error {
+                assertionFailure("Failed to remove request reference from user: " + error.localizedDescription)
+                return completionHandler(false)
+            }
+        })
+        // Update the participant number of the request
+        let participantRef = Database.database().reference().child("requests/\(requestID)/participant_num")
+        participantRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+            let currNum = mutableData.value as! Int
+            mutableData.value = currNum - 1
+            return TransactionResult.success(withValue: mutableData)
+        }, andCompletionBlock: { (error, _, _) in
+            if let error = error {
+                assertionFailure("Failed to update request's participant number: " + error.localizedDescription)
+                return completionHandler(false)
+            } else {
+                return completionHandler(true)
+            }
+        })
+    }
+
 }
+
+

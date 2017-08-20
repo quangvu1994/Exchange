@@ -205,6 +205,10 @@ class RequestDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func deleteRequest(_ sender: Any) {
+        // Delete the current request from the database
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {

@@ -97,7 +97,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 return
             }
             
-            // Check to see if our database has this user
+            // Check to rsee if our database has this user
             UserService.retrieveUser(currentFIRAuthUser.uid, completion: { (userFromOurDatabase) in
                 // If we doesn't have an user, write the current user to the database
                 if let user = userFromOurDatabase {

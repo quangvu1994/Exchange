@@ -9,6 +9,7 @@ import FirebaseDatabase.FIRDataSnapshot
 
 class Request {
     var requestKey: String?
+    var participantNum = 2
     var requesterID: String
     var requesterName: String
     var requesterPhone: String
@@ -27,6 +28,7 @@ class Request {
     var dictValue: [String: Any] {
         
         return [
+            "participant_num": participantNum,
             "requester_id": requesterID,
             "requester_name": requesterName,
             "requester_phone": requesterPhone,
@@ -82,6 +84,7 @@ class Request {
             let firstPostTitle = basicInfoSnapshot["first_posterItem"] as? String,
             let status = basicInfoSnapshot["status"] as? String,
             let cashAmount = basicInfoSnapshot["cash_amount"] as? String,
+            let participantNum = basicInfoSnapshot["participant_num"] as? Int,
             let requesterID = basicInfoSnapshot["requester_id"] as? String,
             let requesterName = basicInfoSnapshot["requester_name"] as? String,
             let requesterPhone = basicInfoSnapshot["requester_phone"] as? String,
@@ -101,7 +104,8 @@ class Request {
         if let data = snapshot.childSnapshot(forPath: "requester_items").value as? [String: Any] {
             self.requesterItemsData = data
         }
-  
+        
+        self.participantNum = participantNum
         self.requesterID = requesterID
         self.requesterName = requesterName
         self.requesterPhone = requesterPhone
