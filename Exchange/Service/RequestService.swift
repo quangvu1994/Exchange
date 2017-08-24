@@ -156,12 +156,12 @@ class RequestService {
      Update a request -> either cancel or reject a request. Update the status of the request, and
      the requester list of each requested items
     */
-    static func updateRequest(for request: Request, completion: @escaping (Bool) -> Void) {
+    static func updateRequest(for request: Request, withNewStatus status: String, completion: @escaping (Bool) -> Void) {
         guard let requestKey = request.requestKey else {
             return completion(false)
         }
         var data: [String: Any] = [
-            "Requests/\(requestKey)/status": "Cancelled"
+            "Requests/\(requestKey)/status": status
         ]
         let posterItemsKey = Array(request.posterItemsData.keys)
         for itemRef in posterItemsKey {

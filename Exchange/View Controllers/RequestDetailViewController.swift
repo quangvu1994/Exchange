@@ -22,47 +22,16 @@ class RequestDetailViewController: UIViewController {
         self.navigationItem.title = request?.status
     }
     
+    // Handle action when user accept the request
     @IBAction func confirmRequest(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "You are about to accept this request.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            // Update the request status on the database + all items' availability + remove user from the requested by field
-            guard let request = self.request,
-                let requestRef = request.requestKey else {
-                    return
+            guard let request = self.request else {
+                return
             }
             
-            var data: [String: Any] = [
-                "Requests/\(requestRef)/status": "Accepted"
-            ]
-            
-            let posterItemsKey = Array(request.posterItemsData.keys)
-            for itemRef in posterItemsKey {
-                data["allItems/\(itemRef)/availability"] = false
-                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-            }
-            
-            let requesterItemsKey = Array(request.requesterItemsData.keys)
-            for itemRef in requesterItemsKey {
-                data["allItems/\(itemRef)/availability"] = false
-                data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
-            }
-            
-            // While this is going on, we can also display a spinner
-            let dispatchGroup = DispatchGroup()
-            var success = true
-            dispatchGroup.enter()
-            Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
-                if let error = error {
-                    assertionFailure(error.localizedDescription)
-                    success = false
-                    dispatchGroup.leave()
-                    return
-                }
-                dispatchGroup.leave()
-            })
-            
-            dispatchGroup.notify(queue: .main, execute: {
+            RequestService.updateRequest(for: request, withNewStatus: "Accepted", completion: { (success) in
                 if success {
                     let alertController
                         = UIAlertController(title: nil, message: "Request Accepted!", preferredStyle: .alert)
@@ -73,7 +42,7 @@ class RequestDetailViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController
-                        = UIAlertController(title: nil, message: "Fail to confirm request! Check your network and retry again", preferredStyle: .alert)
+                        = UIAlertController(title: nil, message: "Fail to reject request! Check your network and retry again", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
@@ -86,14 +55,14 @@ class RequestDetailViewController: UIViewController {
     }
     
     @IBAction func rejectRequest(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "You are about to reject this request.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
             guard let request = self.request else {
                 return
             }
             
-            RequestService.updateRequest(for: request, completion: { (success) in
+            RequestService.updateRequest(for: request, withNewStatus: "Rejected", completion: { (success) in
                 if success {
                     let alertController
                         = UIAlertController(title: nil, message: "Request Rejected!", preferredStyle: .alert)
@@ -126,7 +95,7 @@ class RequestDetailViewController: UIViewController {
             }
             
             // Display spinner
-            RequestService.updateRequest(for: request, completion: { (success) in
+            RequestService.updateRequest(for: request, withNewStatus: "Cancelled", completion: { (success) in
                 if success {
                     let alertController
                         = UIAlertController(title: nil, message: "Request Cancelled!", preferredStyle: .alert)
@@ -175,7 +144,7 @@ class RequestDetailViewController: UIViewController {
             }
             
             dispGroup.enter()
-            RequestService.updateRequest(for: request, completion: { (success) in
+            RequestService.updateRequest(for: request, withNewStatus: "Cancelled", completion: { (success) in
                 if !success {
                     self.displayWarningMessage(message: "Failed to delete this request. Please check your network and try again")
                     dispGroup.leave()
