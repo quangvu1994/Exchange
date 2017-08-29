@@ -24,7 +24,7 @@ class RequestDetailViewController: UIViewController {
     
     // Handle action when user accept the request
     @IBAction func confirmRequest(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "You are about to accept this request.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "You are about to accept this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             guard let request = self.request else {
@@ -55,7 +55,7 @@ class RequestDetailViewController: UIViewController {
     }
     
     @IBAction func rejectRequest(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "You are about to reject this request.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "You are about to reject this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
             guard let request = self.request else {
@@ -87,7 +87,7 @@ class RequestDetailViewController: UIViewController {
     }
     
     @IBAction func cancelRequest(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "You are about to cancel this request.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "You are about to cancel this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
             guard let request = self.request else {

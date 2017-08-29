@@ -71,6 +71,7 @@
 		5BB734D91F1D6D6600F12074 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB734D81F1D6D6600F12074 /* RequestService.swift */; };
 		5BB984DB1F0F350D00F5D5E8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */; };
 		5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */; };
+		5BC7288E1F523EF600EC89B7 /* UITableViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7288D1F523EF600EC89B7 /* UITableViewUtilities.swift */; };
 		5BDA2CDB1F213B3800CEC9CE /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CDA1F213B3800CEC9CE /* RequestDetailViewController.swift */; };
 		5BDA2CE21F213C5C00CEC9CE /* PartnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */; };
 		5BDA2CE41F213C9F00CEC9CE /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */; };
@@ -145,6 +146,7 @@
 		5BB734D81F1D6D6600F12074 /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestService.swift; path = Service/RequestService.swift; sourceTree = "<group>"; };
 		5BB984DA1F0F350D00F5D5E8 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = Storyboards/Explore.storyboard; sourceTree = "<group>"; };
 		5BBDCF1D1F0C26F7007C505E /* MarketplaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketplaceViewController.swift; path = "View Controllers/MarketplaceViewController.swift"; sourceTree = "<group>"; };
+		5BC7288D1F523EF600EC89B7 /* UITableViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewUtilities.swift; path = "Extension /UITableViewUtilities.swift"; sourceTree = "<group>"; };
 		5BDA2CDA1F213B3800CEC9CE /* RequestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestDetailViewController.swift; path = "View Controllers/RequestDetailViewController.swift"; sourceTree = "<group>"; };
 		5BDA2CE11F213C5C00CEC9CE /* PartnerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartnerTableViewCell.swift; path = View/PartnerTableViewCell.swift; sourceTree = "<group>"; };
 		5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionTableViewCell.swift; path = View/CollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				5BA92F0B1F12B5FF006CE880 /* FIRStorageUtilities.swift */,
 				5BA92F0F1F12BA93006CE880 /* UIImageUtilities.swift */,
 				5B942CF81F2A57F900171215 /* CollapsibleTableViewHeader.swift */,
+				5BC7288D1F523EF600EC89B7 /* UITableViewUtilities.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				5BA92F081F11FCBC006CE880 /* Post.swift in Sources */,
 				5BB734D01F1D1EC600F12074 /* ProfileOptionCell.swift in Sources */,
 				5B2CD8BA1F0B2968001E0D6B /* Exchange.xcdatamodeld in Sources */,
+				5BC7288E1F523EF600EC89B7 /* UITableViewUtilities.swift in Sources */,
 				5B3B0CC81F2BA82B00093F73 /* PosterInformationCell.swift in Sources */,
 				5B942CF91F2A57F900171215 /* CollapsibleTableViewHeader.swift in Sources */,
 				5B6C558A1F0C7CAD00F4120A /* User.swift in Sources */,

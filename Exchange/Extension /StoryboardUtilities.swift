@@ -15,6 +15,7 @@ extension UIStoryboard {
         case main
         
         var filename: String {
+            // return a string type with the first letter capitalized
             return rawValue.capitalized
         }
     }

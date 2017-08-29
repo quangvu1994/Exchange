@@ -80,7 +80,7 @@ class ItemDetailViewController: UIViewController {
             
             if !availability {
                 self?.actionButton.alpha = 0.5
-                self?.actionButton.setTitle("Item Sold", for: .normal)
+                self?.actionButton.setTitle("Sold", for: .normal)
                 self?.actionButton.isUserInteractionEnabled = false
             }
         })
