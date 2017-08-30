@@ -231,40 +231,40 @@ extension ItemDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let post = post else {
             fatalError("No post found, can't display information")
         }
+        
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Slide Cell", for: indexPath) as! ItemImageCell
+            let cell: ItemImageCell = tableView.dequeueReusableCell()
             let slide = cell.createImageSlides(post: post)
             cell.setupSlide(slide: slide, view: view)
             cell.pageControl.numberOfPages = post.imagesURL.count
             cell.pageControl.currentPage = 0
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Poster Information", for: indexPath) as! PosterInformationCell
-            
+            let cell: PosterInformationCell = tableView.dequeueReusableCell()
             cell.topLabel.text = post.poster.username
             cell.topLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ItemDetailViewController.segueToUserStore)))
             cell.bottomLabel.text = timestampFormatter.string(from: post.creationDate)
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
+            let cell: ItemInfomationCell = tableView.dequeueReusableCell()
             cell.titleLabel.text = post.postTitle
             cell.detailText.text = post.postDescription
             return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
+            let cell: ItemInfomationCell = tableView.dequeueReusableCell()
             cell.titleLabel.text = "Wish List"
             cell.detailText.text = post.wishList
             return cell
             
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Category Cell", for: indexPath) as! ItemCategoryCell
+            let cell: ItemCategoryCell = tableView.dequeueReusableCell()
             cell.categoryLabel.text = post.postCategory
             return cell
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Item Information", for: indexPath) as! ItemInfomationCell
+            let cell: ItemInfomationCell = tableView.dequeueReusableCell()
             cell.titleLabel.text = "Trade Location"
             cell.detailText.text = post.tradeLocation
             return cell

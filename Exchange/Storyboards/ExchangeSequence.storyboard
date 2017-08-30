@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wzR-8X-AdX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wzR-8X-AdX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -151,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Image Cell" rowHeight="150" id="YB3-XO-7qY" customClass="EXTableCollectionCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EXTableCollectionCell" rowHeight="150" id="YB3-XO-7qY" customClass="EXTableCollectionCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YB3-XO-7qY" id="c1O-9I-nhR">
@@ -245,7 +245,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cash Cell" id="G3H-cx-Jn2" customClass="EXCashCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EXCashCell" id="G3H-cx-Jn2" customClass="EXCashCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="254" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3H-cx-Jn2" id="DWX-zv-dae">
@@ -290,7 +290,7 @@
                                             <outlet property="cashSwitch" destination="stZ-HR-oFT" id="2h0-md-rYA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Description Cell" rowHeight="189" id="692-zj-Ixy" customClass="EXTableDescriptionCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EXTableDescriptionCell" rowHeight="189" id="692-zj-Ixy" customClass="EXTableDescriptionCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="330" width="375" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="692-zj-Ixy" id="s7a-3H-rM7">
@@ -326,7 +326,7 @@
                                             <outlet property="titleText" destination="6gz-dO-POJ" id="PoV-Fc-9d3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Button Cell" id="l03-sh-JCT" customClass="EXTableButtonCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EXTableButtonCell" id="l03-sh-JCT" customClass="EXTableButtonCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="519" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l03-sh-JCT" id="eax-ZS-poA">

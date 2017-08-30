@@ -28,9 +28,9 @@ extension UITableView {
     
     // Define generic func with generic type of UITableVIewCell and that it conforms to CellIdentifiable
     func dequeueReusableCell<T: UITableViewCell>() -> T where T: CellIdentifiable {
-        // 2
+        // Unwrap the cell
+        print(T.cellIdentifier)
         guard let cell = dequeueReusableCell(withIdentifier: T.cellIdentifier) as? T else {
-            // 3
             fatalError("Error dequeuing cell for identifier \(T.cellIdentifier)")
         }
         

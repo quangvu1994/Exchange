@@ -69,7 +69,7 @@ class PopularCategoriesViewController: UIViewController {
 extension PopularCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoryCell", for: indexPath) as! ExploreCategoryCell
+        let cell: ExploreCategoryCell = tableView.dequeueReusableCell()
         cell.index = indexPath.row
         cell.delegate = self
         cell.addOpenCategoryGesture()

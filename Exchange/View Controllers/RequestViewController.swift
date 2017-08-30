@@ -122,7 +122,7 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Request Cell", for: indexPath) as! RequestTableViewCell
+        let cell: RequestTableViewCell = tableView.dequeueReusableCell()
         if index! == 0{
             cell.poster.text = request[indexPath.row].posterName
             cell.briefDescription.text = request[indexPath.row].firstPostTitle

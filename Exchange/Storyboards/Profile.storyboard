@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="400" width="375" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProfileCell" id="ts7-Fk-ERJ" customClass="ProfileOptionCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProfileOptionCell" id="ts7-Fk-ERJ" customClass="ProfileOptionCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ts7-Fk-ERJ" id="x8X-Gy-Lcb">
@@ -143,7 +143,7 @@
                                 <rect key="frame" x="0.0" y="109" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Request Cell" rowHeight="156" id="ynE-ce-GNq" customClass="RequestTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestTableViewCell" rowHeight="156" id="ynE-ce-GNq" customClass="RequestTableViewCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ynE-ce-GNq" id="vmw-Ed-22x">
@@ -268,7 +268,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Trade Partner Info" rowHeight="332" id="6tF-ea-luK" customClass="PartnerTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerTableViewCell" rowHeight="332" id="6tF-ea-luK" customClass="PartnerTableViewCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="332"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6tF-ea-luK" id="uQ0-58-q6o">
@@ -366,7 +366,7 @@
                                             <outlet property="username" destination="fho-G2-or3" id="jAJ-kM-SZG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Collection View Cell" rowHeight="121" id="pqK-Z4-XDv" customClass="CollectionTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CollectionTableViewCell" rowHeight="121" id="pqK-Z4-XDv" customClass="CollectionTableViewCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="360" width="375" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pqK-Z4-XDv" id="gk3-Dl-6lf">
@@ -442,7 +442,7 @@
                                             <outlet property="collectionView" destination="DsB-NU-zOg" id="yWx-hD-iTQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cancel Request Cell" rowHeight="89" id="teu-Qe-6Fz" customClass="CancelRequestCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CancelRequestCell" rowHeight="89" id="teu-Qe-6Fz" customClass="CancelRequestCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="481" width="375" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="teu-Qe-6Fz" id="A9N-M1-wBx">
@@ -493,7 +493,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Button Cell" rowHeight="100" id="W92-G8-lzz" customClass="ButtonTableViewCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="100" id="W92-G8-lzz" customClass="ButtonTableViewCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="627" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W92-G8-lzz" id="2nb-tW-DoR">
@@ -670,7 +670,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="N1T-jZ-uBz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VcJ-W2-1Bb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VcJ-W2-1Bb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>

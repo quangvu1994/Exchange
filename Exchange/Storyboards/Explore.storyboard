@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qkt-Cl-TdT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qkt-Cl-TdT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -236,7 +236,7 @@
                                 <rect key="frame" x="0.0" y="-65" width="375" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Image Slide Cell" rowHeight="191" id="92Q-zE-48x" customClass="ItemImageCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemImageCell" rowHeight="191" id="92Q-zE-48x" customClass="ItemImageCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="191"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="92Q-zE-48x" id="HRl-pd-nLO">
@@ -264,7 +264,7 @@
                                             <outlet property="pageControl" destination="krv-Vf-7eT" id="AeV-CC-6n7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Poster Information" rowHeight="67" id="His-gl-x8g" customClass="PosterInformationCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PosterInformationCell" rowHeight="67" id="His-gl-x8g" customClass="PosterInformationCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="219" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="His-gl-x8g" id="e5X-7E-kY1">
@@ -307,7 +307,7 @@
                                             <outlet property="topLabel" destination="Uco-Ux-b2G" id="Slg-us-4IX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Item Information" rowHeight="150" id="w58-db-vfX" customClass="ItemInfomationCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemInfomationCell" rowHeight="150" id="w58-db-vfX" customClass="ItemInfomationCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="286" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w58-db-vfX" id="kRN-HB-R0x">
@@ -345,7 +345,7 @@
                                             <outlet property="titleLabel" destination="YDX-fJ-vFM" id="UBC-Bu-UNv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Category Cell" id="0ff-cO-Jyd" customClass="ItemCategoryCell" customModule="Exchange" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCategoryCell" id="0ff-cO-Jyd" customClass="ItemCategoryCell" customModule="Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="436" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ff-cO-Jyd" id="xAf-Jb-YNB">
@@ -446,7 +446,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="Search" id="xln-bw-nKY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TfA-nL-TzR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TfA-nL-TzR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>

@@ -77,7 +77,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
+            let cell: EXTableCollectionCell = tableView.dequeueReusableCell()
             cell.itemList = requesterItems
             cell.controller = self
             return cell
@@ -87,16 +87,16 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell", for: indexPath) as! EXTableCollectionCell
+            let cell: EXTableCollectionCell = tableView.dequeueReusableCell()
             cell.itemList = posterItems
             cell.controller = self
             return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cash Cell", for: indexPath) as! EXCashCell
+            let cell: EXCashCell = tableView.dequeueReusableCell()
             return cell
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Description Cell", for: indexPath) as! EXTableDescriptionCell
+            let cell: EXTableDescriptionCell = tableView.dequeueReusableCell()
             cell.titleText.text = "Say something to the owner"
             cell.descriptionText.textColor = UIColor.lightGray
             cell.descriptionText.text = "Your message"
@@ -104,7 +104,7 @@ extension EXConfirmViewController: UITableViewDataSource, UITableViewDelegate {
             cell.view = view
             return cell
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath)
+            let cell: EXTableButtonCell = tableView.dequeueReusableCell()
             return cell
         default:
             fatalError("Unrecognize index path row")

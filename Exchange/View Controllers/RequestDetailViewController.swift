@@ -212,7 +212,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Trade Partner Info", for: indexPath) as! PartnerTableViewCell
+            let cell: PartnerTableViewCell = tableView.dequeueReusableCell()
             if let request = request,
                 let index = index {
                 cell.address.text = request.tradeLocation
@@ -228,7 +228,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
+            let cell: CollectionTableViewCell = tableView.dequeueReusableCell()
             if let request = request {
                 cell.controller = self
                 cell.itemList = request.requesterItemsData
@@ -244,7 +244,7 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Collection View Cell", for: indexPath) as! CollectionTableViewCell
+            let cell: CollectionTableViewCell = tableView.dequeueReusableCell()
             if let request = request {
                 cell.controller = self
                 cell.itemList = request.posterItemsData
@@ -254,10 +254,10 @@ extension RequestDetailViewController: UITableViewDataSource, UITableViewDelegat
             
         case 4:
             if index! == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Cancel Request Cell", for: indexPath) as! CancelRequestCell
+                let cell: CancelRequestCell = tableView.dequeueReusableCell()
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Button Cell", for: indexPath) as! ButtonTableViewCell
+                let cell: ButtonTableViewCell = tableView.dequeueReusableCell()
                 return cell
             }
             

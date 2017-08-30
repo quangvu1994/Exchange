@@ -38,7 +38,7 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+        let cell: CategoryCell = tableView.dequeueReusableCell()
         cell.categoryName.text = categoryList[indexPath.row]
         
         return cell

@@ -184,13 +184,15 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CameraCell", for: indexPath) as! CreatePostCameraCell
+            let cell: CreatePostCameraCell = tableView.dequeueReusableCell()
             
+            // Add tap gesture to open photo picker
             cell.firstImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreatePostViewController.openImagePicker(gesture:))))
             cell.secondImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreatePostViewController.openImagePicker(gesture:))))
             cell.thirdImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(CreatePostViewController.openImagePicker(gesture:))))
             cell.fourthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(CreatePostViewController.openImagePicker(gesture:))))
             
+            // Define how to display the selected image
             photoHelper.completionHandler = { [unowned self] (selectedImage) in
                 switch self.photoHelper.imageIdentifier {
                 case 0:
@@ -214,7 +216,10 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 self.imageList[self.photoHelper.imageIdentifier] = selectedImage
             }
+            
+            // Check to see if there is already a selected image
             let filteredImage = imageList.filter { $0 != nil }
+            // If not -> set all to the default camera image
             if filteredImage.count == 0 {
                 cell.firstImage.image = UIImage(named: "Camera")
                 cell.secondImage.image = UIImage(named: "Camera")
@@ -229,6 +234,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.thirdImage.contentMode = .center
                 cell.fourthImage.contentMode = .center
             } else {
+                // Set the selected images
                 for i in 0..<imageList.count {
                     guard let _ = imageList[i] else {
                         continue
@@ -263,13 +269,14 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            let cell: CreatePostDescriptionCell = tableView.dequeueReusableCell()
             cell.headerText.text = "Title"
             cell.placeHolder = "Item Title"
             cell.getInformation = { [weak self] (text) in
                 self?.postTitle = text
             }
             
+            // Disable user interaction if it is under exchange process
             if scenario == .exchange {
                 cell.isUserInteractionEnabled = false
             }
@@ -284,7 +291,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
     
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            let cell: CreatePostDescriptionCell = tableView.dequeueReusableCell()
             
             cell.headerText.text = "Description"
             cell.placeHolder = "Item Description"
@@ -306,7 +313,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            let cell: CreatePostDescriptionCell = tableView.dequeueReusableCell()
             cell.headerText.text = "Wish List"
             cell.placeHolder = "What you would want in exchange"
             cell.getInformation = { [weak self] (text) in
@@ -327,7 +334,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CreatePostCategoryCell
+            let cell: CreatePostCategoryCell = tableView.dequeueReusableCell()
             
             if scenario == .exchange {
                 cell.accessoryType = .none
@@ -343,7 +350,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! CreatePostDescriptionCell
+            let cell: CreatePostDescriptionCell = tableView.dequeueReusableCell()
             cell.view = view
             cell.headerText.text = "Trade Location"
             cell.placeHolder = "Where we'll meet"

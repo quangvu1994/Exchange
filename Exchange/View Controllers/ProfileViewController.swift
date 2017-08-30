@@ -120,7 +120,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileOptionCell
+        let cell: ProfileOptionCell = tableView.dequeueReusableCell()
         if indexPath.row == 3 {
             cell.accessoryType = .none
         }
