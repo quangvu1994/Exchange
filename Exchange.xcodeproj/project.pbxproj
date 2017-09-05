@@ -77,6 +77,7 @@
 		5BDA2CE41F213C9F00CEC9CE /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE31F213C9F00CEC9CE /* CollectionTableViewCell.swift */; };
 		5BDA2CE61F21619100CEC9CE /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */; };
 		5BEF1AB11F36F78400AF7183 /* SelectingMyItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9D09A1F283D1400C34B7E /* SelectingMyItemsViewController.swift */; };
+		5BFC72ED1F566084000CD972 /* EXPaginationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC72EC1F566084000CD972 /* EXPaginationHelper.swift */; };
 		5BFE717C1F0B3DD5007697EB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFE717B1F0B3DD5007697EB /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		5BDA2CE51F21619100CEC9CE /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = View/ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		5BE9D09A1F283D1400C34B7E /* SelectingMyItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingMyItemsViewController.swift; path = "View Controllers/SelectingMyItemsViewController.swift"; sourceTree = "<group>"; };
 		5BF12BA61F0EF8FA0051A92F /* Exchange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exchange.entitlements; sourceTree = "<group>"; };
+		5BFC72EC1F566084000CD972 /* EXPaginationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EXPaginationHelper.swift; path = Helper/EXPaginationHelper.swift; sourceTree = "<group>"; };
 		5BFE717B1F0B3DD5007697EB /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Storyboards/Profile.storyboard; sourceTree = "<group>"; };
 		6EE866939FA449451BC0350A /* Pods_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		973872E263ED5614D09E567B /* Pods-Exchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exchange.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exchange/Pods-Exchange.debug.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				5BA92F051F11E5D5006CE880 /* EXPhotoHelper.swift */,
 				5B6A61631F16DFFE009FCE55 /* EXScenarios.swift */,
 				5B9B1D171F33A20C00F49402 /* Constant.swift */,
+				5BFC72EC1F566084000CD972 /* EXPaginationHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				5BBDCF1E1F0C26F7007C505E /* MarketplaceViewController.swift in Sources */,
 				5B3B0CCA1F2BA83F00093F73 /* ItemInfomationCell.swift in Sources */,
 				5BA92F031F11A8C1006CE880 /* MarketplaceHeaderView.swift in Sources */,
+				5BFC72ED1F566084000CD972 /* EXPaginationHelper.swift in Sources */,
 				5B2CD8B21F0B2968001E0D6B /* AppDelegate.swift in Sources */,
 				5B942CF71F2A56CF00171215 /* File.swift in Sources */,
 				5B971F301F1829E200B1FCF6 /* EXConfirmViewController.swift in Sources */,

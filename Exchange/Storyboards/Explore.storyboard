@@ -425,7 +425,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="yQh-yA-9eV" id="DTN-ML-sAc"/>
-                        <outlet property="flaggingButton" destination="CsC-n4-KVS" id="fdw-dE-h2e"/>
                         <outlet property="tableView" destination="I1G-JI-XEu" id="vE2-Ye-PVI"/>
                         <segue destination="Ffe-7s-PmP" kind="presentation" identifier="Exchange Sequence" id="5ks-0k-1Qf"/>
                         <segue destination="i3R-2X-A3m" kind="unwind" identifier="Item Detail" unwindAction="unwindFromItemDetail:" id="c3b-Sa-skD"/>
