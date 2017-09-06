@@ -27,14 +27,15 @@ class ExchangeSequenceViewController: UIViewController {
         guard let originalItem = originalItem else {
             return
         }
+        
         // fetch post
-        PostService.fetchPost(for: originalItem.poster.uid, completionHandler: { [weak self] post in
-            self?.posterItems = post.filter {
+        PostService.fetchPost(for: originalItem.poster.uid, completionHandler: { [unowned self] post in
+            self.posterItems = post.filter {
                 $0.requestedBy["\(User.currentUser.uid)"] != true && $0.availability == true
             }
             
             // Presect the original item
-            for post in (self?.posterItems)! {
+            for post in self.posterItems {
                 if post.key == originalItem.key {
                     post.selected = true
                 }

@@ -164,11 +164,17 @@ class RequestService {
         ]
         let posterItemsKey = Array(request.posterItemsData.keys)
         for itemRef in posterItemsKey {
+            if status == "Accepted" {
+                data["allItems/\(itemRef)/availability"] = false
+            }
             data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
         }
         
         let requesterItemsKey = Array(request.requesterItemsData.keys)
         for itemRef in requesterItemsKey {
+            if status == "Accepted" {
+                data["allItems/\(itemRef)/availability"] = false
+            }
             data["allItems/\(itemRef)/requested_by/\(request.requesterID)"] = [:]
         }
         
