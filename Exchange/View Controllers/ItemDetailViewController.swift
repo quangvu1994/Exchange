@@ -45,11 +45,10 @@ class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
         actionButton.layer.masksToBounds = true
         actionButton.layer.cornerRadius = 3
-        // If the user has already requested this item, change the text
         guard let post = post else {
             return
         }
-        
+    
         switch post.poster.uid {
         case User.currentUser.uid:
             if !post.requestedBy.isEmpty {
@@ -89,7 +88,7 @@ class ItemDetailViewController: UIViewController {
         switch post.poster.uid {
         case User.currentUser.uid:
             if actionButton.titleLabel?.text == "In Exchange" {
-                let alertController = UIAlertController(title: nil, message: "All exchange requests contain this item need to be finalized before you can edit this item", preferredStyle: .alert)
+                let alertController = UIAlertController(title: nil, message: "Please finalize all exchange requests that contain this item before editing this item. You can review your requests in your Profile", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(action)
                 self.present(alertController, animated: true, completion: nil)
@@ -115,20 +114,45 @@ class ItemDetailViewController: UIViewController {
     */
     @IBAction func flaggingPost(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        guard let post = post else {
+            return
+        }
+        
         // If this item is belong to current user -> display delete item
-        if post?.poster.uid == User.currentUser.uid {
-            let deleteAction = UIAlertAction(title: "Delete Item" , style: .default, handler: { _ in
+        if post.poster.uid == User.currentUser.uid {
+            let deleteAction = UIAlertAction(title: "Delete Item" , style: .default, handler: { [unowned self] _ in
                 
+                let confirmationMessage = UIAlertController(title: nil, message: "Are you sure that you want to delete this item?", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+                let confirmedAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                    // Don't allow user to delete item if the item is still in exchange progress
+                    if !post.requestedBy.isEmpty {
+                        self.displayWarningMessage(message: "Please finalize all exchange requests that contain this item before deleting this item. You can review your requests in your Profile")
+                    } else {
+                        PostService.deleteSpecificPost(for: post.key!, completionHandler: { (success) in
+                            if success {
+                                switch self.scenario {
+                                case .edit:
+                                    self.performSegue(withIdentifier: "Personal Item Detail", sender: nil)
+                                default:
+                                    self.performSegue(withIdentifier: "Item Detail", sender: nil)
+                                }
+                            } else {
+                                self.displayWarningMessage(message: "Unable to delete this item. Please check your network and try again")
+                            }
+                        })
+                    }
+                })
+                
+                confirmationMessage.addAction(cancelAction)
+                confirmationMessage.addAction(confirmedAction)
+                self.present(confirmationMessage, animated: true, completion: nil)
             })
             
             alertController.addAction(deleteAction)
         } else {
             // Report inappropriate post option
             let flagAction = UIAlertAction(title: "Report as Inappropriate", style: .default) { [weak self] _ in
-                guard let post = self?.post else {
-                    return
-                }
                 
                 PostService.flag(post)
                 

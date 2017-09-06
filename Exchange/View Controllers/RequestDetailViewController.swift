@@ -13,6 +13,7 @@ class RequestDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var request: Request?
+    // index = 0: Outgoing Request; index = 1: Incoming Request
     var index: Int?
     
     override func viewDidLoad() {
@@ -135,9 +136,9 @@ class RequestDetailViewController: UIViewController {
             
             switch self.index! {
             case 0:
-                requestRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request")
+                requestRef = Database.database().reference().child("users/\(User.currentUser.uid)/Outgoing Request/\(requestKey)")
             case 1:
-                requestRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request")
+                requestRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request/\(requestKey)")
             default:
                 UIApplication.shared.endIgnoringInteractionEvents()
                 fatalError("Unrecognized index")

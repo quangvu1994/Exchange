@@ -98,7 +98,7 @@ class MyItemViewController: UIViewController {
     }
     
     @IBAction func unwindFromPersonalItemDetail(_ sender: UIStoryboardSegue) {
-        print("unwinded")
+        // Do nothing
     }
 }
 

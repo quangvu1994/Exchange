@@ -28,14 +28,13 @@ class RequestService {
             ]
 
             for postRef in request.posterItemsData.keys {
-                data["allItems/\(postRef)/requested_by"] = [requesterID: true]
+                data["allItems/\(postRef)/requested_by/\(requesterID)"] = true
             }
             
             for reqRef in request.requesterItemsData.keys {
-                data["allItems/\(reqRef)/requested_by"] = [requesterID: true]
+                data["allItems/\(reqRef)/requested_by/\(requesterID)"] = true
             }
-
-            
+                        
             Database.database().reference().updateChildValues(data, withCompletionBlock: { (error, _) in
                 if let error = error {
                     assertionFailure(error.localizedDescription)

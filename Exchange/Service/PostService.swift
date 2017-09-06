@@ -151,6 +151,28 @@ class PostService {
     }
     
     /**
+     Delete a specific post from the database
+    */
+    static func deleteSpecificPost(for postID: String, completionHandler: @escaping (Bool) -> Void) {
+        Database.database().reference().child("allItems/\(postID)").removeValue(completionBlock: { (error, _) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completionHandler(false)
+            }
+            
+            let itemRef = Database.database().reference().child("items/\(User.currentUser.uid)/\(postID)")
+            itemRef.removeValue(completionBlock: { (error, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    return completionHandler(false)
+                }
+                
+                completionHandler(true)
+            })
+        })
+    }
+    
+    /**
      Store all flagged post
     */
     static func flag(_ post: Post) {
