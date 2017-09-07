@@ -17,5 +17,10 @@ target ‘Exchange’ do
   pod 'FirebaseUI/Facebook'
   pod 'FirebaseUI/Google'
   pod 'DKCamera'
-  
+  pod 'OneSignal', '>= 2.5.2', '< 3.0'
+end
+
+target ‘OneSignalNotificationServiceExtension’ do
+    use_frameworks!
+    pod 'OneSignal', '>= 2.5.2', '< 3.0'
 end

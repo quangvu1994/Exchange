@@ -56,6 +56,10 @@
 	<string>Allow access to camera to take a photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow access to photo library to select a photo</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>

@@ -79,6 +79,7 @@ PODS:
   - GTMSessionFetcher/Full (1.1.10):
     - GTMSessionFetcher/Core (= 1.1.10)
   - Kingfisher (3.10.2)
+  - OneSignal (2.5.4)
 
 DEPENDENCIES:
   - Bolts
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - FirebaseUI/Facebook
   - FirebaseUI/Google
   - Kingfisher (~> 3.0)
+  - OneSignal (< 3.0, >= 2.5.2)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -114,7 +116,8 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
+  OneSignal: da994bcf6a2efbdceaf71e389e1d05245c562899
 
-PODFILE CHECKSUM: e8f9cc6cd09e45520f5c6735b30117b06a1d5612
+PODFILE CHECKSUM: a026b158f8759eb9b62e65156b01719be031e347
 
 COCOAPODS: 1.2.1
