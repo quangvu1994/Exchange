@@ -41,13 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Recommend moving the below line to prompt for push after informing the user about
         //   how your app will use them.
         OneSignal.promptForPushNotifications(userResponse: { accepted in
-            print("User accepted notifications: \(accepted)")
+            // Add the user device to the OneSignal's subscription list
+            OneSignal.add(self as OSSubscriptionObserver)
         })
+        
         
         // Sync hashed email if you have a login system or collect it.
         //   Will be used to reach the user at the most optimal time of day.
         // OneSignal.syncHashedEmail(userEmail)
-        
         configureInitialRootViewController(for: window)
         
         return true
@@ -130,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension AppDelegate {
+extension AppDelegate: OSSubscriptionObserver {
     
     /**
      This method handle any URL that direct back to our application
@@ -161,6 +162,18 @@ extension AppDelegate {
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
+    }
+    
+    // After you add the observer on didFinishLaunching, this method will be called when the notification subscription property changes.
+    func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
+        // If the user allow push notification
+        if !stateChanges.from.subscribed && stateChanges.to.subscribed {
+            //The player id is inside stateChanges
+            if let playerId = stateChanges.to.userId {
+                // Store the userID inside firebase
+                print("Current playerId \(playerId)")
+            }
+        }
     }
 }
 
