@@ -204,6 +204,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                         let initialViewController = UIStoryboard.initialViewController(type: .main)
                         self.view.window?.rootViewController = initialViewController
                         self.view.window?.makeKeyAndVisible()
+                        
+                        // Ask user permission to send push notification
+                        OneSignal.promptForPushNotifications(userResponse: { accepted in
+                            // Add the user device to the OneSignal's subscription list
+                            print("User response: \(accepted)")
+                        })
+                        
                     } else {
                         self.performSegue(withIdentifier: "Show Sign Up", sender: nil)
                     }
