@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: "6a56a34f-6f38-4abf-9702-4be5da23dce7",
                                         handleNotificationAction: nil,
@@ -38,17 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
         
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
-            // Add the user device to the OneSignal's subscription list
-            OneSignal.add(self as OSSubscriptionObserver)
-        })
+        OneSignal.add(self as OSSubscriptionObserver)
         
-        
-        // Sync hashed email if you have a login system or collect it.
-        //   Will be used to reach the user at the most optimal time of day.
-        // OneSignal.syncHashedEmail(userEmail)
         configureInitialRootViewController(for: window)
         
         return true

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import OneSignal
 
 class UserService {
     
@@ -15,10 +16,13 @@ class UserService {
      Write a new user in the database
     */
     static func createNewUser(_ user: FIRUser, phoneNumber: String, username: String, completion: @escaping (User?) -> Void){
-        //  Store username
+        
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        //  Store username, phoneNumber, OneSignal player ID, and store description
         let data = [
             "username": username,
             "phoneNumber": phoneNumber,
+            "OSPlayerID": status.subscriptionStatus.userId,
             "storeDescription": "Welcome to my store!"
         ]
         // Generate a path in our FIRDatabase

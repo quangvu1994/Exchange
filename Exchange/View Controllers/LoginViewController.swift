@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
+import OneSignal
 
 typealias FIRUser = FirebaseAuth.User
 

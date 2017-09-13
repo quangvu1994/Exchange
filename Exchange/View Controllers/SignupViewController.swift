@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import OneSignal
 
 class SignupViewController: UIViewController {
     
@@ -72,9 +73,16 @@ class SignupViewController: UIViewController {
             let initialViewController = UIStoryboard.initialViewController(type: .main)
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
+            // Ask user permission to send push notification
+            OneSignal.promptForPushNotifications(userResponse: { accepted in
+                // Add the user device to the OneSignal's subscription list
+                print("User response: \(accepted)")
+            })
+            
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         })
+        
     }
     
     @IBAction func cancelAction(_ sender: Any) {
