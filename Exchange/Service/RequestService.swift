@@ -7,6 +7,7 @@
 //
 
 import FirebaseDatabase
+import OneSignal
 
 class RequestService {
     
@@ -14,6 +15,7 @@ class RequestService {
      Write a new request to our database
     */
     static func writeNewRequest(for requesterID: String, and posterID: String, with request: Request, completionHandler: @escaping (Bool) -> Void) {
+    
         let allRequestRef = Database.database().reference().child("Requests").childByAutoId()
         // Update child value -> don't want to wipe every others info
         allRequestRef.setValue(request.dictValue, withCompletionBlock: { (error, snapshot) in

@@ -22,7 +22,7 @@ class UserService {
         let data = [
             "username": username,
             "phoneNumber": phoneNumber,
-            "OSPlayerID": status.subscriptionStatus.userId,
+            "oneSignalID": status.subscriptionStatus.userId,
             "storeDescription": "Welcome to my store!"
         ]
         // Generate a path in our FIRDatabase

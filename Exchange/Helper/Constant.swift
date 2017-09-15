@@ -16,6 +16,6 @@ struct Constants {
         static let phoneNumber = "phoneNumber"
         static let storeDescription = "storeDescription"
         static let profilePicture = "profilePicture"
-        static let oneSignalPlayerID = "OSPlayerID"
+        static let oneSignalID = "oneSignalID"
     }
 }

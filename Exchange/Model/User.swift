@@ -14,7 +14,7 @@ class User: NSObject {
     var uid: String
     var username: String
     var phoneNumber: String
-    var oneSignalPlayerID: String = ""
+    var oneSignalID: String = ""
     var profilePictureURL: String?
     var storeDescription: String = "Welcome to my store!"
     
@@ -34,7 +34,7 @@ class User: NSObject {
             let username = aDecoder.decodeObject(forKey: Constants.UserDefaults.username) as? String,
             let phoneNumber = aDecoder.decodeObject(forKey: Constants.UserDefaults.phoneNumber) as? String,
             let storeDescription = aDecoder.decodeObject(forKey: Constants.UserDefaults.storeDescription) as? String,
-            let oneSignalPlayerID = aDecoder.decodeObject(forKey: Constants.UserDefaults.oneSignalPlayerID) as? String
+            let oneSignalID = aDecoder.decodeObject(forKey: Constants.UserDefaults.oneSignalID) as? String
             else { return nil }
         
         self.uid = uid
@@ -42,7 +42,7 @@ class User: NSObject {
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
         self.profilePictureURL = aDecoder.decodeObject(forKey: Constants.UserDefaults.profilePicture) as? String
-        self.oneSignalPlayerID = oneSignalPlayerID
+        self.oneSignalID = oneSignalID
         super.init()
     }
     
@@ -50,7 +50,7 @@ class User: NSObject {
         guard let snapshotValue = snapshot.value as? [String: Any],
             let username = snapshotValue["username"] as? String,
             let phoneNumber = snapshotValue["phoneNumber"] as? String,
-            let oneSignalPlayerID = snapshotValue["OSPlayerID"] as? String,
+            let oneSignalID = snapshotValue["oneSignalID"] as? String,
             let storeDescription = snapshotValue["storeDescription"] as? String,
                 !username.isEmpty,
                 !phoneNumber.isEmpty else {
@@ -61,7 +61,7 @@ class User: NSObject {
         self.username = username
         self.phoneNumber = phoneNumber
         self.storeDescription = storeDescription
-        self.oneSignalPlayerID = oneSignalPlayerID
+        self.oneSignalID = oneSignalID
         self.profilePictureURL = snapshotValue["profilePicture"] as? String
         super.init()
     }
@@ -95,6 +95,6 @@ extension User: NSCoding {
         aCoder.encode(phoneNumber, forKey: Constants.UserDefaults.phoneNumber)
         aCoder.encode(storeDescription, forKey: Constants.UserDefaults.storeDescription)
         aCoder.encode(profilePictureURL, forKey: Constants.UserDefaults.profilePicture)
-        aCoder.encode(oneSignalPlayerID, forKey: Constants.UserDefaults.oneSignalPlayerID)
+        aCoder.encode(oneSignalID, forKey: Constants.UserDefaults.oneSignalID)
     }
 }

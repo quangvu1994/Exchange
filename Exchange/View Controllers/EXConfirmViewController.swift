@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import OneSignal
 
 class EXConfirmViewController: UIViewController {
     
@@ -35,18 +36,21 @@ class EXConfirmViewController: UIViewController {
             request.cashAmount = cashCell.amountField.text!
         }
 
-        RequestService.writeNewRequest(for: User.currentUser.uid, and: posterItems[0].poster.uid, with: request, completionHandler: { [weak self] (success) in
+        RequestService.writeNewRequest(for: User.currentUser.uid, and: posterItems[0].poster.uid, with: request, completionHandler: { [unowned self] (success) in
             if !success {
-                self?.displayWarningMessage(message: "Unable to send request, please check your network and try again")
+                self.displayWarningMessage(message: "Unable to send request, please check your network and try again")
                 UIApplication.shared.endIgnoringInteractionEvents()
                 return
             }
             let alertController = UIAlertController(title: nil, message: "Your exchange request has been sent!", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-                self?.performSegue(withIdentifier: "Finish Exchange Sequence", sender: nil)
+                self.performSegue(withIdentifier: "Finish Exchange Sequence", sender: nil)
             })
             alertController.addAction(cancelAction)
-            self?.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
+            // Send a notification to the poster
+            OneSignal.postNotification(["contents": ["en": "\(User.currentUser.username) just send you a new request for your items. Check your incoming requests!)"],
+                                        "include_player_ids": ["\(self.posterItems[0].poster.oneSignalID)"]])
             UIApplication.shared.endIgnoringInteractionEvents()
         })
     }
