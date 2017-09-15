@@ -12,6 +12,7 @@ import OneSignal
 
 class RequestDetailViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var request: Request?
     // index = 0: Outgoing Request; index = 1: Incoming Request
@@ -28,8 +29,14 @@ class RequestDetailViewController: UIViewController {
     @IBAction func confirmRequest(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: "You are about to accept this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.view.alpha = 0.5
             guard let request = self.request else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
                 return
             }
             
@@ -52,6 +59,9 @@ class RequestDetailViewController: UIViewController {
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
             })
         })
         alertController.addAction(cancelAction)
@@ -66,7 +76,14 @@ class RequestDetailViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: "You are about to reject this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.view.alpha = 0.5
+            
             guard let request = self.request else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
                 return
             }
             
@@ -89,6 +106,9 @@ class RequestDetailViewController: UIViewController {
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
             })
         })
         
@@ -104,7 +124,14 @@ class RequestDetailViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: "You are about to cancel this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] (action) in
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.view.alpha = 0.5
+            
             guard let request = self.request else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
                 return
             }
             
@@ -128,6 +155,9 @@ class RequestDetailViewController: UIViewController {
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
             })
         })
         alertController.addAction(cancelAction)
@@ -143,14 +173,18 @@ class RequestDetailViewController: UIViewController {
         let cancelAction = UIAlertAction.init(title: "No", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction.init(title: "Yes", style: .default, handler: { [unowned self] (action) in
             UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.view.alpha = 0.5
             let dispGroup = DispatchGroup()
             var requestRef: DatabaseReference
             
             // Unwrap request's key
             guard let request = self.request,
                 let requestKey =  request.requestKey else {
-                UIApplication.shared.endIgnoringInteractionEvents()
-                return
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.activityIndicator.stopAnimating()
+                    self.view.alpha = 1
+                    return
             }
             
             switch self.index! {
@@ -160,6 +194,9 @@ class RequestDetailViewController: UIViewController {
                 requestRef = Database.database().reference().child("users/\(User.currentUser.uid)/Incoming Request/\(requestKey)")
             default:
                 UIApplication.shared.endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
                 fatalError("Unrecognized index")
             }
             
@@ -188,6 +225,8 @@ class RequestDetailViewController: UIViewController {
             
             dispGroup.notify(queue: .main, execute: {
                 UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = 1
             })
         })
         

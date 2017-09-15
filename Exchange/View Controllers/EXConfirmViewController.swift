@@ -12,6 +12,7 @@ import OneSignal
 
 class EXConfirmViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var requesterItems = [Post]()
     var posterItems = [Post]()
@@ -25,6 +26,8 @@ class EXConfirmViewController: UIViewController {
     
     @IBAction func sendRequest(_ sender: UIButton) {
         UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.view.alpha = 0.5
         let messageCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! EXTableDescriptionCell
         let cashCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! EXCashCell
         
@@ -52,6 +55,8 @@ class EXConfirmViewController: UIViewController {
             OneSignal.postNotification(["contents": ["en": "\(User.currentUser.username) just send you a new request for your items. Check your incoming requests!)"],
                                         "include_player_ids": ["\(self.posterItems[0].poster.oneSignalID)"]])
             UIApplication.shared.endIgnoringInteractionEvents()
+            self.activityIndicator.stopAnimating()
+            self.view.alpha = 1
         })
     }
     

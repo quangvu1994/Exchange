@@ -364,11 +364,17 @@
                                     <outlet property="delegate" destination="mCU-5e-opI" id="EZX-r7-tIr"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mDm-q0-EzY">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sf5-Xk-M2u" firstAttribute="leading" secondItem="EWF-YY-dwG" secondAttribute="leading" id="6XX-0l-DqM"/>
                             <constraint firstAttribute="trailing" secondItem="sf5-Xk-M2u" secondAttribute="trailing" id="F7S-FI-nZP"/>
+                            <constraint firstItem="mDm-q0-EzY" firstAttribute="centerX" secondItem="EWF-YY-dwG" secondAttribute="centerX" id="aqB-AN-0p5"/>
+                            <constraint firstItem="mDm-q0-EzY" firstAttribute="centerY" secondItem="EWF-YY-dwG" secondAttribute="centerY" id="bEt-LW-RB4"/>
                             <constraint firstItem="kuN-B3-EUk" firstAttribute="top" secondItem="sf5-Xk-M2u" secondAttribute="bottom" id="e9d-jo-gUW"/>
                             <constraint firstItem="sf5-Xk-M2u" firstAttribute="top" secondItem="EWF-YY-dwG" secondAttribute="top" id="fsi-kg-brI"/>
                         </constraints>
@@ -382,6 +388,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="mDm-q0-EzY" id="Qvc-8I-Mv1"/>
                         <outlet property="tableView" destination="sf5-Xk-M2u" id="7tN-8f-EOO"/>
                         <segue destination="HtK-Rf-rsg" kind="unwind" identifier="Finish Exchange Sequence" unwindAction="unwindFromExchangeSequence:" id="AWC-x5-Req"/>
                         <segue destination="Utc-xq-ggK" kind="presentation" identifier="Open Item Detail Popup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hwd-vf-at1"/>
@@ -405,7 +412,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzR-8X-AdX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jZ-pW-4GZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jZ-pW-4GZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

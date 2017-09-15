@@ -549,12 +549,18 @@
                                     <outlet property="delegate" destination="67Y-eD-WlW" id="hOl-C6-qFJ"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Q2s-uA-1Yl">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <color key="color" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Q2s-uA-1Yl" firstAttribute="centerX" secondItem="WPG-Jh-DxK" secondAttribute="centerX" id="00c-gj-hPV"/>
                             <constraint firstItem="oJK-lH-Y1x" firstAttribute="top" secondItem="WPG-Jh-DxK" secondAttribute="top" id="06V-Fy-5ft"/>
                             <constraint firstAttribute="trailing" secondItem="oJK-lH-Y1x" secondAttribute="trailing" id="5PR-K1-t3B"/>
                             <constraint firstAttribute="bottom" secondItem="oJK-lH-Y1x" secondAttribute="bottom" id="PN3-FN-oSw"/>
+                            <constraint firstItem="Q2s-uA-1Yl" firstAttribute="centerY" secondItem="WPG-Jh-DxK" secondAttribute="centerY" id="T8I-gD-zSM"/>
                             <constraint firstItem="oJK-lH-Y1x" firstAttribute="leading" secondItem="WPG-Jh-DxK" secondAttribute="leading" id="hjw-aE-4ju"/>
                         </constraints>
                     </view>
@@ -573,6 +579,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Q2s-uA-1Yl" id="e2X-Ro-UhG"/>
                         <outlet property="tableView" destination="oJK-lH-Y1x" id="LLv-7B-ry4"/>
                         <segue destination="L6L-LE-kJo" kind="presentation" identifier="Item Detail Pop Over" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="iSo-BY-ZWt"/>
                     </connections>
@@ -670,7 +677,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="N1T-jZ-uBz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VcJ-W2-1Bb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VcJ-W2-1Bb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
