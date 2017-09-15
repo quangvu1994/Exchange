@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import OneSignal
 
 class RequestDetailViewController: UIViewController {
     
@@ -40,6 +41,9 @@ class RequestDetailViewController: UIViewController {
                         self.performSegue(withIdentifier: "Back", sender: nil)
                     })
                     alertController.addAction(cancelAction)
+                    // Send a notification to the buyer
+                    OneSignal.postNotification(["contents" : ["en": "\(request.posterName) has accepted your request. Check your completed outgoing requests!"],
+                                                "include_player_ids": ["\(request.requesterOneSignalID)"]])
                     self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController
@@ -55,6 +59,9 @@ class RequestDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    /**
+     Reject the request
+    */
     @IBAction func rejectRequest(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: "You are about to reject this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
@@ -71,6 +78,9 @@ class RequestDetailViewController: UIViewController {
                         self.performSegue(withIdentifier: "Back", sender: nil)
                     })
                     alertController.addAction(cancelAction)
+                    // Send a notification to the buyer
+                    OneSignal.postNotification(["contents" : ["en": "\(request.posterName) has rejected your request. Check your completed outgoing requests!"],
+                                                "include_player_ids": ["\(request.requesterOneSignalID)"]])
                     self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController
@@ -87,6 +97,9 @@ class RequestDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    /**
+     Cancel the request
+    */
     @IBAction func cancelRequest(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: "You are about to cancel this request", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
@@ -104,6 +117,9 @@ class RequestDetailViewController: UIViewController {
                         self.performSegue(withIdentifier: "Back", sender: nil)
                     })
                     alertController.addAction(cancelAction)
+                    // Send a notification to the seller
+                    OneSignal.postNotification(["contents" : ["en": "\(request.requesterName) cancelled the request. Check your completed incoming requests!"],
+                                                "include_player_ids": ["\(request.posterOneSignalID)"]])
                     self.present(alertController, animated: true, completion: nil)
                 } else {
                     let alertController
@@ -119,6 +135,9 @@ class RequestDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    /**
+     Cancel the request and remove the request off the user's request list
+    */
     @IBAction func deleteRequest(_ sender: Any) {
         let confirmDeleteController = UIAlertController.init(title: nil, message: "Are you sure that you want to delete this request?", preferredStyle: .alert)
         let cancelAction = UIAlertAction.init(title: "No", style: .cancel, handler: nil)

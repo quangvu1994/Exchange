@@ -13,9 +13,11 @@ class Request {
     var requesterID: String
     var requesterName: String
     var requesterPhone: String
+    var requesterOneSignalID: String
     var posterID: String
     var posterName: String
     var posterPhone: String
+    var posterOneSignalID: String
     var firstPostTitle: String
     var firstPostImageURL: String
     var requesterItemsData = [String: Any]()
@@ -32,9 +34,11 @@ class Request {
             "requester_id": requesterID,
             "requester_name": requesterName,
             "requester_phone": requesterPhone,
+            "requester_osid": requesterOneSignalID,
             "poster_id": posterID,
             "poster_name": posterName,
             "poster_phone": posterPhone,
+            "poster_osid": posterOneSignalID,
             "requester_items": requesterItemsData,
             "poster_items": posterItemsData,
             "first_posterItem": firstPostTitle,
@@ -50,9 +54,11 @@ class Request {
         self.requesterID = User.currentUser.uid
         self.requesterName = User.currentUser.username
         self.requesterPhone = User.currentUser.phoneNumber
+        self.requesterOneSignalID = User.currentUser.oneSignalID
         self.posterID = posterItems[0].poster.uid
         self.posterName = posterItems[0].poster.username
         self.posterPhone = posterItems[0].poster.phoneNumber
+        self.posterOneSignalID = posterItems[0].poster.oneSignalID
         self.firstPostTitle = posterItems[0].postTitle
         self.firstPostImageURL = posterItems[0].imagesURL[0]
         self.tradeLocation = posterItems[0].tradeLocation
@@ -88,9 +94,11 @@ class Request {
             let requesterID = basicInfoSnapshot["requester_id"] as? String,
             let requesterName = basicInfoSnapshot["requester_name"] as? String,
             let requesterPhone = basicInfoSnapshot["requester_phone"] as? String,
+            let requesterOneSignalID = basicInfoSnapshot["requester_osid"] as? String,
             let posterID = basicInfoSnapshot["poster_id"] as? String,
             let posterName = basicInfoSnapshot["poster_name"] as? String,
             let posterPhone = basicInfoSnapshot["poster_phone"] as? String,
+            let posterOneSignalID = basicInfoSnapshot["poster_osid"] as? String,
             let tradeLocation = basicInfoSnapshot["trade_location"] as? String else {
             return nil
         }
@@ -109,9 +117,11 @@ class Request {
         self.requesterID = requesterID
         self.requesterName = requesterName
         self.requesterPhone = requesterPhone
+        self.requesterOneSignalID = requesterOneSignalID
         self.posterID = posterID
         self.posterName = posterName
         self.posterPhone = posterPhone
+        self.posterOneSignalID = posterOneSignalID
         self.requestKey = snapshot.key
         self.firstPostImageURL = imageURL
         self.firstPostTitle = firstPostTitle
